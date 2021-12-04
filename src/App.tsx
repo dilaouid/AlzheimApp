@@ -114,7 +114,40 @@ interface DispatchProps {
 
 interface IonicAppProps extends StateProps, DispatchProps { }
 
+const IonicApp: React.FC<IonicAppProps> = ({ darkMode, persons, setIsLoggedIn, setUsername, loadConfData, loadUserData }) => {
+  useEffect(() => {
+    loadUserData();
+    loadConfData();
+    // eslint-disable-next-line
+  }, []);
 
+  return (
+    persons.length === 0 ? (
+      <div></div>
+    ) : (
+        <IonApp className={`${darkMode ? 'dark-theme' : ''}`}>
+          <IonReactRouter>
+            <IonSplitPane contentId="main">
+              <Menu />
+              <IonRouterOutlet id="main">
+                {/*
+                We use IonRoute here to keep the tabs state intact,
+                which makes transitions between tabs and non tab pages smooth
+                */}
+                <Route path="/logout" render={() => {
+                  return <RedirectToLogin
+                    setIsLoggedIn={setIsLoggedIn}
+                    setUsername={setUsername}
+                  />;
+                }} />
+                <Route path="/" component={HomeOrTutorial} exact />
+              </IonRouterOutlet>
+            </IonSplitPane>
+          </IonReactRouter>
+        </IonApp>
+      )
+  )
+}
 
 const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
