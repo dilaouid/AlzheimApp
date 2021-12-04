@@ -11,9 +11,10 @@ export const getConfData = async () => {
     ]);
     const responseData = await response[0].json();
     const data = {
-        responseData
-    };
-    return data ?? [];
+        persons: responseData['persons']
+    }
+    console.log('data:', data);
+    return data;
 };
 
 export const getUserData = async () => {
