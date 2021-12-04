@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
   IonIcon,
   IonLabel,
   IonRouterOutlet,
+  IonSplitPane,
   IonTabBar,
   IonTabButton,
   IonTabs,
@@ -14,6 +15,17 @@ import { construct, exit, home } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
+
+import { Person } from "./models/Person";
+
+import { loadConfData } from './data/sessions/sessions.actions';
+
+import { connect } from './data/connect';
+
+import { setIsLoggedIn, setUsername, loadUserData } from './data/user/user.actions';
+
+import HomeOrTutorial from './components/Utils/HomeOrTutorial';
+import RedirectToLogin from './components/Utils/RedirectToLogin';
 
 /* External packages */
 import Cookies from 'universal-cookie';
@@ -86,6 +98,31 @@ const App: React.FC = () => {
       </IonReactRouter>
     </IonApp>
   );
+};
+
+interface StateProps {
+  darkMode: boolean;
+  persons: Person[];
+};
+
+interface DispatchProps {
+  loadConfData: typeof loadConfData;
+  loadUserData: typeof loadUserData;
+  setIsLoggedIn: typeof setIsLoggedIn;
+  setUsername: typeof setUsername;
 }
+
+interface IonicAppProps extends StateProps, DispatchProps { }
+
+
+
+const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
+  mapStateToProps: (state) => ({
+    darkMode: state.user.darkMode,
+    persons: state.data.persons
+  }),
+  mapDispatchToProps: { loadConfData, loadUserData, setIsLoggedIn, setUsername },
+  component: IonicApp
+});
 
 export default App;
