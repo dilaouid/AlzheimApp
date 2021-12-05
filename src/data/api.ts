@@ -1,16 +1,35 @@
 import { Storage } from '@capacitor/storage';
+import { Globalization  } from '@ionic-native/globalization';
 
+import Cookies from 'universal-cookie';
+import { getLanguage } from '../language/setLanguage';
+
+const cookies = new Cookies();
 const dataUrl = '/assets/data/data.json';
 const USERNAME = 'username';
 const HAS_LOGGED_IN = 'hasLoggedIn';
 const HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
 
 export const getConfData = async () => {
+
+    const language = await Globalization.getPreferredLanguage().then(res => {
+        let lng = res.value?.split('-')[0] ?? getLanguage(cookies.get('lang'));
+        if (['fr', 'en'].includes(lng) === false)
+          lng = 'fr';
+        return lng;
+    }).catch(e => {
+        console.error(e);
+        return getLanguage(cookies.get('lang')) ?? 'fr';
+    });
+
+    cookies.set('lang', language);
+
     const response = await Promise.all([
       fetch(dataUrl)
     ]);
     const responseData = await response[0].json();
     const data = {
+        lang: language,
         persons: responseData['persons']
     }
     console.log('data:', data);
