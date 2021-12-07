@@ -4,6 +4,10 @@
 
 import { Activity } from './Activity';
 
+export interface PersonGroup {
+    persons: Person[]
+};
+
 export interface Person {
     id: string; /* uuidv4 */
     name: string; /* the name of the person */
