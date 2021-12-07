@@ -16,6 +16,7 @@ import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 
+import Tutorial from './pages/Starter/Tutorial';
 import { Person } from "./models/Person";
 
 import { loadConfData } from './data/sessions/sessions.actions';
@@ -134,6 +135,7 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, persons, setIsLoggedIn, s
                 We use IonRoute here to keep the tabs state intact,
                 which makes transitions between tabs and non tab pages smooth
                 */}
+                <Route path="/tutorial" component={Tutorial} />
                 <Route path="/logout" render={() => {
                   return <RedirectToLogin
                     setIsLoggedIn={setIsLoggedIn}
