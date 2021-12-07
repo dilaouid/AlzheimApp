@@ -33,8 +33,8 @@ export const lang: any = {
         Step2Content: "Your data are not saved in a server. Your datas belongs to you, so everything is locally saved in your device. You can even use this application in airplane mode.",
 
         // Third step of the tutorial
-        Step3Header: "100% free",
-        Step3Content: "<strong>Completly free, without any ad</strong>. There is no trap, just that the accompaniment must be free, because health must be accessible to all, at no cost.",
+        Step3Header: "Share the follow-up",
+        Step3Content: "Your are a hospital or a family, and wants to share the follow-up of a specific person? It's possible, you can share data between two devices with <strong>Bluetooth</strong> technology!",
 
         // Fourth step of the tutorial
         Step4Header: "100% free",
