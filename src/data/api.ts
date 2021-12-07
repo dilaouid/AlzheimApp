@@ -9,35 +9,35 @@ const dataUrl = '/assets/data/data.json';
 const USERNAME = 'username';
 const HAS_LOGGED_IN = 'hasLoggedIn';
 const HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
+const LANGUAGE = 'lang';
 
 export const getConfData = async () => {
 
     const language = await Globalization.getPreferredLanguage().then(res => {
-        let lng = res.value?.split('-')[0] ?? getLanguage(cookies.get('lang'));
-        if (['fr', 'en'].includes(lng) === false)
-          lng = 'fr';
-        return lng;
+      let lng = res.value?.split('-')[0] ?? getLanguage(cookies.get('lang'));
+      if (['fr', 'en'].includes(lng) === false)
+        lng = 'fr';
+      return lng;
     }).catch(e => {
         console.error(e);
         return getLanguage(cookies.get('lang')) ?? 'fr';
     });
-
-    cookies.set('lang', language);
+  
+    setLanguage(language);
 
     const response = await Promise.all([
       fetch(dataUrl)
     ]);
     const responseData = await response[0].json();
-    const data = {
-        lang: language,
+    return {
+        language: language,
         persons: responseData['persons']
-    }
-    console.log('data:', data);
-    return data;
+    };
 };
 
 export const getUserData = async () => {
     const response = await Promise.all([
+      Storage.get({ key: LANGUAGE }),
       Storage.get({ key: HAS_LOGGED_IN }),
       Storage.get({ key: HAS_SEEN_TUTORIAL }),
       Storage.get({ key: USERNAME })]);
@@ -54,6 +54,10 @@ export const getUserData = async () => {
 
 export const setHasSeenTutorialData = async (hasSeenTutorial: boolean) => {
     await Storage.set({ key: HAS_SEEN_TUTORIAL, value: JSON.stringify(hasSeenTutorial) });
+};
+
+export const setLanguage = async (language: string) => {
+  await Storage.set({ key: LANGUAGE, value: language });
 };
 
 export const setIsLoggedInData = async (isLoggedIn: boolean) => {

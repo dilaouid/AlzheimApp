@@ -8,6 +8,7 @@ export const initialState: AppState = {
     filteredPersons: [],
     loading: false,
     menuEnabled: true,
+    language: null,
   },
   user: {
     hasSeenTutorial: false,
