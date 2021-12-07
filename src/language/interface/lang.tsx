@@ -1,11 +1,13 @@
-const lang = {
+export const lang: any = {
     fr: {
         Homepage: "Page d'accueil",
         Configuration: "Configuration",
         Disconnect: "Déconnexion",
         Password: "Mot de passe",
         ScanCode: "Scanner un QR Code",
-        Name: "Nom"
+        Name: "Nom",
+        Skip: "Passer",
+        Continue: "Continuer",
     },
     en: {
         Homepage: "Homepage",
@@ -13,8 +15,8 @@ const lang = {
         Disconnect: "Logout",
         Password: "Password",
         ScanCode: "Scan a QR Code",
-        Name: "Name"
+        Name: "Name",
+        Skip: "Skip",
+        Continue: "Continue",
     }
 };
-
-export { lang };
