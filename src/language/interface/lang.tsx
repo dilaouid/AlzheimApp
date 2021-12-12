@@ -8,6 +8,13 @@ export const lang: any = {
         Name: "Nom",
         Skip: "Passer",
         Continue: "Continuer",
+        About: "À propos",
+        ChoosePerson: "Sélection de la personne",
+        Main: "Principal",
+        Account: "Compte",
+        DarkMode: "Mode nuit",
+        Preamble: "Préambule",
+        ShowPreamble: "Relire le préambule",
     },
     en: {
         Homepage: "Homepage",
@@ -18,5 +25,12 @@ export const lang: any = {
         Name: "Name",
         Skip: "Skip",
         Continue: "Continue",
+        About: "About",
+        ChoosePerson: "Choose the person",
+        Main: "Main",
+        Account: "Account",
+        DarkMode: "Dark Mode",
+        Preamble: "Preamble",
+        ShowPreamble: "Show Preamble",
     }
 };
