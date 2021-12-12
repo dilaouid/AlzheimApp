@@ -21,6 +21,7 @@ import { setIsLoggedIn, setUsername, loadUserData } from './data/user/user.actio
 
 import HomeOrTutorial from './components/Utils/HomeOrTutorial';
 import RedirectToLogin from './components/Utils/RedirectToLogin';
+import Menu from './components/UserInterface/Menu';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -77,6 +78,7 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, persons, setIsLoggedIn, s
         <IonApp className={`${darkMode ? 'dark-theme' : ''}`}>
           <IonReactRouter>
             <IonSplitPane contentId="main">
+              <Menu />
               <IonRouterOutlet id="main">
                 {/*
                 We use IonRoute here to keep the tabs state intact,
