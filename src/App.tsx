@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route } from 'react-router-dom';
 import {
   IonApp,
-  IonIcon,
-  IonLabel,
   IonRouterOutlet,
-  IonSplitPane,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
+  IonSplitPane
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { construct, exit, home } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
 
 import Tutorial from './pages/Starter/Tutorial';
+import MainTabs from './pages/Tabs/MainTabs';
+
+import { AppContextProvider } from './data/AppContext';
 import { Person } from "./models/Person";
 
 import { loadConfData } from './data/sessions/sessions.actions';
@@ -27,13 +21,6 @@ import { setIsLoggedIn, setUsername, loadUserData } from './data/user/user.actio
 
 import HomeOrTutorial from './components/Utils/HomeOrTutorial';
 import RedirectToLogin from './components/Utils/RedirectToLogin';
-
-/* External packages */
-import Cookies from 'universal-cookie';
-
-/* Language templates */
-import { lang as LanguageInterface } from "./language/interface/lang";
-import { setLanguage } from "./language/setLanguage";
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -54,50 +41,11 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const cookies = new Cookies();
-
 const App: React.FC = () => {
-
-  const cookieLang:string = cookies.get('lang');
-  const [langInterface, setLangInterface] = useState( () => {
-    return setLanguage(cookieLang, LanguageInterface);
-  });
-
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet>
-            <Route exact path="/tab1">
-              <Tab1 lang={cookieLang} />
-            </Route>
-            <Route exact path="/tab2">
-              <Tab2 lang={cookieLang} />
-            </Route>
-            <Route path="/tab3">
-              <Tab3 lang={cookieLang} />
-            </Route>
-            <Route exact path="/">
-              <Redirect to="/tab1" />
-            </Route>
-          </IonRouterOutlet>
-            <IonTabBar slot="bottom">
-            <IonTabButton tab="tab1" href="/tab1">
-              <IonIcon icon={home} />
-              <IonLabel>{langInterface.Homepage}</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="tab2" href="/tab2">
-              <IonIcon icon={construct} />
-              <IonLabel>{langInterface.Configuration}</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="tab3" href="/tab3">
-              <IonIcon icon={exit} />
-              <IonLabel>{langInterface.Disconnect}</IonLabel>
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
-      </IonReactRouter>
-    </IonApp>
+    <AppContextProvider>
+      <IonicAppConnected />
+    </AppContextProvider>
   );
 };
 
@@ -129,12 +77,12 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, persons, setIsLoggedIn, s
         <IonApp className={`${darkMode ? 'dark-theme' : ''}`}>
           <IonReactRouter>
             <IonSplitPane contentId="main">
-              <Menu />
               <IonRouterOutlet id="main">
                 {/*
                 We use IonRoute here to keep the tabs state intact,
                 which makes transitions between tabs and non tab pages smooth
                 */}
+                <Route path="/tabs" render={() => <MainTabs />}/>
                 <Route path="/tutorial" component={Tutorial} />
                 <Route path="/logout" render={() => {
                   return <RedirectToLogin
@@ -151,6 +99,8 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, persons, setIsLoggedIn, s
   )
 }
 
+export default App;
+
 const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
     darkMode: state.user.darkMode,
@@ -159,5 +109,3 @@ const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
   mapDispatchToProps: { loadConfData, loadUserData, setIsLoggedIn, setUsername },
   component: IonicApp
 });
-
-export default App;
