@@ -21,12 +21,13 @@ interface DispatchProps {
 };
 
 interface StateProps {
-  language: string
+  language: string;
+  username: string;
 };
 
 interface TutorialProps extends OwnProps, DispatchProps, StateProps { };
 
-const Tutorial: React.FC<TutorialProps> = ({ history, setHasSeenTutorial, setMenuEnabled, language }) => {
+const Tutorial: React.FC<TutorialProps> = ({ history, setHasSeenTutorial, setMenuEnabled, language, username }) => {
   const [showSkip, setShowSkip] = useState(true);
   let [swiper, setSwiper] = useState<SwiperCore>();
 
@@ -36,8 +37,12 @@ const Tutorial: React.FC<TutorialProps> = ({ history, setHasSeenTutorial, setMen
   
   const startApp = async () => { 
     await setHasSeenTutorial(true);
-    await setMenuEnabled(true);
-    history.push('/tabs/tab1', { direction: 'none' });
+    if (username?.length > 2) {
+      await setMenuEnabled(true);
+      history.push('/tabs/tab1', { direction: 'none' });
+    }
+    else
+      history.push('/username', { direction: 'right' });
   };
 
   const handleSlideChangeStart = () => { 
@@ -116,7 +121,8 @@ const Tutorial: React.FC<TutorialProps> = ({ history, setHasSeenTutorial, setMen
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    language: state.data.language
+    language: state.data.language,
+    username: state.data.username ?? null
   }),
   mapDispatchToProps: ({
     setHasSeenTutorial,

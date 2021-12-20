@@ -8,6 +8,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 
 import Tutorial from './pages/Starter/Tutorial';
+import ChooseUsername from './pages/Starter/ChooseUsername';
 import MainTabs from './pages/Tabs/MainTabs';
 
 import { AppContextProvider } from './data/AppContext';
@@ -86,6 +87,7 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, persons, setIsLoggedIn, s
                 */}
                 <Route path="/tabs" render={() => <MainTabs />}/>
                 <Route path="/tutorial" component={Tutorial} />
+                <Route path="/username" component={ChooseUsername} />
                 <Route path="/logout" render={() => {
                   return <RedirectToLogin
                     setIsLoggedIn={setIsLoggedIn}
