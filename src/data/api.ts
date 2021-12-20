@@ -37,7 +37,6 @@ export const getConfData = async () => {
 
 export const getUserData = async () => {
     const response = await Promise.all([
-      Storage.get({ key: LANGUAGE }),
       Storage.get({ key: HAS_LOGGED_IN }),
       Storage.get({ key: HAS_SEEN_TUTORIAL }),
       Storage.get({ key: USERNAME })]);

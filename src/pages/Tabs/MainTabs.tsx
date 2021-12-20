@@ -6,8 +6,8 @@ import { home, construct, exit } from 'ionicons/icons';
 import { connect } from '../../data/connect';
 import * as selectors from '../../data/selectors';
 
-import Tab1 from './../Tab3';
-import Tab2 from './../Tab3';
+import Tab1 from './../Tab1';
+import Tab2 from './../Tab2';
 import Tab3 from './../Tab3';
 
 import { Person } from "../../models/Person";
