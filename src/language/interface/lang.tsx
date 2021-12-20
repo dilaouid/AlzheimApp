@@ -15,6 +15,9 @@ export const lang: any = {
         DarkMode: "Mode nuit",
         Preamble: "Préambule",
         ShowPreamble: "Relire le préambule",
+        Username: "Nom d'utilisateur",
+        SetUsername: "Choisissez un nom d'utilisateur",
+        WrongUsername: "Le nom d'utilisateur doit faire contenir entre 3 et 9 caractères.",
     },
     en: {
         Homepage: "Homepage",
@@ -32,5 +35,8 @@ export const lang: any = {
         DarkMode: "Dark Mode",
         Preamble: "Preamble",
         ShowPreamble: "Show Preamble",
+        Username: "Username",
+        SetUsername: "Choose an username",
+        WrongUsername: "The username must contains between 3 and 9 characters.",
     }
 };
