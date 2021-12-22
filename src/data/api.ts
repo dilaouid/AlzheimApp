@@ -25,13 +25,17 @@ export const getConfData = async () => {
   
     setLanguage(language);
 
-    const response = await Promise.all([
+    const responseData = await Promise.all([
       fetch(dataUrl)
-    ]);
-    const responseData = await response[0].json();
+    ]).then(async data => {
+      return await data[0].json();
+    }).catch(err => {
+      return {persons: []};
+    });
+
     return {
         language: language,
-        persons: responseData['persons']
+        persons: responseData['persons'] || []
     };
 };
 

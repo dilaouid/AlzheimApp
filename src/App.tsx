@@ -73,9 +73,6 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, persons, setIsLoggedIn, s
   }, []);
 
   return (
-    persons.length === 0 ? (
-      <div></div>
-    ) : (
         <IonApp className={`${darkMode ? 'dark-theme' : ''}`}>
           <IonReactRouter>
             <IonSplitPane contentId="main">
@@ -99,7 +96,6 @@ const IonicApp: React.FC<IonicAppProps> = ({ darkMode, persons, setIsLoggedIn, s
             </IonSplitPane>
           </IonReactRouter>
         </IonApp>
-      )
   )
 }
 
