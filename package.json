@@ -1,82 +1,37 @@
 {
-  "name": "alz-app",
-  "version": "0.0.1",
-  "private": true,
-  "dependencies": {
-    "@capacitor/android": "3.3.2",
-    "@capacitor/app": "1.0.6",
-    "@capacitor/core": "3.3.2",
-    "@capacitor/haptics": "1.1.3",
-    "@capacitor/keyboard": "1.1.3",
-    "@capacitor/status-bar": "1.0.6",
-    "@capacitor/storage": "^1.2.3",
-    "@ionic-native/core": "^5.36.0",
-    "@ionic-native/globalization": "^5.36.0",
-    "@ionic/react": "^5.5.0",
-    "@ionic/react-router": "^5.5.0",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.6.3",
-    "@types/jest": "^26.0.20",
-    "@types/node": "^12.19.15",
-    "@types/react": "^16.14.3",
-    "@types/react-dom": "^16.9.10",
-    "@types/react-router": "^5.1.11",
-    "@types/react-router-dom": "^5.1.7",
-    "cordova-plugin-globalization": "^1.11.0",
-    "ionicons": "^5.4.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.2",
-    "reselect": "^4.1.5",
-    "rxjs": "^7.4.0",
-    "rxjs-compat": "^6.6.7",
-    "sass": "^1.44.0",
-    "swiper": "^7.3.1",
-    "typescript": "^4.1.3",
-    "universal-cookie": "^4.0.4",
-    "web-vitals": "^0.2.4",
-    "workbox-background-sync": "^5.1.4",
-    "workbox-broadcast-update": "^5.1.4",
-    "workbox-cacheable-response": "^5.1.4",
-    "workbox-core": "^5.1.4",
-    "workbox-expiration": "^5.1.4",
-    "workbox-google-analytics": "^5.1.4",
-    "workbox-navigation-preload": "^5.1.4",
-    "workbox-precaching": "^5.1.4",
-    "workbox-range-requests": "^5.1.4",
-    "workbox-routing": "^5.1.4",
-    "workbox-strategies": "^5.1.4",
-    "workbox-streams": "^5.1.4"
-  },
+  "name": "alzapp",
+  "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
+    "expo": "~44.0.1",
+    "expo-app-loading": "~1.3.0",
+    "expo-asset": "~8.4.5",
+    "expo-file-system": "~13.1.0",
+    "expo-localization": "^12.0.0",
+    "expo-splash-screen": "~0.14.1",
+    "expo-sqlite": "~10.1.0",
+    "expo-status-bar": "~1.2.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.3",
+    "react-native-i18n": "^2.0.15",
+    "react-native-local-mongodb": "^4.0.0",
+    "react-native-sqlite-storage": "^6.0.1",
+    "react-native-swiper": "^1.6.0",
+    "react-native-web": "0.17.1",
+    "react-native-windows": "0.64.27",
+    "react-router-native": "^6.2.1",
+    "@react-native-async-storage/async-storage": "~1.15.0"
   },
   "devDependencies": {
-    "@capacitor/cli": "3.3.2"
+    "@babel/core": "^7.12.9"
   },
-  "description": "An Ionic project"
+  "private": true
 }

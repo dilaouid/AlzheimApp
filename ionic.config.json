@@ -1,7 +1,0 @@
-{
-  "name": "AlzApp",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}

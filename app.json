@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "AlzApp",
+    "slug": "AlzApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "AlzApp"
+}
