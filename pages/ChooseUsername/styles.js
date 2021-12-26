@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
     wrapper: {
         height: 200,
-        marginTop: 80,
+        marginTop: 30,
     },
     container: {
         flex: 1,
