@@ -17,6 +17,7 @@ import ChooseUsername from './pages/ChooseUsername';
 
 import Loading from './assets/img/loading.gif'
 import HomeOrTutorial from './components/utils/HomeOrTutorial';
+import Home from './pages/Home';
 
 export default function App() {
   const [config, setConfig] = useState();
@@ -55,6 +56,7 @@ export default function App() {
               <Routes>
                 <Route exact path="/" element={<HomeOrTutorial hasSeenTutorial={config?.hasSeenTutorial} lang={lang} username={config?.username} />} />
                 <Route exact path="/username" element={<ChooseUsername lang={lang} />} />
+                <Route exact path="/home" element={<Home hasSeenTutorial={config?.hasSeenTutorial} lang={lang} username={config?.username} />} />
               </Routes>
             </NativeRouter>
           }
