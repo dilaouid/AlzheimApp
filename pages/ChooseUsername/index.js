@@ -3,7 +3,7 @@ import { Text, View, TextInput, ActivityIndicator, TouchableOpacity, Alert, Imag
 
 import { lang as TutorialLang } from '../../language/tutorial';
 import { lang as InterfaceLang } from '../../language/interface';
-import { db, setUsername } from '../../data/db';
+import { setUsername } from '../../data/db';
 
 import ChooseUsernameGIF from '../../assets/img/username/chooseusername.gif';
 
@@ -18,12 +18,12 @@ export default function ChooseUsername(props) {
         let username = input?.trim() || null;
         if (username && username?.length > 3 && username.length < 11) {
             setUsername(username).then(response => {
-                alert(response)
                 setIsLoading(false);
+                window.location.reload(false);
             });
         }
         else {
-            Alert.alert('todo --- ' + input);
+            setIsLoading(false);
         }
     };
 
