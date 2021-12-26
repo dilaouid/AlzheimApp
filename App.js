@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { Component, useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
   NativeRouter,
   Route,
@@ -14,7 +14,6 @@ import * as Localization from 'expo-localization';
 import { getConfig } from './data/db';
 
 import ChooseUsername from './pages/ChooseUsername';
-import Tutorial from './pages/Tutorial';
 
 import Loading from './assets/img/loading.gif'
 import HomeOrTutorial from './components/utils/HomeOrTutorial';
@@ -41,8 +40,8 @@ export default function App() {
   const fetchData = async () => {
     getConfig().then(resp => {
       setConfig(resp);
+      setIsLoading(false)
     });
-    setIsLoading(false)
   };
 
   return (
@@ -54,7 +53,7 @@ export default function App() {
           </View> : 
             <NativeRouter>
               <Routes>
-                <Route exact path="/" element={<HomeOrTutorial hasSeenTutorial={config?.hasSeenTutorial} lang={lang} />} />
+                <Route exact path="/" element={<HomeOrTutorial hasSeenTutorial={config?.hasSeenTutorial} lang={lang} username={config?.username} />} />
                 <Route exact path="/username" element={<ChooseUsername lang={lang} />} />
               </Routes>
             </NativeRouter>
