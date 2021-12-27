@@ -14,7 +14,7 @@ export async function setUsername (input) {
     return db.updateAsync({ username: { $exists: true } }, { username: input });
 };
 
-export async function getConfig() {
+export async function getConfig() { 
     //db.remove({});
     const username = await db.findAsync({ username: { $exists: true } }, (err, docs) => {
         if (docs.length == 0) {
