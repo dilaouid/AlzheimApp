@@ -43,3 +43,7 @@ export async function getConfig() {
 
     return {username, hasSeenTutorial};
 };
+
+export function getPersons() {
+    return db.findAsync({ person: { $exists: true } });
+};

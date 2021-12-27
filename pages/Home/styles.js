@@ -50,9 +50,12 @@ export default StyleSheet.create({
     },
     safeContainer: {
         flex: 1,
-      },
-    scrollView: {
-
+    },
+    nobodyYet: {
+        textAlign: 'center',
+        marginVertical: 60,
+        color: 'grey',
+        fontStyle: 'italic'
     }
 });
 

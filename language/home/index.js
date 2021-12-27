@@ -17,7 +17,10 @@ export const lang = {
         },
         WhatsUp: "Que souhaitez-vous faire aujourd'hui ?",
         AddAPerson: "Ajouter une personne",
-
+        Edit: "Éditer",
+        Delete: "Supprimer",
+        ReturnToList: "Retour à la liste",
+        NobodyYet: "La liste est vide (pour le moment...)",
     },
     en: {
         Hello: (username) => {
@@ -28,5 +31,9 @@ export const lang = {
         },
         WhatsUp: "What are you about to produce today?",
         AddAPerson: "Add a person",
+        Edit: "Edit",
+        Delete: "Delete",
+        ReturnToList: "Return to the list",
+        NobodyYet: "The list is empty (for the moment...)",
     }
 };
