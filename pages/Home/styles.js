@@ -5,18 +5,19 @@ export default StyleSheet.create({
         flex: 1,
     },
     wrapper: {
-        marginTop: 180,
+        marginTop: 100,
         textAlign: 'center',
         alignItems: 'center',
     },
     topImage: {
         flex: 1,
-        width: 100,
-        marginTop: -350,
+        width: 80,
+        marginTop: -270,
     },
     heading: {
         marginTop: -190,
-        fontSize: 20
+        fontSize: 20,
+        zIndex: 2
     },
     boldtext: {
         fontWeight: 'bold',
@@ -31,7 +32,7 @@ export default StyleSheet.create({
     },
     button: {
         backgroundColor: "#3B8EFF",
-        marginVertical: 30,
+        marginVertical: 25,
         height: 40,
         width: 500,
         borderRadius: 20
@@ -44,6 +45,14 @@ export default StyleSheet.create({
     viewList: {
         textAlign: 'center',
         alignItems: 'center',
-    },  
+        borderBottomColor: 'grey',
+        borderBottomWidth: 0.9
+    },
+    safeContainer: {
+        flex: 1,
+      },
+    scrollView: {
+
+    }
 });
 

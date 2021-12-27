@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, Image, TouchableOpacity } from 'react-native'
+import { Text, View, Image, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native'
 import { useNavigate } from 'react-router-native'
 
 import LoadingBrain from '../../assets/img/home/loading_brain.gif'
@@ -26,12 +26,19 @@ export default function Home(props) {
             <View style={styles.viewList}>
                 <TouchableOpacity
                     style={styles.button}
-                    activeOpacity = { .5 }
+                    activeOpacity = { .2 }
                     onPress={(e) => { console.log("todo") }}
                 >
                     <Text style={styles.buttonText}>{HomeLang[props.lang].AddAPerson}</Text>
                 </TouchableOpacity>
             </View>
+            <SafeAreaView style={styles.safeContainer}>
+                <ScrollView style={styles.scrollView}>
+                    <Text style={styles.subtitle}>
+                                          
+                    </Text>
+                </ScrollView>
+            </SafeAreaView>
         </View>
     );
 };
