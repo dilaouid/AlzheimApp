@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-native'
 import LoadingBrain from '../../assets/img/home/loading_brain.gif'
 import { lang as HomeLang } from '../../language/home';
 import Rows from '../../components/home/Rows';
+import CreatePerson from '../../components/home/CreatePerson';
 
 import { getPersons } from '../../data/db';
 
@@ -78,9 +79,7 @@ export default function Home(props) {
                         {persons && persons.length > 0 ? printRows(persons) : <Text style={styles.nobodyYet}>{HomeLang[props.lang].NobodyYet}</Text> }
                     </ScrollView>
                     <View>
-                        <Text style={styles.subtitle}>
-                               todo             
-                        </Text>
+                        <CreatePerson />
                     </View>
                 </Swiper>
             </SafeAreaView>

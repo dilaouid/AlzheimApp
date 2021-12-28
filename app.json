@@ -10,8 +10,7 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "L'application a besoin d'importer certaines de vos images pour la création de vos quizz et/ou de la personnalisation d'un profil",
-          "cameraPermission": "L'application a besoin de l'appareil photo pour que vous puissiez remplir les quizz et/ou personnaliser un profil"
+          "photosPermission": "L'application a besoin d'importer certaines de vos images pour la création de vos quizz et/ou de la personnalisation d'un profil"
         }
       ]
     ]
