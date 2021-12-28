@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Image, View } from 'react-native';
+import { Image, View, Text } from 'react-native';
 import {
-  ListItem,
-  Avatar,
   Button,
   Divider,
-  Icon
+  Icon,
+  Input
 } from 'react-native-elements';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
@@ -13,7 +12,9 @@ import * as FileSystem from 'expo-file-system';
 import defaultProfilPicture from '../../assets/img/interface/profile.jpg'
 import styles from './styles';
 
-export default function CreatePerson() {
+import { lang as InterfaceLang } from '../../language/interface';
+
+export default function CreatePerson(props) {
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
@@ -42,7 +43,7 @@ export default function CreatePerson() {
   return (
     <View style={styles.view}>
       <Image source={image ? { uri: image } : defaultProfilPicture} style={styles.profilePicture} />
-      <Button title="Importer une image" onPress={pickImage} titleStyle={{ fontSize: 15 }} buttonStyle={styles.btnImport} icon={
+      <Button title={InterfaceLang[props?.lang].ImportImage} onPress={pickImage} titleStyle={{ fontSize: 15 }} buttonStyle={styles.btnImport} icon={
         <Icon
           name="image"
           size={15}
@@ -50,7 +51,42 @@ export default function CreatePerson() {
           style={{marginHorizontal: 5}}
         /> }
       />
-      <Divider style={{width: 100+'%', marginVertical: 30}} />
+      <Divider style={{width: 100+'%', marginVertical: 20}} width={2} />
+      <Input
+        placeholder={InterfaceLang[props?.lang].SetFullName}
+        leftIcon={
+          <Icon
+            name="person"
+            size={24}
+            color='grey'
+          />
+        }
+        label={InterfaceLang[props?.lang].FullName}
+        errorStyle={{ color: 'red' }}
+        renderErrorMessage={false}
+        maxLength={25}
+        errorProps={<Text>{InterfaceLang[props?.lang].RequiredField}</Text>}
+        inputStyle={{fontSize: 14, marginHorizontal: 10}}
+        containerStyle={{width: 300, marginBottom: 10, marginTop: -10}}
+      />
+
+      <Input
+        placeholder={InterfaceLang[props?.lang].SetDescription}
+        leftIcon={
+          <Icon
+            name="info"
+            size={24}
+            color='grey'
+          />
+        }
+        label={InterfaceLang[props?.lang].Description}
+        errorStyle={{ color: 'red' }}
+        maxLength={100}
+        renderErrorMessage={false}
+        errorProps={<Text>{InterfaceLang[props?.lang].LimitExceededField(100)}</Text>}
+        inputStyle={{fontSize: 14, marginHorizontal: 10}}
+        containerStyle={{width: 300, marginVertical: 10}}
+      />
     </View>
   );
 };

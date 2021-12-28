@@ -27,7 +27,7 @@ export default function Home(props) {
         navigate('/');
     }
     getPersons().then(data => {
-        console.log('mmm')
+        console.log('todo')
     });
 
     const swipePage = (idx) => {
@@ -79,7 +79,7 @@ export default function Home(props) {
                         {persons && persons.length > 0 ? printRows(persons) : <Text style={styles.nobodyYet}>{HomeLang[props.lang].NobodyYet}</Text> }
                     </ScrollView>
                     <View>
-                        <CreatePerson />
+                        <CreatePerson lang={props.lang} />
                     </View>
                 </Swiper>
             </SafeAreaView>
