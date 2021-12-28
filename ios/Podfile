@@ -28,6 +28,8 @@ target 'AlzApp' do
 
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
 
+  pod 'react-native-document-picker', :path => '../node_modules/react-native-document-picker'
+
   post_install do |installer|
     react_native_post_install(installer)
 
