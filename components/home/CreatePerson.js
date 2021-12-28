@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Image, View, Text } from 'react-native';
+import { Image, View } from 'react-native';
+import {
+  ListItem,
+  Avatar,
+  Button,
+  Divider,
+  Icon
+} from 'react-native-elements';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 
 import defaultProfilPicture from '../../assets/img/interface/profile.jpg'
+import styles from './styles';
 
 export default function CreatePerson() {
   const [image, setImage] = useState(null);
@@ -32,9 +40,17 @@ export default function CreatePerson() {
   };
 
   return (
-    <View>
-      <Button title="Importer une image" onPress={pickImage} />
-      {image ? <Image source={{ uri: image }} style={{ width: 200, height: 200, borderRadius: 100 }} /> : <Image source={{ uri: defaultProfilPicture }} style={{ width: 200, height: 200, borderRadius: 100 }} />}
+    <View style={styles.view}>
+      <Image source={image ? { uri: image } : defaultProfilPicture} style={styles.profilePicture} />
+      <Button title="Importer une image" onPress={pickImage} titleStyle={{ fontSize: 15 }} buttonStyle={styles.btnImport} icon={
+        <Icon
+          name="image"
+          size={15}
+          color="white"
+          style={{marginHorizontal: 5}}
+        /> }
+      />
+      <Divider style={{width: 100+'%', marginVertical: 30}} />
     </View>
   );
 };

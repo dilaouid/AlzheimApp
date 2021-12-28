@@ -10,7 +10,6 @@ export async function SawTutorial() {
     });
 };
 
-
 export async function setUsername (input) {
     return configSchema.updateAsync({ username: { $exists: true } }, { username: input });
 };
