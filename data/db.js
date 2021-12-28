@@ -1,24 +1,25 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Datastore = require('react-native-local-mongodb')
-export const db = new Datastore({ filename: 'AlzAppDB', storage: AsyncStorage, autoload: true });
+
+export const configSchema = new Datastore({ filename: 'ConfigSchema', storage: AsyncStorage, autoload: true });
 
 export async function SawTutorial() {
-    await db.updateAsync({ hasSeenTutorial: { $exists: true } }, { hasSeenTutorial: true }, (err, numUpdated) => {
+    await configSchema.updateAsync({ hasSeenTutorial: { $exists: true } }, { hasSeenTutorial: true }, (err, numUpdated) => {
         console.log(numUpdated)
     });
 };
 
 
 export async function setUsername (input) {
-    return db.updateAsync({ username: { $exists: true } }, { username: input });
+    return configSchema.updateAsync({ username: { $exists: true } }, { username: input });
 };
 
 export async function getConfig() { 
-    //db.remove({});
-    const username = await db.findAsync({ username: { $exists: true } }, (err, docs) => {
+    //configSchema.remove({});
+    const username = await configSchema.findAsync({ username: { $exists: true } }, (err, docs) => {
         if (docs.length == 0) {
-            db.insertAsync({
+            configSchema.insertAsync({
                 username: '',
             });
             return null;
@@ -29,9 +30,9 @@ export async function getConfig() {
         return resp[0]?.username || null;
     });
     
-    const hasSeenTutorial = await db.findAsync({ hasSeenTutorial: { $exists: true } }, (err, docs) => {
+    const hasSeenTutorial = await configSchema.findAsync({ hasSeenTutorial: { $exists: true } }, (err, docs) => {
         if (docs.length == 0) {
-            db.insertAsync({
+            configSchema.insertAsync({
                 hasSeenTutorial: false
             });
             return false;
@@ -46,5 +47,5 @@ export async function getConfig() {
 };
 
 export function getPersons() {
-    return db.findAsync({ person: { $exists: true } });
+    return configSchema.findAsync({ person: { $exists: true } });
 };
