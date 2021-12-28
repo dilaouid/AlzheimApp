@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.lottie.LottiePackage;
 import com.reactnativedocumentpicker.DocumentPickerPackage;
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;

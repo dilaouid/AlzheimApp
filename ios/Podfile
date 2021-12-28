@@ -30,6 +30,7 @@ target 'AlzApp' do
 
   pod 'react-native-document-picker', :path => '../node_modules/react-native-document-picker'
 
+  pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
   post_install do |installer|
     react_native_post_install(installer)
 
