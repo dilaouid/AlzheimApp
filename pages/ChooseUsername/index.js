@@ -3,7 +3,7 @@ import { Text, View, TextInput, ActivityIndicator, TouchableOpacity, Alert, Imag
 
 import { lang as TutorialLang } from '../../language/tutorial';
 import { lang as InterfaceLang } from '../../language/interface';
-import { setUsername } from '../../data/db';
+import { setUsername } from '../../data/configApi';
 
 import { useNavigate } from 'react-router-native';
 

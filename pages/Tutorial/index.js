@@ -16,7 +16,7 @@ import { lang as TutorialLang } from '../../language/tutorial';
 import Swiper from 'react-native-swiper/src';
 
 import styles from './styles'
-import { SawTutorial } from '../../data/db';
+import { SawTutorial } from '../../data/configApi';
 
 export default function Tutorial(props) {
 

@@ -5,6 +5,8 @@ import {
     Button,
   } from 'react-native-elements';
 
+import DefaultProfilePicture from '../../assets/img/interface/profile.jpg'
+
 import styles from './styles';
 import { lang as HomeLang } from '../../language/home';
 
@@ -26,9 +28,9 @@ export default function Rows(props) {
             leftContent={leftContentSwipe}
             rightContent={rightContentSwipe}
         >
-            { props?.picture ? <Avatar source={`../../assets/img/uploads/profil/${props.picture || null}.jpg`} rounded/> : null }
+            { <Avatar source={props?.picture ? {uri:props.picture} : DefaultProfilePicture } rounded/>  }
             <ListItem.Content>
-                <ListItem.Title>{props.name}</ListItem.Title>
+                <ListItem.Title>{props.fullname}</ListItem.Title>
                 <ListItem.Subtitle>{props.description}</ListItem.Subtitle>
             </ListItem.Content>
         </ListItem.Swipeable>

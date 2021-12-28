@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import * as Localization from 'expo-localization';
-import { getConfig } from './data/db';
+import { getConfig } from './data/configApi';
 
 import ChooseUsername from './pages/ChooseUsername';
 

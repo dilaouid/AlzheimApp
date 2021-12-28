@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Text, View, Image, TouchableOpacity, SafeAreaView, ScrollView, ActivityIndicator } from 'react-native'
 import Swiper from 'react-native-swiper/src';
 import { useNavigate } from 'react-router-native'
@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-native'
 import LoadingBrain from '../../assets/img/home/loading_brain.gif'
 import { lang as HomeLang } from '../../language/home';
 import Rows from '../../components/home/Rows';
-import CreatePerson from '../../components/home/CreatePerson';
+import CreatePerson from '../../components/home/PersonCreation/CreatePerson';
 
-import { getPersons } from '../../data/db';
+import * as Person from '../../data/personApi';
 
 import styles from './styles'
 
@@ -26,9 +26,12 @@ export default function Home(props) {
     if (!props?.username || props?.username?.trim()?.length < 3) {
         navigate('/');
     }
-    getPersons().then(data => {
-        console.log('todo')
-    });
+    
+    useEffect( () => {
+        Person.get().then(data => {
+            setPersons(data);
+        })
+    }, [])
 
     const swipePage = (idx) => {
         swiper.current.scrollBy(idx - index, true);
@@ -46,7 +49,7 @@ export default function Home(props) {
     const printRows = (list) => {
         return(
             list.map( (el, i) => {
-                return(<Rows name={el.name} description={el.description} picture={el.picture} lang={props.lang} />)
+                return(<Rows key={el._id} id={el._id} fullname={el.data.fullname} description={el.data.description} picture={el.data.picture} lang={props.lang} />)
             })
         );
     }
@@ -78,9 +81,9 @@ export default function Home(props) {
                     <ScrollView>
                         {persons && persons.length > 0 ? printRows(persons) : <Text style={styles.nobodyYet}>{HomeLang[props.lang].NobodyYet}</Text> }
                     </ScrollView>
-                    <View>
-                        <CreatePerson lang={props.lang} />
-                    </View>
+                    <ScrollView>
+                        <CreatePerson persons={persons} setPersons={setPersons} lang={props.lang} />
+                    </ScrollView>
                 </Swiper>
             </SafeAreaView>
         </View>
