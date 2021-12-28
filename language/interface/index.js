@@ -20,6 +20,9 @@ export const lang = {
         LimitExceededField: (limit) => {
             return `Ce champs ne peut pas dépasser ${limit} caractères`;
         },
+        Save: "Enregistrer",
+        CreatedPerson: "La personne a bien été rajoutée à votre liste !",
+        ReturnToForm: "Retourner sur le formulaire",
     },
     en: {
         // Input related
@@ -33,5 +36,8 @@ export const lang = {
         LimitExceededField: (limit) => {
             return `This field cannot exceed ${limit} characters`;
         },
+        Save: "Save",
+        CreatedPerson: "The person has been successfully added to your list!",
+        ReturnToForm: "Return to the form",
     }
 };

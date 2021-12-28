@@ -18,11 +18,23 @@ export default StyleSheet.create({
         borderRadius: 50,
         width: 220
     },
+    btnSave: {
+        width: 290,
+    },
     profilePicture: {
         width: 100,
         height: 100,
         borderRadius: 100,
         marginBottom: 10
+    },
+    successPageTitle: {
+        alignSelf: 'center',
+        width: 250,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 24,
+        color: '#788bff',
+        marginBottom: 50
     }
 });
 
