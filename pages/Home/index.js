@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Text, View, Image, TouchableOpacity, SafeAreaView, ScrollView, ActivityIndicator } from 'react-native'
+import { Text, View, Image, TouchableOpacity, SafeAreaView, ScrollView, ActivityIndicator, Platform } from 'react-native'
 import Swiper from 'react-native-swiper/src';
 import { useNavigate } from 'react-router-native'
 
@@ -13,7 +13,6 @@ import * as Person from '../../data/personApi';
 import styles from './styles'
 
 export default function Home(props) {
-    const [swiperPage, setSwiperPage] = useState(0);
     const [persons, setPersons] = useState();
     const [index, setIndex] = useState(0);
     const [btnText, setBtnTxt] = useState(HomeLang[props.lang].AddAPerson)
@@ -49,11 +48,10 @@ export default function Home(props) {
     const printRows = (list) => {
         return(
             list.map( (el, i) => {
-                return(<Rows key={el._id} id={el._id} fullname={el.data.fullname} description={el.data.description} picture={el.data.picture} lang={props.lang} />)
+                return(<Rows index={i} key={el._id} id={el._id} fullname={el.data.fullname} description={el.data.description} picture={el.data.picture} lang={props.lang} />)
             })
         );
     }
-
     return(
         <View style={styles.container}>
 

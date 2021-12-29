@@ -17,14 +17,18 @@ import * as Person from '../../../data/personApi';
 import { lang as InterfaceLang } from '../../../language/interface';
 
 export default function Form(props) {
+    const [fullnameError, setFullnameError] = useState('');
+    const [descriptionError, setDescriptionError] = useState('');
 
   const confirm = async () => {
     const result = await Person.create({
       fullname: props.fullname,
       description: props.description
-    });
-    if (!result) {
-      return false;
+    }, props.lang);
+    if (result.success == false) {
+        if (result.data.hasOwnProperty('fullname')) setFullnameError(InterfaceLang[props?.lang].RequiredField);
+        if (result.data.hasOwnProperty('description')) setDescriptionError(InterfaceLang[props?.lang].LimitExceededField(100));
+        return false;
     } else {
         if (props.image?.length > 0) {
             let imgName = uuidv4();
@@ -98,9 +102,9 @@ export default function Form(props) {
         }
         label={InterfaceLang[props?.lang].FullName}
         errorStyle={{ color: 'red' }}
-        renderErrorMessage={false}
+        renderErrorMessage={true}
         maxLength={25}
-        errorProps={<Text>{InterfaceLang[props?.lang].RequiredField}</Text>}
+        errorMessage={fullnameError}
         inputStyle={{fontSize: 14, marginHorizontal: 10}}
         value={props.fullname}
         containerStyle={{width: 300, marginBottom: 10, marginTop: -10}}
@@ -119,8 +123,8 @@ export default function Form(props) {
         label={InterfaceLang[props?.lang].Description}
         errorStyle={{ color: 'red' }}
         maxLength={100}
-        renderErrorMessage={false}
-        errorProps={<Text>{InterfaceLang[props?.lang].LimitExceededField(100)}</Text>}
+        renderErrorMessage={true}
+        errorMessage={descriptionError}
         inputStyle={{fontSize: 14, marginHorizontal: 10}}
         containerStyle={{width: 300, marginTop: 10, marginBottom: 30}}
         value={props.description}

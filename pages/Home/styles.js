@@ -35,7 +35,8 @@ export default StyleSheet.create({
         marginVertical: 25,
         height: 40,
         width: 500,
-        borderRadius: 20
+        borderRadius: 20,
+        overflow: 'hidden'
     },
     buttonText: {
         color: 'white',
@@ -46,7 +47,8 @@ export default StyleSheet.create({
         textAlign: 'center',
         alignItems: 'center',
         borderBottomColor: 'grey',
-        borderBottomWidth: 0.9
+        borderBottomWidth: 0.9,
+        overflow: 'hidden'
     },
     safeContainer: {
         flex: 1,
