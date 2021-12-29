@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import { Text, View, TextInput, ActivityIndicator, TouchableOpacity, Alert, Image } from 'react-native'
+import { Text, View, TextInput, ActivityIndicator, TouchableOpacity, Image } from 'react-native'
 
 import { lang as TutorialLang } from '../../language/tutorial';
 import { lang as InterfaceLang } from '../../language/interface';
 import { setUsername } from '../../data/configApi';
-
-import { useNavigate } from 'react-router-native';
 
 import ChooseUsernameGIF from '../../assets/img/username/chooseusername.gif';
 

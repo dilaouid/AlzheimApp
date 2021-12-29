@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Image, View, Text, Platform } from 'react-native';
+import React, { useState } from 'react';
+import { Image, View, Platform } from 'react-native';
 import {
   Button,
   Divider,
