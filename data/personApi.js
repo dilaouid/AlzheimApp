@@ -7,7 +7,7 @@ export const db = new Datastore({ filename: 'PersonSchema', storage: AsyncStorag
 
 export function create(person, lang) {
     var err = [];
-    if (!person?.fullname || person.fullname?.trim()?.length > 25 || person.fullname?.length < 2) pushErrors(err, 'fullname', null);
+    if (!person?.fullname || person.fullname?.trim()?.length > 25 || person.fullname?.trim()?.length < 2) pushErrors(err, 'fullname', null);
     if (person?.description && person.description?.trim()?.length > 100) pushErrors(err, 'description', null);
     if (Object.keys(err).length > 0) return { success: false, data: err };
     const data = {
