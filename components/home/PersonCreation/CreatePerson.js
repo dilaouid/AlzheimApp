@@ -7,9 +7,9 @@ import Form from './Form';
 
 export default function CreatePerson(props) {
   const [image, setImage] = useState();
-  const [fullname, setFullname] = useState();
+  const [fullname, setFullname] = useState('');
   const [uriPreview, setUriPreview] = useState();
-  const [description, setDescription] = useState();
+  const [description, setDescription] = useState('');
   const [success, setSuccess] = useState(false);
 
   const good = () => {

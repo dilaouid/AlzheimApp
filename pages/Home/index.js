@@ -26,7 +26,7 @@ export default function Home(props) {
     if (!props?.username || props?.username?.trim()?.length < 3) {
         navigate('/');
     }
-    
+
     useEffect( () => {
         Person.get().then(data => {
             setPersons(data);
