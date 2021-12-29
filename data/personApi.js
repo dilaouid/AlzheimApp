@@ -1,15 +1,18 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { pushErrors } from '../utils/helpers';
 
 const Datastore = require('react-native-local-mongodb')
 
 export const db = new Datastore({ filename: 'PersonSchema', storage: AsyncStorage, autoload: true });
 
-export function create(person) {
-    if (!person?.fullname || person.fullname?.length > 25 || person.fullname?.length < 2) return false;
-    if (person?.description && person.description?.length > 100) return false;
+export function create(person, lang) {
+    var err = [];
+    if (!person?.fullname || person.fullname?.trim()?.length > 25 || person.fullname?.length < 2) pushErrors(err, 'fullname', null);
+    if (person?.description && person.description?.trim()?.length > 100) pushErrors(err, 'description', null);
+    if (Object.keys(err).length > 0) return { success: false, data: err };
     const data = {
-        fullname: person.fullname,
-        description: person.description,
+        fullname: person.fullname?.trim(),
+        description: person.description?.trim(),
         picture: null
     }
     return db.insertAsync({ data }, (err, result) => {
