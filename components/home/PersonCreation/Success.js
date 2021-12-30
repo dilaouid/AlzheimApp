@@ -4,7 +4,7 @@ import {
   Button,
   Image
 } from 'react-native-elements';
-import LottieView from 'lottie-react-native';
+import Lottie from '../../../components/utils/Lottie';
 
 import SuccessImage from '../../../assets/img/home/addedUser.gif'
 
