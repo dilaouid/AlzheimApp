@@ -7,8 +7,8 @@ const Lottie = (props) => {
         <LottieView
             style={props.LottieStyle}
             source={props.LottieSource}
-            loop={props.loop}
-            autoPlay={props.autoPlay}
+            loop={props.hasOwnProperty('loop') ? props.loop : true}
+            autoPlay={props.hasOwnProperty('autoPlay') ? props.autoPlay : true}
         /> : <Image source={props.ImageSource} style={props.ImageStyle} />
     }
 };

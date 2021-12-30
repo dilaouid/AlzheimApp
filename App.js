@@ -12,10 +12,11 @@ import {
 
 import * as Localization from 'expo-localization';
 import { getConfig } from './data/configApi';
+import { lang as LangInterface } from './language/interface'
 
 import ChooseUsername from './pages/ChooseUsername';
+import Loading from './components/utils/Loading';
 
-import Loading from './assets/img/loading.gif'
 import HomeOrTutorial from './components/utils/HomeOrTutorial';
 import Home from './pages/Home';
 import Activities from './pages/Activities';
@@ -50,9 +51,7 @@ export default function App() {
     <View style={{flex: 1}}>
       <StatusBar hidden={true} />
           {isLoading ?
-          <View style={{flex:1, alignItems: 'center', height: 200, marginTop: 0}}>
-            <Image source={Loading} resizeMode="contain" style={{flex: 1, width: 200}}/>
-          </View> : 
+          <Loading style={{flex:1, alignItems: 'center'}} text={LangInterface[lang]?.GlobalLoading} />: 
             <NativeRouter>
               <Routes>
                 <Route exact path="/" element={<HomeOrTutorial hasSeenTutorial={config?.hasSeenTutorial} lang={lang} username={config?.username} />} />

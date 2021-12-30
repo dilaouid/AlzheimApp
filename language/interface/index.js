@@ -23,6 +23,12 @@ export const lang = {
         Save: "Enregistrer",
         CreatedPerson: "La personne a bien été rajoutée à votre liste !",
         ReturnToForm: "Retourner sur le formulaire",
+    
+    
+    
+        
+        // Loading related
+        GlobalLoading: "Application en cours de chargement...",
     },
     en: {
         // Input related
@@ -39,5 +45,11 @@ export const lang = {
         Save: "Save",
         CreatedPerson: "The person has been successfully added to your list!",
         ReturnToForm: "Return to the form",
+    
+    
+    
+        
+        // Loading related
+        GlobalLoading: "Application loading...",
     }
 };
