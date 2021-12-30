@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Text, View, Image, TouchableOpacity, SafeAreaView, ScrollView, ActivityIndicator } from 'react-native';
+import { Text, View, Image, TouchableOpacity, SafeAreaView, ScrollView, ActivityIndicator, BackHandler } from 'react-native';
 import Swiper from 'react-native-swiper/src';
 import { useNavigate } from 'react-router-native';
 
@@ -23,9 +23,6 @@ export default function Home(props) {
 
     const navigate = useNavigate();
 
-    
-
-
     useEffect( () => {
         if (!props?.username || props?.username?.trim()?.length < 2)
             navigate('/');
@@ -35,6 +32,11 @@ export default function Home(props) {
                 setIsLoading(false);
             });
         }
+        const backHandler = BackHandler.addEventListener(
+          "hardwareBackPress",
+          ( () => { return true; })
+        );
+        return () => backHandler.remove();
     }, []);
 
     const swipePage = (idx) => {

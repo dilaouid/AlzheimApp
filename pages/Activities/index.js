@@ -5,22 +5,17 @@ import { Tab, Text, TabView, Divider } from 'react-native-elements';
 import { useParams, useNavigate, useLocation } from 'react-router-native';
 
 import SuccessImage from '../../assets/img/activities/brain.gif';
-
-import { lang as InterfaceLang } from '../../language/interface';
 import { lang as ActivitiesLang } from '../../language/activities';
 import Lottie from '../../components/utils/Lottie';
 import * as Person from '../../data/personApi';
 
 import styles from './styles';
-import Loading from '../../components/utils/Loading';
 
 export default function Activities() {
     const [personId, setPersonId] = useState(useParams('id') || '0');
     const [index, setIndex] = useState(0);
     const [person, setPerson] = useState();
     const [isLoading, setIsLoading] = useState(true);
-
-
 
     const navigate = useNavigate();
     const lang = useLocation()?.state?.lang || 'fr';
@@ -63,7 +58,6 @@ export default function Activities() {
             <Divider color={'grey'} width={1} style={styles.divider} inset insetType={'middle'} />
         </View>
         
-
         <TabView value={index} animationType="spring">
                 <TabView.Item style={styles.tabview}>
                     <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Activities}</Text>

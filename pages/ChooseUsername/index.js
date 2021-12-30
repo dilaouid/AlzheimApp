@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { Text, View, TextInput, ActivityIndicator, TouchableOpacity, Image } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Text, View, TextInput, ActivityIndicator, TouchableOpacity, Image, BackHandler } from 'react-native';
+import { useNavigate } from 'react-router-native';
 
 import { lang as TutorialLang } from '../../language/tutorial';
 import { lang as InterfaceLang } from '../../language/interface';
-import { setUsername } from '../../data/configApi';
+import { setUsername, SawTutorial } from '../../data/configApi';
 
 import ChooseUsernameGIF from '../../assets/img/username/chooseusername.gif';
 
@@ -14,6 +15,23 @@ export default function ChooseUsername(props) {
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [confirmed, setConfirmed] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect( () => {
+        const backAction = () => {
+            return SawTutorial(false).then( () => {
+                navigate('/');
+                return true;
+            }).catch(err => {
+                return false;
+            });
+        };
+        const backHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            backAction
+          );
+        return () => backHandler.remove();
+    }, [])
 
     const parseUsername = (input) => {
         setIsLoading(true);

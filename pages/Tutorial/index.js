@@ -58,7 +58,7 @@ export default function Tutorial(props) {
                 <View style={styles.buttonContainer}>
                 <Link to="/username" component={TouchableOpacity}
                         style={styles.button}
-                        onPress={SawTutorial}
+                        onPress={(e) => {SawTutorial(true) }}
                         activeOpacity = { .5 }
                     >
                         <Text style={styles.buttonText}> {TutorialLang[props.lang].LastStepButton} </Text>

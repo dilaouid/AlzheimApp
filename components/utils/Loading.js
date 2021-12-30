@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, Image, Text, ActivityIndicator } from 'react-native';
+import React from 'react';
+import { View, Text, ActivityIndicator } from 'react-native';
 import LoadingImage from '../../assets/img/loading.gif'
 
 import Lottie from './Lottie';

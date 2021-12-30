@@ -4,8 +4,8 @@ const Datastore = require('react-native-local-mongodb')
 
 export const db = new Datastore({ filename: 'ConfigSchema', storage: AsyncStorage, autoload: true });
 
-export function SawTutorial() {
-    return db.updateAsync({ hasSeenTutorial: { $exists: true } }, { hasSeenTutorial: true });
+export function SawTutorial(bool) {
+    return db.updateAsync({ hasSeenTutorial: { $exists: true } }, { hasSeenTutorial: bool });
 };
 
 export async function setUsername (input) {
