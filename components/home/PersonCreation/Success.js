@@ -14,16 +14,16 @@ import { lang as InterfaceLang } from '../../../language/interface';
 
 export default function Success(props) {
 
+  const LottieSource = require('../../../assets/img/home/addedUser.json');
+
   return (
     <View>
-        {Platform.OS != 'web' ?
-        
-        <LottieView
-            style={{width: 300}}
-            source={require('../../../assets/img/home/addedUser.json')}
-            loop={false}
-            autoPlay
-        /> : <Image source={SuccessImage} style={{width: 300, height: 300}} /> }
+        <Lottie
+          LottieSource={LottieSource}
+          ImageSource={SuccessImage}
+          LottieStyle={styles.imageSuccess}
+          ImageStyle={styles.imageSuccess}
+          loop={false} autoPlay={true} />
         <Text style={styles.successPageTitle}>{InterfaceLang[props.lang].CreatedPerson}</Text>
         <Button title={InterfaceLang[props.lang].ReturnToForm}
             style={{backgroundColor: 'grey'}}

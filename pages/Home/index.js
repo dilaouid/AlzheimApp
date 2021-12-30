@@ -34,7 +34,6 @@ export default function Home(props) {
     }, [])
 
     const swipePage = (idx) => {
-        console.log(idx);
         swiper.current.scrollBy(idx - index, true);
     }
 

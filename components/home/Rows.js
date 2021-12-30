@@ -6,9 +6,7 @@ import {
 import { Platform } from 'react-native';
 
 import DefaultProfilePicture from '../../assets/img/interface/profile.jpg'
-
-import styles from './styles';
-import { createSearchParams, useNavigate } from 'react-router-native'
+import { useNavigate } from 'react-router-native'
 
 export default function Rows(props) {
     const navigate = useNavigate();

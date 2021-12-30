@@ -5,6 +5,10 @@ export default StyleSheet.create({
         minHeight: '100%',
         backgroundColor: 'red'
     },
+    imageSuccess: {
+        width: 300,
+        height: 300
+    },
     leftButton: {
         minHeight: '100%'
     },

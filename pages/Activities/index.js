@@ -26,8 +26,6 @@ export default function Activities(props) {
         return () => backHandler.remove();
     }, []);
 
-
-
     return(
         <View style={styles.container}>
             <Lottie LottieSource={LottieSource} ImageSource={SuccessImage} LottieStyle={styles.topImage} ImageStyle={styles.topImage} loop={true} autoPlay={true} />
