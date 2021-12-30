@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, BackHandler, ActivityIndicator } from 'react-native';
+import { View, BackHandler, ActivityIndicator, ScrollView } from 'react-native';
 import { Tab, Text, TabView, Divider } from 'react-native-elements';
 
 import { useParams, useNavigate, useLocation } from 'react-router-native';
@@ -57,19 +57,24 @@ export default function Activities() {
             </Text>
             <Divider color={'grey'} width={1} style={styles.divider} inset insetType={'middle'} />
         </View>
-        
-        <TabView value={index} animationType="spring">
-                <TabView.Item style={styles.tabview}>
-                    <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Activities}</Text>
+
+            <TabView style={styles.tabView} value={index} animationType="spring">
+                <TabView.Item style={styles.tabViewItem}>
+                    <ScrollView>
+                        <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Activities}</Text>
+                    </ScrollView>
                 </TabView.Item>
-                <TabView.Item style={styles.tabview}>
-                    <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Score}</Text>
+                <TabView.Item style={styles.tabViewItem}>
+                    <ScrollView>
+                        <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Score}</Text>
+                    </ScrollView>
                 </TabView.Item>
-                <TabView.Item style={styles.tabview}>
-                    <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Settings}</Text>
+                <TabView.Item style={styles.tabViewItem}>
+                    <ScrollView>
+                        <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Settings}</Text>
+                    </ScrollView>
                 </TabView.Item>
             </TabView>
-
             <Tab
                 value={index}
                 onChange={(e) => setIndex(e)}

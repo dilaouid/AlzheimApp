@@ -23,12 +23,19 @@ export default StyleSheet.create({
         marginRight: 20,
         width: 100+'%',
     },
-    tabview: {
+    tabViewItem: {
+        flex: 1,
         width: '100%',
         backgroundColor:'#F4F5F7'
     },
     tabText: {
         fontSize: 10
     },
+    tabView: {
+        flex: 1,
+        alignItems: 'center',
+        alignContent: 'center',
+        width: 100+'%',
+    }
 });
 
