@@ -13,6 +13,7 @@ import * as Person from '../../data/personApi';
 import styles from './styles'
 
 export default function Home(props) {
+    const [isLoading, setIsLoading] = useState(true);
     const [persons, setPersons] = useState();
     const [index, setIndex] = useState(0);
     const [btnText, setBtnTxt] = useState(HomeLang[props.lang].AddAPerson)
@@ -28,12 +29,16 @@ export default function Home(props) {
     useEffect( () => {
         if (!props?.username || props?.username?.trim()?.length < 2)
             navigate('/');
-        Person.get().then(data => {
-            setPersons(data);
-        })
+        else {
+            Person.get().then(data => {
+                setPersons(data);
+                setIsLoading(false);
+            });
+        }
     }, [])
 
     const swipePage = (idx) => {
+        if (idx == -1) idx = 1;
         swiper.current.scrollBy(idx - index, true);
     }
 
@@ -69,21 +74,28 @@ export default function Home(props) {
                         if (active == false) return;
                         setActive(false);
                         setBtnTxt(<ActivityIndicator color={'white'} size={'small'} />)
-                        swipePage(index-1);
+                        swipePage(index - 1);
                     }}
                 >
                     <Text style={styles.buttonText}>{btnText}</Text>
                 </TouchableOpacity>
             </View>
             <SafeAreaView style={styles.safeContainer}>
-                <Swiper ref={swiper} showsButtons={false} scrollEnabled={false} index={0} loop={true} showsPagination={false} onIndexChanged={(e) => { changeIndex(e); }}>
+                {isLoading ? <ActivityIndicator color={'blue'} style={{marginTop: 70}}/> : <Swiper
+                    ref={swiper} showsButtons={false}
+                    scrollEnabled={false} loop
+                    pagingEnabled index={0}
+                    showsPagination={false} 
+                    onIndexChanged={(e) => { changeIndex(e); }}>
                     <ScrollView>
                         {persons && persons.length > 0 ? printRows(persons) : <Text style={styles.nobodyYet}>{HomeLang[props.lang].NobodyYet}</Text> }
                     </ScrollView>
                     <ScrollView>
                         <CreatePerson persons={persons} setPersons={setPersons} lang={props.lang} />
                     </ScrollView>
-                </Swiper>
+                    <ScrollView />
+                </Swiper>}
+                
             </SafeAreaView>
         </View>
     );
