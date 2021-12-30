@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { Text, View, Image, TouchableOpacity, SafeAreaView, ScrollView, ActivityIndicator, Platform } from 'react-native'
+import React, { useState, useRef, useEffect } from 'react';
+import { Text, View, Image, TouchableOpacity, SafeAreaView, ScrollView, ActivityIndicator } from 'react-native';
 import Swiper from 'react-native-swiper/src';
-import { useNavigate } from 'react-router-native'
+import { useNavigate } from 'react-router-native';
 
 import LoadingBrain from '../../assets/img/home/loading_brain.gif'
 import { lang as HomeLang } from '../../language/home';
@@ -10,7 +10,7 @@ import CreatePerson from '../../components/home/PersonCreation/CreatePerson';
 
 import * as Person from '../../data/personApi';
 
-import styles from './styles'
+import styles from './styles';
 
 export default function Home(props) {
     const [isLoading, setIsLoading] = useState(true);
@@ -35,12 +35,12 @@ export default function Home(props) {
                 setIsLoading(false);
             });
         }
-    }, [])
+    }, []);
 
     const swipePage = (idx) => {
         if (idx == -1) idx = 1;
         swiper.current.scrollBy(idx - index, true);
-    }
+    };
 
     const changeIndex = (idx) => {
         setIndex(idx);
@@ -49,7 +49,7 @@ export default function Home(props) {
             else if (idx == 1) setBtnTxt(HomeLang[props.lang].ReturnToList)
             setActive(true);
         }, 400)
-    }
+    };
 
     const printRows = (list) => {
         return(
@@ -57,10 +57,10 @@ export default function Home(props) {
                 return(<Rows index={i} key={el._id} id={el._id} fullname={el.data.fullname} description={el.data.description} picture={el.data.picture} lang={props.lang} />)
             })
         );
-    }
+    };
+
     return(
         <View style={styles.container}>
-
             <View style={styles.wrapper}>
                 <Image source={LoadingBrain} resizeMode="contain" style={styles.topImage}/>
                 <Text style={styles.heading}>{HomeLang[props.lang].Hello(props.username)}</Text>
@@ -95,7 +95,6 @@ export default function Home(props) {
                     </ScrollView>
                     <ScrollView />
                 </Swiper>}
-                
             </SafeAreaView>
         </View>
     );
