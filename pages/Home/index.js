@@ -26,6 +26,7 @@ export default function Home(props) {
         navigate('/');
     }
 
+
     useEffect( () => {
         Person.get().then(data => {
             setPersons(data);
@@ -33,6 +34,7 @@ export default function Home(props) {
     }, [])
 
     const swipePage = (idx) => {
+        console.log(idx);
         swiper.current.scrollBy(idx - index, true);
     }
 
@@ -75,7 +77,7 @@ export default function Home(props) {
                 </TouchableOpacity>
             </View>
             <SafeAreaView style={styles.safeContainer}>
-                <Swiper ref={swiper} showsButtons={false} scrollEnabled={false} loop={true} showsPagination={false} onIndexChanged={(e) => { changeIndex(e); }}>
+                <Swiper ref={swiper} showsButtons={false} scrollEnabled={false} index={0} loop={true} showsPagination={false} onIndexChanged={(e) => { changeIndex(e); }}>
                     <ScrollView>
                         {persons && persons.length > 0 ? printRows(persons) : <Text style={styles.nobodyYet}>{HomeLang[props.lang].NobodyYet}</Text> }
                     </ScrollView>
