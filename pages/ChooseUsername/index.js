@@ -18,7 +18,7 @@ export default function ChooseUsername(props) {
     const parseUsername = (input) => {
         setIsLoading(true);
         let username = input?.trim() || null;
-        if (username && username?.length > 3 && username.length < 11) {
+        if (username && username?.length >= 2 && username?.length < 11) {
             setUsername(username).then(response => {
                 setIsLoading(false);
                 setInput(username);

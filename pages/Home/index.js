@@ -22,12 +22,12 @@ export default function Home(props) {
 
     const navigate = useNavigate();
 
-    if (!props?.username || props?.username?.trim()?.length < 3) {
-        navigate('/');
-    }
+    
 
 
     useEffect( () => {
+        if (!props?.username || props?.username?.trim()?.length < 2)
+            navigate('/');
         Person.get().then(data => {
             setPersons(data);
         })
