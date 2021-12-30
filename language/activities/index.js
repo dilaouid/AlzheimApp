@@ -9,7 +9,25 @@ const applyBoldStyle = text => {
 
 export const lang = {
     fr: {
+        Hello: (username) => {
+            return (applyBoldStyle({
+                sentence: "Bonjour {0} !",
+                boldText: [username]
+            }))
+        },
+        Activities: "Activités",
+        Score: "Score",
+        Settings: "Paramètres",
     },
     en: {
+        Hello: (username) => {
+            return (applyBoldStyle({
+                sentence: "Hello {0}!",
+                boldText: [username]
+            }))
+        },
+        Activities: "Activities",
+        Score: "Score",
+        Settings: "Settings",
     }
 };

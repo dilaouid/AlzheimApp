@@ -32,3 +32,7 @@ export function edit(id, data) {
 export function get() {
     return db.findAsync({});
 };
+
+export function getById(id) {
+    return db.findAsync({_id: id});
+}
