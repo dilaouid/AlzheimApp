@@ -107,7 +107,7 @@ export default function Form(props) {
         errorMessage={fullnameError}
         inputStyle={{fontSize: 14, marginHorizontal: 10}}
         value={props.fullname}
-        containerStyle={{width: 300, marginBottom: 10, marginTop: -10}}
+        containerStyle={{width: 300, marginTop: -10}}
         onChangeText={ (e) => { props.setFullname(e) }}
       />
 
@@ -126,7 +126,7 @@ export default function Form(props) {
         renderErrorMessage={true}
         errorMessage={descriptionError}
         inputStyle={{fontSize: 14, marginHorizontal: 10}}
-        containerStyle={{width: 300, marginTop: 10, marginBottom: 30}}
+        containerStyle={{width: 300, marginBottom: 30}}
         value={props.description}
         onChangeText={ (e) => { props.setDescription(e) }}
       />
