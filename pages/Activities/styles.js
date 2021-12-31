@@ -2,22 +2,27 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     container: {
-        flex: 1,
         alignItems: 'center',
         alignContent: 'center',
-        textAlign: 'center',
-        marginBottom: -367
+        marginBottom: 40
     },
-    topImage: {
+    topLottie: {
         marginTop: -20,
         width: 200,
         height: 200,
         marginBottom: -90
     },
+    topImage: {
+        marginTop: -40,
+        width: 200,
+        height: 200,
+        marginBottom: -70
+    },
     heading: {
         fontSize: 24,
         color: '#3B8EFF',
-        marginBottom: 20
+        marginTop: 10,
+        zIndex: 2
     },
     divider: {
         marginRight: 20,

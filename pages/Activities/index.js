@@ -48,16 +48,16 @@ export default function Activities() {
             <Lottie
                 LottieSource={LottieSource}
                 ImageSource={SuccessImage}
-                LottieStyle={styles.topImage}
+                LottieStyle={styles.topLottie}
                 ImageStyle={styles.topImage}
                 loop={true} autoPlay={true}
             />
             <Text style={styles.heading}>
                 {ActivitiesLang[lang]?.Hello(person?.data?.fullname) || null}
             </Text>
-            <Divider color={'grey'} width={1} style={styles.divider} inset insetType={'middle'} />
         </View>
 
+        <Divider color={'grey'} width={1} style={styles.divider}  />
             <TabView style={styles.tabView} value={index} animationType="spring">
                 <TabView.Item style={styles.tabViewItem}>
                     <ScrollView>
