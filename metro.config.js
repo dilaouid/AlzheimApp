@@ -16,4 +16,4 @@ module.exports = {
       sourceExts: ['jsx', 'js', 'ts', 'tsx'], //add here
       assetExts: [...defaultConfig.resolver.assetExts, 'db'],
     },
-};
+}; 
