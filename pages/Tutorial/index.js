@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Text, View, Image, TouchableOpacity } from 'react-native'
 
 import {
@@ -16,9 +16,19 @@ import { lang as TutorialLang } from '../../language/tutorial';
 import Swiper from 'react-native-swiper/src';
 
 import styles from './styles'
-import { SawTutorial } from '../../data/configApi';
+import * as Config from '../../data/configApi';
+import Home from '../Home';
+
 
 export default function Tutorial(props) {
+    useEffect( () => {
+        Config.getUsername().then( res => {
+            console.log(res[0]?.username);
+            if (res[0]?.username) return <Home username={res} lang={props.lang} />
+        }).catch(err => {
+            console.log(err);
+        })
+    }, [])
 
     return(
         <Swiper style={styles.wrapper} showsButtons={false} showsPagination={true} loop={false}>
@@ -58,7 +68,7 @@ export default function Tutorial(props) {
                 <View style={styles.buttonContainer}>
                 <Link to="/username" component={TouchableOpacity}
                         style={styles.button}
-                        onPress={(e) => {SawTutorial(true) }}
+                        onPress={(e) => {Config.SawTutorial(true) }}
                         activeOpacity = { .5 }
                     >
                         <Text style={styles.buttonText}> {TutorialLang[props.lang].LastStepButton} </Text>

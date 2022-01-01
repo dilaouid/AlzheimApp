@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Text, View, Image, TouchableOpacity, SafeAreaView, ScrollView, ActivityIndicator, BackHandler } from 'react-native';
 import Swiper from 'react-native-swiper/src';
-import { useNavigate } from 'react-router-native';
+import { useNavigate, useLocation } from 'react-router-native';
 
 import LoadingBrain from '../../assets/img/home/loading_brain.gif'
 import { lang as HomeLang } from '../../language/home';
@@ -16,15 +16,18 @@ export default function Home(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [persons, setPersons] = useState();
     const [index, setIndex] = useState(0);
-    const [btnText, setBtnTxt] = useState(HomeLang[props.lang].AddAPerson)
+    const [btnText, setBtnTxt] = useState(HomeLang[props.lang || lang].AddAPerson)
     const [active, setActive] = useState(true);
 
     const swiper = useRef(null);
-
+    const state = useLocation()?.state;
     const navigate = useNavigate();
 
+    const username = state?.username || props.username;
+    const lang = state?.lang || props.lang;
+
     useEffect( () => {
-        if (!props?.username || props?.username?.trim()?.length < 2)
+        if (!username || username?.trim()?.length < 2)
             navigate('/');
         else {
             Person.get().then(data => {
@@ -47,8 +50,8 @@ export default function Home(props) {
     const changeIndex = (idx) => {
         setIndex(idx);
         setTimeout( () => {
-            if (idx == 0) setBtnTxt(HomeLang[props.lang].AddAPerson)
-            else if (idx == 1) setBtnTxt(HomeLang[props.lang].ReturnToList)
+            if (idx == 0) setBtnTxt(HomeLang[lang].AddAPerson)
+            else if (idx == 1) setBtnTxt(HomeLang[lang].ReturnToList)
             setActive(true);
         }, 400)
     };
@@ -56,7 +59,7 @@ export default function Home(props) {
     const printRows = (list) => {
         return(
             list.map( (el, i) => {
-                return(<Rows index={i} key={el._id} id={el._id} fullname={el.data.fullname} description={el.data.description} picture={el.data.picture} lang={props.lang} />)
+                return(<Rows index={i} key={el._id} username={username} id={el._id} fullname={el.data.fullname} description={el.data.description} picture={el.data.picture} lang={lang} />)
             })
         );
     };
@@ -65,9 +68,9 @@ export default function Home(props) {
         <View style={styles.container}>
             <View style={styles.wrapper}>
                 <Image source={LoadingBrain} resizeMode="contain" style={styles.topImage}/>
-                <Text style={styles.heading}>{HomeLang[props.lang].Hello(props.username)}</Text>
+                <Text style={styles.heading}>{HomeLang[lang].Hello(username)}</Text>
             </View>
-            <Text style={styles.subtitle}>{HomeLang[props.lang].WhatsUp}</Text>
+            <Text style={styles.subtitle}>{HomeLang[lang].WhatsUp}</Text>
             <View style={styles.viewList}>
                 <TouchableOpacity
                     style={styles.button}
@@ -90,10 +93,10 @@ export default function Home(props) {
                     showsPagination={false} 
                     onIndexChanged={(e) => { changeIndex(e); }}>
                     <ScrollView>
-                        {persons && persons.length > 0 ? printRows(persons) : <Text style={styles.nobodyYet}>{HomeLang[props.lang].NobodyYet}</Text> }
+                        {persons && persons.length > 0 ? printRows(persons) : <Text style={styles.nobodyYet}>{HomeLang[lang].NobodyYet}</Text> }
                     </ScrollView>
                     <ScrollView>
-                        <CreatePerson persons={persons} setPersons={setPersons} lang={props.lang} />
+                        <CreatePerson persons={persons} setPersons={setPersons} lang={lang} />
                     </ScrollView>
                     <ScrollView />
                 </Swiper>}

@@ -18,7 +18,7 @@ export default function Rows(props) {
             { Component:TouchableScale, key:props._id, bottomDivider:true, containerStyle:mod } :
             { key:props.id, bottomDivider:true, containerStyle:mod };
     return(
-        <ListItem {...componentProps} onPress={() => { navigate(`/activities/${props.id}`, {state: {lang: props.lang ?? 'fr'}}); }}>
+        <ListItem {...componentProps} onPress={() => { navigate(`/activities/${props.id}`, {state: {lang: props.lang ?? 'fr', username: props.username}}); }}>
             <Avatar source={props?.picture ? {uri:props.picture} : DefaultProfilePicture } rounded/>
             <ListItem.Content>
                 <ListItem.Title>{props.fullname}</ListItem.Title>
