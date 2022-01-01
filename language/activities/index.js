@@ -18,6 +18,10 @@ export const lang = {
         Activities: "Activités",
         Score: "Score",
         Settings: "Paramètres",
+        ChangeProfile: "Modifier le profil",
+        ShareProfile: "Partager le profil",
+        DeleteProfile: "Supprimer le profil",
+        ResetAccount: "(DEBUG) Reset ($[start])",
     },
     en: {
         Hello: (username) => {
@@ -29,5 +33,9 @@ export const lang = {
         Activities: "Activities",
         Score: "Score",
         Settings: "Settings",
+        ChangeProfile: "Change the profile",
+        ShareProfile: "Share the profile",
+        DeleteProfile: "Delete the profile",
+        ResetAccount: "(DEBUG) Reset ($[start])",
     }
 };

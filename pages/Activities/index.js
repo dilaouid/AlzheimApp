@@ -5,9 +5,11 @@ import { Tab, Text, TabView, Divider } from 'react-native-elements';
 import { useParams, useNavigate, useLocation } from 'react-router-native';
 
 import SuccessImage from '../../assets/img/activities/brain.gif';
+import BackgroundImage from '../../assets/img/activities/bg.gif';
 import { lang as ActivitiesLang } from '../../language/activities';
 import Lottie from '../../components/utils/Lottie';
 import * as Person from '../../data/personApi';
+import Settings from './Settings';
 
 import styles from './styles';
 
@@ -18,9 +20,12 @@ export default function Activities() {
     const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
-    const lang = useLocation()?.state?.lang || 'fr';
+    const state = useLocation()?.state;
+    const lang = state?.lang || 'fr';
 
     const LottieSource = require('../../assets/img/activities/brain.json');
+    const BgSource = require('../../assets/lottie/bg_activities.json');
+
     useEffect(() => {
         Person.getById(personId.id).then(result => {
             if (!result || result?.length == 0) navigate('/home');
@@ -28,10 +33,10 @@ export default function Activities() {
             setIsLoading(false);
         }).catch(err => {
             console.log(err);
-            navigate('/home');
+            navigate('/home', {state: {username: state?.username, lang: lang}});
         });
         const backAction = () => {
-            navigate('/home');
+            navigate('/home', {state: {username: state?.username, lang: lang}});
             return true;
         };
         const backHandler = BackHandler.addEventListener(
@@ -56,25 +61,36 @@ export default function Activities() {
                 {ActivitiesLang[lang]?.Hello(person?.data?.fullname) || null}
             </Text>
         </View>
-
         <Divider color={'grey'} width={1} style={styles.divider}  />
-            <TabView style={styles.tabView} value={index} animationType="spring">
-                <TabView.Item style={styles.tabViewItem}>
-                    <ScrollView>
-                        <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Activities}</Text>
-                    </ScrollView>
-                </TabView.Item>
-                <TabView.Item style={styles.tabViewItem}>
-                    <ScrollView>
-                        <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Score}</Text>
-                    </ScrollView>
-                </TabView.Item>
-                <TabView.Item style={styles.tabViewItem}>
-                    <ScrollView>
-                        <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Settings}</Text>
-                    </ScrollView>
-                </TabView.Item>
-            </TabView>
+        
+        <View style={{flex:1}}>
+            <View style={{flex:1, position:'absolute'}}>
+                <Lottie
+                    LottieSource={BgSource}
+                    ImageSource={BackgroundImage}
+                    LottieStyle={styles.bgLottie}
+                    ImageStyle={styles.bgImage}
+                    loop={true} autoPlay={true}
+                />
+            </View>
+            <View style={{flex:1, zIndex: 2}}>
+                <TabView value={index} animationType="spring" style={{height: 100+'%', width: 100+'%'}}>
+                    <TabView.Item style={styles.tabViewItem}>
+                        <ScrollView>
+                            <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Activities}</Text>
+                        </ScrollView>
+                    </TabView.Item>
+                    <TabView.Item style={styles.tabViewItem}>
+                        <ScrollView>
+                            <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Score}</Text>
+                        </ScrollView>
+                    </TabView.Item>
+                    <TabView.Item style={styles.tabViewItem}>
+                        <Settings lang={lang} />
+                    </TabView.Item>
+                </TabView>
+            </View>
+        </View>
             <Tab
                 value={index}
                 onChange={(e) => setIndex(e)}
@@ -89,16 +105,19 @@ export default function Activities() {
                     title={ActivitiesLang[lang]?.Activities}
                     titleStyle={styles.tabText}
                     icon={{ name: `game-controller${index != 0 ? '-outline' : ''}`, type: 'ionicon', color: 'white' }}
+                    active={true}
                 />
                 <Tab.Item
                     title={ActivitiesLang[lang]?.Score}
                     titleStyle={styles.tabText}
                     icon={{ name: `star${index != 1 ? '-outline' : ''}`, type: 'ionicon', color: 'white' }}
+                    active={true}
                 />
                 <Tab.Item
                     title={ActivitiesLang[lang]?.Settings}
                     titleStyle={styles.tabText}
                     icon={{ name: `settings${index != 2 ? '-outline' : ''}`, type: 'ionicon', color: 'white' }}
+                    active={true}
                 />
             </Tab>
         </>
