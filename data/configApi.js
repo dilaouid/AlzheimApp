@@ -12,6 +12,12 @@ export async function setUsername (input) {
     return db.updateAsync({ username: { $exists: true } }, { username: input });
 };
 
+export async function getUsername() {
+    return db.findAsync({username: { $exists: true } }, (err, docs) => {
+        return docs;
+    });
+}
+
 export async function getConfig() { 
     // db.remove({});
     // AsyncStorage.clear().then(() => console.log('Cleared'))
@@ -46,3 +52,7 @@ export async function getConfig() {
 export function getPersons() {
     return db.findAsync({ person: { $exists: true } });
 };
+
+export function reset() {
+    return AsyncStorage.clear();
+}

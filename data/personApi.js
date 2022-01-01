@@ -36,3 +36,7 @@ export function get() {
 export function getById(id) {
     return db.findAsync({_id: id});
 }
+
+export function reset() {
+    return db.removeAsync({});
+}
