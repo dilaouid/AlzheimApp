@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { ScrollView } from 'react-native';
@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-native';
 
 import { lang as ActivitiesLang } from '../../../language/activities';
 import * as Person from '../../../data/personApi';
-import * as Config from '../../../data/configApi';
 
 import styles from './styles';
 
@@ -16,10 +15,10 @@ export default function Settings(props) {
     const navigate = useNavigate();
 
     const debug = async () => {
-        /* await Person.reset();
+        await Person.reset();
         await AsyncStorage.clear();
-        navigate('/');
-        return true; */
+        navigate('/home');
+        return true;
     };
 
     return (
@@ -67,6 +66,7 @@ export default function Settings(props) {
                 iconContainerStyle={{marginRight: 10}}
                 buttonStyle={styles.buttonStyleDebug} containerStyle={styles.containerStyle}
                 title={ActivitiesLang[props.lang]?.ResetAccount}
+                onPress={debug}
             />
         </ScrollView>
     );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, BackHandler, ActivityIndicator, ScrollView } from 'react-native';
-import { Tab, Text, TabView, Divider } from 'react-native-elements';
+import { View, BackHandler, ActivityIndicator } from 'react-native';
+import { Text, Divider } from 'react-native-elements';
 
 import { useParams, useNavigate, useLocation } from 'react-router-native';
 
@@ -9,7 +9,14 @@ import BackgroundImage from '../../assets/img/activities/bg.gif';
 import { lang as ActivitiesLang } from '../../language/activities';
 import Lottie from '../../components/utils/Lottie';
 import * as Person from '../../data/personApi';
-import Settings from './Settings';
+import Tabs from './Tabs';
+
+import { Icon } from 'react-native-elements';
+
+import {
+    DefaultTheme,
+    NavigationContainer,
+} from '@react-navigation/native';
 
 import styles from './styles';
 
@@ -46,6 +53,14 @@ export default function Activities() {
         return () => backHandler.remove();
     }, []);
 
+    const navTheme = {
+        ...DefaultTheme,
+        colors: {
+          ...DefaultTheme.colors,
+          background: 'transparent',
+        }
+      };
+
     if (isLoading) return <ActivityIndicator color={"blue"} size={'large'} style={{marginTop: 250}} />
     return (
         <>
@@ -73,53 +88,10 @@ export default function Activities() {
                     loop={true} autoPlay={true}
                 />
             </View>
-            <View style={{flex:1, zIndex: 2}}>
-                <TabView value={index} animationType="spring" style={{height: 100+'%', width: 100+'%'}}>
-                    <TabView.Item style={styles.tabViewItem}>
-                        <ScrollView>
-                            <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Activities}</Text>
-                        </ScrollView>
-                    </TabView.Item>
-                    <TabView.Item style={styles.tabViewItem}>
-                        <ScrollView>
-                            <Text h1 style={{textAlign: 'center'}}>{ActivitiesLang[lang]?.Score}</Text>
-                        </ScrollView>
-                    </TabView.Item>
-                    <TabView.Item style={styles.tabViewItem}>
-                        <Settings lang={lang} />
-                    </TabView.Item>
-                </TabView>
-            </View>
+                <NavigationContainer theme={navTheme} style={{padding: 400}}>
+                    <Tabs lang={lang} />
+                </NavigationContainer>
         </View>
-            <Tab
-                value={index}
-                onChange={(e) => setIndex(e)}
-                indicatorStyle={{
-                    backgroundColor: 'white',
-                    height: 3,
-                }}
-                style={styles.tab}
-                variant="primary"
-            >
-                <Tab.Item
-                    title={ActivitiesLang[lang]?.Activities}
-                    titleStyle={styles.tabText}
-                    icon={{ name: `game-controller${index != 0 ? '-outline' : ''}`, type: 'ionicon', color: 'white' }}
-                    active={true}
-                />
-                <Tab.Item
-                    title={ActivitiesLang[lang]?.Score}
-                    titleStyle={styles.tabText}
-                    icon={{ name: `star${index != 1 ? '-outline' : ''}`, type: 'ionicon', color: 'white' }}
-                    active={true}
-                />
-                <Tab.Item
-                    title={ActivitiesLang[lang]?.Settings}
-                    titleStyle={styles.tabText}
-                    icon={{ name: `settings${index != 2 ? '-outline' : ''}`, type: 'ionicon', color: 'white' }}
-                    active={true}
-                />
-            </Tab>
         </>
     );
 };

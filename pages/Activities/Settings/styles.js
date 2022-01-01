@@ -9,7 +9,6 @@ export default StyleSheet.create({
     buttonStyle:{
         width: 250,
         height: 40,
-        backgroundColor:'green'
     },
     buttonStyleDelete:{
         width: 250,
