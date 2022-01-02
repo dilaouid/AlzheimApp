@@ -20,9 +20,9 @@ export default function Tabs(props) {
                 {color: '#5bc0de', marginBottom: 10}
             ]
         }}>
-            <Tab.Screen options={{headerShown: false, tabBarIcon:( ({focused}) => { return <Icon type={'ionicon'} color={'#5bc0de'} name={`game-controller${focused?'':'-outline'}`} />})  }} name={ActivitiesLang[props.lang]?.Activities} children={() => <Activities lang={'fr'} />} />
-            <Tab.Screen options={{headerShown: false, tabBarIcon:( ({focused}) => { return <Icon type={'ionicon'} color={'#5bc0de'} name={`star${focused?'':'-outline'}`} />})  }} name={ActivitiesLang[props.lang]?.Score} children={() => <Score lang={'fr'} />} />
-            <Tab.Screen options={{headerShown: false, tabBarIcon:( ({focused}) => { return <Icon type={'ionicon'} color={'#5bc0de'} name={`settings${focused?'':'-outline'}`} />})  }} name={ActivitiesLang[props.lang]?.Settings} children={() => <Settings lang={'fr'} />} />
+            <Tab.Screen options={{headerShown: false, tabBarIcon:( ({focused}) => { return <Icon type={'ionicon'} color={'#5bc0de'} name={`game-controller${focused?'':'-outline'}`} />})  }} name={ActivitiesLang[props.lang]?.Activities} children={() => <Activities lang={props.lang} />} />
+            <Tab.Screen options={{headerShown: false, tabBarIcon:( ({focused}) => { return <Icon type={'ionicon'} color={'#5bc0de'} name={`star${focused?'':'-outline'}`} />})  }} name={ActivitiesLang[props.lang]?.Score} children={() => <Score lang={props.lang} />} />
+            <Tab.Screen options={{headerShown: false, tabBarIcon:( ({focused}) => { return <Icon type={'ionicon'} color={'#5bc0de'} name={`settings${focused?'':'-outline'}`} />})  }} name={ActivitiesLang[props.lang]?.Settings} children={() => <Settings lang={props.lang} />} />
         </Tab.Navigator>
     )
 }

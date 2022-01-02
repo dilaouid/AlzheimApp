@@ -17,7 +17,7 @@ export default function Settings(props) {
     const debug = async () => {
         await Person.reset();
         await AsyncStorage.clear();
-        navigate('/home');
+        navigate('/home', {username: null});
         return true;
     };
 

@@ -22,6 +22,7 @@ export const lang = {
         ShareProfile: "Partager le profil",
         DeleteProfile: "Supprimer le profil",
         ResetAccount: "(DEBUG) Reset ($[start])",
+        Simon: "Jouer au Simon",
     },
     en: {
         Hello: (username) => {
@@ -37,5 +38,6 @@ export const lang = {
         ShareProfile: "Share the profile",
         DeleteProfile: "Delete the profile",
         ResetAccount: "(DEBUG) Reset ($[start])",
+        Simon: "Play to Simon",
     }
 };
