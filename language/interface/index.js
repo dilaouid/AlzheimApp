@@ -23,6 +23,17 @@ export const lang = {
         Save: "Enregistrer",
         CreatedPerson: "La personne a bien été rajoutée à votre liste !",
         ReturnToForm: "Retourner sur le formulaire",
+
+        // Modal related
+        Yes: "Oui",
+        No: "Non",
+        AreYouSure: "En êtes vous sûr ?",
+        DeletePerson: (username) => {
+            console.log(username);
+            return (
+                `Vous êtes sur le point de supprimer le profil de ${username}. Cette action est irréversible ! Tout les scores et enregistrements attachés à cette personne seront aussi effacés. Êtes-vous sûr(e) de vouloir continuer ?`
+            )
+        },
     
     
     
@@ -45,6 +56,16 @@ export const lang = {
         Save: "Save",
         CreatedPerson: "The person has been successfully added to your list!",
         ReturnToForm: "Return to the form",
+
+        // Modal related
+        Yes: "Yes",
+        No: "No",
+        AreYouSure: "Are you sure?",
+        DeletePerson: (username) => {
+            return (
+                `You are about to delete ${username}'s profile. This action cannot be undone. All the score and recording will also be deleted. Are you sure to continue?`
+            )
+        },
     
     
     

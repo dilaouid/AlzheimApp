@@ -11,8 +11,6 @@ import Lottie from '../../components/utils/Lottie';
 import * as Person from '../../data/personApi';
 import Tabs from './Tabs';
 
-import { Icon } from 'react-native-elements';
-
 import {
     DefaultTheme,
     NavigationContainer,
@@ -89,7 +87,7 @@ export default function Activities() {
                 />
             </View>
                 <NavigationContainer theme={navTheme} style={{padding: 400}}>
-                    <Tabs lang={lang} />
+                    <Tabs lang={lang} username={person?.data?.fullname} personId={personId.id} />
                 </NavigationContainer>
         </View>
         </>
