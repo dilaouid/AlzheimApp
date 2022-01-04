@@ -25,7 +25,6 @@ export function create(person, lang) {
 };
 
 export function edit(id, data) {
-    console.log(id);
     return db.updateAsync({ _id: id }, { $set: data } );
 }
 

@@ -21,10 +21,8 @@ export default function Form(props) {
     const [descriptionError, setDescriptionError] = useState('');
 
   const confirm = async () => {
-    const result = await Person.create({
-      fullname: props.fullname,
-      description: props.description
-    }, props.lang);
+    const cb = props.edit === true ? Person.edit(props.personId, {fullname: props.fullname, description: props.description}, props.lang) : Person.create({fullname: props.fullname, description: props.description}, props.lang) 
+    const result = await cb;
     if (result.success == false) {
         if (result.data.hasOwnProperty('fullname')) setFullnameError(InterfaceLang[props?.lang].RequiredField);
         if (result.data.hasOwnProperty('description')) setDescriptionError(InterfaceLang[props?.lang].LimitExceededField(100));
@@ -126,7 +124,7 @@ export default function Form(props) {
         renderErrorMessage={true}
         errorMessage={descriptionError}
         inputStyle={{fontSize: 14, marginHorizontal: 10}}
-        containerStyle={{width: 300, marginBottom: 30}}
+        containerStyle={{width: 300, marginBottom: 0}}
         value={props.description}
         onChangeText={ (e) => { props.setDescription(e) }}
       />

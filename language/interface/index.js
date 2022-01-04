@@ -29,7 +29,6 @@ export const lang = {
         No: "Non",
         AreYouSure: "En êtes vous sûr ?",
         DeletePerson: (username) => {
-            console.log(username);
             return (
                 `Vous êtes sur le point de supprimer le profil de ${username}. Cette action est irréversible ! Tout les scores et enregistrements attachés à cette personne seront aussi effacés. Êtes-vous sûr(e) de vouloir continuer ?`
             )

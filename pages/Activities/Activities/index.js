@@ -6,7 +6,6 @@ import ActivitiesList from '../../../data/activities';
 import styles from './styles';
 
 export default function Activities(props) {
-
     return (
         <ScrollView style={{flex: 1}}>
             {ActivitiesList(props.lang || 'fr').map( (el , i ) => {

@@ -46,7 +46,7 @@ export default function CreatePerson(props) {
       <Success {...compProps} close={clear} /> :
       <Form
         {...compProps}
-
+        edit={false}
         persons={props.persons}
         addPerson={props.setPersons}
         
