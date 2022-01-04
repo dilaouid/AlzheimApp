@@ -148,7 +148,7 @@ export default function Settings(props) {
                     title={ActivitiesLang[props.lang]?.ReturnList}
                     onPress={() => setEdit(false)}
                 />
-                <Form {...compProps} edit={true} scs={good} />
+                <Form {...compProps} edit={true} scs={good} personId={props.personId} />
             </ScrollView>
             }
         </View>
