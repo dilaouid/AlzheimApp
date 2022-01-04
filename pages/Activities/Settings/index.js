@@ -1,12 +1,13 @@
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import { ScrollView } from 'react-native';
+import { ScrollView, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
 
 import { useNavigate } from 'react-router-native';
 
 import { lang as ActivitiesLang } from '../../../language/activities';
+import { lang as InterfaceLang } from '../../../language/interface';
 import * as Person from '../../../data/personApi';
 
 import styles from './styles';
@@ -19,6 +20,28 @@ export default function Settings(props) {
         await AsyncStorage.clear();
         navigate('/home', {state: {username: null}});
         return true;
+    };
+
+    const deletePerson = () => {
+        Person.deleteById(props.personId).then(deleted => {
+            navigate('/home');
+        })
+    };
+
+    const openModalDeleteProfile = () => {
+        return Alert.alert(
+            InterfaceLang[props.lang].AreYouSure,
+            InterfaceLang[props.lang].DeletePerson(props.username),
+            [
+                {
+                    text: InterfaceLang[props.lang].Yes,
+                    onPress: () => { deletePerson(); }
+                },
+                {
+                    text: InterfaceLang[props.lang].No
+                }
+            ]
+        )
     };
 
     return (
@@ -55,6 +78,7 @@ export default function Settings(props) {
                 iconContainerStyle={{marginRight: 10}}
                 buttonStyle={styles.buttonStyleDelete} containerStyle={styles.containerStyle}
                 title={ActivitiesLang[props.lang]?.DeleteProfile}
+                onPress={() => { openModalDeleteProfile() }}
             />
             <Button
                 icon={{
