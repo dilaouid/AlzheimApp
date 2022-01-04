@@ -87,7 +87,7 @@ export default function Activities() {
                 />
             </View>
                 <NavigationContainer theme={navTheme} style={{padding: 400}}>
-                    <Tabs lang={lang} username={person?.data?.fullname} personId={personId.id} />
+                    <Tabs lang={lang} username={person?.data?.fullname} personId={personId.id} person={person} />
                 </NavigationContainer>
         </View>
         </>

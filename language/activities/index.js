@@ -23,6 +23,7 @@ export const lang = {
         DeleteProfile: "Supprimer le profil",
         ResetAccount: "(DEBUG) Reset ($[start])",
         Simon: "Jouer au Simon",
+        ReturnList: "Retour",
     },
     en: {
         Hello: (username) => {
@@ -39,5 +40,6 @@ export const lang = {
         DeleteProfile: "Delete the profile",
         ResetAccount: "(DEBUG) Reset ($[start])",
         Simon: "Play to Simon",
+        ReturnList: "Return",
     }
 };

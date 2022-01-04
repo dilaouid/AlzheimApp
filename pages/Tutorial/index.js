@@ -23,7 +23,6 @@ import Home from '../Home';
 export default function Tutorial(props) {
     useEffect( () => {
         Config.getUsername().then( res => {
-            console.log(res[0]?.username);
             if (res[0]?.username) return <Home username={res} lang={props.lang} />
         }).catch(err => {
             console.log(err);
