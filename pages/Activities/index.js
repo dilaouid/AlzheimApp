@@ -20,8 +20,8 @@ import styles from './styles';
 
 export default function Activities() {
     const [personId, setPersonId] = useState(useParams('id') || '0');
-    const [index, setIndex] = useState(0);
     const [person, setPerson] = useState();
+    const [fullname, setFullname] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
@@ -35,6 +35,7 @@ export default function Activities() {
         Person.getById(personId.id).then(result => {
             if (!result || result?.length == 0) navigate('/home');
             setPerson(result[0]);
+            setFullname(result[0]?.fullname);
             setIsLoading(false);
         }).catch(err => {
             console.log(err);
@@ -71,7 +72,7 @@ export default function Activities() {
                 loop={true} autoPlay={true}
             />
             <Text style={styles.heading}>
-                {ActivitiesLang[lang]?.Hello(person?.fullname) || null}
+                {ActivitiesLang[lang]?.Hello(fullname) || null}
             </Text>
         </View>
         <Divider color={'grey'} width={1} style={styles.divider}  />
@@ -87,7 +88,7 @@ export default function Activities() {
                 />
             </View>
                 <NavigationContainer theme={navTheme} style={{padding: 400}}>
-                    <Tabs lang={lang} username={person?.fullname} personId={personId.id} person={person} />
+                    <Tabs lang={lang} username={person?.fullname} personId={personId.id} person={person} setFullname={setFullname} />
                 </NavigationContainer>
         </View>
         </>

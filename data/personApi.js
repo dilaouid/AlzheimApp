@@ -5,7 +5,7 @@ const Datastore = require('react-native-local-mongodb')
 
 export const db = new Datastore({ filename: 'PersonSchema', storage: AsyncStorage, autoload: true });
 
-export function create(person, lang) {
+export function create(person) {
     var err = [];
     if (!person?.fullname || person.fullname?.trim()?.length > 25 || person.fullname?.trim()?.length < 2) pushErrors(err, 'fullname', null);
     if (person?.description && person.description?.trim()?.length > 100) pushErrors(err, 'description', null);

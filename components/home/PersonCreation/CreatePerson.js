@@ -43,7 +43,7 @@ export default function CreatePerson(props) {
   return (
     <View style={styles.view}>
       {success ?
-      <Success {...compProps} close={clear} /> :
+      <Success {...compProps} close={clear} edit={false} /> :
       <Form
         {...compProps}
         edit={false}

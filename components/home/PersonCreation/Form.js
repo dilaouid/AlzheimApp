@@ -41,7 +41,7 @@ export default function Form(props) {
                     if (props.edit == false) {
                       result.picture = path + `/${imgName}.jpg`;
                       props.addPerson(persons => [...persons, result]);
-                    }
+                    } else props.setFullnameHeader(props.fullname?.trim());
                     props.scs();
                 }).catch(err => {
                     console.log('mongo err', err);
@@ -53,6 +53,9 @@ export default function Form(props) {
         } else {
             if (props.edit == false)
               props.addPerson(persons => [...persons, result]);
+            else {
+              props.setFullnameHeader(props.fullname?.trim());
+            }
             props.scs();
         }
     }

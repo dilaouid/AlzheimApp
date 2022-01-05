@@ -1,11 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import { Navigate, useLocation } from 'react-router';
-
 import { ScrollView, Alert, SafeAreaView,View } from 'react-native';
 import { Button } from 'react-native-elements';
-import Swiper from 'react-native-swiper';
+import Success from '../../../components/home/PersonCreation/Success';
 
 import { useNavigate } from 'react-router-native';
 
@@ -24,9 +22,7 @@ export default function Settings(props) {
     const [uriPreview, setUriPreview] = useState(props.person.picture);
     const [description, setDescription] = useState(props.person.description);
 
-    const swiper = useRef(null);
     const navigate = useNavigate();
-
 
     const good = () => {
         setSuccess(true);
@@ -148,7 +144,15 @@ export default function Settings(props) {
                     title={ActivitiesLang[props.lang]?.ReturnList}
                     onPress={() => setEdit(false)}
                 />
-                <Form {...compProps} edit={true} scs={good} personId={props.personId} />
+                {success ?
+                    <Success {...compProps} close={clear} edit={true} /> :
+                    <Form
+                        {...compProps}
+                        edit={true}
+                        persons={props.person}
+                        setFullnameHeader={props.setFullname}
+                        personId={props.personId}
+                        scs={good} />}
             </ScrollView>
             }
         </View>

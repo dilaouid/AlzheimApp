@@ -32,7 +32,7 @@ export default function Tabs(props) {
                 }}
                 name={ActivitiesLang[props.lang]?.Settings}
                 children={(e) => 
-                    <Settings lang={props.lang} username={props?.username} person={props.person} personId={props.personId} />
+                    <Settings lang={props.lang} username={props?.username} person={props.person} personId={props.personId} setFullname={props.setFullname} />
                 }
             />
         </Tab.Navigator>

@@ -38,7 +38,7 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 24,
         color: '#788bff',
-        marginBottom: 50
+        marginBottom: 10
     }
 });
 
