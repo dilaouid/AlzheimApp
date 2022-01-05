@@ -21,13 +21,15 @@ export default function Form(props) {
     const [descriptionError, setDescriptionError] = useState('');
 
   const confirm = async () => {
-    const cb = props.edit === true ? Person.edit(props.personId, {fullname: props.fullname, description: props.description}, props.lang) : Person.create({fullname: props.fullname, description: props.description}, props.lang) 
+    var personId = props.personId ?? 0;
+    const cb = props.edit === true ? Person.edit(props.personId, {fullname: props.fullname, description: props.description}) : Person.create({fullname: props.fullname, description: props.description}, props.lang) 
     const result = await cb;
     if (result.success == false) {
-        if (result.data.hasOwnProperty('fullname')) setFullnameError(InterfaceLang[props?.lang].RequiredField);
-        if (result.data.hasOwnProperty('description')) setDescriptionError(InterfaceLang[props?.lang].LimitExceededField(100));
+        if (result.hasOwnProperty('fullname')) setFullnameError(InterfaceLang[props?.lang].RequiredField);
+        if (result.hasOwnProperty('description')) setDescriptionError(InterfaceLang[props?.lang].LimitExceededField(100));
         return false;
     } else {
+        if (personId == 0) personId = result._id;
         if (props.image?.length > 0) {
             let imgName = uuidv4();
             let path = `${FileSystem.documentDirectory}personProfilPicture`;
@@ -35,19 +37,22 @@ export default function Form(props) {
                 console.log('Directory already exists');
             });
             FileSystem.writeAsStringAsync(path + `/${imgName}.jpg`, props.image, {encoding: 'base64'}).then( () => {
-                Person.edit(result._id, {"data.picture": path + `/${imgName}.jpg`}).then( (data) => {
-                    result.data.picture = path + `/${imgName}.jpg`;
-                    props.addPerson(persons => [...persons, result]);
+                Person.edit(personId, {picture: path + `/${imgName}.jpg`}).then( (data) => {
+                    if (props.edit == false) {
+                      result.picture = path + `/${imgName}.jpg`;
+                      props.addPerson(persons => [...persons, result]);
+                    }
                     props.scs();
                 }).catch(err => {
-                    console.log(err);
+                    console.log('mongo err', err);
                     return false;
                 })
             }).catch(err => {
-                console.log(err);
+                console.log('filesystem err:',err);
             })
         } else {
-            props.addPerson(persons => [...persons, result]);
+            if (props.edit == false)
+              props.addPerson(persons => [...persons, result]);
             props.scs();
         }
     }

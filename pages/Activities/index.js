@@ -71,7 +71,7 @@ export default function Activities() {
                 loop={true} autoPlay={true}
             />
             <Text style={styles.heading}>
-                {ActivitiesLang[lang]?.Hello(person?.data?.fullname) || null}
+                {ActivitiesLang[lang]?.Hello(person?.fullname) || null}
             </Text>
         </View>
         <Divider color={'grey'} width={1} style={styles.divider}  />
@@ -87,7 +87,7 @@ export default function Activities() {
                 />
             </View>
                 <NavigationContainer theme={navTheme} style={{padding: 400}}>
-                    <Tabs lang={lang} username={person?.data?.fullname} personId={personId.id} person={person} />
+                    <Tabs lang={lang} username={person?.fullname} personId={personId.id} person={person} />
                 </NavigationContainer>
         </View>
         </>

@@ -15,7 +15,7 @@ export function create(person, lang) {
         description: person.description?.trim(),
         picture: null
     }
-    return db.insertAsync({ data }, (err, result) => {
+    return db.insertAsync({ ...data }, (err, result) => {
         if (err) return {success: false, data: {}};
         return {
             success: true,
@@ -24,8 +24,14 @@ export function create(person, lang) {
     });
 };
 
-export function edit(id, data) {
-    return db.updateAsync({ _id: id }, { $set: data } );
+export function edit(id, upd) {
+    var data = {};
+    if (upd.hasOwnProperty('fullname')) data.fullname = upd.fullname?.trim();
+    if (upd.hasOwnProperty('description')) data.description = upd.description?.trim();
+    if (upd.hasOwnProperty('picture')) data.picture = upd.picture?.trim();
+    return db.updateAsync({ _id: id }, { $set: { ...data } }  ).catch(err => {
+        console.log(err);
+    });
 }
 
 export function get() {

@@ -59,7 +59,7 @@ export default function Home(props) {
     const printRows = (list) => {
         return(
             list.map( (el, i) => {
-                return(<Rows index={i} key={el._id} username={username} id={el._id} fullname={el.data.fullname} description={el.data.description} picture={el.data.picture} lang={lang} />)
+                return(<Rows index={i} key={el._id} username={username} id={el._id} fullname={el.fullname} description={el.description} picture={el.picture} lang={lang} />)
             })
         );
     };

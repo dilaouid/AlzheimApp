@@ -20,9 +20,9 @@ export default function Settings(props) {
     const [edit, setEdit] = useState(false);
     const [success, setSuccess] = useState(false);
     const [image, setImage] = useState();
-    const [fullname, setFullname] = useState(props.person.data.fullname);
-    const [uriPreview, setUriPreview] = useState(props.person.data.picture);
-    const [description, setDescription] = useState(props.person.data.description);
+    const [fullname, setFullname] = useState(props.person.fullname);
+    const [uriPreview, setUriPreview] = useState(props.person.picture);
+    const [description, setDescription] = useState(props.person.description);
 
     const swiper = useRef(null);
     const navigate = useNavigate();
@@ -33,10 +33,10 @@ export default function Settings(props) {
     };
     
     const clear = () => {
-        setFullname(props.person.data.fullname);
-        setUriPreview(props.person.data.picture);
+        setFullname(props.person.fullname);
+        setUriPreview(props.person.picture);
         setImage('');
-        setDescription(props.person.data.description);
+        setDescription(props.person.description);
         setSuccess(false);
     }
 
