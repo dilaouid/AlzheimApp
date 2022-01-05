@@ -47,5 +47,5 @@ export function deleteById(id) {
 };
 
 export function reset() {
-    return db.removeAsync({});
+    return db.removeAsync({}, { multi: true });
 };
