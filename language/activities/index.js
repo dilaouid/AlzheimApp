@@ -23,6 +23,11 @@ export const lang = {
         DeleteProfile: "Supprimer le profil",
         ResetAccount: "(DEBUG) Reset ($[start])",
         Simon: "Jouer au Simon",
+        DoubleMemory: "Jeu des pairs",
+        Dictaphone: "Journal vocal",
+        Quizz: "Commencer un quizz",
+        SuggestedActivities: "Activités suggérées",
+
         ReturnList: "Retour",
     },
     en: {
@@ -40,6 +45,11 @@ export const lang = {
         DeleteProfile: "Delete the profile",
         ResetAccount: "(DEBUG) Reset ($[start])",
         Simon: "Play to Simon",
+        Dictaphone: "Voice log",
+        Quizz: "Start a quizz",
+        DoubleMemory: "Double Memory",
+        SuggestedActivities: "Suggested activities",
+
         ReturnList: "Return",
     }
 };
