@@ -17,7 +17,8 @@ export default function Activities(props) {
                         color: 'white',
                     }}
                     key={i}
-                    iconContainerStyle={{marginRight: 10}}
+                    iconPosition={'left'}
+                    iconContainerStyle={{ marginRight: 50 }}
                     buttonStyle={styles.buttonStyle} containerStyle={styles.containerStyle}
                     title={el.name}
             />

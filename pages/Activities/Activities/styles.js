@@ -9,6 +9,7 @@ export default StyleSheet.create({
     buttonStyle:{
         width: 250,
         height: 40,
+        justifyContent: 'flex-start'
     },
     buttonStyleDelete:{
         width: 250,
