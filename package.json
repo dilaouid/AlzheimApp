@@ -45,7 +45,8 @@
     "react-native-web": "0.17.1",
     "react-native-windows": "0.64.27",
     "react-router-dom": "^6.2.1",
-    "react-router-native": "^6.2.1"
+    "react-router-native": "^6.2.1",
+    "expo-av": "~10.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

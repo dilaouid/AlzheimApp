@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from 'react-native-elements';
 import ActivitiesList from '../../../data/activities';
@@ -6,9 +6,11 @@ import ActivitiesList from '../../../data/activities';
 import styles from './styles';
 
 export default function Activities(props) {
+    const [page, setPage] = useState();
     return (
+        page ? page :
         <ScrollView style={{flex: 1}}>
-            {ActivitiesList(props.lang || 'fr').map( (el , i ) => {
+            {ActivitiesList(props.lang || 'fr').map( (el , i) => {
                 return <Button
                     icon={{
                         name: el.icon,
@@ -21,6 +23,7 @@ export default function Activities(props) {
                     iconContainerStyle={{ marginRight: 50 }}
                     buttonStyle={styles.buttonStyle} containerStyle={styles.containerStyle}
                     title={el.name}
+                    onPress={(e) => { setPage(el.returnComponent(props.lang || 'fr', setPage)) }}
             />
             })}
         </ScrollView>
