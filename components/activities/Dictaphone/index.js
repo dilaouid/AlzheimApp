@@ -9,6 +9,7 @@ import styles from './styles';
 
 export default function Dictaphone(props) {
   const [recording, setRecording] = useState();
+  const [pause, setPause] = useState(false);
 
   useEffect(() => {
     const backAction = () => {
@@ -38,28 +39,66 @@ export default function Dictaphone(props) {
     } catch (err) {
       console.error('Failed to start recording', err);
     }
-  }
+  };
 
   async function stopRecording() {
     setRecording(undefined);
+    setPause(false);
     await recording.stopAndUnloadAsync();
     const uri = recording.getURI(); 
     console.log('Recording URI: ', uri);
+  };
+
+  async function pauseRecording() {
+    setPause(true);
+    await recording.pauseAsync();
+  }
+
+  async function continueRecording() {
+    setPause(false);
+    await recording.startAsync()
   }
 
   return (
     <View style={styles.view}>
-      <Button
+        {recording ? 
+        <View style={styles.actionButtonsView}>
+            <Button
+                title={pause ? DictaphoneLang[props.lang].Continue : DictaphoneLang[props.lang].Pause}
+                containerStyle={styles.actionButtons}
+                icon={{
+                    name: pause ? 'play-circle-outline' : 'pause-circle-outline',
+                    type: 'ionicon',
+                    size: 15,
+                    color: 'white',
+                }}
+                onPress={pause ? continueRecording : pauseRecording}
+            />
+
+            <Button
+                title={DictaphoneLang[props.lang].Stop}
+                containerStyle={styles.actionButtons}
+                icon={{
+                    name: 'stop-circle-outline',
+                    type: 'ionicon',
+                    size: 15,
+                    color: 'white',
+                }}
+                onPress={stopRecording}
+            />
+        </View> : <Button
         containerStyle={styles.containerStyle}
-        title={recording ? DictaphoneLang[props.lang].Stop : DictaphoneLang[props.lang].Start}
-        onPress={(e) => {
-            if (recording) {
-                stopRecording();
-            } else {
-                startRecording();
-            }
+        icon={{
+            name: 'mic-circle',
+            type: 'ionicon',
+            size: 15,
+            color: 'white',
         }}
-      />
+        buttonStyle={styles.recordButton}
+        title={DictaphoneLang[props.lang].Start}
+        titleStyle={styles.titleButton}
+        onPress={startRecording}
+      />}
     </View>
   );
 };

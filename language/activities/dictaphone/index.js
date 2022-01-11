@@ -12,10 +12,12 @@ export const lang = {
         Start: "Enregistrer",
         Pause: "Pause",
         Stop: "Stop",
+        Continue: "Continuer",
     },
     en: {
         Start: "Start recording",
         Pause: "Pause recording",
         Stop: "Stop recording",
+        Continue: "Continue recording",
     }
 };
