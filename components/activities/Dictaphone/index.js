@@ -12,6 +12,7 @@ export default function Dictaphone(props) {
 
   useEffect(() => {
     const backAction = () => {
+        if (recording) stopRecording();
         props.setPage(null);
         return true;
     };
@@ -20,7 +21,7 @@ export default function Dictaphone(props) {
       backAction
     );
     return () => backHandler.remove();
-  }, []);
+  }, [recording]);
 
   async function startRecording() {
     try {
@@ -51,7 +52,13 @@ export default function Dictaphone(props) {
       <Button
         containerStyle={styles.containerStyle}
         title={recording ? DictaphoneLang[props.lang].Stop : DictaphoneLang[props.lang].Start}
-        onPress={recording ? stopRecording : startRecording}
+        onPress={(e) => {
+            if (recording) {
+                stopRecording();
+            } else {
+                startRecording();
+            }
+        }}
       />
     </View>
   );
