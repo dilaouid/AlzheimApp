@@ -61,7 +61,7 @@ export default function Rows(props) {
                     animation={{duration: 0}}
                 />
             </ListItem.Content>
-            <Icon reverse size={15} style={{backgroundColor:'red'}} name={'trash-outline'} type={'ionicon'} color={'red'} onPress={() => { alert('wip'); }} />
+            <Icon reverse size={15} style={{backgroundColor:'red'}} name={'trash-outline'} type={'ionicon'} color={'red'} onPress={(e) => { props.deleteId(props._id); }} />
         </ListItem>
     )
 };

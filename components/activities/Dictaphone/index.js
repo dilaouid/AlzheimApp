@@ -17,6 +17,7 @@ export default function Dictaphone(props) {
   const [title, setTitle] = useState('');
   const [path, setPath]   = useState('');
   const [modal, setModal] = useState(false);
+  const [deleteId, setDeleteId] = useState(0);
   const [pause, setPause] = useState(false);
 
   useEffect(() => {
@@ -85,18 +86,23 @@ export default function Dictaphone(props) {
     });
   };
 
-  const deleteRecord = (id) => {
-      API.del(props.personId, id).then(data => {
-        console.log('wip');
+  const deleteRecord = () => {
+      API.del(props.personId, deleteId).then(data => {
+        setDeleteId(0);
+        API.get(props.personId).then(data => {
+            setRecords(data);
+        }).catch(err => {
+            console.log(err);
+        })
       }).catch(err => {
         console.log(err);
-      })
+      });
   }
 
   return (
     <View style={styles.view}>
 
-        {/* Modal confirmation */}
+        {/* Modal confirmation creation */}
         <Dialog.Container visible={modal} contentStyle={{borderRadius: 20}}>
             <Dialog.Title style={{fontWeight: 'bold'}}>
                 {DictaphoneLang[props.lang].ChooseTitle}
@@ -107,6 +113,19 @@ export default function Dictaphone(props) {
             <Dialog.Input label={DictaphoneLang[props.lang].Title} placeholder={DictaphoneLang[props.lang].Placeholder} onChangeText={ (e) => { setTitle(e); }} />
             <Dialog.Button label={DictaphoneLang[props.lang].Cancel} color={"red"} onPress={saveRecord} />
             <Dialog.Button label={DictaphoneLang[props.lang].Save} bold={true} onPress={saveRecord} />
+        </Dialog.Container>
+
+        
+        {/* Modal confirmation deletion */}
+        <Dialog.Container visible={deleteId != 0} contentStyle={{borderRadius: 20}}>
+            <Dialog.Title style={{fontWeight: 'bold'}}>
+                {DictaphoneLang[props.lang].DeleteTrack}
+            </Dialog.Title>
+            <Dialog.Description>
+                {DictaphoneLang[props.lang].SureDeleteTrack}
+            </Dialog.Description>
+            <Dialog.Button label={DictaphoneLang[props.lang].Cancel} bold={true} onPress={(e) => { setDeleteId(0) }} />
+            <Dialog.Button label={DictaphoneLang[props.lang].Delete} color={"red"} onPress={(e) => { deleteRecord() }} />
         </Dialog.Container>
 
         {recording ? 
@@ -156,7 +175,7 @@ export default function Dictaphone(props) {
     <SafeAreaView style={{backgroundColor: 'white', marginBottom: 40, width: 100+'%'}}>
         <ScrollView >
             {records.map( (el, i) => {
-                return <Rows delete={deleteRecord} index={i} key={el._id} title={el.name} _id={el._id} date={`${el.date.toLocaleDateString('fr-FR')} ${el.date.toLocaleTimeString('fr-FR')}`} path={el.path} />
+                return <Rows deleteId={setDeleteId} index={i} key={el._id} title={el.name} _id={el._id} date={`${el.date.toLocaleDateString('fr-FR')} ${el.date.toLocaleTimeString('fr-FR')}`} path={el.path} />
             })}
         </ScrollView>
     </SafeAreaView>

@@ -20,6 +20,9 @@ export const lang = {
         Cancel: "Annuler",
         Save: "Sauvegarder",
         Placeholder: "Le nom de votre enregistrement (facultatif)",
+        DeleteTrack: "Suppression de l'enregistrement",
+        SureDeleteTrack: "Êtes-vous sûr(e) de vouloir supprimer cet enregistrement ? Cette action est irréversible.",
+        Delete: "Supprimer",
     },
     en: {
         Start: "Start recording",
@@ -33,5 +36,8 @@ export const lang = {
         Cancel: "Cancel",
         Save: "Save",
         Placeholder: "The name of your record (optional)",
+        DeleteTrack: "Delete the track",
+        SureDeleteTrack: "Are you sure to delete this track ? This action cannot be undone.",
+        Delete: "Delete",
     }
 };
