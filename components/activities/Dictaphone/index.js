@@ -15,16 +15,19 @@ export default function Dictaphone(props) {
   const [recording, setRecording] = useState();
   const [records, setRecords] = useState([]);
   const [title, setTitle] = useState('');
+  const [playingSounds, setPlayingSounds] = useState([]);
   const [modal, setModal] = useState(false);
   const [deleteId, setDeleteId] = useState(0);
   const [pause, setPause] = useState(false);
 
   useEffect(() => {
+    // API.clear();
     API.get(props.personId).then(data => {
         setRecords(data);
     });
     const backAction = () => {
         if (recording) stopRecording();
+        if (playingSounds?.length > 0) stopPlayingSounds();
         props.setPage(null);
         return true;
     };
@@ -33,7 +36,7 @@ export default function Dictaphone(props) {
       backAction
     );
     return () => backHandler.remove();
-  }, [recording]);
+  }, [recording, playingSounds]);
 
   async function startRecording() {
     try {
@@ -92,6 +95,18 @@ export default function Dictaphone(props) {
       }).catch(err => {
         console.log(err);
       });
+  };
+
+  const stopPlayingSounds = () => {
+      playingSounds.map( (el, i) => {
+        el.unloadAsync();
+      });
+  };
+
+  const pauseAll = () => {
+    playingSounds.map( (el, i) => {
+        el.pauseAsync();
+    });
   }
 
   return (
@@ -170,7 +185,7 @@ export default function Dictaphone(props) {
     <SafeAreaView style={{backgroundColor: 'white', marginBottom: 40, height:100+'%', width: 100+'%'}}>
         <ScrollView >
             {records.map( (el, i) => {
-                return <Rows deleteId={setDeleteId} index={i} key={el._id} title={el.name} _id={el._id} date={`${el.date.toLocaleDateString('fr-FR')} ${el.date.toLocaleTimeString('fr-FR')}`} path={el.path} />
+                return <Rows pauseAll={pauseAll} playingSounds={playingSounds} setPlayingSounds={setPlayingSounds} deleteId={setDeleteId} index={i} key={el._id} title={el.name} _id={el._id} date={`${el.date.toLocaleDateString('fr-FR')} ${el.date.toLocaleTimeString('fr-FR')}`} path={el.path} />
             })}
         </ScrollView>
     </SafeAreaView>

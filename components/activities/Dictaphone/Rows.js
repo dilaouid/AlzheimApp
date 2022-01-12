@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     ListItem,
     Icon,
@@ -12,15 +12,22 @@ export default function Rows(props) {
     const [progress, setProgress] = useState(0);
     const [sound, setSound] = useState(new Audio.Sound());
 
+    useEffect( () => {
+        setIsPlaying(false);
+    }, [props.playingSounds])
+
     const playTrack = async () => {
         try {
+            setIsPlaying(false);
             const getSoundStatus = await sound?.getStatusAsync();
             if (getSoundStatus?.isLoaded == false) {
                 await sound.loadAsync(
                     {uri: props.path}
                 );
                 setSound(sound);
+                props.setPlayingSounds([...props.playingSounds, sound]);
             }
+            props.pauseAll();
             await sound.playAsync();
             sound.setOnPlaybackStatusUpdate((playbackStatus) => {
                 if (playbackStatus.didJustFinish) {
