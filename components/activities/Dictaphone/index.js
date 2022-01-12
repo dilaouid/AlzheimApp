@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, BackHandler, ScrollView, SafeAreaView } from 'react-native';
+import { View, BackHandler, ScrollView, SafeAreaView, ActivityIndicator } from 'react-native';
 
-import { Button, Divider } from 'react-native-elements';
+import { Button, Divider, Text } from 'react-native-elements';
 import { Audio } from 'expo-av';
 import { lang as DictaphoneLang } from '../../../language/activities/dictaphone';
 import Dialog from "react-native-dialog";
@@ -18,12 +18,14 @@ export default function Dictaphone(props) {
   const [playingSounds, setPlayingSounds] = useState([]);
   const [modal, setModal] = useState(false);
   const [deleteId, setDeleteId] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const [pause, setPause] = useState(false);
 
   useEffect(() => {
     // API.clear();
     API.get(props.personId).then(data => {
         setRecords(data);
+        setIsLoading(false);
     });
     const backAction = () => {
         if (recording) stopRecording();
@@ -181,12 +183,15 @@ export default function Dictaphone(props) {
             onPress={startRecording}
         />
     }
-    <Divider style={{width: 100+'%', marginTop: 20}} width={2} />
-    <SafeAreaView style={{backgroundColor: 'white', marginBottom: 40, height:100+'%', width: 100+'%'}}>
-        <ScrollView >
-            {records.map( (el, i) => {
-                return <Rows pauseAll={pauseAll} playingSounds={playingSounds} setPlayingSounds={setPlayingSounds} deleteId={setDeleteId} index={i} key={el._id} title={el.name} _id={el._id} date={`${el.date.toLocaleDateString('fr-FR')} ${el.date.toLocaleTimeString('fr-FR')}`} path={el.path} />
-            })}
+    <Divider style={styles.divider} width={2} />
+    <SafeAreaView style={styles.safeArea}>
+        <ScrollView>
+            {isLoading ? 
+                <ActivityIndicator color={'blue'} size={'large'} style={styles.loading} /> :
+                records.length > 0 ?
+                    records.map( (el, i) => {
+                    return <Rows pauseAll={pauseAll} playingSounds={playingSounds} setPlayingSounds={setPlayingSounds} deleteId={setDeleteId} index={i} key={el._id} title={el.name} _id={el._id} date={`${el.date.toLocaleDateString('fr-FR')} ${el.date.toLocaleTimeString('fr-FR')}`} path={el.path} />
+                }) : <Text style={styles.nothingYet}>{DictaphoneLang[props.lang].NothingYet}</Text>}
         </ScrollView>
     </SafeAreaView>
     </View>

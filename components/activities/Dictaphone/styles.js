@@ -20,6 +20,25 @@ export default StyleSheet.create({
     },
     actionButtons: {
         marginHorizontal: 5
+    },
+    safeArea: {
+        backgroundColor: 'white',
+        marginBottom: 40,
+        height:100+'%',
+        width: 100+'%'
+    },
+    loading: {
+        alignContent:'center',
+        marginTop: 30
+    },
+    nothingYet: {
+        textAlign:'center',
+        color:'gray',
+        marginTop: 30
+    },
+    divider: {
+        width: 100+'%',
+        marginTop: 20
     }
 });
 

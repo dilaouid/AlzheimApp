@@ -23,6 +23,7 @@ export const lang = {
         DeleteTrack: "Suppression de l'enregistrement",
         SureDeleteTrack: "Êtes-vous sûr(e) de vouloir supprimer cet enregistrement ? Cette action est irréversible.",
         Delete: "Supprimer",
+        NothingYet: "Aucun enregistrement réalisés",
     },
     en: {
         Start: "Start recording",
@@ -39,5 +40,6 @@ export const lang = {
         DeleteTrack: "Delete the track",
         SureDeleteTrack: "Are you sure to delete this track ? This action cannot be undone.",
         Delete: "Delete",
+        NothingYet: "No tracks recorded",
     }
 };
