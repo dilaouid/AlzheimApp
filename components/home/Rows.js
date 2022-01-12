@@ -15,7 +15,7 @@ export default function Rows(props) {
     let mod = props.index % 2 == 0 ? {backgroundColor: 'white'} : {backgroundColor: '#f3f3f3'};
     let componentProps = 
         Platform.OS !== 'web' ?
-            { Component:TouchableScale, key:props._id, bottomDivider:true, containerStyle:mod } :
+            { Component:TouchableScale, key:props.id, bottomDivider:true, containerStyle:mod } :
             { key:props.id, bottomDivider:true, containerStyle:mod };
     return(
         <ListItem {...componentProps} onPress={() => { navigate(`/activities/${props.id}`, {state: {lang: props.lang ?? 'fr', username: props.username}}); }}>
