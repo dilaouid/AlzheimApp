@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import {
     ListItem,
-    Icon
+    Icon,
+    LinearProgress
 } from 'react-native-elements';
 import { Platform } from 'react-native';
 import { Audio } from 'expo-av';
 
 export default function Rows(props) {
     const [isPlaying, setIsPlaying] = useState(false);
+    const [progress, setProgress] = useState(0);
     const [sound, setSound] = useState(new Audio.Sound());
 
     const playTrack = async () => {
@@ -22,8 +24,11 @@ export default function Rows(props) {
             await sound.playAsync();
             sound.setOnPlaybackStatusUpdate((playbackStatus) => {
                 if (playbackStatus.didJustFinish) {
+                    setProgress(0);
                     sound.unloadAsync();
                     setIsPlaying(false)
+                } else if (playbackStatus.positionMillis / playbackStatus.playableDurationMillis < 1) {
+                    setProgress(playbackStatus.positionMillis / playbackStatus.playableDurationMillis);
                 }
             });
             setIsPlaying(true);
@@ -49,8 +54,14 @@ export default function Rows(props) {
             <ListItem.Content>
                 <ListItem.Title>{props.title}</ListItem.Title>
                 <ListItem.Subtitle>{props.date}</ListItem.Subtitle>
+                <LinearProgress
+                    style={{ marginVertical: 10 }}
+                    value={progress}
+                    variant="determinate"
+                    animation={{duration: 0}}
+                />
             </ListItem.Content>
-            <ListItem.Chevron color="grey" />
+            <Icon reverse size={15} style={{backgroundColor:'red'}} name={'trash-outline'} type={'ionicon'} color={'red'} onPress={() => { alert('wip'); }} />
         </ListItem>
     )
 };

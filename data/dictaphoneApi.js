@@ -21,6 +21,10 @@ export function get(personId) {
     });
 };
 
+export function del(personId, id) {
+    return db.removeAsync({_id: id, personId: personId});
+};
+
 export function clear() {
     return db.removeAsync({}, { multi: true });
 };

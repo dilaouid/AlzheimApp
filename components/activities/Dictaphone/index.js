@@ -85,6 +85,14 @@ export default function Dictaphone(props) {
     });
   };
 
+  const deleteRecord = (id) => {
+      API.del(props.personId, id).then(data => {
+        console.log('wip');
+      }).catch(err => {
+        console.log(err);
+      })
+  }
+
   return (
     <View style={styles.view}>
 
@@ -148,7 +156,7 @@ export default function Dictaphone(props) {
     <SafeAreaView style={{backgroundColor: 'white', marginBottom: 40, width: 100+'%'}}>
         <ScrollView >
             {records.map( (el, i) => {
-                return <Rows index={i} key={el._id} title={el.name} _id={el._id} date={`${el.date.toLocaleDateString('fr-FR')} ${el.date.toLocaleTimeString('fr-FR')}`} path={el.path} />
+                return <Rows delete={deleteRecord} index={i} key={el._id} title={el.name} _id={el._id} date={`${el.date.toLocaleDateString('fr-FR')} ${el.date.toLocaleTimeString('fr-FR')}`} path={el.path} />
             })}
         </ScrollView>
     </SafeAreaView>
