@@ -1,7 +1,7 @@
 import { lang as ActivitiesLang } from '../language/activities'
 import Dictaphone from '../components/activities/Dictaphone';
 
-export default function Activities(lang) {
+export default function Activities(lang, personId) {
     return [
         {
             name: ActivitiesLang[lang]?.Simon,
@@ -35,7 +35,7 @@ export default function Activities(lang) {
             name: ActivitiesLang[lang]?.Dictaphone,
             icon: 'mic-outline',
             returnComponent: (lang, setPage) => {
-                return <Dictaphone lang={lang} setPage={setPage} />
+                return <Dictaphone lang={lang} setPage={setPage} personId={personId} />
             }
         },
     ]

@@ -10,7 +10,7 @@ export default function Activities(props) {
     return (
         page ? page :
         <ScrollView style={{flex: 1}}>
-            {ActivitiesList(props.lang || 'fr').map( (el , i) => {
+            {ActivitiesList(props.lang || 'fr', props.personId).map( (el , i) => {
                 return <Button
                     icon={{
                         name: el.icon,
