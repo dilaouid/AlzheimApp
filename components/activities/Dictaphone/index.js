@@ -15,7 +15,6 @@ export default function Dictaphone(props) {
   const [recording, setRecording] = useState();
   const [records, setRecords] = useState([]);
   const [title, setTitle] = useState('');
-  const [path, setPath]   = useState('');
   const [modal, setModal] = useState(false);
   const [deleteId, setDeleteId] = useState(0);
   const [pause, setPause] = useState(false);
@@ -55,10 +54,7 @@ export default function Dictaphone(props) {
   async function stopRecording() {
     setPause(false);
     await recording.stopAndUnloadAsync();
-    const uri = recording.getURI(); 
-    setPath(uri);
     setModal(true);
-    console.log('Recording URI: ', uri);
   };
 
   async function pauseRecording() {
@@ -74,11 +70,10 @@ export default function Dictaphone(props) {
   const saveRecord = () => {
     API.create({
         name: title?.trim(),
-        path: path,
+        path: recording.getURI(),
         personId: props.personId
     }, props.lang).then(created => {
         setModal(false);
-        setPath('');
         setTitle('');
         setRecording(false);
     }).catch(err => {
@@ -172,7 +167,7 @@ export default function Dictaphone(props) {
         />
     }
     <Divider style={{width: 100+'%', marginTop: 20}} width={2} />
-    <SafeAreaView style={{backgroundColor: 'white', marginBottom: 40, width: 100+'%'}}>
+    <SafeAreaView style={{backgroundColor: 'white', marginBottom: 40, height:100+'%', width: 100+'%'}}>
         <ScrollView >
             {records.map( (el, i) => {
                 return <Rows deleteId={setDeleteId} index={i} key={el._id} title={el.name} _id={el._id} date={`${el.date.toLocaleDateString('fr-FR')} ${el.date.toLocaleTimeString('fr-FR')}`} path={el.path} />
