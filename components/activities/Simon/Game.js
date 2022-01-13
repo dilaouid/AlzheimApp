@@ -21,10 +21,10 @@ export default function Game(props) {
         if (start == false) {
             const currentDate = new Date().toLocaleDateString('fr-FR');
             API.getBestScore(props.personId).then(data => {
-                if (data.length > 0) setBestScore(data);
+                if (data.length > 0) setBestScore(data[0].score);
             });
             API.getScoreDay(props.personId, currentDate).then(data => {
-                if (data.length > 0) setDailyScore(data);
+                if (data.length > 0) setDailyScore(data[0].score);
             });
         }
     }, [start, order]);
