@@ -35,7 +35,7 @@ export default function Simon(props) {
     if (tab == 0)
         return <Menu setTab={setTab} lang={props.lang} setPage={props.setPage} />
     else if (tab == 1)
-        return <Game lang={props.lang} />
+        return <Game lang={props.lang} personId={props.personId} />
     else if (tab == 2)
         return <Text>Tab 2 (Help)</Text>
     else 
