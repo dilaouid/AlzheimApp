@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { View, BackHandler, Image, ActivityIndicator } from 'react-native';
-import { Button, Divider, Text, Icon } from 'react-native-elements';
+import React, { useEffect, useState } from 'react';
+import { View, BackHandler } from 'react-native';
+import { Text } from 'react-native-elements';
 
 import { lang as SimonLang } from '../../../language/activities/simon';
 
 import * as API from '../../../data/simonApi';
-import SimonLogo from '../../../assets/img/activities/simon/logo.png';
+import Menu from './Menu';
 
 import styles from './styles';
 
 export default function Simon(props) {
+  const [tab, setTab] = useState(0);
+
   useEffect(() => {
     // API.clear(props.personId);
 
     // BackHandler managment
     const backAction = () => {
-        props.setPage(null);
+        if (tab > 0) setTab(0);
+        else props.setPage(null);
         return true;
     };
     const backHandler = BackHandler.addEventListener(
@@ -23,40 +26,22 @@ export default function Simon(props) {
       backAction
     );
     return () => backHandler.remove();
-  }, []);
+  }, [tab]);
+
+  const printPage = () => {
+    if (tab == 0)
+        return <Menu setTab={setTab} lang={props.lang} setPage={props.setPage} />
+    else if (tab == 1)
+        return <Text>Tab 1 (Game)</Text>
+    else if (tab == 2)
+        return <Text>Tab 2 (Help)</Text>
+    else 
+        return <Text>Invalid tab</Text>
+  };
 
   return (
     <View style={styles.view}>
-        <Image source={SimonLogo} style={styles.logo}  />
-        <Button title={SimonLang[props.lang].Play} containerStyle={styles.button} raised icon={
-            <Icon
-            name={"play-outline"}
-            type={"ionicon"}
-            color={"white"}
-            size={15}
-            style={{marginHorizontal: 5}}
-            /> }
-        />
-        <Button title={SimonLang[props.lang].Help} containerStyle={styles.button} raised icon={
-            <Icon
-            name={"help-circle-outline"}
-            type={"ionicon"}
-            color={"white"}
-            size={15}
-            style={{marginHorizontal: 5}}
-            /> }
-        />
-        <Button title={SimonLang[props.lang].Leave} buttonStyle={{backgroundColor:'red'}} containerStyle={styles.leaveButton} raised
-        onPress={() => props.setPage(null) }
-        icon={ <Icon
-            name={"caret-back-outline"}
-            type={"ionicon"}
-            color={"white"}
-            size={15}
-            style={{marginHorizontal: 5}}
-            />
-        }
-        />
+        { printPage() }
     </View>
   );
 };
