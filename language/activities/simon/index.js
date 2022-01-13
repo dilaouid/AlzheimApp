@@ -12,10 +12,36 @@ export const lang = {
         Play: "Jouer",
         Help: "Aide",
         Leave: "Retour",
+        BestScore: (bestScore) => {
+            return (applyBoldStyle({
+                sentence: "Meilleur score: {0}",
+                boldText: [bestScore]
+            }))
+        },
+        DailyScore: (dailyScore) => {
+            return (applyBoldStyle({
+                sentence: "Meilleur score du jour: {0}",
+                boldText: [dailyScore]
+            }))
+        },
+        Start: "Commencer une partie",
     },
     en: {
         Play: "Play",
         Help: "Help",
         Leave: "Go back",
+        BestScore: (bestScore) => {
+            return (applyBoldStyle({
+                sentence: "Best score: {0}",
+                boldText: [bestScore]
+            }))
+        },
+        DailyScore: (dailyScore) => {
+            return (applyBoldStyle({
+                sentence: "Best score today: {0}",
+                boldText: [dailyScore]
+            }))
+        },
+        Start: "Start a game",
     }
 };

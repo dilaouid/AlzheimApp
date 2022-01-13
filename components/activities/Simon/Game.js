@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { Text } from 'react-native-elements';
+import { Text, Button } from 'react-native-elements';
 
 import { lang as SimonLang } from '../../../language/activities/simon';
 
@@ -9,14 +9,25 @@ import * as API from '../../../data/simonApi';
 import styles from './styles';
 
 export default function Game(props) {
+    const [start, setStart] = useState(false);
     const [canPlay, setCanPlay] = useState(false);
     const [order, setOrder] = useState([]);
     const [buttonClicked, setButtonClicked] = useState(-1);
+    const [bestScore, setBestScore] = useState(0);
+    const [dailyScore, setDailyScore] = useState(0);
     const [game, setGame] = useState([]);
 
     useEffect( () => {
-
-    }, [order]);
+        if (start == false) {
+            const currentDate = new Date().toLocaleDateString('fr-FR');
+            API.getBestScore(props.personId).then(data => {
+                if (data.length > 0) setBestScore(data);
+            });
+            API.getScoreDay(props.personId, currentDate).then(data => {
+                if (data.length > 0) setDailyScore(data);
+            });
+        }
+    }, [start, order]);
 
     const playButton = (idx) => {
         if (!canPlay) return;
@@ -48,6 +59,16 @@ export default function Game(props) {
                 onStartShouldSetResponder={() => true}
                 onResponderGrant={() => playButton(3)}
             />
+        </View>
+
+        <View style={{marginTop: 25}}>
+            <Text style={{textAlign: 'center'}}>{SimonLang[props.lang].BestScore(bestScore)}</Text>
+            <Text style={{textAlign: 'center', marginBottom: 15}}>{SimonLang[props.lang].DailyScore(dailyScore)}</Text>
+        {start ?
+            <Text>WIP</Text> : <>
+            <Button title={SimonLang[props.lang].Start} onPress={() => setStart(true)}/>
+            <Button title={SimonLang[props.lang].Leave} containerStyle={{marginTop: 15}}/>
+            </>}
         </View>
     </>
     );
