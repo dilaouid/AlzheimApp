@@ -18,6 +18,7 @@ export default function Rows(props) {
 
     const playTrack = async () => {
         try {
+            await props.pauseAll();
             setIsPlaying(false);
             const getSoundStatus = await sound?.getStatusAsync();
             if (getSoundStatus?.isLoaded == false) {
@@ -26,13 +27,14 @@ export default function Rows(props) {
                 );
                 setSound(sound);
                 props.setPlayingSounds([...props.playingSounds, sound]);
+            } else {
+                props.setPlayingSounds([...props.playingSounds]);
             }
-            props.pauseAll();
             await sound.playAsync();
-            sound.setOnPlaybackStatusUpdate((playbackStatus) => {
+            sound.setOnPlaybackStatusUpdate(async (playbackStatus) => {
                 if (playbackStatus.didJustFinish) {
+                    await sound.unloadAsync();
                     setProgress(0);
-                    sound.unloadAsync();
                     setIsPlaying(false)
                 } else if (playbackStatus.positionMillis / playbackStatus.playableDurationMillis < 1) {
                     setProgress(playbackStatus.positionMillis / playbackStatus.playableDurationMillis);

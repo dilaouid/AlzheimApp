@@ -23,10 +23,14 @@ export default function Dictaphone(props) {
 
   useEffect(() => {
     // API.clear();
+
+    // Load all the tracks recorded by this person
     API.get(props.personId).then(data => {
         setRecords(data);
         setIsLoading(false);
     });
+
+    // BackHandler managment
     const backAction = () => {
         if (recording) stopRecording();
         if (playingSounds?.length > 0) stopPlayingSounds();
@@ -57,9 +61,9 @@ export default function Dictaphone(props) {
   };
 
   async function stopRecording() {
-    setPause(false);
+    setPause(false); 
     await recording.stopAndUnloadAsync();
-    setModal(true);
+    setModal(true); // Open the confirmation modal
   };
 
   async function pauseRecording() {
@@ -86,6 +90,7 @@ export default function Dictaphone(props) {
     });
   };
 
+  // Called in children component
   const deleteRecord = () => {
       API.del(props.personId, deleteId).then(data => {
         setDeleteId(0);
@@ -99,15 +104,19 @@ export default function Dictaphone(props) {
       });
   };
 
+  // Unload all sounds before the backhandler
   const stopPlayingSounds = () => {
       playingSounds.map( (el, i) => {
         el.unloadAsync();
       });
   };
 
-  const pauseAll = () => {
-    playingSounds.map( (el, i) => {
-        el.pauseAsync();
+  // Called in children component -- used for pause all tracks before playing a new one
+  const pauseAll = async () => {
+    playingSounds?.map( async (el, i) => {
+        await el.pauseAsync().catch(err => {
+            console.log('(-) not loaded audio');
+        });
     });
   }
 
