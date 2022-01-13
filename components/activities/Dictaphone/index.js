@@ -113,11 +113,13 @@ export default function Dictaphone(props) {
 
   // Called in children component -- used for pause all tracks before playing a new one
   const pauseAll = async () => {
-    playingSounds?.map( async (el, i) => {
-        await el.pauseAsync().catch(err => {
-            console.log('(-) not loaded audio');
+    if (playingSounds.length > 0) {
+        playingSounds?.map( async (el, i) => {
+            await el.pauseAsync().catch(err => {
+                console.log('(-) not loaded audio');
+            });
         });
-    });
+    }
   }
 
   return (

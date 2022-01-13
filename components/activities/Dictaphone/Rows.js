@@ -19,6 +19,7 @@ export default function Rows(props) {
     const playTrack = async () => {
         try {
             await props.pauseAll();
+            await Audio.setAudioModeAsync({staysActiveInBackground: true, shouldDuckAndroid: true});
             setIsPlaying(false);
             const getSoundStatus = await sound?.getStatusAsync();
             if (getSoundStatus?.isLoaded == false) {
