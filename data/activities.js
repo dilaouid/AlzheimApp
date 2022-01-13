@@ -1,13 +1,14 @@
 import { lang as ActivitiesLang } from '../language/activities'
 import Dictaphone from '../components/activities/Dictaphone';
+import Simon from '../components/activities/Simon';
 
 export default function Activities(lang, personId) {
     return [
         {
             name: ActivitiesLang[lang]?.Simon,
             icon: 'grid-outline',
-            returnComponent: (lang) => {
-                return null
+            returnComponent: (lang, setPage) => {
+                return <Simon lang={lang} setPage={setPage} personId={personId} />
             }
         },
         {
