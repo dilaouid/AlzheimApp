@@ -25,6 +25,42 @@ export default StyleSheet.create({
         backgroundColor: 'red',
         borderRadius: 10,
         marginHorizontal: 5
-    }
+    },
+    SimonButton: {
+        flex: 1,
+        width: 50,
+        height: 125,
+        borderRadius: 10,
+        opacity: 0.5
+    },
+    SimonLeftButton: {
+        marginLeft: 70,
+        marginRight: 10,
+    },
+    SimonGreen: {
+        borderTopLeftRadius: 60,
+        backgroundColor: '#009f3c'
+    },
+    SimonRed: {
+        marginRight: 70,
+        borderTopRightRadius: 60,
+        backgroundColor: '#df0024'
+    },
+    SimonYellow: {
+        marginLeft: 70,
+        marginRight: 10,
+        borderBottomLeftRadius: 60,
+        backgroundColor: '#f8f400'
+    },
+    SimonBlue: {
+        marginRight: 70,
+        borderBottomEndRadius: 60,
+        backgroundColor: '#00a8ec'
+    },
+    clickedButton: {
+        opacity: 1,
+        borderColor: '#ff8a00',
+        borderWidth: 2
+    },
 });
 
