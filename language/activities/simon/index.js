@@ -44,6 +44,12 @@ export const lang = {
                 boldText: ['Raté ! ...']
             }, 'red'))
         },
+        Tries: (tries) => {
+            return (applyBoldStyle({
+                sentence: "Essai(s) restant(s): {0}",
+                boldText: [tries]
+            }, 'red'))
+        },
         Start: "Commencer une partie",
     },
     en: {
@@ -78,6 +84,12 @@ export const lang = {
             return (applyBoldStyle({
                 sentence: "{0}",
                 boldText: ['Failed! ...']
+            }, 'red'))
+        },
+        Tries: (tries) => {
+            return (applyBoldStyle({
+                sentence: "Remaining tries: {0}",
+                boldText: [tries]
             }, 'red'))
         },
         Start: "Start a game",

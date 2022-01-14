@@ -3,6 +3,7 @@ import { View, BackHandler } from 'react-native';
 import { Text } from 'react-native-elements';
 
 import { lang as SimonLang } from '../../../language/activities/simon';
+import { Audio } from 'expo-av';
 
 import * as API from '../../../data/simonApi';
 
@@ -14,12 +15,14 @@ import styles from './styles';
 
 export default function Simon(props) {
   const [tab, setTab] = useState(0);
+  const [sound, setSound] = useState();
 
   useEffect(() => {
     // API.clear(props.personId);
 
     // BackHandler managment
-    const backAction = () => {
+    const backAction = async () => {
+        if (sound) sound.unloadAsync();
         if (tab > 0) setTab(0);
         else props.setPage(null);
         return true;
@@ -35,7 +38,7 @@ export default function Simon(props) {
     if (tab == 0)
         return <Menu setTab={setTab} lang={props.lang} setPage={props.setPage} />
     else if (tab == 1)
-        return <Game lang={props.lang} personId={props.personId} />
+        return <Game setTab={setTab} lang={props.lang} personId={props.personId} sound={sound} setSound={setSound} />
     else if (tab == 2)
         return <Text>Tab 2 (Help)</Text>
     else 

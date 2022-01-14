@@ -12,7 +12,7 @@ import styles from './styles';
 export default function Game(props) {
     const [start, setStart] = useState(false);
     const [failed, setFailed] = useState(false);
-    const [sound, setSound] = useState();
+    const [success, setSuccess] = useState(false);
     const [canPlay, setCanPlay] = useState(false);
     const [tries, setTries] = useState(3) // 3 tries at the beginning of the game
     const [order, setOrder] = useState([Math.round(Math.random() * 3)]); // generate a random first order
@@ -65,7 +65,7 @@ export default function Game(props) {
         // Play a sound according to the idx and simulates a button pressure according to it
         return new Promise( async (resolve, reject) => {
             const { sound } = await Audio.Sound.createAsync(pickCorrectSound(idx));
-            setSound(sound);
+            props.setSound(sound);
             setButtonClicked(idx);
             await sound.playAsync().then(async playBackStatus => {
                 setTimeout(async () => {
@@ -84,6 +84,7 @@ export default function Game(props) {
 
     const playButton = async (idx) => {
         if (!canPlay) return;
+        if (game.length >= order.length) return;
         if (idx >= 0 && idx <= 3) {
             let playedGame = game;
             playedGame.push(idx);
@@ -92,7 +93,7 @@ export default function Game(props) {
             if (sound) await sound.unloadAsync();
             setButtonClicked(idx);
             const { sound } = await Audio.Sound.createAsync(pickCorrectSound(idx));
-            setSound(sound);
+            props.setSound(sound);
 
             var time = await sound.playAsync().then(data => {
                 return data.playableDurationMillis;
@@ -105,32 +106,39 @@ export default function Game(props) {
                 setButtonClicked(-1)
             }, time - 320);
             if (game[game.length - 1] != order[game.length - 1]) {
-                setFailed(true);
-                setGame([]);
-                setCanPlay(false);
-                setTries(tries - 1);
-                if (tries > 0) {
-                    setTimeout(async () => {
-                        for (let i = 0; i < order.length; i++) {
-                            await playButtonDemo(order[i]);
-                        }
-                        setCanPlay(true);
-                        setFailed(false);
-                    }, time - 320);
-                } else {
-                    alert('fail, new game?');
-                    setTries(3);
-                    setOrder([randomNumber()]);
-                }
+                await failRound(time, sound);
             } else if (game.length == order.length) {
-                alert('success!')
-                setTimeout(async () => {
-                    await sound.unloadAsync();
-                    setOrder([...order, randomNumber()]);
-                    setGame([]);
-                }, time - 320);
+                await successRound(time, sound);
             }
         }
+    };
+
+    const failRound = async (time, sound) => {
+        setFailed(true);
+        setGame([]);
+        setCanPlay(false);
+        setTries(tries - 1);
+        if (tries > 0) {
+            setTimeout(async () => {
+                for (let i = 0; i < order.length; i++) {
+                    await playButtonDemo(order[i]);
+                }
+                setCanPlay(true);
+                setFailed(false);
+            }, time - 320);
+        } else {
+            alert('fail, new game?');
+            setTries(3);
+            setOrder([randomNumber()]);
+        }
+    };
+
+    const successRound = async (time, sound) => {
+        setTimeout(async () => {
+            await sound.unloadAsync();
+            setOrder([...order, randomNumber()]);
+            setGame([]);
+        }, time - 320);
     };
 
     return (
@@ -161,11 +169,14 @@ export default function Game(props) {
 
         <View style={{marginTop: 25}}>
             <Text style={{textAlign: 'center'}}>{SimonLang[props.lang].BestScore(bestScore)}</Text>
-            <Text style={{textAlign: 'center', marginBottom: 15}}>{SimonLang[props.lang].DailyScore(dailyScore)}</Text>
+            <Text style={{textAlign: 'center'}}>{SimonLang[props.lang].DailyScore(dailyScore)}</Text>
+            <Text style={{textAlign: 'center', marginBottom: 15}}>{SimonLang[props.lang].Tries(tries)}</Text>
         {start ?
             <Text style={{textAlign: 'center', fontSize: 18}}>{canPlay|| failed ? yourTurn() : SimonLang[props.lang].WaitNSee()}</Text> : <>
-            <Button title={SimonLang[props.lang].Start} onPress={() => setStart(true)} />
-            <Button title={SimonLang[props.lang].Leave} containerStyle={{marginTop: 15}} />
+            <View flexDirection={"row"} style={{alignContent: 'center', alignItems:'center'}}>
+                <Button buttonStyle={{marginRight: 10, borderRadius: 13}} title={SimonLang[props.lang].Start} onPress={() => setStart(true)} />
+                <Button buttonStyle={{borderRadius: 13, backgroundColor:'red'}} title={SimonLang[props.lang].Leave} onPress={() => props.setTab(0)}/>
+            </View>
             </>}
         </View>
     </>
