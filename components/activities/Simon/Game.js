@@ -19,7 +19,7 @@ export default function Game(props) {
     const [buttonClicked, setButtonClicked] = useState(-1);
     const [bestScore, setBestScore] = useState(0);
     const [dailyScore, setDailyScore] = useState(0);
-    const [game, setGame] = useState([]);
+    const [game, setGame] = useState(new Array(0));
 
     useEffect( async () => {
         if (start == false) {
@@ -85,32 +85,50 @@ export default function Game(props) {
     const playButton = async (idx) => {
         if (!canPlay) return;
         if (idx >= 0 && idx <= 3) {
-            if (idx == buttonClicked) setButtonClicked(-1);
-            else {
-                var playedGame = [...game, idx]
-                if (sound) await sound.unloadAsync();
-                setButtonClicked(idx);
-                const { sound } = await Audio.Sound.createAsync(pickCorrectSound(idx));
-                setSound(sound);
-                var time = await sound.playAsync().then(data => {
-                    return data.playableDurationMillis;
-                });
+            let playedGame = game;
+            playedGame.push(idx);
+            setGame(playedGame)
 
-                // @todo manage each hit instead of just the last one
+            if (sound) await sound.unloadAsync();
+            setButtonClicked(idx);
+            const { sound } = await Audio.Sound.createAsync(pickCorrectSound(idx));
+            setSound(sound);
 
-                if (playedGame[playedGame.length - 1] != order[order.length - 1]) {
-                    setTimeout(() => {
-                        setButtonClicked(-1);
-                        alert('failed!')
-                    }, time);
+            var time = await sound.playAsync().then(data => {
+                return data.playableDurationMillis;
+            });
+            
+            // @todo manage each hit instead of just the last one
+            
+            setTimeout(async () => {
+                await sound.unloadAsync();
+                setButtonClicked(-1)
+            }, time - 320);
+            if (game[game.length - 1] != order[game.length - 1]) {
+                setFailed(true);
+                setGame([]);
+                setCanPlay(false);
+                setTries(tries - 1);
+                if (tries > 0) {
+                    setTimeout(async () => {
+                        for (let i = 0; i < order.length; i++) {
+                            await playButtonDemo(order[i]);
+                        }
+                        setCanPlay(true);
+                        setFailed(false);
+                    }, time - 320);
                 } else {
-                    setTimeout(() => {
-                        setButtonClicked(-1);
-                        alert('success!')
-                        setGame(playedGame);
-                        setOrder([...order, randomNumber()]);
-                    }, time);
+                    alert('fail, new game?');
+                    setTries(3);
+                    setOrder([randomNumber()]);
                 }
+            } else if (game.length == order.length) {
+                alert('success!')
+                setTimeout(async () => {
+                    await sound.unloadAsync();
+                    setOrder([...order, randomNumber()]);
+                    setGame([]);
+                }, time - 320);
             }
         }
     };
@@ -145,7 +163,7 @@ export default function Game(props) {
             <Text style={{textAlign: 'center'}}>{SimonLang[props.lang].BestScore(bestScore)}</Text>
             <Text style={{textAlign: 'center', marginBottom: 15}}>{SimonLang[props.lang].DailyScore(dailyScore)}</Text>
         {start ?
-            <Text style={{textAlign: 'center', fontSize: 18}}>{canPlay ? yourTurn() : SimonLang[props.lang].WaitNSee()}</Text> : <>
+            <Text style={{textAlign: 'center', fontSize: 18}}>{canPlay|| failed ? yourTurn() : SimonLang[props.lang].WaitNSee()}</Text> : <>
             <Button title={SimonLang[props.lang].Start} onPress={() => setStart(true)} />
             <Button title={SimonLang[props.lang].Leave} containerStyle={{marginTop: 15}} />
             </>}
