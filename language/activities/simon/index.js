@@ -1,9 +1,11 @@
 import { Text } from 'react-native'
 
-const applyBoldStyle = text => {
+const applyBoldStyle = (text, clr) => {
+    var color = '#3B8EFF';
+    if (clr == 'red') color = '#FF5755';
     let numberOfItemsAdded = 0;
     const result = text.sentence.split(/\{\d+\}/);
-    text.boldText.forEach((boldText, i) => result.splice(++numberOfItemsAdded + i, 0, <Text key={i} style={{fontWeight: 'bold', color: "#3B8EFF"}}>{boldText}</Text>));
+    text.boldText.forEach((boldText, i) => result.splice(++numberOfItemsAdded + i, 0, <Text key={i} style={{fontWeight: 'bold', color: color}}>{boldText}</Text>));
     return <Text>{result}</Text>;
 };
 
@@ -24,6 +26,24 @@ export const lang = {
                 boldText: [dailyScore]
             }))
         },
+        YourTurn: () => {
+            return (applyBoldStyle({
+                sentence: "{0}",
+                boldText: ['A votre tour !']
+            }))
+        },
+        WaitNSee: () => {
+            return (applyBoldStyle({
+                sentence: "{0}",
+                boldText: ['Regardez attentivement...']
+            }))
+        },
+        Failed: () => {
+            return (applyBoldStyle({
+                sentence: "{0}",
+                boldText: ['Raté ! ...']
+            }, 'red'))
+        },
         Start: "Commencer une partie",
     },
     en: {
@@ -41,6 +61,24 @@ export const lang = {
                 sentence: "Best score today: {0}",
                 boldText: [dailyScore]
             }))
+        },
+        YourTurn: () => {
+            return (applyBoldStyle({
+                sentence: "{0}",
+                boldText: ['Your turn!']
+            }))
+        },
+        WaitNSee: () => {
+            return (applyBoldStyle({
+                sentence: "{0}",
+                boldText: ['Look carefully...']
+            }))
+        },
+        Failed: () => {
+            return (applyBoldStyle({
+                sentence: "{0}",
+                boldText: ['Failed! ...']
+            }, 'red'))
         },
         Start: "Start a game",
     }
