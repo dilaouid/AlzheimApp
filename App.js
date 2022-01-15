@@ -7,7 +7,6 @@ import {
 } from "react-router-native";
 import {
   View,
-  Image
 } from 'react-native';
 
 import * as Localization from 'expo-localization';

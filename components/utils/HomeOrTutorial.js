@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import Tutorial from '../../pages/Tutorial';
 import ChooseUsername from '../../pages/ChooseUsername';

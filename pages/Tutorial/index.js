@@ -12,7 +12,11 @@ import StepFour from '../../assets/img/tutorial/4.png'
 import StepFive from '../../assets/img/tutorial/5.png'
 import StepSixth from '../../assets/img/tutorial/6.png'
 
+import SwipeImage from '../../assets/img/tutorial/swipe-right.gif'
+
 import { lang as TutorialLang } from '../../language/tutorial';
+import Lottie from '../../components/utils/Lottie';
+
 import Swiper from 'react-native-swiper/src';
 
 import styles from './styles'
@@ -21,16 +25,26 @@ import Home from '../Home';
 
 
 export default function Tutorial(props) {
+
+    const LottieSource = require('../../assets/lottie/swipe-right.json');
+
     useEffect( () => {
         Config.getUsername().then( res => {
             if (res[0]?.username) return <Home username={res} lang={props.lang} />
         }).catch(err => {
             console.log(err);
         })
-    }, [])
+    }, []);
 
     return(
+        <>
+        <Lottie 
+            LottieSource={LottieSource} ImageSource={SwipeImage}
+            LottieStyle={{position: 'absolute', height: 80, marginTop: 280, marginLeft: 80, opacity: .8}}
+            ImageStyle={{position: 'absolute', height: 80, marginTop: 280, marginLeft: 80, opacity: .8}}
+        />
         <Swiper style={styles.wrapper} showsButtons={false} showsPagination={true} loop={false}>
+                
             <View style={styles.slide}>
                 <Image source={StepOne} resizeMode="contain" style={styles.image}/>
                 <Text style={styles.title}>{TutorialLang[props.lang].Step1Header}</Text>
@@ -77,5 +91,6 @@ export default function Tutorial(props) {
 
 
         </Swiper>
+        </>
     );
 };
