@@ -1,1 +1,1 @@
-# AlzApp
+# AlzheimApp

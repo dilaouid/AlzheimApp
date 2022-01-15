@@ -10,11 +10,11 @@ const applyBoldStyle = text => {
 export const lang = {
     fr: {
         // First step of the tutorial
-        Step1Header: "Bienvenue sur AlzApp",
+        Step1Header: "Bienvenue sur AlzheimApp",
         Step1Content: () => {
             return (applyBoldStyle({
                 sentence: "{0} est une application qui permet de réaliser un suivi et d'accompagner les personnes atteintes de la maladie d'Alzheimer avec différents jeux et exercices tout aussi ludiques les uns que les autres.",
-                boldText: ['AlzApp']
+                boldText: ['AlzheimApp']
             }))
         },
 
@@ -53,11 +53,11 @@ export const lang = {
     },
     en: {
         // First step of the tutorial
-        Step1Header: "Welcome to AlzApp",
+        Step1Header: "Welcome to AlzheimApp",
         Step1Content: () => {
             return (applyBoldStyle({
                 sentence: "{0} is an application which would help you create a trace and to accompagny people with Alzheimer's disease with various games and exercices each just as fun as the next.",
-                boldText: ['AlzApp']
+                boldText: ['AlzheimApp']
             }))
         },
 

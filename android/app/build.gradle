@@ -132,7 +132,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.alzapp"
+        applicationId "com.AlzheimApp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

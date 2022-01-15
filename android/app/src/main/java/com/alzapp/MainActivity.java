@@ -1,4 +1,4 @@
-package com.alzapp;
+package com.AlzheimApp;
 
 import android.os.Build;
 import android.os.Bundle;

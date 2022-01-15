@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "AlzApp",
-    "slug": "AlzApp",
+    "name": "AlzheimApp",
+    "slug": "AlzheimApp",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
@@ -15,5 +15,5 @@
       ]
     ]
   },
-  "name": "AlzApp"
+  "name": "AlzheimApp"
 }

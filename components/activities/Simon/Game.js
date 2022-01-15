@@ -176,6 +176,8 @@ export default function Game(props) {
 
     return (
     <>
+
+        {/* Overlay modal end of the game */}
         {success ? <Overlay visible={success} overlayStyle={{padding: 40, borderRadius: 25, height: 300, alignContent: 'center', alignItems:'center'}} onBackdropPress={() => setSuccess(false)}>
             { dailyScore < order.length - 1 ? successOverlay() : failOverlay() }
             <View style={{flexDirection: 'row', marginTop: 30}}>
