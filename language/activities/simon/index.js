@@ -3,6 +3,7 @@ import { Text } from 'react-native'
 const applyBoldStyle = (text, clr) => {
     var color = '#3B8EFF';
     if (clr == 'red') color = '#FF5755';
+    else if (clr == 'green') color = '#55FF5D';
     let numberOfItemsAdded = 0;
     const result = text.sentence.split(/\{\d+\}/);
     text.boldText.forEach((boldText, i) => result.splice(++numberOfItemsAdded + i, 0, <Text key={i} style={{fontWeight: 'bold', color: color}}>{boldText}</Text>));
@@ -50,6 +51,15 @@ export const lang = {
                 boldText: [tries]
             }, 'red'))
         },
+        BestScoreToday: (score) => {
+            return (applyBoldStyle({
+                sentence: "Vous venez de battre votre record du jour : {0} !",
+                boldText: [score]
+            }))
+        },
+        Congratulations: 'Félicitations !!',
+        Retry: 'Recommencer',
+        Exit: "S'arrêter",
         Start: "Commencer une partie",
     },
     en: {
@@ -92,6 +102,15 @@ export const lang = {
                 boldText: [tries]
             }, 'red'))
         },
+        BestScoreToday: (score) => {
+            return (applyBoldStyle({
+                sentence: "You did your day best score : {0}!",
+                boldText: [score]
+            }))
+        },
+        Congratulations: 'Congratulations!!',
+        Retry: 'Retry',
+        Exit: 'Exit',
         Start: "Start a game",
     }
 };

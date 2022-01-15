@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { Text, Button } from 'react-native-elements';
-
+import { Text, Button, Overlay } from 'react-native-elements';
 import { lang as SimonLang } from '../../../language/activities/simon';
 import { Audio } from 'expo-av';
+
+import Lottie from '../../utils/Lottie';
+import TrophyImage from '../../../assets/img/activities/simon/trophy.gif'
 
 import * as API from '../../../data/simonApi';
 
@@ -12,14 +14,16 @@ import styles from './styles';
 export default function Game(props) {
     const [start, setStart] = useState(false);
     const [failed, setFailed] = useState(false);
-    const [success, setSuccess] = useState(false);
     const [canPlay, setCanPlay] = useState(false);
     const [tries, setTries] = useState(3) // 3 tries at the beginning of the game
     const [order, setOrder] = useState([Math.round(Math.random() * 3)]); // generate a random first order
+    const [success, setSuccess] = useState(false);
     const [buttonClicked, setButtonClicked] = useState(-1);
     const [bestScore, setBestScore] = useState(0);
     const [dailyScore, setDailyScore] = useState(0);
     const [game, setGame] = useState(new Array(0));
+
+    const LottieSource = require('../../../assets/lottie/trophy.json');
 
     useEffect( async () => {
         if (start == false) {
@@ -106,14 +110,14 @@ export default function Game(props) {
                 setButtonClicked(-1)
             }, time - 320);
             if (game[game.length - 1] != order[game.length - 1]) {
-                await failRound(time, sound);
+                await failRound(time);
             } else if (game.length == order.length) {
                 await successRound(time, sound);
             }
         }
     };
 
-    const failRound = async (time, sound) => {
+    const failRound = async (time) => {
         setFailed(true);
         setGame([]);
         setCanPlay(false);
@@ -127,9 +131,7 @@ export default function Game(props) {
                 setFailed(false);
             }, time - 320);
         } else {
-            alert('fail, new game?');
-            setTries(3);
-            setOrder([randomNumber()]);
+            setSuccess(true);
         }
     };
 
@@ -141,8 +143,53 @@ export default function Game(props) {
         }, time - 320);
     };
 
+    const successOverlay = () => {
+        props.setConfetti(true);
+        return <>
+            <Text style={{fontSize: 20, fontWeight: 'bold'}}>{SimonLang[props.lang].Congratulations}</Text>
+            <Text style={{width: 190, fontSize: 18, marginBottom: 20, textAlign: 'center'}}>{SimonLang[props.lang].BestScoreToday(order.length - 1)}</Text>
+            <Lottie 
+                LottieSource={LottieSource}
+                ImageSource={TrophyImage}
+                autoplay={true} loop={false}
+                LottieStyle={{height: 60}}
+                ImageStyle={{height: 60}}
+            />
+        </>
+    };
+
+    const failOverlay = () => {
+        return <>
+            <Text style={{fontSize: 20, fontWeight: 'bold'}}>{SimonLang[props.lang].Congratulations}</Text>
+            <Text style={{width: 190, fontSize: 18, marginBottom: 20, textAlign: 'center'}}>{SimonLang[props.lang].BestScoreToday(order.length - 1)}</Text>
+            <Lottie 
+                LottieSource={LottieSource}
+                ImageSource={TrophyImage}
+                autoplay={true} loop={false}
+                LottieStyle={{height: 60}}
+                ImageStyle={{height: 60}}
+            />
+        </>
+    };
+
+    const retryGame = () => {
+        props.setConfetti(false);
+        setSuccess(false);
+        setFailed(false);
+        setTries(3);
+        setOrder([randomNumber()]);
+    };
+
     return (
     <>
+        {success ? <Overlay visible={success} overlayStyle={{padding: 40, borderRadius: 25, height: 300, alignContent: 'center', alignItems:'center'}} onBackdropPress={() => setSuccess(false)}>
+            { dailyScore <= order.length - 1 ? successOverlay() : <Text>todo</Text> }
+            <View style={{flexDirection: 'row', marginTop: 30}}>
+                <Button raised onPress={() => { retryGame() }} title={SimonLang[props.lang].Retry} containerStyle={{borderRadius: 13, marginRight: 10}}/>
+                <Button raised onPress={() => { props.setConfetti(false); props.setTab(0); } } title={SimonLang[props.lang].Exit} containerStyle={{borderRadius: 13}} buttonStyle={{backgroundColor: 'red'}}/>
+            </View>
+        </Overlay> : <></> }
+
         {/* The first row of the Simon */}
         <View style={{flexDirection: 'row', marginBottom: 10}}>
             <View style={[styles.SimonButton, styles.SimonLeftButton, styles.SimonGreen, buttonClicked == 0 ? styles.clickedButton : '']}
