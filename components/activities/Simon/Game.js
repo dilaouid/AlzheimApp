@@ -15,7 +15,7 @@ export default function Game(props) {
     const [start, setStart] = useState(false);
     const [failed, setFailed] = useState(false);
     const [canPlay, setCanPlay] = useState(false);
-    const [tries, setTries] = useState(3) // 3 tries at the beginning of the game
+    const [tries, setTries] = useState(4) // 3 tries at the beginning of the game
     const [order, setOrder] = useState([Math.round(Math.random() * 3)]); // generate a random first order
     const [success, setSuccess] = useState(false);
     const [buttonClicked, setButtonClicked] = useState(-1);
@@ -24,10 +24,10 @@ export default function Game(props) {
     const [game, setGame] = useState(new Array(0));
 
     const LottieSource = require('../../../assets/lottie/trophy.json');
+    const currentDate = new Date().toLocaleDateString('fr-FR');
 
     useEffect( async () => {
         if (start == false) {
-            const currentDate = new Date().toLocaleDateString('fr-FR');
             API.getBestScore(props.personId).then(data => {
                 if (data.length > 0) setBestScore(data[0].score);
             });
@@ -84,7 +84,7 @@ export default function Game(props) {
     const yourTurn = () => {
         if (failed) return SimonLang[props.lang].Failed();
         else return SimonLang[props.lang].YourTurn();
-    }
+    };
 
     const playButton = async (idx) => {
         if (!canPlay) return;
@@ -122,7 +122,7 @@ export default function Game(props) {
         setGame([]);
         setCanPlay(false);
         setTries(tries - 1);
-        if (tries > 0) {
+        if (tries > 1) {
             setTimeout(async () => {
                 for (let i = 0; i < order.length; i++) {
                     await playButtonDemo(order[i]);
@@ -131,6 +131,7 @@ export default function Game(props) {
                 setFailed(false);
             }, time - 320);
         } else {
+            await API.insertScore(props.personId, order.length - 1, currentDate);
             setSuccess(true);
         }
     };
@@ -160,15 +161,8 @@ export default function Game(props) {
 
     const failOverlay = () => {
         return <>
-            <Text style={{fontSize: 20, fontWeight: 'bold'}}>{SimonLang[props.lang].Congratulations}</Text>
-            <Text style={{width: 190, fontSize: 18, marginBottom: 20, textAlign: 'center'}}>{SimonLang[props.lang].BestScoreToday(order.length - 1)}</Text>
-            <Lottie 
-                LottieSource={LottieSource}
-                ImageSource={TrophyImage}
-                autoplay={true} loop={false}
-                LottieStyle={{height: 60}}
-                ImageStyle={{height: 60}}
-            />
+            <Text style={{fontSize: 20, fontWeight: 'bold'}}>{SimonLang[props.lang].SoBad}</Text>
+            <Text style={{width: 190, fontSize: 18, marginBottom: 20, textAlign: 'center'}}>{SimonLang[props.lang].ScoreNotBeated}</Text>
         </>
     };
 
@@ -176,14 +170,14 @@ export default function Game(props) {
         props.setConfetti(false);
         setSuccess(false);
         setFailed(false);
-        setTries(3);
+        setTries(4);
         setOrder([randomNumber()]);
     };
 
     return (
     <>
         {success ? <Overlay visible={success} overlayStyle={{padding: 40, borderRadius: 25, height: 300, alignContent: 'center', alignItems:'center'}} onBackdropPress={() => setSuccess(false)}>
-            { dailyScore <= order.length - 1 ? successOverlay() : <Text>todo</Text> }
+            { dailyScore < order.length - 1 ? successOverlay() : failOverlay() }
             <View style={{flexDirection: 'row', marginTop: 30}}>
                 <Button raised onPress={() => { retryGame() }} title={SimonLang[props.lang].Retry} containerStyle={{borderRadius: 13, marginRight: 10}}/>
                 <Button raised onPress={() => { props.setConfetti(false); props.setTab(0); } } title={SimonLang[props.lang].Exit} containerStyle={{borderRadius: 13}} buttonStyle={{backgroundColor: 'red'}}/>

@@ -58,6 +58,8 @@ export const lang = {
             }))
         },
         Congratulations: 'Félicitations !!',
+        SoBad: "Dommage...",
+        ScoreNotBeated: "Votre score du jour n'a pas été battu... Mais vous pouvez toujours recommencer !",
         Retry: 'Recommencer',
         Exit: "S'arrêter",
         Start: "Commencer une partie",
@@ -109,6 +111,8 @@ export const lang = {
             }))
         },
         Congratulations: 'Congratulations!!',
+        SoBad: "So sad...",
+        ScoreNotBeated: "Your daily score has not been beaten... But you can retry!",
         Retry: 'Retry',
         Exit: 'Exit',
         Start: "Start a game",
