@@ -12,9 +12,17 @@ const applyBoldStyle = (text, clr) => {
 
 export const lang = {
     fr: {
-
+        Play: "Jouer",
+        View: "Voir les quizz",
+        Create: "Créer un quizz",
+        Help: "Comment ça marche",
+        Leave: "Retour",
     },
     en: {
-        
+        Play: "Play",
+        View: "View quizz",
+        Create: "Create a quizz",
+        Help: "How does it works",
+        Leave: "Leave",
     }
 };

@@ -5,6 +5,26 @@ export default StyleSheet.create({
         marginVertical: 20,
         flex: 1,
         alignItems:'center',
-    }
+    },
+    logo: {
+        width: 80,
+        height:80,
+        marginVertical: 20,
+        opacity: 0.8,
+        marginBottom: 40
+    },
+    button: {
+        width: 235,
+        marginBottom: 25,
+        borderRadius: 10,
+        marginHorizontal: 5
+    },
+    leaveButton: {
+        width: 235,
+        marginTop: 40,
+        backgroundColor: 'red',
+        borderRadius: 10,
+        marginHorizontal: 5
+    },
 });
 
