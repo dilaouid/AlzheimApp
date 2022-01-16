@@ -4,6 +4,8 @@ import { Text, Button, Overlay } from 'react-native-elements';
 import { lang as SimonLang } from '../../../language/activities/simon';
 import { Audio } from 'expo-av';
 
+import ConfettiCannon from 'react-native-confetti-cannon';
+
 import Lottie from '../../utils/Lottie';
 import TrophyImage from '../../../assets/img/activities/simon/trophy.gif'
 
@@ -22,12 +24,14 @@ export default function Game(props) {
     const [bestScore, setBestScore] = useState(0);
     const [dailyScore, setDailyScore] = useState(0);
     const [niceHit, setNiceHit] = useState(false);
+    const [confetti, setConfetti] = useState(false);
     const [game, setGame] = useState(new Array(0));
 
     const LottieSource = require('../../../assets/lottie/trophy.json');
     const currentDate = new Date().toLocaleDateString('fr-FR');
 
     useEffect( async () => {
+        // API.clear(props.personId);
         if (start == false) {
             API.getBestScore(props.personId).then(data => {
                 if (data.length > 0) setBestScore(data[0].score);
@@ -42,11 +46,10 @@ export default function Game(props) {
             // The useEffect is launched when the game is launched
             // or when the order is updated (at the end of a turn)
             for (let i = 0; i < order.length; i++) {
-                await playButtonDemo(order[i]);
+                if (start) await playButtonDemo(order[i]);
             }
             setCanPlay(true);
         }
-        return () => start == true;
     }, [start, order]);
 
     const randomNumber = () => {
@@ -155,7 +158,7 @@ export default function Game(props) {
     };
 
     const successOverlay = () => {
-        props.setConfetti(true);
+        if (!confetti) setConfetti(true);
         return <>
             <Text style={styles.headerOverlay}>{SimonLang[props.lang].Congratulations}</Text>
             <Text style={styles.textOverlay}>{SimonLang[props.lang].BestScoreToday(order.length - 1)}</Text>
@@ -177,7 +180,7 @@ export default function Game(props) {
     };
 
     const retryGame = () => {
-        props.setConfetti(false);
+        setConfetti(false);
         setSuccess(false);
         setFailed(false);
         setTries(4);
@@ -186,15 +189,16 @@ export default function Game(props) {
 
     return (
     <>
+        {confetti ? <ConfettiCannon autoStart={true} count={200} origin={{x: -20, y: -20}} /> : <></> }
 
         {/* Overlay modal end of the game */}
-        <Overlay visible={success} overlayStyle={styles.overlayStyle} onBackdropPress={() => setSuccess(false)}>
+        {success ? <Overlay visible={success} overlayStyle={styles.overlayStyle} onBackdropPress={() => setSuccess(false)}>
             { dailyScore < order.length - 1 ? successOverlay() : failOverlay() }
             <View style={{flexDirection: 'row', marginTop: 30}}>
                 <Button raised onPress={() => { retryGame() }} title={SimonLang[props.lang].Retry} containerStyle={{borderRadius: 13, marginRight: 10}}/>
-                <Button raised onPress={() => { props.setConfetti(false); props.setTab(0); } } title={SimonLang[props.lang].Exit} containerStyle={{borderRadius: 13}} buttonStyle={{backgroundColor: 'red'}}/>
+                <Button raised onPress={() => { setConfetti(false); props.setTab(0); } } title={SimonLang[props.lang].Exit} containerStyle={{borderRadius: 13}} buttonStyle={{backgroundColor: 'red'}}/>
             </View>
-        </Overlay>
+        </Overlay> : <></>}
 
         {/* Are you sure to exit - Overlay */}
         <Overlay visible={props.modal} overlayStyle={styles.overlayStyle} onBackdropPress={() => props.setModal(false)}>

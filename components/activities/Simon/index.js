@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, BackHandler } from 'react-native';
 import { Text } from 'react-native-elements';
-import ConfettiCannon from 'react-native-confetti-cannon';
 
 import { Audio } from 'expo-av';
 
@@ -15,11 +14,9 @@ export default function Simon(props) {
   const [tab, setTab] = useState(0);
   const [sound, setSound] = useState(new Audio.Sound());
   const [modal, setModal] = useState(false);
-  const [confetti, setConfetti] = useState(false);
 
   useEffect(() => {
     // API.clear(props.personId);
-
     // BackHandler managment
     const backAction = () => {
         if (sound) sound.unloadAsync();
@@ -46,7 +43,7 @@ export default function Simon(props) {
     if (tab == 0)
         return <Menu setTab={setTab} lang={props.lang} setPage={props.setPage} />
     else if (tab == 1)
-        return <Game setTab={setTab} lang={props.lang} personId={props.personId} sound={sound} setSound={setSound} modal={modal} setModal={setModal} setConfetti={setConfetti} />
+        return <Game setTab={setTab} lang={props.lang} personId={props.personId} sound={sound} setSound={setSound} modal={modal} setModal={setModal} />
     else if (tab == 2)
         return <Text>Tab 2 (Help)</Text>
     else 
@@ -55,7 +52,6 @@ export default function Simon(props) {
 
   return (
       <>
-        {confetti ? <ConfettiCannon autoStart={true} count={200} origin={{x: -20, y: -20}} /> : <></> }
         <View style={styles.view}>
             { printPage() }
         </View>
