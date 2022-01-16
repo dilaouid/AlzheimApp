@@ -63,11 +63,18 @@ export const lang = {
                 boldText: [score]
             }))
         },
+        Progress: (order, game) => {
+            return (applyBoldStyle({
+                sentence: `Coup(s) réalisé(s): ${game} / {0}`,
+                boldText: [order]
+            }))
+        },
         Congratulations: 'Félicitations !!',
         SoBad: "Dommage...",
         ScoreNotBeated: "Votre score du jour n'a pas été battu... Mais vous pouvez toujours recommencer !",
         Retry: 'Recommencer',
         Exit: "S'arrêter",
+        GiveUp: "Abandonner",
         Start: "Commencer une partie",
     },
     en: {
@@ -122,11 +129,18 @@ export const lang = {
                 boldText: [score]
             }))
         },
+        Progress: (order, game) => {
+            return (applyBoldStyle({
+                sentence: `Progress: ${game} / {0}`,
+                boldText: [order]
+            }))
+        },
         Congratulations: 'Congratulations!!',
         SoBad: "So sad...",
         ScoreNotBeated: "Your daily score has not been beaten... But you can retry!",
         Retry: 'Retry',
         Exit: 'Exit',
+        GiveUp: "Give up",
         Start: "Start a game",
     }
 };

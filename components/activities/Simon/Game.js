@@ -215,12 +215,16 @@ export default function Game(props) {
             />
         </View>
 
-        <View style={{marginTop: 25}}>
+        <View style={{marginTop: 15}}>
             <Text style={{textAlign: 'center'}}>{SimonLang[props.lang].BestScore(bestScore)}</Text>
             <Text style={{textAlign: 'center'}}>{SimonLang[props.lang].DailyScore(dailyScore)}</Text>
             <Text style={{textAlign: 'center', marginBottom: 15}}>{SimonLang[props.lang].Tries(tries)}</Text>
         {start ?
-            <Text style={{textAlign: 'center', fontSize: 18}}>{canPlay|| failed ? yourTurn() : SimonLang[props.lang].WaitNSee()}</Text> : <>
+            <View style={{alignContent: 'center', alignItems:'center'}}>
+                <Text style={{textAlign: 'center', fontSize: 18}}>{canPlay|| failed ? yourTurn() : SimonLang[props.lang].WaitNSee()}</Text>
+                <Text style={{textAlign: 'center'}}>{SimonLang[props.lang].Progress(order.length, game.length)}</Text>
+                <Button buttonStyle={{backgroundColor: 'red'}} containerStyle={{marginTop: 20, width: 150, borderRadius: 15}} raised title={SimonLang[props.lang].GiveUp} />
+            </View> : <>
             <View flexDirection={"row"} style={{alignContent: 'center', alignItems:'center'}}>
                 <Button buttonStyle={{marginRight: 10, borderRadius: 13}} title={SimonLang[props.lang].Start} onPress={() => setStart(true)} />
                 <Button buttonStyle={{borderRadius: 13, backgroundColor:'red'}} title={SimonLang[props.lang].Leave} onPress={() => props.setTab(0)}/>
