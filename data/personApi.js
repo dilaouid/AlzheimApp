@@ -1,4 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import * as FileSystem from 'expo-file-system';
+
+import { db as DictaphoneDB } from './dictaphoneApi';
+import { db as SimonDB } from './simonApi';
+
 import { pushErrors } from '../utils/helpers';
 
 const Datastore = require('react-native-local-mongodb')
@@ -42,7 +47,19 @@ export function getById(id) {
     return db.findAsync({_id: id});
 };
 
-export function deleteById(id) {
+export async function deleteById(id) {
+    await SimonDB.removeAsync({personId: id})
+    await DictaphoneDB.find({personId: id}, (err, data) => {
+        if (err) console.error(err);
+        else data.map( async (el, i) => {
+            await FileSystem.deleteAsync(el?.path)
+        });
+    });
+    await db.findAsync({_id: id}, async (err, data) => {
+        if (err) console.error(err);
+        else if (data[0].picture) await FileSystem.deleteAsync(data[0]?.picture)
+    });
+    await DictaphoneDB.removeAsync({personId: id})
     return db.removeAsync({_id: id});
 };
 
