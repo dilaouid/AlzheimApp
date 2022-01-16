@@ -21,6 +21,7 @@ export default function Game(props) {
     const [buttonClicked, setButtonClicked] = useState(-1);
     const [bestScore, setBestScore] = useState(0);
     const [dailyScore, setDailyScore] = useState(0);
+    const [niceHit, setNiceHit] = useState(false);
     const [game, setGame] = useState(new Array(0));
 
     const LottieSource = require('../../../assets/lottie/trophy.json');
@@ -35,6 +36,7 @@ export default function Game(props) {
                 if (data.length > 0) setDailyScore(data[0].score);
             });
         } else {
+            setNiceHit(false);
             setCanPlay(false);
             // If the game started, show a demo of the actions.
             // The useEffect is launched when the game is launched
@@ -44,7 +46,7 @@ export default function Game(props) {
             }
             setCanPlay(true);
         }
-        return () => true;
+        return () => start == true;
     }, [start, order]);
 
     const randomNumber = () => {
@@ -84,6 +86,7 @@ export default function Game(props) {
 
     const yourTurn = () => {
         if (failed) return SimonLang[props.lang].Failed();
+        else if (niceHit) return SimonLang[props.lang].NiceHit()
         else return SimonLang[props.lang].YourTurn();
     };
 
@@ -138,6 +141,7 @@ export default function Game(props) {
     };
 
     const successRound = async (time, sound) => {
+        setNiceHit(true);
         setTimeout(async () => {
             await sound.unloadAsync();
             setOrder([...order, randomNumber()]);
