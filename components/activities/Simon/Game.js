@@ -12,11 +12,13 @@ import TrophyImage from '../../../assets/img/activities/simon/trophy.gif'
 import * as API from '../../../data/simonApi';
 
 import styles from './styles';
+import { ActivityIndicator } from 'react-native-web';
 
 export default function Game(props) {
     const [start, setStart] = useState(false);
     const [failed, setFailed] = useState(false);
     const [canPlay, setCanPlay] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [tries, setTries] = useState(4) // 3 tries at the beginning of the game
     const [order, setOrder] = useState([Math.round(Math.random() * 3)]); // generate a random first order
     const [success, setSuccess] = useState(false);
@@ -27,18 +29,22 @@ export default function Game(props) {
     const [confetti, setConfetti] = useState(false);
     const [game, setGame] = useState(new Array(0));
 
+    const [scoreBeaten, setScoreBeaten] = useState(false);
+
     const LottieSource = require('../../../assets/lottie/trophy.json');
     const currentDate = new Date().toLocaleDateString('fr-FR');
 
     useEffect( async () => {
         // API.clear(props.personId);
         if (start == false) {
+            setLoading(true);
             API.getBestScore(props.personId).then(data => {
                 if (data.length > 0) setBestScore(data[0].score);
             });
             API.getScoreDay(props.personId, currentDate).then(data => {
                 if (data.length > 0) setDailyScore(data[0].score);
             });
+            setLoading(false);
         } else {
             setNiceHit(false);
             setCanPlay(false);
@@ -46,7 +52,7 @@ export default function Game(props) {
             // The useEffect is launched when the game is launched
             // or when the order is updated (at the end of a turn)
             for (let i = 0; i < order.length; i++) {
-                if (start) await playButtonDemo(order[i]);
+                if (!success) await playButtonDemo(order[i]);
             }
             setCanPlay(true);
         }
@@ -145,16 +151,20 @@ export default function Game(props) {
     const completeGame = async () => {
         props.setModal(false);
         await API.insertScore(props.personId, order.length - 1, currentDate);
+        setCanPlay(false);
         setSuccess(true);
+        if (dailyScore < order.length - 1) setScoreBeaten(true);
+        else setScoreBeaten(false);
     };
 
     const successRound = async (time, sound) => {
         setNiceHit(true);
+        setCanPlay(false);
         setTimeout(async () => {
             await sound.unloadAsync();
             setOrder([...order, randomNumber()]);
-            setGame([]);
         }, time - 320);
+        setGame([]);
     };
 
     const successOverlay = () => {
@@ -173,6 +183,7 @@ export default function Game(props) {
     };
 
     const failOverlay = () => {
+        if (loading) return <ActivityIndicator />
         return <>
             <Text style={styles.headerOverlay}>{SimonLang[props.lang].SoBad}</Text>
             <Text style={styles.textOverlay}>{SimonLang[props.lang].ScoreNotBeated}</Text>
@@ -189,14 +200,14 @@ export default function Game(props) {
 
     return (
     <>
-        {confetti ? <ConfettiCannon autoStart={true} count={200} origin={{x: -20, y: -20}} /> : <></> }
+        {confetti ? <ConfettiCannon fadeOut={true} autoStart={true} fallSpeed={6000} count={50} origin={{x: -20, y: -35}} /> : <></> }
 
         {/* Overlay modal end of the game */}
         {success ? <Overlay visible={success} overlayStyle={styles.overlayStyle} onBackdropPress={() => setSuccess(false)}>
-            { dailyScore < order.length - 1 ? successOverlay() : failOverlay() }
+            { scoreBeaten ? successOverlay() : failOverlay() }
             <View style={{flexDirection: 'row', marginTop: 30}}>
                 <Button raised onPress={() => { retryGame() }} title={SimonLang[props.lang].Retry} containerStyle={{borderRadius: 13, marginRight: 10}}/>
-                <Button raised onPress={() => { setConfetti(false); props.setTab(0); } } title={SimonLang[props.lang].Exit} containerStyle={{borderRadius: 13}} buttonStyle={{backgroundColor: 'red'}}/>
+                <Button raised onPress={() => { props.setTab(0); } } title={SimonLang[props.lang].Exit} containerStyle={{borderRadius: 13}} buttonStyle={{backgroundColor: 'red'}}/>
             </View>
         </Overlay> : <></>}
 
@@ -242,7 +253,7 @@ export default function Game(props) {
             <View style={{alignContent: 'center', alignItems:'center'}}>
                 <Text style={{textAlign: 'center', fontSize: 18}}>{canPlay|| failed ? yourTurn() : SimonLang[props.lang].WaitNSee()}</Text>
                 <Text style={{textAlign: 'center'}}>{SimonLang[props.lang].Progress(order.length, game.length)}</Text>
-                <Button onPress={() => props.setModal(true)} buttonStyle={{backgroundColor: 'red'}} containerStyle={{marginTop: 20, width: 150, borderRadius: 15}} raised title={SimonLang[props.lang].GiveUp} />
+                <Button disabled={!canPlay} onPress={() => props.setModal(true)} buttonStyle={{backgroundColor: 'red'}} containerStyle={{marginTop: 20, width: 150, borderRadius: 15}} raised title={SimonLang[props.lang].GiveUp} />
             </View> : <>
             <View flexDirection={"row"} style={{alignContent: 'center', alignItems:'center'}}>
                 <Button buttonStyle={{marginRight: 10, borderRadius: 13}} title={SimonLang[props.lang].Start} onPress={() => setStart(true)} />
