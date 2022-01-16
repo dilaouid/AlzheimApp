@@ -37,7 +37,7 @@ export function edit(id, upd) {
     return db.updateAsync({ _id: id }, { $set: { ...data } }  ).catch(err => {
         console.log(err);
     });
-}
+};
 
 export function get() {
     return db.findAsync({});

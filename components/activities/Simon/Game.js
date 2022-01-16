@@ -44,6 +44,7 @@ export default function Game(props) {
             }
             setCanPlay(true);
         }
+        return () => true;
     }, [start, order]);
 
     const randomNumber = () => {

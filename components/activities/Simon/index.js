@@ -3,10 +3,7 @@ import { View, BackHandler } from 'react-native';
 import { Text } from 'react-native-elements';
 import ConfettiCannon from 'react-native-confetti-cannon';
 
-import { lang as SimonLang } from '../../../language/activities/simon';
 import { Audio } from 'expo-av';
-
-import * as API from '../../../data/simonApi';
 
 // Child Components
 import Menu from './Menu';
@@ -16,14 +13,14 @@ import styles from './styles';
 
 export default function Simon(props) {
   const [tab, setTab] = useState(0);
-  const [sound, setSound] = useState();
+  const [sound, setSound] = useState(new Audio.Sound());
   const [confetti, setConfetti] = useState(false);
 
   useEffect(() => {
     // API.clear(props.personId);
 
     // BackHandler managment
-    const backAction = async () => {
+    const backAction = () => {
         if (sound) sound.unloadAsync();
         if (tab > 0) setTab(0);
         else props.setPage(null);
