@@ -15,6 +15,8 @@ export const lang = {
         Play: "Jouer",
         Help: "Aide",
         Leave: "Retour",
+        AreYouSure: "En êtes-vous sûr ?",
+        ToGiveUp: "Si vous abandonnez la partie en cours, votre score sera enregistré, mais vous ne pourrez pas la continuer.",
         BestScore: (bestScore) => {
             return (applyBoldStyle({
                 sentence: "Meilleur score: {0}",
@@ -73,14 +75,18 @@ export const lang = {
         SoBad: "Dommage...",
         ScoreNotBeated: "Votre score du jour n'a pas été battu... Mais vous pouvez toujours recommencer !",
         Retry: 'Recommencer',
-        Exit: "S'arrêter",
+        Exit: "Quitter le Simon",
         GiveUp: "Abandonner",
         Start: "Commencer une partie",
+        Cancel: "Annuler",
+        TimeToStop: "Oui, je m'arrête là",
     },
     en: {
         Play: "Play",
         Help: "Help",
         Leave: "Go back",
+        AreYouSure: "Are you sure?",
+        ToGiveUp: "If you give up, this game, your score will be saved, but you won't be able to continue this party.",
         BestScore: (bestScore) => {
             return (applyBoldStyle({
                 sentence: "Best score: {0}",
@@ -142,5 +148,7 @@ export const lang = {
         Exit: 'Exit',
         GiveUp: "Give up",
         Start: "Start a game",
+        Cancel: "Cancel",
+        TimeToStop: "Yes, I want to stop",
     }
 };

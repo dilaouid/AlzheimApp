@@ -135,9 +135,14 @@ export default function Game(props) {
                 setFailed(false);
             }, time - 320);
         } else {
-            await API.insertScore(props.personId, order.length - 1, currentDate);
-            setSuccess(true);
+            completeGame();
         }
+    };
+
+    const completeGame = async () => {
+        props.setModal(false);
+        await API.insertScore(props.personId, order.length - 1, currentDate);
+        setSuccess(true);
     };
 
     const successRound = async (time, sound) => {
@@ -152,8 +157,8 @@ export default function Game(props) {
     const successOverlay = () => {
         props.setConfetti(true);
         return <>
-            <Text style={{fontSize: 20, fontWeight: 'bold'}}>{SimonLang[props.lang].Congratulations}</Text>
-            <Text style={{width: 190, fontSize: 18, marginBottom: 20, textAlign: 'center'}}>{SimonLang[props.lang].BestScoreToday(order.length - 1)}</Text>
+            <Text style={styles.headerOverlay}>{SimonLang[props.lang].Congratulations}</Text>
+            <Text style={styles.textOverlay}>{SimonLang[props.lang].BestScoreToday(order.length - 1)}</Text>
             <Lottie 
                 LottieSource={LottieSource}
                 ImageSource={TrophyImage}
@@ -166,8 +171,8 @@ export default function Game(props) {
 
     const failOverlay = () => {
         return <>
-            <Text style={{fontSize: 20, fontWeight: 'bold'}}>{SimonLang[props.lang].SoBad}</Text>
-            <Text style={{width: 190, fontSize: 18, marginBottom: 20, textAlign: 'center'}}>{SimonLang[props.lang].ScoreNotBeated}</Text>
+            <Text style={styles.headerOverlay}>{SimonLang[props.lang].SoBad}</Text>
+            <Text style={styles.textOverlay}>{SimonLang[props.lang].ScoreNotBeated}</Text>
         </>
     };
 
@@ -183,13 +188,23 @@ export default function Game(props) {
     <>
 
         {/* Overlay modal end of the game */}
-        {success ? <Overlay visible={success} overlayStyle={{padding: 40, borderRadius: 25, height: 300, alignContent: 'center', alignItems:'center'}} onBackdropPress={() => setSuccess(false)}>
+        <Overlay visible={success} overlayStyle={styles.overlayStyle} onBackdropPress={() => setSuccess(false)}>
             { dailyScore < order.length - 1 ? successOverlay() : failOverlay() }
             <View style={{flexDirection: 'row', marginTop: 30}}>
                 <Button raised onPress={() => { retryGame() }} title={SimonLang[props.lang].Retry} containerStyle={{borderRadius: 13, marginRight: 10}}/>
                 <Button raised onPress={() => { props.setConfetti(false); props.setTab(0); } } title={SimonLang[props.lang].Exit} containerStyle={{borderRadius: 13}} buttonStyle={{backgroundColor: 'red'}}/>
             </View>
-        </Overlay> : <></> }
+        </Overlay>
+
+        {/* Are you sure to exit - Overlay */}
+        <Overlay visible={props.modal} overlayStyle={styles.overlayStyle} onBackdropPress={() => props.setModal(false)}>
+            <Text style={styles.headerOverlay}>{SimonLang[props.lang].AreYouSure}</Text>
+            <Text style={styles.textOverlay}>{SimonLang[props.lang].ToGiveUp}</Text>
+            <View style={{flexDirection: 'row', marginTop: 15}}>
+                <Button raised onPress={() => { props.setModal(false) }} title={SimonLang[props.lang].Cancel} containerStyle={{borderRadius: 13, marginRight: 10}}/>
+                <Button raised onPress={() => { completeGame(); } } title={SimonLang[props.lang].TimeToStop} containerStyle={{borderRadius: 13}} buttonStyle={{backgroundColor: 'red'}}/>
+            </View>
+        </Overlay>
 
         {/* The first row of the Simon */}
         <View style={{flexDirection: 'row', marginBottom: 10}}>
@@ -223,7 +238,7 @@ export default function Game(props) {
             <View style={{alignContent: 'center', alignItems:'center'}}>
                 <Text style={{textAlign: 'center', fontSize: 18}}>{canPlay|| failed ? yourTurn() : SimonLang[props.lang].WaitNSee()}</Text>
                 <Text style={{textAlign: 'center'}}>{SimonLang[props.lang].Progress(order.length, game.length)}</Text>
-                <Button buttonStyle={{backgroundColor: 'red'}} containerStyle={{marginTop: 20, width: 150, borderRadius: 15}} raised title={SimonLang[props.lang].GiveUp} />
+                <Button onPress={() => props.setModal(true)} buttonStyle={{backgroundColor: 'red'}} containerStyle={{marginTop: 20, width: 150, borderRadius: 15}} raised title={SimonLang[props.lang].GiveUp} />
             </View> : <>
             <View flexDirection={"row"} style={{alignContent: 'center', alignItems:'center'}}>
                 <Button buttonStyle={{marginRight: 10, borderRadius: 13}} title={SimonLang[props.lang].Start} onPress={() => setStart(true)} />

@@ -62,5 +62,22 @@ export default StyleSheet.create({
         borderColor: '#ff8a00',
         borderWidth: 2
     },
+    overlayStyle: {
+        padding: 40,
+        borderRadius: 25,
+        height: 300,
+        alignContent: 'center',
+        alignItems:'center'
+    },
+    headerOverlay: {
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+    textOverlay: {
+        width: 190,
+        fontSize: 18,
+        marginBottom: 20,
+        textAlign: 'center'
+    }
 });
 

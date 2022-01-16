@@ -14,6 +14,7 @@ import styles from './styles';
 export default function Simon(props) {
   const [tab, setTab] = useState(0);
   const [sound, setSound] = useState(new Audio.Sound());
+  const [modal, setModal] = useState(false);
   const [confetti, setConfetti] = useState(false);
 
   useEffect(() => {
@@ -22,7 +23,13 @@ export default function Simon(props) {
     // BackHandler managment
     const backAction = () => {
         if (sound) sound.unloadAsync();
-        if (tab > 0) setTab(0);
+        if (tab > 0) {
+          if (tab != 1)
+            setTab(0);
+          else {
+            setModal(true);
+          }
+        }
         else props.setPage(null);
         return true;
     };
@@ -30,14 +37,16 @@ export default function Simon(props) {
       "hardwareBackPress",
       backAction
     );
-    return () => backHandler.remove();
+    return () => {
+      backHandler.remove();
+    }
   }, [tab]);
 
   const printPage = () => {
     if (tab == 0)
         return <Menu setTab={setTab} lang={props.lang} setPage={props.setPage} />
     else if (tab == 1)
-        return <Game setTab={setTab} lang={props.lang} personId={props.personId} sound={sound} setSound={setSound} setConfetti={setConfetti} />
+        return <Game setTab={setTab} lang={props.lang} personId={props.personId} sound={sound} setSound={setSound} modal={modal} setModal={setModal} setConfetti={setConfetti} />
     else if (tab == 2)
         return <Text>Tab 2 (Help)</Text>
     else 
