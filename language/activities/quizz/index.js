@@ -19,6 +19,8 @@ export const lang = {
         Leave: "Retour",
         NothingYet: "Aucun quizz crée pour le moment.",
         SuccessfulRatio: "Ratio de réussite",
+        AddQuestion: "Ajouter une question",
+        Complete: "Terminer la création",
     },
     en: {
         Play: "Play",
@@ -28,5 +30,7 @@ export const lang = {
         Leave: "Leave",
         NothingYet: "No quizz has been created yet.",
         SuccessfulRatio: "Success ratio",
+        AddQuestion: "Add a question",
+        Complete: "Complete the quizz creation",
     }
 };
