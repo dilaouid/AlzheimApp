@@ -37,6 +37,12 @@ export function addContent(quizzId, personId, content) {
     })
 };
 
+export async function deleteId(personId, quizzId) {
+    // @todo remove files linked to the quizz
+    await ContentDB.removeAsync({quizzId: quizzId}, {multi: true});
+    return db.removeAsync({_id: quizzId, personId: personId});
+};
+
 export async function reset() {
     await ContentDB.removeAsync({}, {multi: true});
     return db.removeAsync({}, { multi: true });
