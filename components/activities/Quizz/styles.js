@@ -29,6 +29,21 @@ export default StyleSheet.create({
     createButton: {
         width: 260,
         borderRadius: 15,
-    }
+    },
+    safeArea: {
+        backgroundColor: 'white',
+        marginTop: 1,
+        marginBottom: 40,
+        height:100+'%',
+        width: 100+'%'
+    },
+    nothingYet: {
+        textAlign:'center',
+        color:'gray',
+        marginTop: 30
+    },
+    loading: {
+        marginTop: 30
+    },
 });
 

@@ -17,6 +17,8 @@ export const lang = {
         Create: "Créer un quizz",
         Help: "Comment ça marche",
         Leave: "Retour",
+        NothingYet: "Aucun quizz crée pour le moment.",
+        SuccessfulRatio: "Ratio de réussite",
     },
     en: {
         Play: "Play",
@@ -24,5 +26,7 @@ export const lang = {
         Create: "Create a quizz",
         Help: "How does it works",
         Leave: "Leave",
+        NothingYet: "No quizz has been created yet.",
+        SuccessfulRatio: "Success ratio",
     }
 };
