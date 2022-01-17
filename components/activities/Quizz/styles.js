@@ -26,5 +26,9 @@ export default StyleSheet.create({
         borderRadius: 10,
         marginHorizontal: 5
     },
+    createButton: {
+        width: 260,
+        borderRadius: 15,
+    }
 });
 

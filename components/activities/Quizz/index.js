@@ -3,6 +3,8 @@ import { View, BackHandler } from 'react-native';
 import { Text } from 'react-native-elements';
 
 import Menu from './Menu';
+import ViewQuizz from './ViewQuizz';
+
 import * as API from '../../../data/quizzApi';
 
 import styles from './styles';
@@ -40,7 +42,7 @@ export default function Quizz(props) {
     else if (tab == 1)
         return <Text>Tab 1 (Play?)</Text>
     else if (tab == 2)
-        return <Text>Tab 2 (View?)</Text>
+        return <ViewQuizz setTab={setTab} lang={props.lang} setPage={props.setPage} quizz={quizz} />
     else if (tab == 3)
         return <Text>Tab 3 (Help?)</Text>
     else 
