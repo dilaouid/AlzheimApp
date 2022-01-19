@@ -22,6 +22,7 @@ export const lang = {
         ReturnToList: "Retour à la liste",
         NobodyYet: "La liste est vide (pour le moment...)",
         WrongFullname: "Le nom complet est obligatoire et doit contenir entre 2 et 25 caractères",
+        Search: "Rechercher une personne",
     },
     en: {
         Hello: (username) => {
@@ -37,5 +38,6 @@ export const lang = {
         ReturnToList: "Return to the list",
         NobodyYet: "The list is empty (for the moment...)",
         WrongFullname: "The full name is required and must contains between 2 and 25 characters",
+        Search: "Search a person",
     }
 };

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Text, View, Image, TouchableOpacity, SafeAreaView, ScrollView, ActivityIndicator, BackHandler } from 'react-native';
 import Swiper from 'react-native-swiper/src';
+import { Input } from 'react-native-elements';
 import { useNavigate, useLocation } from 'react-router-native';
 
 import LoadingBrain from '../../assets/img/home/loading_brain.gif'
@@ -15,6 +16,7 @@ import styles from './styles';
 export default function Home(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [persons, setPersons] = useState();
+    const [search, setSearch] = useState();
     const [index, setIndex] = useState(0);
     const [btnText, setBtnTxt] = useState(HomeLang[props.lang || lang].AddAPerson)
     const [active, setActive] = useState(true);
@@ -30,7 +32,7 @@ export default function Home(props) {
         if (!username || username?.trim()?.length < 2)
             navigate('/');
         else {
-            Person.get().then(data => {
+            Person.get(search).then(data => {
                 setPersons(data);
                 setIsLoading(false);
             });
@@ -40,7 +42,7 @@ export default function Home(props) {
           ( () => { return true; })
         );
         return () => backHandler.remove();
-    }, []);
+    }, [search]);
 
     const swipePage = (idx) => {
         if (idx == -1) idx = 1;
@@ -93,6 +95,7 @@ export default function Home(props) {
                     showsPagination={false} 
                     onIndexChanged={(e) => { changeIndex(e); }}>
                     <ScrollView>
+                        <Input placeholder={HomeLang[lang].Search} inputContainerStyle={styles.searchBar} onChangeText={ (e) => { setSearch(e) }} value={search} inputStyle={styles.searchInputStyle} />
                         {persons && persons.length > 0 ? printRows(persons) : <Text style={styles.nobodyYet}>{HomeLang[lang].NobodyYet}</Text> }
                     </ScrollView>
                     <ScrollView>
