@@ -50,7 +50,7 @@ export default function CreateQuizz(props) {
                             style={{ marginHorizontal: 5 }}
                         />
                     }
-                    disabled={createQuestion && disable ? true : false}
+                    disabled={ (createQuestion && disable) || (!createQuestion && content?.length === 0) ? true : false}
                 />
                 <FAB
                     color='red'
