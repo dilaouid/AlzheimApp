@@ -35,6 +35,7 @@ export const lang = {
         Dictaphone: 'Journal vocal',
         Quizz: 'Commencer un quizz',
         SuggestedActivities: 'Activités suggérées',
+        Back: 'Retour à la sélection',
 
         ReturnList: 'Retour',
     },
@@ -57,6 +58,7 @@ export const lang = {
         Quizz: 'Start a quizz',
         DoubleMemory: 'Double Memory',
         SuggestedActivities: 'Suggested activities',
+        Back: 'Return to the selection',
 
         ReturnList: 'Return',
     },
