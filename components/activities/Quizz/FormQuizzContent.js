@@ -13,76 +13,27 @@ import * as API from '../../../data/quizzApi';
 import styles from './styles';
 
 export default function FormQuizzContent(props) {
-    const [fileType, setFileType] = useState();
-    const [disable, setDisable] = useState(true);
     const [answer, setAnswer] = useState();
-    const [answers, setAnswers] = useState([]);
-    const [question, setQuestion] = useState();
-
-    useEffect( () => {
-        if (answers?.length > 0 && question) {
-            setDisable(false);
-        } else {
-            setDisable(true);
-        }
-    }, [answers, question]);
 
     const addAnswer = () => {
         setAnswer();
         if (answer?.trim()?.length === 0) {
             return null;
-        } else if (answers?.includes(answer?.trim()?.toLowerCase()) === false) {
-            setAnswers([...answers, answer?.trim()?.toLowerCase()]);
+        } else if (props.answers?.includes(answer?.trim()?.toLowerCase()) === false) {
+            props.setAnswers([...props.answers, answer?.trim()?.toLowerCase()]);
         }
         setAnswer();
     };
 
     const pickOutAnswer = (i) => {
-        const tmp = answers;
+        const tmp = props.answers;
         tmp.splice(i, 1)
-        setAnswers([...tmp]);
+        props.setAnswers([...tmp]);
     };
 
     return (
         <SafeAreaView style={styles.safeArea}>
             <ScrollView contentContainerStyle={styles.ScrollView}>
-                
-            <View style={{flexDirection: 'row', marginTop: 20, marginBottom: 40}}>
-                    <Button
-                        title={QuizzLang[props.lang].OK}
-                        buttonStyle={{
-                            borderRadius: 15,
-                            paddingHorizontal: 40
-                        }}
-                        disabled={disable}
-                        icon={
-                            <Icon
-                                name={'checkmark-circle-outline'}
-                                type={'ionicon'}
-                                color={'white'}
-                                size={15}
-                                style={{marginRight: 10}}
-                            />
-                        }
-                    />
-                    <Button
-                        title={QuizzLang[props.lang].Leave}
-                        buttonStyle={{ backgroundColor: 'red' }}
-                        containerStyle={{
-                            borderRadius: 15,
-                            marginHorizontal: 10
-                        }}
-                        icon={
-                            <Icon
-                                name={'caret-back-outline'}
-                                type={'ionicon'}
-                                color={'white'}
-                                size={15}
-                            />
-                        }
-                        onPress={() => props.setCreateQuestion(false)}
-                    />
-                </View>
                 <Button
                     title={QuizzLang[props.lang].ImportFile}
                     buttonStyle={{ borderRadius: 15 }}
@@ -92,11 +43,11 @@ export default function FormQuizzContent(props) {
                 </Text>
                 <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 45, flexShrink: 1, flexWrap:'wrap'}}>
                     <Input
-                        value={question}
+                        value={props.question}
                         inputStyle={{fontSize: 14}}
                         containerStyle={{marginBottom: 50}}
                         placeholder={QuizzLang[props.lang].WhatIsTheQuestion}
-                        onChangeText={(e) => setQuestion(e)}
+                        onChangeText={(e) => props.setQuestion(e)}
                     />
                     <View style={{flexDirection: 'row', alignItems: 'center', flexShrink: 1, flexWrap:'nowrap', width: 90 + '%'}}>
                     <Input
@@ -123,7 +74,7 @@ export default function FormQuizzContent(props) {
                     {QuizzLang[props.lang].WhatIsAnswer}
                 </Text>
                 <View style={{flexDirection: 'row', flexWrap:'wrap', alignItems:'center', alignContent:'center', marginBottom: 50}}>
-                    {answers.map( (el, i) => {
+                    {props.answers.map( (el, i) => {
                         return(
                             <Badge
                                 key={i}

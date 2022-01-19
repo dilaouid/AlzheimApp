@@ -20,22 +20,37 @@ import styles from './styles';
 export default function CreateQuizz(props) {
     const [createQuestion, setCreateQuestion] = useState(false);
     const [content, setContent] = useState([]);
+    const [disable, setDisable] = useState(true);
+
+    // Related to the Create Content Component
+    const [fileType, setFileType] = useState();
+    const [answers, setAnswers] = useState([]);
+    const [question, setQuestion] = useState();
+
+    useEffect( () => {
+        if (answers?.length > 0 && question) {
+            setDisable(false);
+        } else {
+            setDisable(true);
+        }
+    }, [answers, question]);
 
     return (
         <>
             <View style={{ flexDirection: 'row' }}>
                 <Button
-                    title={QuizzLang[props.lang].Complete}
+                    title={createQuestion ? QuizzLang[props.lang].OK : QuizzLang[props.lang].Complete}
                     containerStyle={styles.createButton}
                     icon={
                         <Icon
-                            name={'construct-outline'}
+                            name={createQuestion ? 'checkmark-circle-outline' : 'construct-outline'}
                             type={'ionicon'}
                             color={'white'}
                             size={15}
                             style={{ marginHorizontal: 5 }}
                         />
                     }
+                    disabled={createQuestion && disable ? true : false}
                 />
                 <FAB
                     color='red'
@@ -54,6 +69,12 @@ export default function CreateQuizz(props) {
                 <FormQuizzContent
                     lang={props.lang}
                     setCreateQuestion={setCreateQuestion}
+                    setAnswers={setAnswers}
+                    setFileType={setFileType}
+                    setQuestion={setQuestion}
+                    answers={answers}
+                    fileType={fileType}
+                    question={question}
                 /> :
                 <SafeAreaView style={styles.safeArea}>
                     <Button
