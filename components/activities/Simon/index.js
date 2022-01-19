@@ -23,7 +23,7 @@ export default function Simon(props) {
                 sound.unloadAsync();
             }
             if (tab > 0) {
-                if (tab != 1) {
+                if (tab !== 1) {
                     setTab(0);
                 } else {
                     setModal(true);
@@ -43,7 +43,7 @@ export default function Simon(props) {
     }, [tab]);
 
     const printPage = () => {
-        if (tab == 0) {
+        if (tab === 0) {
             return (
                 <Menu
                     setTab={setTab}
@@ -51,7 +51,7 @@ export default function Simon(props) {
                     setPage={props.setPage}
                 />
             );
-        } else if (tab == 1) {
+        } else if (tab === 1) {
             return (
                 <Game
                     setTab={setTab}
@@ -63,7 +63,7 @@ export default function Simon(props) {
                     setModal={setModal}
                 />
             );
-        } else if (tab == 2) {
+        } else if (tab === 2) {
             return <Text>Tab 2 (Help)</Text>;
         } else {
             return <Text>Invalid tab</Text>;

@@ -36,7 +36,7 @@ export default function Game(props) {
 
     useEffect(async () => {
         // API.clear(props.personId);
-        if (start == false) {
+        if (start === false) {
             setLoading(true);
             API.getBestScore(props.personId).then((data) => {
                 if (data.length > 0) {
@@ -142,9 +142,9 @@ export default function Game(props) {
                 await sound.unloadAsync();
                 setButtonClicked(-1);
             }, time - 320);
-            if (game[game.length - 1] != order[game.length - 1]) {
+            if (game[game.length - 1] !== order[game.length - 1]) {
                 await failRound(time);
-            } else if (game.length == order.length) {
+            } else if (game.length === order.length) {
                 await successRound(time, sound);
             }
         }
@@ -329,7 +329,7 @@ export default function Game(props) {
                         styles.SimonButton,
                         styles.SimonLeftButton,
                         styles.SimonGreen,
-                        buttonClicked == 0 ? styles.clickedButton : '',
+                        buttonClicked === 0 ? styles.clickedButton : '',
                     ]}
                     onStartShouldSetResponder={() => true}
                     onResponderGrant={() => playButton(0)}
@@ -338,7 +338,7 @@ export default function Game(props) {
                     style={[
                         styles.SimonButton,
                         styles.SimonRed,
-                        buttonClicked == 1 ? styles.clickedButton : '',
+                        buttonClicked === 1 ? styles.clickedButton : '',
                     ]}
                     onStartShouldSetResponder={() => true}
                     onResponderGrant={() => playButton(1)}
@@ -352,7 +352,7 @@ export default function Game(props) {
                         styles.SimonButton,
                         styles.SimonLeftButton,
                         styles.SimonYellow,
-                        buttonClicked == 2 ? styles.clickedButton : '',
+                        buttonClicked === 2 ? styles.clickedButton : '',
                     ]}
                     onStartShouldSetResponder={() => true}
                     onResponderGrant={() => playButton(2)}
@@ -361,7 +361,7 @@ export default function Game(props) {
                     style={[
                         styles.SimonButton,
                         styles.SimonBlue,
-                        buttonClicked == 3 ? styles.clickedButton : '',
+                        buttonClicked === 3 ? styles.clickedButton : '',
                     ]}
                     onStartShouldSetResponder={() => true}
                     onResponderGrant={() => playButton(3)}

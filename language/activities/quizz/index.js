@@ -2,9 +2,9 @@ import { Text } from 'react-native';
 
 const applyBoldStyle = (text, clr) => {
     var color = '#3B8EFF';
-    if (clr == 'red') {
+    if (clr === 'red') {
         color = '#FF5755';
-    } else if (clr == 'green') {
+    } else if (clr === 'green') {
         color = '#459449';
     }
     let numberOfItemsAdded = 0;

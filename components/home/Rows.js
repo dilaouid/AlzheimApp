@@ -13,7 +13,7 @@ export default function Rows(props) {
             ? require('react-native-touchable-scale').default
             : null;
     let mod =
-        props.index % 2 == 0
+        props.index % 2 === 0
             ? { backgroundColor: 'white' }
             : { backgroundColor: '#f3f3f3' };
     let componentProps =

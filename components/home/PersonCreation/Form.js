@@ -31,7 +31,7 @@ export default function Form(props) {
                       props.lang
                   );
         const result = await cb;
-        if (result.success == false) {
+        if (result.success === false) {
             if (result.hasOwnProperty('fullname')) {
                 setFullnameError(InterfaceLang[props?.lang].RequiredField);
             }
@@ -42,7 +42,7 @@ export default function Form(props) {
             }
             return false;
         } else {
-            if (personId == 0) {
+            if (personId === 0) {
                 personId = result._id;
             }
             if (props.image?.length > 0) {
@@ -63,7 +63,7 @@ export default function Form(props) {
                             picture: path + `/${imgName}.jpg`,
                         })
                             .then((data) => {
-                                if (props.edit == false) {
+                                if (props.edit === false) {
                                     result.picture = path + `/${imgName}.jpg`;
                                     props.addPerson((persons) => [
                                         ...persons,
@@ -85,7 +85,7 @@ export default function Form(props) {
                         console.log('filesystem err:', err);
                     });
             } else {
-                if (props.edit == false) {
+                if (props.edit === false) {
                     props.addPerson((persons) => [...persons, result]);
                 } else {
                     props.setFullnameHeader(props.fullname?.trim());
@@ -107,7 +107,7 @@ export default function Form(props) {
             return;
         }
 
-        if (Platform.OS == 'web') {
+        if (Platform.OS === 'web') {
             alert('todo');
         } else {
             try {

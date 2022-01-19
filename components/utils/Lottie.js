@@ -4,7 +4,7 @@ import { Platform, Image } from 'react-native';
 
 const Lottie = (props) => {
     {
-        return Platform.OS != 'web' ? (
+        return Platform.OS !== 'web' ? (
             <LottieView
                 style={props.LottieStyle}
                 source={props.LottieSource}

@@ -21,7 +21,7 @@ export default function Rows(props) {
             });
             setIsPlaying(false);
             const getSoundStatus = await sound?.getStatusAsync();
-            if (getSoundStatus?.isLoaded == false) {
+            if (getSoundStatus?.isLoaded === false) {
                 await sound.loadAsync({ uri: props.path });
                 setSound(sound);
                 props.setPlayingSounds([...props.playingSounds, sound]);
@@ -60,7 +60,7 @@ export default function Rows(props) {
             ? require('react-native-touchable-scale').default
             : null;
     let mod =
-        props.index % 2 == 0
+        props.index % 2 === 0
             ? { backgroundColor: 'white' }
             : { backgroundColor: '#f3f3f3' };
     let componentProps =

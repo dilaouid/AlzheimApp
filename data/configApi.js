@@ -30,7 +30,7 @@ export async function getConfig() {
     // AsyncStorage.clear().then(() => console.log('Cleared'))
     const username = await db
         .findAsync({ username: { $exists: true } }, (err, docs) => {
-            if (docs.length == 0) {
+            if (docs.length === 0) {
                 db.insertAsync({
                     username: '',
                 });
@@ -45,7 +45,7 @@ export async function getConfig() {
 
     const hasSeenTutorial = await db
         .findAsync({ hasSeenTutorial: { $exists: true } }, (err, docs) => {
-            if (docs.length == 0) {
+            if (docs.length === 0) {
                 db.insertAsync({
                     hasSeenTutorial: false,
                 });

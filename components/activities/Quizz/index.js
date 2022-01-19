@@ -47,7 +47,7 @@ export default function Quizz(props) {
     }, [tab]);
 
     const printPage = () => {
-        if (tab == 0) {
+        if (tab === 0) {
             return (
                 <Menu
                     setTab={setTab}
@@ -56,9 +56,9 @@ export default function Quizz(props) {
                     quizz={quizz}
                 />
             );
-        } else if (tab == 1) {
+        } else if (tab === 1) {
             return <Text>Tab 1 (Play?)</Text>;
-        } else if (tab == 2) {
+        } else if (tab === 2) {
             return (
                 <ViewQuizz
                     loading={isLoading}
@@ -68,9 +68,9 @@ export default function Quizz(props) {
                     quizz={quizz}
                 />
             );
-        } else if (tab == 3) {
+        } else if (tab === 3) {
             return <Text>Tab 3 (Help?)</Text>;
-        } else if (tab == 4) {
+        } else if (tab === 4) {
             return (
                 <CreateQuizz
                     setTab={setTab}

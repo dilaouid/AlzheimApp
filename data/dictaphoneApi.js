@@ -12,7 +12,7 @@ export const db = new Datastore({
 });
 
 export function create(record, lang) {
-    if (record?.name?.length == 0) {
+    if (record?.name?.length === 0) {
         record.name = DictaphoneLang[lang].Untiled;
     }
     return db.insertAsync({

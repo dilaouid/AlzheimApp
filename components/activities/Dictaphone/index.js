@@ -201,7 +201,7 @@ export default function Dictaphone(props) {
 
             {/* Modal confirmation deletion */}
             <Overlay
-                visible={deleteId != 0}
+                visible={deleteId !== 0}
                 overlayStyle={styles.overlay}
                 ModalComponent={Modal}
             >

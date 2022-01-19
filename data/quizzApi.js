@@ -41,12 +41,12 @@ export function addContent(quizzId, personId, content) {
     if (!data) {
         return null;
     }
-    if (['audio', 'image'].includes(content.type) && content.path == null) {
+    if (['audio', 'image'].includes(content.type) && content.path === null) {
         console.error(
             'A path is required when the type is "audio" or "image".'
         );
         return null;
-    } else if (!content.question || content.answers?.length == 0) {
+    } else if (!content.question || content.answers?.length === 0) {
         console.error('Please fill the required fields');
         return null;
     }

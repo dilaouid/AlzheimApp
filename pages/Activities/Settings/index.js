@@ -84,7 +84,7 @@ export default function Settings(props) {
     };
     return (
         <View style={{ flex: 1 }}>
-            {edit == false ? (
+            {edit === false ? (
                 <ScrollView style={{ flex: 1 }}>
                     <Button
                         icon={{
