@@ -14,9 +14,18 @@ import styles from './styles';
 
 export default function FormQuizzContent(props) {
     const [fileType, setFileType] = useState();
+    const [disable, setDisable] = useState(true);
     const [answer, setAnswer] = useState();
     const [answers, setAnswers] = useState([]);
     const [question, setQuestion] = useState();
+
+    useEffect( () => {
+        if (answers?.length > 0 && question) {
+            setDisable(false);
+        } else {
+            setDisable(true);
+        }
+    }, [answers, question]);
 
     const addAnswer = () => {
         setAnswer();
@@ -45,6 +54,7 @@ export default function FormQuizzContent(props) {
                             borderRadius: 15,
                             paddingHorizontal: 40
                         }}
+                        disabled={disable}
                         icon={
                             <Icon
                                 name={'checkmark-circle-outline'}
