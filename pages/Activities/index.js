@@ -31,7 +31,7 @@ export default function Activities() {
     useEffect(() => {
         Person.getById(personId.id)
             .then((result) => {
-                if (!result || result?.length == 0) {
+                if (!result || result?.length === 0) {
                     navigate('/home');
                 }
                 setPerson(result[0]);
