@@ -63,7 +63,7 @@ jobs:
       #  run: npm run test-headless
 
       - name: Build Web
-        run: WEB_PUBLIC_URL=/AlzheimApp/ npm run build:web
+        run: npm run build:web
 
   deployment:
     name: Deployment
@@ -71,6 +71,9 @@ jobs:
     needs: [build]
     if: github.ref == 'refs/heads/main'
     steps:
+      - name: Build Web Stage
+        run: WEB_PUBLIC_URL=/AlzheimApp/ npm run build:web
+
       - name: Deploy Web Stage
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
