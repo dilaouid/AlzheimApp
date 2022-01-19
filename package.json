@@ -1,8 +1,25 @@
 {
   "name": "AlzheimApp",
+  "description": "Cognitive brain training application for people with alzheimer",
   "version": "1.0.0",
   "main": "index.js",
-  "private": true,
+  "private": false,
+  "license": "GPLv3",
+  "author": "Diyaeddine LAOUID",
+  "contributors": [
+    "Harold Thetiot"
+  ],
+  "keywords": [
+    "alzheimer",
+    "Cognitive"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dilaouid/AlzheimApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dilaouid/AlzheimApp/issues"
+  },
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
