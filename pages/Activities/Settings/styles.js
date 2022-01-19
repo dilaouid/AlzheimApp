@@ -19,6 +19,11 @@ export default StyleSheet.create({
         height: 40,
         backgroundColor:'red'
     },
+    buttonStyleBack:{
+        width: 250,
+        height: 40,
+        backgroundColor:'#5EA1E4'
+    },
     buttonStyleDebug:{
         width: 250,
         height: 40,

@@ -120,6 +120,18 @@ export default function Settings(props) {
                 />
                 <Button
                     icon={{
+                        name: 'caret-left',
+                        type: 'font-awesome',
+                        size: 15,
+                        color: 'white',
+                    }}
+                    iconContainerStyle={{marginRight: 10}}
+                    buttonStyle={styles.buttonStyleBack} containerStyle={styles.containerStyle}
+                    title={ActivitiesLang[props.lang]?.Back}
+                    onPress={() => { navigate('/home'); }}
+                />
+                <Button
+                    icon={{
                         name: 'bug',
                         type: 'font-awesome',
                         size: 15,
