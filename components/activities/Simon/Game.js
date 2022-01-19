@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { View, Modal } from 'react-native';
 import { Text, Button, Overlay } from 'react-native-elements';
 import { lang as SimonLang } from '../../../language/activities/simon';
 import { Audio } from 'expo-av';
@@ -203,7 +203,7 @@ export default function Game(props) {
         {confetti ? <ConfettiCannon fadeOut={true} autoStart={true} fallSpeed={6000} count={50} origin={{x: -20, y: -35}} /> : <></> }
 
         {/* Overlay modal end of the game */}
-        {success ? <Overlay visible={success} overlayStyle={styles.overlayStyle} onBackdropPress={() => setSuccess(false)}>
+        {success ? <Overlay visible={success} overlayStyle={styles.overlayStyle} onBackdropPress={() => setSuccess(false)} ModalComponent={Modal}>
             { scoreBeaten ? successOverlay() : failOverlay() }
             <View style={{flexDirection: 'row', marginTop: 30}}>
                 <Button raised onPress={() => { retryGame() }} title={SimonLang[props.lang].Retry} containerStyle={{borderRadius: 13, marginRight: 10}}/>
@@ -212,7 +212,7 @@ export default function Game(props) {
         </Overlay> : <></>}
 
         {/* Are you sure to exit - Overlay */}
-        <Overlay visible={props.modal} overlayStyle={styles.overlayStyle} onBackdropPress={() => props.setModal(false)}>
+        <Overlay visible={props.modal} overlayStyle={styles.overlayStyle} onBackdropPress={() => props.setModal(false)} ModalComponent={Modal}>
             <Text style={styles.headerOverlay}>{SimonLang[props.lang].AreYouSure}</Text>
             <Text style={styles.textOverlay}>{SimonLang[props.lang].ToGiveUp}</Text>
             <View style={{flexDirection: 'row', marginTop: 15}}>
