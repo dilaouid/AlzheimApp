@@ -1,23 +1,23 @@
-const commonConfig = require("./app.json");
+const commonConfig = require('./app.json');
 
 module.exports = () => {
-  if (process.env.APP_ENV === "production") {
-    const config = require("./app.production.json");
+  if (process.env.APP_ENV === 'production') {
+    const config = require('./app.production.json');
     return {
       ...commonConfig,
-      ...config
+      ...config,
     };
-  } else if (process.env.APP_ENV === "staging") {
-    const config = require("./app.staging.json");
+  } else if (process.env.APP_ENV === 'staging') {
+    const config = require('./app.staging.json');
     return {
       ...commonConfig,
-      ...config
+      ...config,
     };
   } else {
-    const config = require("./app.development.json");
+    const config = require('./app.development.json');
     return {
       ...commonConfig,
-      ...config
+      ...config,
     };
   }
 };

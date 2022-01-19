@@ -20,45 +20,59 @@ export default function Quizz(props) {
   useEffect(() => {
     // API.reset();
 
-    API.get(props.personId).then(data => {
-        // setQuizz(['test'])
-        if (data.length > 0) setQuizz(data);
-        setIsLoading(false);
+    API.get(props.personId).then((data) => {
+      // setQuizz(['test'])
+      if (data.length > 0) {setQuizz(data);}
+      setIsLoading(false);
     });
 
     // BackHandler managment
     const backAction = () => {
-        if (tab > 0) setTab(0);
-        else props.setPage(null);
-        return true;
+      if (tab > 0) {setTab(0);}
+      else {props.setPage(null);}
+      return true;
     };
     const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       backAction
     );
     return () => {
       backHandler.remove();
-    }
+    };
   }, [tab]);
 
   const printPage = () => {
     if (tab == 0)
-        return <Menu setTab={setTab} lang={props.lang} setPage={props.setPage} quizz={quizz} />
-    else if (tab == 1)
-        return <Text>Tab 1 (Play?)</Text>
+      return (
+        <Menu
+          setTab={setTab}
+          lang={props.lang}
+          setPage={props.setPage}
+          quizz={quizz}
+        />
+      );
+    else if (tab == 1) return <Text>Tab 1 (Play?)</Text>;
     else if (tab == 2)
-        return <ViewQuizz loading={isLoading} setTab={setTab} lang={props.lang} setPage={props.setPage} quizz={quizz} />
-    else if (tab == 3)
-        return <Text>Tab 3 (Help?)</Text>
+      return (
+        <ViewQuizz
+          loading={isLoading}
+          setTab={setTab}
+          lang={props.lang}
+          setPage={props.setPage}
+          quizz={quizz}
+        />;
+      );
+    else if (tab == 3) return <Text>Tab 3 (Help?)</Text>;
     else if (tab == 4)
-        return <CreateQuizz setTab={setTab} lang={props.lang} setPage={props.setPage} />
-    else 
-        return <Text>Invalid tab</Text>
+      return (
+        <CreateQuizz
+          setTab={setTab}
+          lang={props.lang}
+          setPage={props.setPage}
+        />;
+      );
+    else return <Text>Invalid tab</Text>;
   };
 
-  return (
-    <View style={styles.view}>
-        { printPage() }
-    </View>
-  );
-};
+  return <View style={styles.view}>{printPage()}</View>;
+}

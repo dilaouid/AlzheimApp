@@ -22,35 +22,36 @@ export default function CreatePerson(props) {
     setImage('');
     setDescription('');
     setSuccess(false);
-  }
+  };
 
   const compProps = {
-    lang:props.lang,
+    lang: props.lang,
 
-    fullname:fullname,
-    setFullname:setFullname,
+    fullname: fullname,
+    setFullname: setFullname,
 
-    image:image,
-    setImage:setImage,
+    image: image,
+    setImage: setImage,
 
-    uriPreview:uriPreview,
-    setUriPreview:setUriPreview,
+    uriPreview: uriPreview,
+    setUriPreview: setUriPreview,
 
-    description:description,
-    setDescription:setDescription,
-  }
+    description: description,
+    setDescription: setDescription,
+  };
 
   return (
     <View style={styles.view}>
-      {success ?
-      <Success {...compProps} close={clear} edit={false} /> :
-      <Form
-        {...compProps}
-        edit={false}
-        persons={props.persons}
-        addPerson={props.setPersons}
-        
+      {success ? (
+        <Success {...compProps} close={clear} edit={false} />
+      ) : (
+        <Form
+          {...compProps}
+          edit={false}
+          persons={props.persons}
+          addPerson={props.setPersons}
+
         scs={good} />}
     </View>
   );
-};
+}
