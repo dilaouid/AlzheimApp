@@ -1,0 +1,9 @@
+{
+	"privacy": "public",
+	"platforms": ["web"],
+	"web": {
+		"build": {
+	  		"publicPath": "/AlzheimApp/"
+		}
+	}
+}
