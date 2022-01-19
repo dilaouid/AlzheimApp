@@ -33,7 +33,7 @@ export const lang = {
         Simon: 'Jouer au Simon',
         DoubleMemory: 'Jeu des pairs',
         Dictaphone: 'Journal vocal',
-        Quizz: 'Commencer un quizz',
+        Quizz: 'Jouer à un quizz',
         SuggestedActivities: 'Activités suggérées',
         Back: 'Retour à la sélection',
 
