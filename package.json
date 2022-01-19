@@ -2,6 +2,7 @@
   "name": "AlzheimApp",
   "version": "1.0.0",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
@@ -9,7 +10,10 @@
     "web": "expo start --web",
     "prettify": "prettier --write .  --config ./.prettierrc",
     "lint": "eslint --ext js,ts,tsx .",
-    "build:web": "expo build:web --config ./app.web-build.json"
+    "build:web": "expo build:web",
+    "build:ios": "expo build:ios",
+    "build:android": "expo build:android",
+    "config": "expo config --type public"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "~1.15.0",
@@ -57,6 +61,5 @@
     "expo-status-bar": "~1.2.0",
     "eslint": "^7.3.1",
     "@react-native-community/eslint-config": "^2.0.0"
-  },
-  "private": true
+  }
 }
