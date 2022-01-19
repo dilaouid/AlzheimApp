@@ -59,6 +59,7 @@ export default StyleSheet.create({
     },
     ScrollView: {
         alignItems: 'center',
-        marginTop: 30
+        marginVertical: 30,
+        paddingBottom: 40
     }
 });
