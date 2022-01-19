@@ -1,4 +1,5 @@
 {
+  "name": "AlzheimApp",
   "expo": {
     "name": "AlzheimApp",
     "slug": "AlzheimApp",
@@ -15,5 +16,4 @@
       ]
     ]
   },
-  "name": "AlzheimApp"
 }
