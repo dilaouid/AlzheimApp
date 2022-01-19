@@ -53,10 +53,10 @@ export default function Home(props) {
             }
         );
         return () => backHandler.remove();
-    }, []);
+    }, [navigate, username]);
 
     const swipePage = (idx) => {
-        if (idx == -1) {
+        if (idx === -1) {
             idx = 1;
         }
         swiper.current.scrollBy(idx - index, true);
@@ -65,9 +65,9 @@ export default function Home(props) {
     const changeIndex = (idx) => {
         setIndex(idx);
         setTimeout(() => {
-            if (idx == 0) {
+            if (idx === 0) {
                 setBtnTxt(HomeLang[lang].AddAPerson);
-            } else if (idx == 1) {
+            } else if (idx === 1) {
                 setBtnTxt(HomeLang[lang].ReturnToList);
             }
             setActive(true);
@@ -109,7 +109,7 @@ export default function Home(props) {
                     style={styles.button}
                     activeOpacity={0.4}
                     onPress={(e) => {
-                        if (active == false) {
+                        if (active === false) {
                             return;
                         }
                         setActive(false);
