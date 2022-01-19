@@ -35,7 +35,7 @@ export default StyleSheet.create({
         marginTop: 1,
         marginBottom: 40,
         height: 100 + '%',
-        width: 100 + '%',
+        width: 100 + '%'
     },
     nothingYet: {
         textAlign: 'center',
@@ -45,4 +45,19 @@ export default StyleSheet.create({
     loading: {
         marginTop: 30,
     },
+    overlay: {
+        borderRadius: 20,
+        paddingHorizontal: 45,
+        paddingVertical: 30,
+        alignItems: 'center',
+    },
+    overlayDescriptionReference: {
+        width: 250,
+        textAlign: 'center',
+        color: '#495058',
+        marginVertical: 15
+    },
+    ScrollView: {
+        alignItems: 'center'
+    }
 });

@@ -43,7 +43,6 @@ export default function ViewQuizz(props) {
                     }}
                 />
                 <Button
-                    title={{}}
                     buttonStyle={{ backgroundColor: 'red' }}
                     containerStyle={{
                         borderRadius: 15,
