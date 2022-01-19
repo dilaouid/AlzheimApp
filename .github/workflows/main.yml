@@ -61,5 +61,11 @@ jobs:
       #- name: Test Headless
       #  run: npm run test-headless
 
-      #- name: Build
-      #  run: npm run build-stage
+      - name: Build Web
+        run: npm run build:web
+
+      - name: Deploy Web Stage
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: web-build # The folder the action should deploy.
