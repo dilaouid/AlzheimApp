@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
@@ -17,11 +17,11 @@ export default StyleSheet.create({
     heading: {
         marginTop: -190,
         fontSize: 20,
-        zIndex: 2
+        zIndex: 2,
     },
     boldtext: {
         fontWeight: 'bold',
-        color: "#3B8EFF"
+        color: '#3B8EFF',
     },
     subtitle: {
         textAlign: 'center',
@@ -31,24 +31,24 @@ export default StyleSheet.create({
         width: 200,
     },
     button: {
-        backgroundColor: "#3B8EFF",
+        backgroundColor: '#3B8EFF',
         marginVertical: 25,
         height: 40,
         width: 500,
         borderRadius: 20,
-        overflow: 'hidden'
+        overflow: 'hidden',
     },
     buttonText: {
         color: 'white',
         textAlign: 'center',
-        marginTop: 10
+        marginTop: 10,
     },
     viewList: {
         textAlign: 'center',
         alignItems: 'center',
         borderBottomColor: 'grey',
         borderBottomWidth: 0.9,
-        overflow: 'hidden'
+        overflow: 'hidden',
     },
     safeContainer: {
         flex: 1,
@@ -57,15 +57,14 @@ export default StyleSheet.create({
         textAlign: 'center',
         marginVertical: 60,
         color: 'grey',
-        fontStyle: 'italic'
+        fontStyle: 'italic',
     },
     searchBar: {
-        marginBottom: -25
+        marginBottom: -25,
     },
     searchInputStyle: {
-        textAlign:'center',
+        textAlign: 'center',
         color: '#495058',
-        fontSize: 15
-    }
+        fontSize: 15,
+    },
 });
-

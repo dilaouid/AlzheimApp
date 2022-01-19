@@ -1,33 +1,32 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     containerStyle: {
-        alignItems:'center',
+        alignItems: 'center',
         marginTop: 20,
         marginBottom: 10,
     },
-    buttonStyle:{
+    buttonStyle: {
         width: 250,
         height: 40,
     },
-    buttonStyleReturn:{
+    buttonStyleReturn: {
         width: 200,
         height: 40,
     },
-    buttonStyleDelete:{
+    buttonStyleDelete: {
         width: 250,
         height: 40,
-        backgroundColor:'red'
+        backgroundColor: 'red',
     },
-    buttonStyleBack:{
+    buttonStyleBack: {
         width: 250,
         height: 40,
-        backgroundColor:'#5EA1E4'
+        backgroundColor: '#5EA1E4',
     },
-    buttonStyleDebug:{
+    buttonStyleDebug: {
         width: 250,
         height: 40,
-        backgroundColor:'orange'
+        backgroundColor: 'orange',
     },
 });
-

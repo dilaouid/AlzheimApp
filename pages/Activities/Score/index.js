@@ -6,8 +6,8 @@ import styles from './styles';
 
 export default function Score(props) {
     return (
-        <ScrollView style={{flex: 1}}>
+        <ScrollView style={{ flex: 1 }}>
             <Text>todo</Text>
         </ScrollView>
     );
-};
+}

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     wrapper: {
@@ -32,37 +32,36 @@ export default StyleSheet.create({
             height: 0,
             width: 0,
         },
-        elevation: 2
+        elevation: 2,
     },
     image: {
         flex: 1,
         width: 200,
     },
     buttonContainer: {
-        alignItems: "stretch",
-        width: 100
+        alignItems: 'stretch',
+        width: 100,
     },
     button: {
-        backgroundColor:'rgba(40, 30, 255, 0.8)',
-        borderRadius:10,
+        backgroundColor: 'rgba(40, 30, 255, 0.8)',
+        borderRadius: 10,
         width: 80,
-        marginLeft: 10
+        marginLeft: 10,
     },
     buttonText: {
-        paddingTop:10,
+        paddingTop: 10,
         color: 'white',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     slide: {
         flex: 1,
-        padding: 20
+        padding: 20,
     },
     viewrow: {
         alignContent: 'center',
-        width: 100+'%',
-        flexDirection: "row",
-        flexWrap: "nowrap",
-        justifyContent: 'center'
-    }
+        width: 100 + '%',
+        flexDirection: 'row',
+        flexWrap: 'nowrap',
+        justifyContent: 'center',
+    },
 });
-

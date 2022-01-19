@@ -1,26 +1,26 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     rightButton: {
         minHeight: '100%',
-        backgroundColor: 'red'
+        backgroundColor: 'red',
     },
     imageSuccess: {
         width: 300,
-        height: 300
+        height: 300,
     },
     leftButton: {
-        minHeight: '100%'
+        minHeight: '100%',
     },
     view: {
         alignItems: 'center',
         alignSelf: 'center',
         marginVertical: 20,
-        width: 100 + '%'
+        width: 100 + '%',
     },
     btnImport: {
         borderRadius: 50,
-        width: 220
+        width: 220,
     },
     btnSave: {
         width: 290,
@@ -29,7 +29,7 @@ export default StyleSheet.create({
         width: 100,
         height: 100,
         borderRadius: 100,
-        marginBottom: 10
+        marginBottom: 10,
     },
     successPageTitle: {
         alignSelf: 'center',
@@ -38,7 +38,6 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 24,
         color: '#788bff',
-        marginBottom: 10
-    }
+        marginBottom: 10,
+    },
 });
-

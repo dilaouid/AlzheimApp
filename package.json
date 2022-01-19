@@ -27,6 +27,7 @@
     "web": "expo start --web",
     "prettify": "prettier --write .  --config ./.prettierrc",
     "lint": "eslint --ext js,ts,tsx .",
+    "lint-fix": "eslint --fix --ext js,ts,tsx .",
     "build:web": "expo build:web",
     "build:ios": "expo build:ios",
     "build:android": "expo build:android",

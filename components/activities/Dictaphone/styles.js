@@ -1,65 +1,64 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     view: {
         marginVertical: 20,
         flex: 1,
-        alignItems:'center',
+        alignItems: 'center',
     },
     containerStyle: {
-        width: 40+'%',
+        width: 40 + '%',
     },
     recordButton: {
         backgroundColor: 'red',
     },
     titleButton: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     actionButtonsView: {
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     actionButtons: {
-        marginHorizontal: 5
+        marginHorizontal: 5,
     },
     safeArea: {
         backgroundColor: 'white',
         marginBottom: 40,
-        height:100+'%',
-        width: 100+'%'
+        height: 100 + '%',
+        width: 100 + '%',
     },
     loading: {
-        alignContent:'center',
-        marginTop: 30
+        alignContent: 'center',
+        marginTop: 30,
     },
     nothingYet: {
-        textAlign:'center',
-        color:'gray',
-        marginTop: 30
+        textAlign: 'center',
+        color: 'gray',
+        marginTop: 30,
     },
     divider: {
-        width: 100+'%',
-        marginTop: 20
+        width: 100 + '%',
+        marginTop: 20,
     },
     overlay: {
         borderRadius: 20,
         paddingHorizontal: 45,
         paddingVertical: 30,
-        alignItems: 'center'
+        alignItems: 'center',
     },
     overlayTitle: {
         fontWeight: 'bold',
-        textAlign:'center',
+        textAlign: 'center',
         fontSize: 18,
-        marginVertical: 10
+        marginVertical: 10,
     },
     overlayDescription: {
-        textAlign:'center',
+        textAlign: 'center',
         marginVertical: 10,
-        width: 160
+        width: 160,
     },
     overlayInput: {
         fontSize: 14,
-        marginHorizontal: 10
+        marginHorizontal: 10,
     },
 });
-
