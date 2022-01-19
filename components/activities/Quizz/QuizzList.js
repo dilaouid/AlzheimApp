@@ -37,7 +37,7 @@ export default function QuizzList(props) {
                 name={'trash-outline'}
                 type={'ionicon'}
                 color={'red'}
-                onPress={(e) => {
+                onPress={() => {
                     props.deleteId(props._id);
                 }}
             />

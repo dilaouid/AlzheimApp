@@ -26,7 +26,6 @@ export default function ViewQuizz(props) {
         <>
             <View style={{ flexDirection: 'row' }}>
                 <Button
-                    raised
                     title={QuizzLang[props.lang].Create}
                     containerStyle={styles.createButton}
                     icon={

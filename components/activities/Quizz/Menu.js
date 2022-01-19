@@ -17,8 +17,7 @@ export default function Menu(props) {
                 <Button
                     title={QuizzLang[props.lang].Play}
                     containerStyle={styles.button}
-                    raised
-                    onPress={(e) => props.setTab(1)}
+                    onPress={() => props.setTab(1)}
                     icon={
                         <Icon
                             name={'play-outline'}
@@ -36,8 +35,7 @@ export default function Menu(props) {
             <Button
                 title={QuizzLang[props.lang].View}
                 containerStyle={styles.button}
-                raised
-                onPress={(e) => props.setTab(2)}
+                onPress={() => props.setTab(2)}
                 icon={
                     <Icon
                         name={'book-outline'}
@@ -52,8 +50,7 @@ export default function Menu(props) {
             <Button
                 title={QuizzLang[props.lang].Help}
                 containerStyle={styles.button}
-                raised
-                onPress={(e) => props.setTab(3)}
+                onPress={() => props.setTab(3)}
                 icon={
                     <Icon
                         name={'help-circle-outline'}
@@ -69,7 +66,6 @@ export default function Menu(props) {
                 title={QuizzLang[props.lang].Leave}
                 buttonStyle={{ backgroundColor: 'red' }}
                 containerStyle={styles.leaveButton}
-                raised
                 onPress={() => props.setPage(null)}
                 icon={
                     <Icon
