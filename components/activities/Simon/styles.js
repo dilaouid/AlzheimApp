@@ -35,8 +35,8 @@ export default StyleSheet.create({
     },
     SimonButton: {
         flex: 1,
-        width: 250,
-        height: 135,
+        width: 50,
+        height: 125,
         borderRadius: 10,
         opacity: 0.5,
     },
