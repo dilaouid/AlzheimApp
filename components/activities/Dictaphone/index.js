@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, BackHandler, ScrollView, SafeAreaView, ActivityIndicator } from 'react-native';
+import { View, BackHandler, ScrollView, SafeAreaView, ActivityIndicator, Platform, Modal } from 'react-native';
 
-import { Button, Divider, Text } from 'react-native-elements';
+import { Button, Divider, Text, Overlay, Input, Icon } from 'react-native-elements';
 import { Audio } from 'expo-av';
 import { lang as DictaphoneLang } from '../../../language/activities/dictaphone';
-import Dialog from "react-native-dialog";
+
 import Rows from './Rows';
 
 import * as API from '../../../data/dictaphoneApi';
@@ -127,30 +127,40 @@ export default function Dictaphone(props) {
     <View style={styles.view}>
 
         {/* Modal confirmation creation */}
-        <Dialog.Container visible={modal} contentStyle={{borderRadius: 20}}>
-            <Dialog.Title style={{fontWeight: 'bold'}}>
-                {DictaphoneLang[props.lang].ChooseTitle}
-            </Dialog.Title>
-            <Dialog.Description>
-                {DictaphoneLang[props.lang].PleaseChooseATitle}
-            </Dialog.Description>
-            <Dialog.Input label={DictaphoneLang[props.lang].Title} placeholder={DictaphoneLang[props.lang].Placeholder} onChangeText={ (e) => { setTitle(e); }} />
-            <Dialog.Button label={DictaphoneLang[props.lang].Cancel} color={"red"} onPress={saveRecord} />
-            <Dialog.Button label={DictaphoneLang[props.lang].Save} bold={true} onPress={saveRecord} />
-        </Dialog.Container>
+        <Overlay visible={modal} overlayStyle={styles.overlay} onBackdropPress={() => saveRecord()} ModalComponent={Modal}>
+          <Text style={styles.overlayTitle}>{DictaphoneLang[props.lang].ChooseTitle}</Text>
+          <Text style={styles.overlayTitle}>{DictaphoneLang[props.lang].PleaseChooseATitle}</Text>
+          <Input
+            placeholder={DictaphoneLang[props.lang].Placeholder}
+            leftIcon={
+              <Icon
+                name="musical-note"
+                size={24}
+                color='grey'
+                type='ionicon'
+              />
+            }
+            label={DictaphoneLang[props.lang].Title}
+            maxLength={25}
+            inputStyle={styles.overlayInput}
+            value={title}
+            onChangeText={ (e) => { setTitle(e); }} />
+            <View style={{flexDirection: 'row'}}>
+              <Button title={DictaphoneLang[props.lang].Cancel} buttonStyle={{backgroundColor: 'red'}} containerStyle={{marginRight: 10}} onPress={saveRecord} />
+              <Button title={DictaphoneLang[props.lang].Save} buttonStyle={{fontWeight:'bold'}} onPress={saveRecord} />
+            </View>
+        </Overlay>
 
         
         {/* Modal confirmation deletion */}
-        <Dialog.Container visible={deleteId != 0} contentStyle={{borderRadius: 20}}>
-            <Dialog.Title style={{fontWeight: 'bold'}}>
-                {DictaphoneLang[props.lang].DeleteTrack}
-            </Dialog.Title>
-            <Dialog.Description>
-                {DictaphoneLang[props.lang].SureDeleteTrack}
-            </Dialog.Description>
-            <Dialog.Button label={DictaphoneLang[props.lang].Cancel} bold={true} onPress={(e) => { setDeleteId(0) }} />
-            <Dialog.Button label={DictaphoneLang[props.lang].Delete} color={"red"} onPress={(e) => { deleteRecord() }} />
-        </Dialog.Container>
+        <Overlay visible={deleteId != 0} overlayStyle={styles.overlay} ModalComponent={Modal}>
+          <Text style={styles.overlayTitle}>{DictaphoneLang[props.lang].DeleteTrack}</Text>
+          <Text style={styles.overlayDescription}>{DictaphoneLang[props.lang].SureDeleteTrack}</Text>
+            <View style={{flexDirection: 'row'}}>
+              <Button title={DictaphoneLang[props.lang].Cancel} buttonStyle={{fontWeight:'bold'}} containerStyle={{marginRight: 10}} onPress={(e) => { setDeleteId(0) }} />
+              <Button title={DictaphoneLang[props.lang].Delete} buttonStyle={{backgroundColor: 'red'}} onPress={(e) => { deleteRecord() }} />
+            </View>
+        </Overlay>
 
         {recording ? 
         // is recording

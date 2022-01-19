@@ -39,6 +39,27 @@ export default StyleSheet.create({
     divider: {
         width: 100+'%',
         marginTop: 20
-    }
+    },
+    overlay: {
+        borderRadius: 20,
+        paddingHorizontal: 45,
+        paddingVertical: 30,
+        alignItems: 'center'
+    },
+    overlayTitle: {
+        fontWeight: 'bold',
+        textAlign:'center',
+        fontSize: 18,
+        marginVertical: 10
+    },
+    overlayDescription: {
+        textAlign:'center',
+        marginVertical: 10,
+        width: 160
+    },
+    overlayInput: {
+        fontSize: 14,
+        marginHorizontal: 10
+    },
 });
 
