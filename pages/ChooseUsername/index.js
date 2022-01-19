@@ -74,6 +74,9 @@ export default function ChooseUsername(props) {
                 <Text style={styles.heading}>
                     {TutorialLang[props.lang].ChooseUsername}
                 </Text>
+                <Text style={styles.description}>
+                    {TutorialLang[props.lang].WhatIsUsername()}
+                </Text>
                 <View style={styles.viewrow}>
                     <TextInput
                         underlineColorAndroid="transparent"

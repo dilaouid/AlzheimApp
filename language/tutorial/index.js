@@ -62,6 +62,13 @@ export const lang = {
         LastStepButton: 'PRÊT(E)',
 
         ChooseUsername: "Choisissez votre nom d'utilisateur",
+        WhatIsUsername: () => {
+            return applyBoldStyle({
+                sentence:
+                    "Ce nom d'utilisateur correspond au nom de la personne qui s'occupe de la personne atteinte de l'Alzheimer (ou {0} en anglais), ou de votre nom si vous êtes vous même un jeune malade.",
+                boldText: ['Caretaker'],
+            });
+        },
     },
     en: {
         // First step of the tutorial
@@ -109,5 +116,12 @@ export const lang = {
         LastStepButton: 'READY',
 
         ChooseUsername: 'Choose your username',
+        WhatIsUsername: () => {
+            return applyBoldStyle({
+                sentence:
+                    "This is the Alzheimer ${0} username. If you are yourself diagnosed with the Alzheimer's disease, you can set your own name or username in this field.",
+                boldText: ['Caretaker'],
+            });
+        },
     },
 };

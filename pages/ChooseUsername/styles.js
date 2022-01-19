@@ -19,6 +19,14 @@ export default StyleSheet.create({
         textAlign: 'center',
         color: 'black',
     },
+    description: {
+        fontSize: 15,
+        marginBottom: 20,
+        marginHorizontal: 25,
+        marginHorizontal: 40,
+        textAlign: 'center',
+        color: 'grey',
+    },
     textInput: {
         height: 40,
         borderColor: 'gray',
