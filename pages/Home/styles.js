@@ -59,4 +59,12 @@ export default StyleSheet.create({
         color: 'grey',
         fontStyle: 'italic',
     },
+    searchBar: {
+        marginBottom: -25,
+    },
+    searchInputStyle: {
+        textAlign: 'center',
+        color: '#495058',
+        fontSize: 15,
+    },
 });

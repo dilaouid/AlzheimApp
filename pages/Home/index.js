@@ -10,6 +10,7 @@ import {
     BackHandler,
 } from 'react-native';
 import Swiper from 'react-native-swiper/src';
+import { Input } from 'react-native-elements';
 import { useNavigate, useLocation } from 'react-router-native';
 
 import LoadingBrain from '../../assets/img/home/loading_brain.gif';
@@ -24,6 +25,7 @@ import styles from './styles';
 export default function Home(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [persons, setPersons] = useState();
+    const [search, setSearch] = useState();
     const [index, setIndex] = useState(0);
     const [btnText, setBtnTxt] = useState(
         HomeLang[props.lang || lang].AddAPerson
@@ -41,7 +43,7 @@ export default function Home(props) {
         if (!username || username?.trim()?.length < 2) {
             navigate('/');
         } else {
-            Person.get().then((data) => {
+            Person.get(search).then((data) => {
                 setPersons(data);
                 setIsLoading(false);
             });
@@ -53,7 +55,7 @@ export default function Home(props) {
             }
         );
         return () => backHandler.remove();
-    }, [navigate, username]);
+    }, [search, username, navigate]);
 
     const swipePage = (idx) => {
         if (idx === -1) {
@@ -142,6 +144,15 @@ export default function Home(props) {
                         }}
                     >
                         <ScrollView>
+                            <Input
+                                placeholder={HomeLang[lang].Search}
+                                inputContainerStyle={styles.searchBar}
+                                onChangeText={(e) => {
+                                    setSearch(e);
+                                }}
+                                value={search}
+                                inputStyle={styles.searchInputStyle}
+                            />
                             {persons && persons.length > 0 ? (
                                 printRows(persons)
                             ) : (

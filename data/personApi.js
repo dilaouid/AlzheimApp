@@ -61,8 +61,9 @@ export function edit(id, upd) {
     });
 }
 
-export function get() {
-    return db.findAsync({});
+export function get(name) {
+    const regex = new RegExp(name, 'i');
+    return db.findAsync({ fullname: { $regex: regex } });
 }
 
 export function getById(id) {
