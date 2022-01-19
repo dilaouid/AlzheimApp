@@ -6,7 +6,7 @@ import {
     ScrollView,
     SafeAreaView,
 } from 'react-native';
-import { Button, Icon, Divider } from 'react-native-elements';
+import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
 import QuizzList from './QuizzList';
 
@@ -41,21 +41,11 @@ export default function ViewQuizz(props) {
                         props.setTab(4);
                     }}
                 />
-                <Button
-                    buttonStyle={{ backgroundColor: 'red' }}
-                    containerStyle={{
-                        borderRadius: 15,
-                        marginHorizontal: 10,
-                        width: 40,
-                    }}
-                    icon={
-                        <Icon
-                            name={'caret-back-outline'}
-                            type={'ionicon'}
-                            color={'white'}
-                            size={15}
-                        />
-                    }
+                <FAB
+                    color='red'
+                    style={{marginLeft: 20}}
+                    size="small"
+                    icon={{name: 'caret-back-outline', type: 'ionicon', color:'white' }}
                     onPress={() => props.setTab(0)}
                 />
             </View>

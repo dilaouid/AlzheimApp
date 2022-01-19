@@ -7,7 +7,7 @@ import {
     SafeAreaView,
     Modal
 } from 'react-native';
-import { Button, Icon, Divider, Overlay, Input, Badge } from 'react-native-elements';
+import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
 import ContentList from './ContentList';
 import FormQuizzContent from './FormQuizzContent';
@@ -19,6 +19,7 @@ import styles from './styles';
 
 export default function CreateQuizz(props) {
     const [createQuestion, setCreateQuestion] = useState(false);
+    const [content, setContent] = useState([]);
 
     return (
         <>
@@ -36,22 +37,12 @@ export default function CreateQuizz(props) {
                         />
                     }
                 />
-                <Button
-                    buttonStyle={{ backgroundColor: 'red' }}
-                    containerStyle={{
-                        borderRadius: 15,
-                        marginHorizontal: 10,
-                        width: 40,
-                    }}
-                    icon={
-                        <Icon
-                            name={'caret-back-outline'}
-                            type={'ionicon'}
-                            color={'white'}
-                            size={15}
-                        />
-                    }
-                    onPress={() => props.setTab(2)}
+                <FAB
+                    color='red'
+                    style={{marginLeft: 20}}
+                    size="small"
+                    icon={{name: 'caret-back-outline', type: 'ionicon', color:'white' }}
+                    onPress={() => { createQuestion ? setCreateQuestion(false) : props.setTab(2) }}
                 />
             </View>
             <Divider
@@ -59,8 +50,12 @@ export default function CreateQuizz(props) {
                 width={1}
                 style={{ width: 100 + '%', marginTop: 20 }}
             />
-                {createQuestion === true ? <FormQuizzContent lang={props.lang} setCreateQuestion={setCreateQuestion} /> :
-                    <SafeAreaView style={styles.safeArea}>
+                {createQuestion === true ?
+                <FormQuizzContent
+                    lang={props.lang}
+                    setCreateQuestion={setCreateQuestion}
+                /> :
+                <SafeAreaView style={styles.safeArea}>
                     <Button
                         title={QuizzLang[props.lang].AddQuestion}
                         icon={
