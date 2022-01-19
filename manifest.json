@@ -1,0 +1,20 @@
+{
+  "description": "Cognitive brain training application for people with alzheimer",
+  "display": "standalone",
+  "lang": "en",
+  "name": "AlzheimApp",
+  "short_name": "AlzheimApp",
+  "start_url": "/?utm_source=web_app_manifest",
+  "related_applications": [
+    {
+      "platform": "itunes",
+      "id": "org.alzheimApp"
+    },
+    {
+      "platform": "play",
+      "url": "http://play.google.com/store/apps/details?id=org.alzheimApp",
+      "id": "org.alzheimApp"
+    }
+  ],
+  "prefer_related_applications": true
+}
