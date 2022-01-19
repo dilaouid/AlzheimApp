@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Modal } from 'react-native';
+import { View, Modal, Platform } from 'react-native';
 import { Text, Button, Overlay } from 'react-native-elements';
 import { lang as SimonLang } from '../../../language/activities/simon';
 import { Audio } from 'expo-av';
@@ -33,6 +33,8 @@ export default function Game(props) {
 
     const LottieSource = require('../../../assets/lottie/trophy.json');
     const currentDate = new Date().toLocaleDateString('fr-FR');
+
+    const SimonButtonStyle = Platform.OS == 'web' ? styles.SimonButtonWeb : styles.SimonButton;
 
     useEffect(async () => {
         // API.clear(props.personId);
@@ -326,7 +328,7 @@ export default function Game(props) {
             <View style={{ flexDirection: 'row', marginBottom: 10 }}>
                 <View
                     style={[
-                        styles.SimonButton,
+                        SimonButtonStyle,
                         styles.SimonLeftButton,
                         styles.SimonGreen,
                         buttonClicked === 0 ? styles.clickedButton : '',
@@ -336,7 +338,7 @@ export default function Game(props) {
                 />
                 <View
                     style={[
-                        styles.SimonButton,
+                        SimonButtonStyle,
                         styles.SimonRed,
                         buttonClicked === 1 ? styles.clickedButton : '',
                     ]}
@@ -349,7 +351,7 @@ export default function Game(props) {
             <View style={{ flexDirection: 'row' }}>
                 <View
                     style={[
-                        styles.SimonButton,
+                        SimonButtonStyle,
                         styles.SimonLeftButton,
                         styles.SimonYellow,
                         buttonClicked === 2 ? styles.clickedButton : '',
@@ -359,7 +361,7 @@ export default function Game(props) {
                 />
                 <View
                     style={[
-                        styles.SimonButton,
+                        SimonButtonStyle,
                         styles.SimonBlue,
                         buttonClicked === 3 ? styles.clickedButton : '',
                     ]}
