@@ -4,8 +4,7 @@ import {
     ActivityIndicator,
     Text,
     ScrollView,
-    SafeAreaView,
-    Modal
+    SafeAreaView
 } from 'react-native';
 import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
@@ -23,6 +22,9 @@ export default function CreateQuizz(props) {
     const [disable, setDisable] = useState(true);
 
     // Related to the Create Content Component
+    const [b64, setb64] = useState();
+    const [fileUri, setFileUri] = useState();
+    const [filename, setFilename] = useState();
     const [fileType, setFileType] = useState();
     const [answers, setAnswers] = useState([]);
     const [question, setQuestion] = useState();
@@ -72,9 +74,16 @@ export default function CreateQuizz(props) {
                     setAnswers={setAnswers}
                     setFileType={setFileType}
                     setQuestion={setQuestion}
+                    setb64={setb64}
+                    setFileUri={setFileUri}
+                    setFilename={setFilename}
+                    b64={b64}
+                    fileUri={fileUri}
+                    filename={filename}
                     answers={answers}
                     fileType={fileType}
                     question={question}
+                    file
                 /> :
                 <SafeAreaView style={styles.safeArea}>
                     <Button

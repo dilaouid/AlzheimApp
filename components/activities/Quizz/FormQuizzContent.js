@@ -3,9 +3,13 @@ import {
     View,
     Text,
     ScrollView,
-    SafeAreaView
+    SafeAreaView,
+    Image
 } from 'react-native';
-import { Button, Icon, Input, Badge } from 'react-native-elements';
+import { Button, Icon, Input, Badge, FAB } from 'react-native-elements';
+import * as DocumentPicker from 'expo-document-picker';
+import * as FileSystem from 'expo-file-system';
+
 
 import { lang as QuizzLang } from '../../../language/activities/quizz';
 import * as API from '../../../data/quizzApi';
@@ -31,12 +35,62 @@ export default function FormQuizzContent(props) {
         props.setAnswers([...tmp]);
     };
 
+    const clearFile = () => {
+        props.setb64();
+        props.setFileType();
+        props.setFilename();
+        props.setFileUri();
+    };
+
+    const printFile = () => {
+        if (props.fileType == 'image') {
+            return (
+                <View>
+                    <FAB
+                        color='red'
+                        style={{marginLeft: 20, position:'absolute', zIndex: 9}}
+                        size="small"
+                        icon={{name: 'close-circle-outline', type: 'ionicon', color:'white' }}
+                        onPress={() => {
+                            clearFile();
+                        }}
+                    />
+                    <Image source={{uri: props.fileUri}} style={{width: 200, height: 200, borderRadius: 100, marginBottom: 30}} />
+                </View>
+            )
+        }
+    };
+
+    const pickFile = async () => {
+        if (Platform.OS === 'web') {
+            alert('todo');
+            return;
+        }
+
+        let result = await DocumentPicker.getDocumentAsync({type: ['image/*', 'audio/*']});
+        if (result.cancelled === true) {
+            return;
+        }
+
+        props.setFileUri(result.uri);
+        props.setFileType(result.mimeType.split('/')[0]);
+        const fsRead = await FileSystem.readAsStringAsync(result.uri, {
+            encoding: 'base64'
+        }).catch((err) => {
+            console.log(err);
+        });
+        props.setb64(fsRead);
+        props.setFilename(result.name);
+    };
+
     return (
         <SafeAreaView style={styles.safeArea}>
             <ScrollView contentContainerStyle={styles.ScrollView}>
+                { printFile() }
                 <Button
                     title={QuizzLang[props.lang].ImportFile}
                     buttonStyle={{ borderRadius: 15 }}
+                    onPress={pickFile}
                 />
                 <Text style={styles.overlayDescriptionReference}>
                     {QuizzLang[props.lang].ReferenceFile}
