@@ -68,7 +68,7 @@ export default function FormQuizzContent(props) {
         }
 
         let result = await DocumentPicker.getDocumentAsync({type: ['image/*', 'audio/*']});
-        if (result.cancelled === true) {
+        if (result.type === 'cancel') {
             return;
         }
 
