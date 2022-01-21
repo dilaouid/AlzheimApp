@@ -9,12 +9,12 @@ import {
 import { Button, Icon, Input, Badge, FAB } from 'react-native-elements';
 import * as DocumentPicker from 'expo-document-picker';
 
-import { lang as QuizzLang } from '../../../language/activities/quizz';
+import { lang as QuizzLang } from '../../../../language/activities/quizz';
 import SuccessContent from './SuccessContent';
 
-import * as API from '../../../data/quizzApi';
+import * as API from '../../../../data/quizzApi';
 
-import styles from './styles';
+import styles from '../styles';
 
 export default function FormQuizzContent(props) {
     const [answer, setAnswer] = useState();

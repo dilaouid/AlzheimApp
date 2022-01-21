@@ -29,6 +29,7 @@ export const lang = {
         Help: 'Comment ça marche',
         Leave: 'Retour',
         NothingYet: 'Aucun quizz crée pour le moment.',
+        NoQuestionYet: 'Aucune question crée pour le moment.',
         SuccessfulRatio: 'Ratio de réussite',
         AddQuestion: 'Ajouter une question',
         Complete: 'Terminer la création',
@@ -42,6 +43,7 @@ export const lang = {
         CreatedQuestion: "La question a été crée avec succès !",
         EditedQuestion: "La question a été éditée avec succès !",
         PossibleAnswers: "réponse(s) possible(s)",
+        SureDeleteQuestion: "Êtes-vous sûr(e) de vouloir supprimer cette question ? Cette action est irréversible."
     },
     en: {
         Play: 'Play',
@@ -50,6 +52,7 @@ export const lang = {
         Help: 'How does it works',
         Leave: 'Leave',
         NothingYet: 'No quizz has been created yet.',
+        NoQuestionYet: 'No question has been created yet.',
         SuccessfulRatio: 'Success ratio',
         AddQuestion: 'Add a question',
         Complete: 'Complete the quizz creation',
@@ -63,5 +66,6 @@ export const lang = {
         CreatedQuestion: "The question has been successfuly created!",
         EditedQuestion: "The question has been successfuly edited!",
         PossibleAnswers: "possible answer(s)",
+        SureDeleteQuestion: "Are you sure to delete this question? This action cannot be undone."
     },
 };

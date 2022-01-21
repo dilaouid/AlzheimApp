@@ -1,16 +1,16 @@
 import React from 'react';
 import { View, Text, Platform } from 'react-native';
 import { Button, Image } from 'react-native-elements';
-import Lottie from '../../../components/utils/Lottie';
+import Lottie from '../../../utils/Lottie';
 
-import SuccessImage from '../../../assets/img/activities/quizz/success.gif';
+import SuccessImage from '../../../../assets/img/activities/quizz/success.gif';
 
-import styles from './styles';
+import styles from '../styles';
 
-import { lang as QuizzLang } from '../../../language/activities/quizz';
+import { lang as QuizzLang } from '../../../../language/activities/quizz';
 
 export default function SuccessContent(props) {
-    const LottieSource = require('../../../assets/lottie/success.json');
+    const LottieSource = require('../../../../assets/lottie/success.json');
 
     return (
         <View>

@@ -6,7 +6,7 @@ import Menu from './Menu';
 
 // Child components
 import ViewQuizz from './ViewQuizz';
-import CreateQuizz from './CreateQuizz';
+import CreateQuizz from './Edition/CreateQuizz';
 
 import * as API from '../../../data/quizzApi';
 

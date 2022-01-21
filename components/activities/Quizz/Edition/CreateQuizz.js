@@ -8,15 +8,15 @@ import {
 } from 'react-native';
 import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
-import ContentList from './ContentList';
+import ContentList from '../ContentList';
 import QuestionList from './QuestionList';
 
 import FormQuizzContent from './FormQuizzContent';
 
-import { lang as QuizzLang } from '../../../language/activities/quizz';
-import * as API from '../../../data/quizzApi';
+import { lang as QuizzLang } from '../../../../language/activities/quizz';
+import * as API from '../../../../data/quizzApi';
 
-import styles from './styles';
+import styles from '../styles';
 
 export default function CreateQuizz(props) {
     const [createQuestion, setCreateQuestion] = useState(false);
@@ -142,12 +142,14 @@ export default function CreateQuizz(props) {
                                         key={i}
                                         content={el}
                                         lang={props.lang}
+                                        setContent={setContent}
+                                        contentList={content}
                                     />
                                 );
                             })
                         ) : (
                             <Text style={styles.nothingYet}>
-                                {QuizzLang[props.lang].NothingYet}
+                                {QuizzLang[props.lang].NoQuestionYet}
                             </Text>
                         )}
                     </ScrollView>    
