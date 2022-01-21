@@ -9,6 +9,8 @@ import {
 import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
 import ContentList from './ContentList';
+import QuestionList from './QuestionList';
+
 import FormQuizzContent from './FormQuizzContent';
 
 import { lang as QuizzLang } from '../../../language/activities/quizz';
@@ -131,15 +133,14 @@ export default function CreateQuizz(props) {
                                 size={'small'}
                                 style={styles.loading}
                             />
-                        ) : props.quizz?.length > 0 ? (
-                            props.quizz?.map((el, i) => {
+                        ) : content?.length > 0 ? (
+                            content?.map((el, i) => {
                                 return (
-                                    <ContentList
+                                    <QuestionList
                                         index={i}
-                                        key={el._id}
-                                        quizz={el}
+                                        key={i}
+                                        content={el}
                                         lang={props.lang}
-                                        deleteId={deleteId}
                                     />
                                 );
                             })
