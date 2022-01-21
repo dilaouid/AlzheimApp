@@ -20,6 +20,9 @@ import {
 import { Audio } from 'expo-av';
 import { lang as DictaphoneLang } from '../../../language/activities/dictaphone';
 
+import * as FileSystem from 'expo-file-system';
+import { v4 as uuidv4 } from 'uuid';
+
 import Rows from './Rows';
 
 import * as API from '../../../data/dictaphoneApi';
@@ -96,10 +99,21 @@ export default function Dictaphone(props) {
         await recording.startAsync();
     }
 
-    const saveRecord = () => {
+    const saveRecord = async () => {
+        let path = recording.getURI();
+        if (Platform.OS !== 'web') {
+            const folder = `${FileSystem.documentDirectory}persons/${props.personId}/recordings`;
+            const filename = uuidv4();
+            await FileSystem.copyAsync({
+                from: path,
+                to: folder + `${filename}.m4a`
+            });
+            await FileSystem.deleteAsync(path);
+            path = folder + `${filename}.m4a`;
+        }
         API.create({
             name: title?.trim() || DictaphoneLang[props.lang].Untitled,
-            path: recording.getURI(),
+            path: path,
             personId: props.personId,
         }).then((created) => {
                 setModal(false);
