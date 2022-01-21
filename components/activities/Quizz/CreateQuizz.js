@@ -127,7 +127,7 @@ export default function CreateQuizz(props) {
                         }
                         onPress={() => setCreateQuestion(true)}
                     />
-                    <ScrollView>
+                    <ScrollView style={{marginBottom: 40}}>
                         {props.loading ? (
                             <ActivityIndicator
                                 color={'blue'}
