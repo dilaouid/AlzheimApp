@@ -39,7 +39,7 @@ export default function FormQuizzContent(props) {
         // props.setb64();
         props.setFileType();
         props.setFilename();
-        props.setFileUri();
+        props.setUri();
     };
 
     const printFile = () => {
@@ -55,7 +55,7 @@ export default function FormQuizzContent(props) {
                             clearFile();
                         }}
                     />
-                    <Image source={{uri: props.fileUri}} style={{width: 200, height: 200, borderRadius: 100, marginBottom: 30}} />
+                    <Image source={{uri: props.uri}} style={{width: 200, height: 200, borderRadius: 100, marginBottom: 30}} />
                 </View>
             )
         }
@@ -72,14 +72,8 @@ export default function FormQuizzContent(props) {
             return;
         }
 
-        props.setFileUri(result.uri);
+        props.setUri(result.uri);
         props.setFileType(result.mimeType.split('/')[0]);
-        /* const fsRead = await FileSystem.readAsStringAsync(result.uri, {
-            encoding: 'base64'
-        }).catch((err) => {
-            console.log(err);
-        });
-        props.setb64(fsRead); */
         props.setFilename(result.name);
     };
 

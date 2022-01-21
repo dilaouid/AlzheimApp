@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
-import ContentList from '../ContentList';
 import QuestionList from './QuestionList';
 
 import FormQuizzContent from './FormQuizzContent';
@@ -24,8 +23,7 @@ export default function CreateQuizz(props) {
     const [disable, setDisable] = useState(true);
 
     // Related to the Create Content Component
-    // const [b64, setb64] = useState();
-    const [fileUri, setFileUri] = useState();
+    const [uri, setUri] = useState();
     const [filename, setFilename] = useState();
     const [fileType, setFileType] = useState();
     const [answers, setAnswers] = useState([]);
@@ -40,10 +38,13 @@ export default function CreateQuizz(props) {
         }
     }, [answers, question]);
 
+    const createQuizz = () => {
+
+    };
+
     const pushContent = () => {
         const newContent = {
-            uri: fileUri,
-            // b64: b64,
+            uri: uri,
             filename: filename,
             answers: answers,
             question: question,
@@ -51,11 +52,10 @@ export default function CreateQuizz(props) {
         };
         // Clear the creation form
         setFileType();
-        setFileUri();
+        setUri();
         setFilename();
         setAnswers([]);
         setQuestion();
-        // setb64();
 
         setContent([...content, newContent]);
         setSuccess(true);
@@ -101,12 +101,10 @@ export default function CreateQuizz(props) {
                     setAnswers={setAnswers}
                     setFileType={setFileType}
                     setQuestion={setQuestion}
-                    // setb64={setb64}
-                    setFileUri={setFileUri}
+                    setUri={setUri}
                     setFilename={setFilename}
                     setSuccess={setSuccess}
-                    // b64={b64}
-                    fileUri={fileUri}
+                    uri={uri}
                     filename={filename}
                     answers={answers}
                     fileType={fileType}
