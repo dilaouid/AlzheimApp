@@ -28,6 +28,7 @@ export default function CreateQuizz(props) {
     const [fileType, setFileType] = useState();
     const [answers, setAnswers] = useState([]);
     const [question, setQuestion] = useState();
+    const [success, setSuccess] = useState(false);
 
     useEffect( () => {
         if (answers?.length > 0 && question) {
@@ -36,6 +37,25 @@ export default function CreateQuizz(props) {
             setDisable(true);
         }
     }, [answers, question]);
+
+    const pushContent = () => {
+        const newContent = {
+            uri: fileUri,
+            b64: b64,
+            filename: filename,
+            answers: answers,
+            question: question
+        };
+        // Clear the creation form
+        setFileType();
+        setFileUri();
+        setFilename();
+        setAnswers([]);
+        setQuestion();
+
+        setContent([...content, newContent]);
+        setSuccess(true);
+    };
 
     return (
         <>
@@ -53,6 +73,9 @@ export default function CreateQuizz(props) {
                         />
                     }
                     disabled={ (createQuestion && disable) || (!createQuestion && content?.length === 0) ? true : false}
+                    onPress={() => {
+                        if (createQuestion) pushContent();
+                    }}
                 />
                 <FAB
                     color='red'
@@ -77,13 +100,14 @@ export default function CreateQuizz(props) {
                     setb64={setb64}
                     setFileUri={setFileUri}
                     setFilename={setFilename}
+                    setSuccess={setSuccess}
                     b64={b64}
                     fileUri={fileUri}
                     filename={filename}
                     answers={answers}
                     fileType={fileType}
                     question={question}
-                    file
+                    success={success}
                 /> :
                 <SafeAreaView style={styles.safeArea}>
                     <Button
