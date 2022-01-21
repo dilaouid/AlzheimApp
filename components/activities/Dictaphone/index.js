@@ -281,7 +281,7 @@ export default function Dictaphone(props) {
             )}
             <Divider style={styles.divider} width={2} />
             <SafeAreaView style={styles.safeArea}>
-                <ScrollView>
+                <ScrollView style={{marginBottom: 40}}>
                     {isLoading ? (
                         <ActivityIndicator
                             color={'blue'}
