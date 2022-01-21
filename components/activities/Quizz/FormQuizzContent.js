@@ -38,7 +38,7 @@ export default function FormQuizzContent(props) {
     };
 
     const clearFile = () => {
-        props.setb64();
+        // props.setb64();
         props.setFileType();
         props.setFilename();
         props.setFileUri();
@@ -76,12 +76,12 @@ export default function FormQuizzContent(props) {
 
         props.setFileUri(result.uri);
         props.setFileType(result.mimeType.split('/')[0]);
-        const fsRead = await FileSystem.readAsStringAsync(result.uri, {
+        /* const fsRead = await FileSystem.readAsStringAsync(result.uri, {
             encoding: 'base64'
         }).catch((err) => {
             console.log(err);
         });
-        props.setb64(fsRead);
+        props.setb64(fsRead); */
         props.setFilename(result.name);
     };
 

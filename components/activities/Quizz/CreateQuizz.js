@@ -22,7 +22,7 @@ export default function CreateQuizz(props) {
     const [disable, setDisable] = useState(true);
 
     // Related to the Create Content Component
-    const [b64, setb64] = useState();
+    // const [b64, setb64] = useState();
     const [fileUri, setFileUri] = useState();
     const [filename, setFilename] = useState();
     const [fileType, setFileType] = useState();
@@ -41,7 +41,7 @@ export default function CreateQuizz(props) {
     const pushContent = () => {
         const newContent = {
             uri: fileUri,
-            b64: b64,
+            // b64: b64,
             filename: filename,
             answers: answers,
             question: question
@@ -52,6 +52,7 @@ export default function CreateQuizz(props) {
         setFilename();
         setAnswers([]);
         setQuestion();
+        // setb64();
 
         setContent([...content, newContent]);
         setSuccess(true);
@@ -97,11 +98,11 @@ export default function CreateQuizz(props) {
                     setAnswers={setAnswers}
                     setFileType={setFileType}
                     setQuestion={setQuestion}
-                    setb64={setb64}
+                    // setb64={setb64}
                     setFileUri={setFileUri}
                     setFilename={setFilename}
                     setSuccess={setSuccess}
-                    b64={b64}
+                    // b64={b64}
                     fileUri={fileUri}
                     filename={filename}
                     answers={answers}
