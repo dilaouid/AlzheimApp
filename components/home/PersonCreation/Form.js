@@ -47,9 +47,9 @@ export default function Form(props) {
             }
             if (props.image?.length > 0) {
                 let imgName = uuidv4();
-                let path = `${FileSystem.documentDirectory}personProfilPicture`;
-                await FileSystem.makeDirectoryAsync(path).catch((err) => {
-                    console.log('Directory already exists');
+                const path = `${FileSystem.documentDirectory}persons/${personId}/pp`;
+                await FileSystem.makeDirectoryAsync(path, {intermediates: true}).catch((err) => {
+                    console.log('directory already exists');
                 });
                 FileSystem.writeAsStringAsync(
                     path + `/${imgName}.jpg`,
