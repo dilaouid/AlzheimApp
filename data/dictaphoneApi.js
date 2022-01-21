@@ -1,8 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as FileSystem from 'expo-file-system';
 
-import { lang as DictaphoneLang } from '../language/activities/dictaphone';
-
 const Datastore = require('react-native-local-mongodb');
 
 export const db = new Datastore({
@@ -11,17 +9,14 @@ export const db = new Datastore({
     autoload: true,
 });
 
-export function create(record, lang) {
-    if (record?.name?.length === 0) {
-        record.name = DictaphoneLang[lang].Untiled;
-    }
+export function create(record) {
     return db.insertAsync({
         name: record.name,
         date: new Date(),
         path: record.path,
         personId: record.personId,
     });
-}
+};
 
 export function get(personId) {
     return db
@@ -30,7 +25,7 @@ export function get(personId) {
         .exec((err, datas) => {
             return datas;
         });
-}
+};
 
 export async function del(personId, id) {
     const data = await db
@@ -42,8 +37,8 @@ export async function del(personId, id) {
         await FileSystem.deleteAsync(data[0].path);
     }
     return db.removeAsync({ _id: id, personId: personId });
-}
+};
 
 export function clear() {
     return db.removeAsync({}, { multi: true });
-}
+};

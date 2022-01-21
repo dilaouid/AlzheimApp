@@ -29,7 +29,7 @@ import styles from './styles';
 export default function Dictaphone(props) {
     const [recording, setRecording] = useState();
     const [records, setRecords] = useState([]);
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState();
     const [playingSounds, setPlayingSounds] = useState([]);
     const [modal, setModal] = useState(false);
     const [deleteId, setDeleteId] = useState(0);
@@ -97,22 +97,17 @@ export default function Dictaphone(props) {
     }
 
     const saveRecord = () => {
-        API.create(
-            {
-                name: title?.trim(),
-                path: recording.getURI(),
-                personId: props.personId,
-            },
-            props.lang
-        )
-            .then((created) => {
+        API.create({
+            name: title?.trim() || DictaphoneLang[props.lang].Untitled,
+            path: recording.getURI(),
+            personId: props.personId,
+        }).then((created) => {
                 setModal(false);
                 setTitle('');
                 setRecording(false);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        }).catch((err) => {
+            console.log(err);
+        });
     };
 
     // Called in children component
