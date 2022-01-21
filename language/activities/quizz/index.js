@@ -41,6 +41,7 @@ export const lang = {
         ReturnToForm: "Retourner à l'édition de question",
         CreatedQuestion: "La question a été crée avec succès !",
         EditedQuestion: "La question a été éditée avec succès !",
+        PossibleAnswers: "réponse(s) possible(s)",
     },
     en: {
         Play: 'Play',
@@ -61,5 +62,6 @@ export const lang = {
         ReturnToForm: "Return to the question edition",
         CreatedQuestion: "The question has been successfuly created!",
         EditedQuestion: "The question has been successfuly edited!",
+        PossibleAnswers: "possible answer(s)",
     },
 };

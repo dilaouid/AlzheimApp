@@ -46,7 +46,8 @@ export default function CreateQuizz(props) {
             // b64: b64,
             filename: filename,
             answers: answers,
-            question: question
+            question: question,
+            fileType: fileType
         };
         // Clear the creation form
         setFileType();

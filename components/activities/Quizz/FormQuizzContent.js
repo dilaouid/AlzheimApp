@@ -8,8 +8,6 @@ import {
 } from 'react-native';
 import { Button, Icon, Input, Badge, FAB } from 'react-native-elements';
 import * as DocumentPicker from 'expo-document-picker';
-import * as FileSystem from 'expo-file-system';
-
 
 import { lang as QuizzLang } from '../../../language/activities/quizz';
 import SuccessContent from './SuccessContent';
