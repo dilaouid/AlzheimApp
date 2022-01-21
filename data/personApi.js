@@ -43,7 +43,7 @@ export function create(person) {
             data: result,
         };
     });
-}
+};
 
 export function edit(id, upd) {
     var data = {};
@@ -59,39 +59,26 @@ export function edit(id, upd) {
     return db.updateAsync({ _id: id }, { $set: { ...data } }).catch((err) => {
         console.log(err);
     });
-}
+};
 
 export function get(name) {
     const regex = new RegExp(name, 'i');
     return db.findAsync({ fullname: { $regex: regex } });
-}
+};
 
 export function getById(id) {
     return db.findAsync({ _id: id });
-}
+};
 
 export async function deleteById(id) {
     await SimonDB.removeAsync({ personId: id });
-    await DictaphoneDB.find({ personId: id }, (err, data) => {
-        if (err) {
-            console.error(err);
-        } else {
-            data.map(async (el, i) => {
-                await FileSystem.deleteAsync(el?.path);
-            });
-        }
-    });
-    await db.findAsync({ _id: id }, async (err, data) => {
-        if (err) {
-            console.error(err);
-        } else if (data[0].picture) {
-            await FileSystem.deleteAsync(data[0]?.picture);
-        }
-    });
     await DictaphoneDB.removeAsync({ personId: id });
+    await FileSystem.deleteAsync(`${FileSystem.documentDirectory}persons/${id}`);
     return db.removeAsync({ _id: id });
-}
+};
 
 export function reset() {
-    return db.removeAsync({}, { multi: true });
-}
+    return FileSystem.deleteAsync(`${FileSystem.documentDirectory}persons`).then(res => {
+        return db.removeAsync({}, { multi: true });
+    });
+};
