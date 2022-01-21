@@ -61,5 +61,23 @@ export default StyleSheet.create({
         alignItems: 'center',
         marginVertical: 30,
         paddingBottom: 40
-    }
+    },
+    ScrollViewSuccess: {
+        alignItems: 'center',
+        marginVertical: -10,
+        paddingBottom: 40
+    },
+    imageSuccess: {
+        width: 300,
+        height: 300,
+    },
+    successPageTitle: {
+        alignSelf: 'center',
+        width: 250,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 24,
+        color: '#788bff',
+        marginBottom: 10,
+    },
 });

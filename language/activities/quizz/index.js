@@ -38,6 +38,9 @@ export const lang = {
         AddAnswer: "Ajouter une réponse",
         WhatIsAnswer: "Vous pouvez renseigner plusieurs réponses. Une fois une réponse crée, cliquez sur le bouton (+) pour l'ajouter à la liste des réponses possibles. Vous pouvez ensuite cliquer sur cette réponse une fois ajoutée pour la supprimer.",
         OK: "Valider",
+        ReturnToForm: "Retourner à l'édition de question",
+        CreatedQuestion: "La question a été crée avec succès !",
+        EditedQuestion: "La question a été éditée avec succès !",
     },
     en: {
         Play: 'Play',
@@ -55,5 +58,8 @@ export const lang = {
         AddAnswer: "Add an answer",
         WhatIsAnswer: "You can set up many answers. When you have done creating one, click on the (+) button. Once added, you can click on the answer in order to delete it.",
         OK: "Valider",
+        ReturnToForm: "Return to the question edition",
+        CreatedQuestion: "The question has been successfuly created!",
+        EditedQuestion: "The question has been successfuly edited!",
     },
 };

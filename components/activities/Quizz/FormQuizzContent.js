@@ -12,6 +12,8 @@ import * as FileSystem from 'expo-file-system';
 
 
 import { lang as QuizzLang } from '../../../language/activities/quizz';
+import SuccessContent from './SuccessContent';
+
 import * as API from '../../../data/quizzApi';
 
 import styles from './styles';
@@ -82,6 +84,20 @@ export default function FormQuizzContent(props) {
         props.setb64(fsRead);
         props.setFilename(result.name);
     };
+
+    const close = () => {
+        props.setSuccess(false);
+    }
+
+    if (props.success) {
+        return (
+            <SafeAreaView style={styles.safeArea}>
+                <ScrollView contentContainerStyle={styles.ScrollViewSuccess}>
+                    <SuccessContent edit={false} lang={props.lang} close={close} />
+                </ScrollView>
+            </SafeAreaView>
+        );
+    }
 
     return (
         <SafeAreaView style={styles.safeArea}>
