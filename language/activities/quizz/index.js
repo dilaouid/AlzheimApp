@@ -43,7 +43,10 @@ export const lang = {
         CreatedQuestion: "La question a été crée avec succès !",
         EditedQuestion: "La question a été éditée avec succès !",
         PossibleAnswers: "réponse(s) possible(s)",
-        SureDeleteQuestion: "Êtes-vous sûr(e) de vouloir supprimer cette question ? Cette action est irréversible."
+        SureDeleteQuestion: "Êtes-vous sûr(e) de vouloir supprimer cette question ? Cette action est irréversible.",
+        CompleteQuizzTitleHeader: "Créer un quizz",
+        CompleteQuizzTitle: "Vous êtes sur le point de créer un nouveau quizz. Merci de lui attribuer un titre afin que vous puissez le retrouver plus rapidement.",
+        QuizzTitle: "Nom du quizz",
     },
     en: {
         Play: 'Play',
@@ -66,6 +69,9 @@ export const lang = {
         CreatedQuestion: "The question has been successfuly created!",
         EditedQuestion: "The question has been successfuly edited!",
         PossibleAnswers: "possible answer(s)",
-        SureDeleteQuestion: "Are you sure to delete this question? This action cannot be undone."
+        SureDeleteQuestion: "Are you sure to delete this question? This action cannot be undone.",
+        CompleteQuizzTitleHeader: "Create a quizz",
+        CompleteQuizzTitle: "You are about to complete the quizz creation. Please provide a title in order to help you find it easier later.",
+        QuizzTitle: "Quizz title",
     },
 };

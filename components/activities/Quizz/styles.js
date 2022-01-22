@@ -80,4 +80,30 @@ export default StyleSheet.create({
         color: '#788bff',
         marginBottom: 10,
     },
+    modal: {
+        borderRadius: 20,
+        paddingHorizontal: 30,
+        paddingVertical: 30,
+        alignItems: 'center',
+    },
+    modalTitle: {
+        marginBottom: 30,
+        width: 250,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 18
+    },
+    modalDescription: {
+        width: 250,
+        textAlign: 'center',
+        color: '#495058',
+        // marginVertical: 15
+    },
+    quizzTitleInputContainer: {
+        width: 290,
+        marginTop: 10
+    },
+    quizzTitleInput: {
+        fontSize: 15
+    },
 });
