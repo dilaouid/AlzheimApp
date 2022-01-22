@@ -106,4 +106,12 @@ export default StyleSheet.create({
     quizzTitleInput: {
         fontSize: 15
     },
+    badgesView: {
+        flexDirection: 'row',
+        justifyContent:'center',
+        flexWrap:'wrap',
+        alignItems:'center',
+        alignContent:'center',
+        marginBottom: 50
+    }
 });

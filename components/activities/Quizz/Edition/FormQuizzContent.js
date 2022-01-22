@@ -135,7 +135,7 @@ export default function FormQuizzContent(props) {
                 <Text style={styles.overlayDescriptionReference}>
                     {QuizzLang[props.lang].WhatIsAnswer}
                 </Text>
-                <View style={{flexDirection: 'row', flexWrap:'wrap', alignItems:'center', alignContent:'center', marginBottom: 50}}>
+                <View style={styles.badgesView}>
                     {props.answers.map( (el, i) => {
                         return(
                             <Badge
