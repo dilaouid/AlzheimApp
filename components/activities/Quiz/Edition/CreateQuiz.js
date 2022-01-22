@@ -12,14 +12,14 @@ import { Button, Icon, Divider, FAB, Overlay, Input } from 'react-native-element
 
 import QuestionList from './QuestionList';
 
-import FormQuizzContent from './FormQuizzContent';
+import FormQuizContent from './FormQuizContent';
 
-import { lang as QuizzLang } from '../../../../language/activities/quizz';
-import * as API from '../../../../data/quizzApi';
+import { lang as QuizLang } from '../../../../language/activities/quiz';
+import * as API from '../../../../data/quizApi';
 
 import styles from '../styles';
 
-export default function CreateQuizz(props) {
+export default function CreateQuiz(props) {
     const [createQuestion, setCreateQuestion] = useState(false);
     const [content, setContent] = useState([]);
     const [disable, setDisable] = useState(true);
@@ -42,18 +42,18 @@ export default function CreateQuizz(props) {
         }
     }, [answers, question]);
 
-    const createQuizz = () => {
+    const createQuiz = () => {
         API.create(props.personId, {
             name: name,
             content: content,
             personId: props.personId
         }).then(data => {
             return Alert.alert(
-                QuizzLang[props.lang].CreatedQuizz,
-                QuizzLang[props.lang].QuizzListRedirection,
+                QuizLang[props.lang].CreatedQuiz,
+                QuizLang[props.lang].QuizListRedirection,
                 [
                     {
-                        text: QuizzLang[props.lang].OK,
+                        text: QuizLang[props.lang].OK,
                         onPress: () => {
                             setModal(false);
                             props.setTab(2);
@@ -87,19 +87,19 @@ export default function CreateQuizz(props) {
 
     return (
         <>
-            {/* Confirmation quizz creation (setting quizz name and complete creation) */}
+            {/* Confirmation quiz creation (setting quiz name and complete creation) */}
             <Overlay
                 visible={modal}
                 overlayStyle={styles.modal}
                 onBackdropPress={() => setModal(false)}
                 ModalComponent={Modal}
             >
-                <Text style={styles.modalTitle}>{QuizzLang[props.lang].CompleteQuizzTitleHeader}</Text>
-                <Text style={styles.modalDescription}>{QuizzLang[props.lang].CompleteQuizzTitle}</Text>
+                <Text style={styles.modalTitle}>{QuizLang[props.lang].CompleteQuizTitleHeader}</Text>
+                <Text style={styles.modalDescription}>{QuizLang[props.lang].CompleteQuizTitle}</Text>
                 <View style={{ flexDirection: 'row' }}>
-                    <Input placeholder={QuizzLang[props.lang].QuizzTitle}
-                        containerStyle={styles.quizzTitleInputContainer}
-                        inputStyle={styles.quizzTitleInput}
+                    <Input placeholder={QuizLang[props.lang].QuizTitle}
+                        containerStyle={styles.quizTitleInputContainer}
+                        inputStyle={styles.quizTitleInput}
                         onChangeText={(e) => setName(e)}
                     />
                     <Button containerStyle={{ marginTop: 10, width: 40 }} title={{}} icon={
@@ -109,14 +109,14 @@ export default function CreateQuizz(props) {
                             color={'white'}
                             size={15}
                         />
-                    } disabled={name?.length < 3 ? true : false} onPress={createQuizz} />
+                    } disabled={name?.length < 3 ? true : false} onPress={createQuiz} />
                 </View>
             </Overlay>
 
             <View style={{ flexDirection: 'row' }}>
                 <Button
-                    /* Complete the quizz or question creation / edition */
-                    title={createQuestion ? QuizzLang[props.lang].OK : QuizzLang[props.lang].Complete}
+                    /* Complete the quiz or question creation / edition */
+                    title={createQuestion ? QuizLang[props.lang].OK : QuizLang[props.lang].Complete}
                     containerStyle={styles.createButton}
                     icon={
                         <Icon
@@ -147,8 +147,8 @@ export default function CreateQuizz(props) {
                 style={{ width: 100 + '%', marginTop: 20 }}
             />
                 {createQuestion === true ?
-                <FormQuizzContent
-                    /* Form to create a quizz */
+                <FormQuizContent
+                    /* Form to create a quiz */
                     lang={props.lang}
                     setCreateQuestion={setCreateQuestion}
                     setAnswers={setAnswers}
@@ -166,7 +166,7 @@ export default function CreateQuizz(props) {
                 /> :
                 <SafeAreaView style={styles.safeArea}>
                     <Button
-                        title={QuizzLang[props.lang].AddQuestion}
+                        title={QuizLang[props.lang].AddQuestion}
                         icon={
                             <Icon
                                 name={'add-circle-outline'}
@@ -200,7 +200,7 @@ export default function CreateQuizz(props) {
                             })
                         ) : (
                             <Text style={styles.nothingYet}>
-                                {QuizzLang[props.lang].NoQuestionYet}
+                                {QuizLang[props.lang].NoQuestionYet}
                             </Text>
                         )}
                     </ScrollView>    

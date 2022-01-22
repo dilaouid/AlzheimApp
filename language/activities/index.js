@@ -33,7 +33,7 @@ export const lang = {
         Simon: 'Jouer au Simon',
         DoubleMemory: 'Jeu des pairs',
         Dictaphone: 'Journal vocal',
-        Quizz: 'Jouer à un quizz',
+        Quiz: 'Jouer à un quiz',
         SuggestedActivities: 'Activités suggérées',
         Back: 'Retour à la sélection',
 
@@ -55,7 +55,7 @@ export const lang = {
         ResetAccount: '(DEBUG) Reset ($[start])',
         Simon: 'Play to Simon',
         Dictaphone: 'Voice log',
-        Quizz: 'Start a quizz',
+        Quiz: 'Start a quiz',
         DoubleMemory: 'Double Memory',
         SuggestedActivities: 'Suggested activities',
         Back: 'Return to the selection',

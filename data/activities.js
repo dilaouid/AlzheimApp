@@ -1,7 +1,7 @@
 import { lang as ActivitiesLang } from '../language/activities';
 import Dictaphone from '../components/activities/Dictaphone';
 import Simon from '../components/activities/Simon';
-import Quizz from '../components/activities/Quizz';
+import Quiz from '../components/activities/Quiz';
 
 export default function Activities(lang, personId) {
     return [
@@ -22,11 +22,11 @@ export default function Activities(lang, personId) {
             },
         },
         {
-            name: ActivitiesLang[lang]?.Quizz,
+            name: ActivitiesLang[lang]?.Quiz,
             icon: 'help-circle-outline',
             returnComponent: (lang, setPage) => {
                 return (
-                    <Quizz lang={lang} setPage={setPage} personId={personId} />
+                    <Quiz lang={lang} setPage={setPage} personId={personId} />
                 );
             },
         },

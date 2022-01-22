@@ -9,14 +9,14 @@ import {
 import { Button, Icon, Input, Badge, FAB } from 'react-native-elements';
 import * as DocumentPicker from 'expo-document-picker';
 
-import { lang as QuizzLang } from '../../../../language/activities/quizz';
+import { lang as QuizLang } from '../../../../language/activities/quiz';
 import SuccessContent from './SuccessContent';
 
-import * as API from '../../../../data/quizzApi';
+import * as API from '../../../../data/quizApi';
 
 import styles from '../styles';
 
-export default function FormQuizzContent(props) {
+export default function FormQuizContent(props) {
     const [answer, setAnswer] = useState();
 
     const addAnswer = () => {
@@ -96,24 +96,24 @@ export default function FormQuizzContent(props) {
             <ScrollView contentContainerStyle={styles.ScrollView}>
                 { printFile() }
                 <Button
-                    title={QuizzLang[props.lang].ImportFile}
+                    title={QuizLang[props.lang].ImportFile}
                     buttonStyle={{ borderRadius: 15 }}
                     onPress={pickFile}
                 />
                 <Text style={styles.overlayDescriptionReference}>
-                    {QuizzLang[props.lang].ReferenceFile}
+                    {QuizLang[props.lang].ReferenceFile}
                 </Text>
                 <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 45, flexShrink: 1, flexWrap:'wrap'}}>
                     <Input
                         value={props.question}
                         inputStyle={{fontSize: 14}}
                         containerStyle={{marginBottom: 50}}
-                        placeholder={QuizzLang[props.lang].WhatIsTheQuestion}
+                        placeholder={QuizLang[props.lang].WhatIsTheQuestion}
                         onChangeText={(e) => props.setQuestion(e)}
                     />
                     <View style={{flexDirection: 'row', alignItems: 'center', flexShrink: 1, flexWrap:'nowrap', width: 90 + '%'}}>
                     <Input
-                        placeholder={QuizzLang[props.lang].AddAnswer}
+                        placeholder={QuizLang[props.lang].AddAnswer}
                         inputStyle={{fontSize: 14}}
                         value={answer}
                         onChangeText={(e) => setAnswer(e)}
@@ -133,7 +133,7 @@ export default function FormQuizzContent(props) {
                     </View>
                 </View>
                 <Text style={styles.overlayDescriptionReference}>
-                    {QuizzLang[props.lang].WhatIsAnswer}
+                    {QuizLang[props.lang].WhatIsAnswer}
                 </Text>
                 <View style={styles.badgesView}>
                     {props.answers.map( (el, i) => {

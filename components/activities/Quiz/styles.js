@@ -99,11 +99,11 @@ export default StyleSheet.create({
         color: '#495058',
         // marginVertical: 15
     },
-    quizzTitleInputContainer: {
+    quizTitleInputContainer: {
         width: 290,
         marginTop: 10
     },
-    quizzTitleInput: {
+    quizTitleInput: {
         fontSize: 15
     },
     badgesView: {

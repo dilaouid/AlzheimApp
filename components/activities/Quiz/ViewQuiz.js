@@ -8,17 +8,17 @@ import {
 } from 'react-native';
 import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
-import QuizzList from './QuizzList';
+import QuizList from './QuizList';
 
-import { lang as QuizzLang } from '../../../language/activities/quizz';
-import * as API from '../../../data/quizzApi';
+import { lang as QuizLang } from '../../../language/activities/quiz';
+import * as API from '../../../data/quizApi';
 
 import styles from './styles';
 
-export default function ViewQuizz(props) {
-    const deleteId = (quizzId) => {
-        API.deleteId(props.personId, quizzId).then((data) => {
-            // update props.quizz state
+export default function ViewQuiz(props) {
+    const deleteId = (quizId) => {
+        API.deleteId(props.personId, quizId).then((data) => {
+            // update props.quiz state
         });
     };
 
@@ -26,7 +26,7 @@ export default function ViewQuizz(props) {
         <>
             <View style={{ flexDirection: 'row' }}>
                 <Button
-                    title={QuizzLang[props.lang].Create}
+                    title={QuizLang[props.lang].Create}
                     containerStyle={styles.createButton}
                     icon={
                         <Icon
@@ -62,13 +62,13 @@ export default function ViewQuizz(props) {
                             size={'small'}
                             style={styles.loading}
                         />
-                    ) : props.quizz?.length > 0 ? (
-                        props.quizz?.map((el, i) => {
+                    ) : props.quiz?.length > 0 ? (
+                        props.quiz?.map((el, i) => {
                             return (
-                                <QuizzList
+                                <QuizList
                                     index={i}
                                     key={el._id}
-                                    quizz={el}
+                                    quiz={el}
                                     lang={props.lang}
                                     deleteId={deleteId}
                                 />
@@ -76,7 +76,7 @@ export default function ViewQuizz(props) {
                         })
                     ) : (
                         <Text style={styles.nothingYet}>
-                            {QuizzLang[props.lang].NothingYet}
+                            {QuizLang[props.lang].NothingYet}
                         </Text>
                     )}
                 </ScrollView>

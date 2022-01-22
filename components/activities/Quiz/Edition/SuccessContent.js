@@ -3,11 +3,11 @@ import { View, Text, Platform } from 'react-native';
 import { Button, Image } from 'react-native-elements';
 import Lottie from '../../../utils/Lottie';
 
-import SuccessImage from '../../../../assets/img/activities/quizz/success.gif';
+import SuccessImage from '../../../../assets/img/activities/quiz/success.gif';
 
 import styles from '../styles';
 
-import { lang as QuizzLang } from '../../../../language/activities/quizz';
+import { lang as QuizLang } from '../../../../language/activities/quiz';
 
 export default function SuccessContent(props) {
     const LottieSource = require('../../../../assets/lottie/success.json');
@@ -24,11 +24,11 @@ export default function SuccessContent(props) {
             />
             <Text style={styles.successPageTitle}>
                 {props.edit === false
-                    ? QuizzLang[props.lang].CreatedQuestion
-                    : QuizzLang[props.lang].EditedQuestion}
+                    ? QuizLang[props.lang].CreatedQuestion
+                    : QuizLang[props.lang].EditedQuestion}
             </Text>
             <Button
-                title={QuizzLang[props.lang].ReturnToForm}
+                title={QuizLang[props.lang].ReturnToForm}
                 style={{ backgroundColor: 'grey' }}
                 onPress={(e) => {
                     props.close();

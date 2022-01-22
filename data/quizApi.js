@@ -11,11 +11,11 @@ const Datastore = require('react-native-local-mongodb');
                             (but before i go and hit the road, i gotta know THE SCHEMA)
                                      ------------------------------------------
 
-    quizzs = [
+    quizs = [
         {
-            _id: somerandomidofaquizz,
-            name: the_quizz_name, (string)
-            personId: [personIdNumber1, personIdNumber2, ...], (array of personId, so a quizz can be shared in the future)
+            _id: somerandomidofaquiz,
+            name: the_quiz_name, (string)
+            personId: [personIdNumber1, personIdNumber2, ...], (array of personId, so a quiz can be shared in the future)
             content: [
                 {
                     id: randomUuid, (string)
@@ -47,12 +47,12 @@ const Datastore = require('react-native-local-mongodb');
 /* ******************** ******************* ****************   ****************  **************** */
 
 export const db = new Datastore({
-    filename: 'QuizzSchema',
+    filename: 'QuizSchema',
     storage: AsyncStorage,
     autoload: true,
 });
 export const ContentDB = new Datastore({
-    filename: 'ContentQuizzSchema',
+    filename: 'ContentQuizSchema',
     storage: AsyncStorage,
     autoload: true,
 });
@@ -69,22 +69,22 @@ export function get(personId) {
         });
 }
 
-export function getContent(quizzId) {
-    return ContentDB.findAsync({ quizzId: quizzId });
+export function getContent(quizId) {
+    return ContentDB.findAsync({ quizId: quizId });
 }
 
-export async function create(personId, quizz) {
-    if (!quizz.name || quizz.content?.length === 0) {
+export async function create(personId, quiz) {
+    if (!quiz.name || quiz.content?.length === 0) {
         console.error('Please fill the required fields');
         return null;
     }
-    for (let i = 0; i < quizz.content.length; i++) {
-        const el = quizz.content[i];
+    for (let i = 0; i < quiz.content.length; i++) {
+        const el = quiz.content[i];
         el.id = uuidv4();
         el.score = [{personId: personId, success: 0, failed: 0}];
         if (['audio', 'image'].includes(el.type)) {
             const filename = uuidv4() + el.type === 'audio' ? '.m4a' : 'png';
-            const path = `${FileSystem.documentDirectory}quizz/${el.type}/`;
+            const path = `${FileSystem.documentDirectory}quiz/${el.type}/`;
             await FileSystem.copyAsync({
                 from: el.uri,
                 to: path + filename
@@ -93,7 +93,7 @@ export async function create(personId, quizz) {
             el.uri = path + filename;
         }
     }
-    return db.insertAsync({ ...quizz }, (err, result) => {
+    return db.insertAsync({ ...quiz }, (err, result) => {
         if (err) {
             console.error(err);
             return null;
@@ -103,8 +103,8 @@ export async function create(personId, quizz) {
     });
 };
 
-export function addContent(quizzId, personId, content) {
-    const data = db.find({ _id: quizzId, personId: personId }, (err, data) => {
+export function addContent(quizId, personId, content) {
+    const data = db.find({ _id: quizId, personId: personId }, (err, data) => {
         if (err) {
             console.error(err);
         } else {
@@ -130,10 +130,10 @@ export function addContent(quizzId, personId, content) {
     });
 }
 
-export async function deleteId(personId, quizzId) {
-    // @todo remove files linked to the quizz
-    await ContentDB.removeAsync({ quizzId: quizzId }, { multi: true });
-    return db.removeAsync({ _id: quizzId, personId: personId });
+export async function deleteId(personId, quizId) {
+    // @todo remove files linked to the quiz
+    await ContentDB.removeAsync({ quizId: quizId }, { multi: true });
+    return db.removeAsync({ _id: quizId, personId: personId });
 }
 
 export async function reset() {

@@ -7,7 +7,7 @@ import {
     Button
 } from 'react-native-elements';
 import { Platform, Modal, View, Text } from 'react-native';
-import { lang as QuizzLang } from '../../../../language/activities/quizz';
+import { lang as QuizLang } from '../../../../language/activities/quiz';
 
 
 import styles from '../styles';
@@ -66,16 +66,16 @@ export default function QuestionList(props) {
             onBackdropPress={() => setModal(false)}
             ModalComponent={Modal}
         >
-            <Text style={{marginBottom: 30, width: 250, textAlign: 'center'}}>{QuizzLang[props.lang].SureDeleteQuestion}</Text>
+            <Text style={{marginBottom: 30, width: 250, textAlign: 'center'}}>{QuizLang[props.lang].SureDeleteQuestion}</Text>
             <View style={{ flexDirection: 'row' }}>
                 <Button
-                    title={QuizzLang[props.lang].Leave}
+                    title={QuizLang[props.lang].Leave}
                     buttonStyle={{ backgroundColor: 'red' }}
                     containerStyle={{ marginRight: 10 }}
                     onPress={() => setModal(false)}
                 />
                 <Button
-                    title={QuizzLang[props.lang].OK}
+                    title={QuizLang[props.lang].OK}
                     buttonStyle={{ fontWeight: 'bold' }}
                     onPress={pickOutQuestion}
                 />
@@ -85,7 +85,7 @@ export default function QuestionList(props) {
                 { pickCorrectIcon() }
                 <ListItem.Content>
                     <ListItem.Title>{props.content.question}</ListItem.Title>
-                    <ListItem.Subtitle>{props.content?.answers?.length || 1} {QuizzLang[props.lang].PossibleAnswers}</ListItem.Subtitle>
+                    <ListItem.Subtitle>{props.content?.answers?.length || 1} {QuizLang[props.lang].PossibleAnswers}</ListItem.Subtitle>
                 </ListItem.Content>
                 <Icon reverse size={15} style={{backgroundColor:'red'}} name={'trash-outline'} type={'ionicon'} color={'red'} onPress={(e) => { setModal(true) }} />
             </ListItem>

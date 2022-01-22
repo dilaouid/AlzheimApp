@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ListItem, Icon } from 'react-native-elements';
 import { Platform } from 'react-native';
-import { lang as QuizzLang } from '../../../language/activities/quizz';
+import { lang as QuizLang } from '../../../language/activities/quiz';
 
-export default function QuizzList(props) {
+export default function QuizList(props) {
     var TouchableScale =
         Platform.OS !== 'web'
             ? require('react-native-touchable-scale').default
@@ -26,8 +26,8 @@ export default function QuizzList(props) {
             <ListItem.Content>
                 <ListItem.Title>{props.name}</ListItem.Title>
                 <ListItem.Subtitle>
-                    {props.quizz?.score?.length || 1}{' '}
-                    {QuizzLang[props.lang].SuccessfulRatio}
+                    {props.quiz?.score?.length || 1}{' '}
+                    {QuizLang[props.lang].SuccessfulRatio}
                 </ListItem.Subtitle>
             </ListItem.Content>
             <Icon

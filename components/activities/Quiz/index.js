@@ -5,25 +5,25 @@ import { Text } from 'react-native-elements';
 import Menu from './Menu';
 
 // Child components
-import ViewQuizz from './ViewQuizz';
-import CreateQuizz from './Edition/CreateQuizz';
+import ViewQuiz from './ViewQuiz';
+import CreateQuiz from './Edition/CreateQuiz';
 
-import * as API from '../../../data/quizzApi';
+import * as API from '../../../data/quizApi';
 
 import styles from './styles';
 
-export default function Quizz(props) {
+export default function Quiz(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [tab, setTab] = useState(0);
-    const [quizz, setQuizz] = useState([]);
+    const [quiz, setQuiz] = useState([]);
 
     useEffect(() => {
         // API.reset();
 
         API.get(props.personId).then((data) => {
-            // setQuizz(['test'])
+            // setQuiz(['test'])
             if (data.length > 0) {
-                setQuizz(data);
+                setQuiz(data);
             }
             setIsLoading(false);
         });
@@ -53,26 +53,26 @@ export default function Quizz(props) {
                     setTab={setTab}
                     lang={props.lang}
                     setPage={props.setPage}
-                    quizz={quizz}
+                    quiz={quiz}
                 />
             );
         } else if (tab === 1) {
             return <Text>Tab 1 (Play?)</Text>;
         } else if (tab === 2) {
             return (
-                <ViewQuizz
+                <ViewQuiz
                     loading={isLoading}
                     setTab={setTab}
                     lang={props.lang}
                     setPage={props.setPage}
-                    quizz={quizz}
+                    quiz={quiz}
                 />
             );
         } else if (tab === 3) {
             return <Text>Tab 3 (Help?)</Text>;
         } else if (tab === 4) {
             return (
-                <CreateQuizz
+                <CreateQuiz
                     personId={props.personId}
                     setTab={setTab}
                     lang={props.lang}

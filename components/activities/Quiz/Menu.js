@@ -2,20 +2,20 @@ import React from 'react';
 import { Image } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 
-import { lang as QuizzLang } from '../../../language/activities/quizz';
+import { lang as QuizLang } from '../../../language/activities/quiz';
 
-import QuizzLogo from '../../../assets/img/activities/quizz/logo.png';
+import QuizLogo from '../../../assets/img/activities/quiz/logo.png';
 
 import styles from './styles';
 
 export default function Menu(props) {
     return (
         <>
-            <Image source={QuizzLogo} style={styles.logo} />
+            <Image source={QuizLogo} style={styles.logo} />
 
-            {props.quizz?.length > 0 ? (
+            {props.quiz?.length > 0 ? (
                 <Button
-                    title={QuizzLang[props.lang].Play}
+                    title={QuizLang[props.lang].Play}
                     containerStyle={styles.button}
                     onPress={() => props.setTab(1)}
                     icon={
@@ -33,7 +33,7 @@ export default function Menu(props) {
             )}
 
             <Button
-                title={QuizzLang[props.lang].View}
+                title={QuizLang[props.lang].View}
                 containerStyle={styles.button}
                 onPress={() => props.setTab(2)}
                 icon={
@@ -48,7 +48,7 @@ export default function Menu(props) {
             />
 
             <Button
-                title={QuizzLang[props.lang].Help}
+                title={QuizLang[props.lang].Help}
                 containerStyle={styles.button}
                 onPress={() => props.setTab(3)}
                 icon={
@@ -63,7 +63,7 @@ export default function Menu(props) {
             />
 
             <Button
-                title={QuizzLang[props.lang].Leave}
+                title={QuizLang[props.lang].Leave}
                 buttonStyle={{ backgroundColor: 'red' }}
                 containerStyle={styles.leaveButton}
                 onPress={() => props.setPage(null)}
