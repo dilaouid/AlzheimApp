@@ -74,11 +74,10 @@ export function getContent(quizzId) {
 }
 
 export async function create(personId, quizz) {
-    if (!quizz.question || quizz.content?.length === 0) {
+    if (!quizz.name || quizz.content?.length === 0) {
         console.error('Please fill the required fields');
         return null;
     }
-    quizz['personId'] = [personId];
     for (let i = 0; i < quizz.content.length; i++) {
         const el = quizz.content[i];
         el.id = uuidv4();

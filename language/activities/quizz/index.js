@@ -47,6 +47,8 @@ export const lang = {
         CompleteQuizzTitleHeader: "Créer un quizz",
         CompleteQuizzTitle: "Vous êtes sur le point de créer un nouveau quizz. Merci de lui attribuer un titre afin que vous puissez le retrouver plus rapidement.",
         QuizzTitle: "Nom du quizz",
+        CreatedQuizz: "Quizz crée avec succès !",
+        QuizzListRedirection: "Vous allez maintenant être redirigé à la liste des quizz.",
     },
     en: {
         Play: 'Play',
@@ -73,5 +75,7 @@ export const lang = {
         CompleteQuizzTitleHeader: "Create a quizz",
         CompleteQuizzTitle: "You are about to complete the quizz creation. Please provide a title in order to help you find it easier later.",
         QuizzTitle: "Quizz title",
+        CreatedQuizz: "Quizz successfuly created!",
+        QuizzListRedirection: "You will now be redirect to the quiz list.",
     },
 };

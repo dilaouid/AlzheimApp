@@ -5,7 +5,8 @@ import {
     Text,
     ScrollView,
     SafeAreaView,
-    Modal
+    Modal,
+    Alert
 } from 'react-native';
 import { Button, Icon, Divider, FAB, Overlay, Input } from 'react-native-elements';
 
@@ -42,7 +43,27 @@ export default function CreateQuizz(props) {
     }, [answers, question]);
 
     const createQuizz = () => {
-        // @todo => open modal to specify name
+        API.create(props.personId, {
+            name: name,
+            content: content,
+            personId: props.personId
+        }).then(data => {
+            return Alert.alert(
+                QuizzLang[props.lang].CreatedQuizz,
+                QuizzLang[props.lang].QuizzListRedirection,
+                [
+                    {
+                        text: QuizzLang[props.lang].OK,
+                        onPress: () => {
+                            setModal(false);
+                            props.setTab(2);
+                        },
+                    }
+                ]
+            );
+        }).catch(err => {
+            console.log(err);
+        });
     };
 
     const pushContent = () => {
@@ -88,7 +109,7 @@ export default function CreateQuizz(props) {
                             color={'white'}
                             size={15}
                         />
-                    } disabled={name?.length < 3 ? true : false} />
+                    } disabled={name?.length < 3 ? true : false} onPress={createQuizz} />
                 </View>
             </Overlay>
 

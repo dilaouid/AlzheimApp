@@ -73,6 +73,7 @@ export default function Quizz(props) {
         } else if (tab === 4) {
             return (
                 <CreateQuizz
+                    personId={props.personId}
                     setTab={setTab}
                     lang={props.lang}
                     setPage={props.setPage}
