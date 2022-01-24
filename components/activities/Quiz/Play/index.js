@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { Text, Button, Icon, FAB } from 'react-native-elements';
+import { Text } from 'react-native-elements';
 
 import styles from '../styles';
-import Lottie from '../../../utils/Lottie';
-
-import ThinkingLottie from '../../../../assets/lottie/thinking.json';
-import { lang as QuizLang } from '../../../../language/activities/quiz';
 
 import Menu from './Menu';
+import Game from './Game';
 
 export default function Play(props) {
     const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +16,11 @@ export default function Play(props) {
     return (
     <View style={styles.view}>
         { play ?
-            <Text>Playing</Text>
+            <Game 
+                lang={props.lang}
+                quiz={props.quiz.content}
+                setPlay={setPlay}
+            />
             :
             <Menu
                 lang={props.lang}
