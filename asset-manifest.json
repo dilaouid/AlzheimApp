@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/AlzheimApp/static/js/app.9dc9cabd.chunk.js",
-    "app.js.map": "/AlzheimApp/static/js/app.9dc9cabd.chunk.js.map",
+    "app.js": "/AlzheimApp/static/js/app.872e7f73.chunk.js",
+    "app.js.map": "/AlzheimApp/static/js/app.872e7f73.chunk.js.map",
     "runtime~app.js": "/AlzheimApp/static/js/runtime~app.1747fd2b.js",
     "runtime~app.js.map": "/AlzheimApp/static/js/runtime~app.1747fd2b.js.map",
     "static/js/2.c1e839a0.chunk.js": "/AlzheimApp/static/js/2.c1e839a0.chunk.js",
@@ -50,6 +50,6 @@
   "entrypoints": [
     "static/js/runtime~app.1747fd2b.js",
     "static/js/2.c1e839a0.chunk.js",
-    "static/js/app.9dc9cabd.chunk.js"
+    "static/js/app.872e7f73.chunk.js"
   ]
 }
