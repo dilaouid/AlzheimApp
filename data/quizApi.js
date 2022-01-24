@@ -82,9 +82,9 @@ export async function create(personId, quiz) {
         const el = quiz.content[i];
         el.id = uuidv4();
         el.score = [{personId: personId, success: 0, failed: 0}];
-        if (['audio', 'image'].includes(el.type)) {
+        if (['audio', 'image'].includes(el.fileType)) {
             const filename = uuidv4() + el.type === 'audio' ? '.m4a' : 'png';
-            const path = `${FileSystem.documentDirectory}quiz/${el.type}/`;
+            const path = `${FileSystem.documentDirectory}quiz/${el.fileType}/`;
             await FileSystem.copyAsync({
                 from: el.uri,
                 to: path + filename
@@ -132,7 +132,7 @@ export function addContent(quizId, personId, content) {
 
 export async function deleteId(personId, quizId) {
     // @todo remove files linked to the quiz
-    await ContentDB.removeAsync({ quizId: quizId }, { multi: true });
+    // await ContentDB.removeAsync({ quizId: quizId }, { multi: true });
     return db.removeAsync({ _id: quizId, personId: personId });
 }
 
