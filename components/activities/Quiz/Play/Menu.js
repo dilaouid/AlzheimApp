@@ -7,7 +7,7 @@ import Lottie from '../../../utils/Lottie';
 import ThinkingLottie from '../../../../assets/lottie/thinking.json';
 import { lang as QuizLang } from '../../../../language/activities/quiz';
 
-export default function Play(props) {
+export default function Menu(props) {
     const ThinkingImage = require('../../../../assets/img/activities/quiz/thinking.gif')
 
     return (
