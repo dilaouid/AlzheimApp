@@ -35,7 +35,6 @@ export default function FormQuizContent(props) {
     };
 
     const clearFile = () => {
-        // props.setb64();
         props.setFileType();
         props.setFilename();
         props.setUri();

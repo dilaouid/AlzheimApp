@@ -100,7 +100,7 @@ export default function CreateQuiz(props) {
                     <Input placeholder={QuizLang[props.lang].QuizTitle}
                         containerStyle={styles.quizTitleInputContainer}
                         inputStyle={styles.quizTitleInput}
-                        onChangeText={(e) => setName(e)}
+                        onChangeText={(e) => setName(e?.trim())}
                     />
                     <Button containerStyle={{ marginTop: 10, width: 40 }} title={{}} icon={
                         <Icon
