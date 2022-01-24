@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ListItem, Icon } from 'react-native-elements';
-import { Platform } from 'react-native';
+import { Platform, Alert } from 'react-native';
 import { lang as QuizLang } from '../../../language/activities/quiz';
 
 import { ScoreRatio } from './utils/scoreFunc';
@@ -44,7 +44,23 @@ export default function QuizList(props) {
                 type={'ionicon'}
                 color={'red'}
                 onPress={() => {
-                    props.deleteId(props._id);
+                    return Alert.alert(
+                        QuizLang[props.lang].DeleteQuiz,
+                        QuizLang[props.lang].SureDeleteQuiz,
+                        [
+                            {
+                                text: QuizLang[props.lang].Leave,
+                                onPress: () => { null },
+                                style: 'cancel'
+                            },
+                            {
+                                text: QuizLang[props.lang].OK,
+                                onPress: () => {
+                                    props.deleteId(props.quiz._id);
+                                }
+                            },
+                        ]
+                    );
                 }}
             />
         </ListItem>

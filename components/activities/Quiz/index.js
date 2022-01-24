@@ -19,6 +19,7 @@ export default function Quiz(props) {
     const [tab, setTab] = useState(0);
     const [quiz, setQuiz] = useState([]);
     const [random, setRandom] = useState(0);
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
         // API.reset();
@@ -47,7 +48,7 @@ export default function Quiz(props) {
         return () => {
             backHandler.remove();
         };
-    }, [tab]);
+    }, [tab, reload]);
 
     const pickRandomQuizz = () => {
         if (quiz.length > 0) {
@@ -81,6 +82,9 @@ export default function Quiz(props) {
                     lang={props.lang}
                     setPage={props.setPage}
                     quiz={quiz}
+                    personId={props.personId}
+                    reload={reload}
+                    setReload={setReload}
                 />
             );
         } else if (tab === 3) {

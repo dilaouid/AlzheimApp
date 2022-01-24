@@ -16,9 +16,10 @@ import * as API from '../../../data/quizApi';
 import styles from './styles';
 
 export default function ViewQuiz(props) {
+
     const deleteId = (quizId) => {
         API.deleteId(props.personId, quizId).then((data) => {
-            // update props.quiz state
+            props.setReload(!props.reload);
         });
     };
 
