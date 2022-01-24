@@ -49,6 +49,7 @@ export const lang = {
         QuizTitle: "Nom du quiz",
         CreatedQuiz: "Quiz crée avec succès !",
         QuizListRedirection: "Vous allez maintenant être redirigé à la liste des quiz.",
+        Questions: "question(s)",
     },
     en: {
         Play: 'Play',
@@ -77,5 +78,6 @@ export const lang = {
         QuizTitle: "Quiz title",
         CreatedQuiz: "Quiz successfuly created!",
         QuizListRedirection: "You will now be redirect to the quiz list.",
+        Questions: "question(s)",
     },
 };

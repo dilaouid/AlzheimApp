@@ -3,6 +3,8 @@ import { ListItem, Icon } from 'react-native-elements';
 import { Platform } from 'react-native';
 import { lang as QuizLang } from '../../../language/activities/quiz';
 
+import { ScoreRatio } from './utils/scoreFunc';
+
 export default function QuizList(props) {
     var TouchableScale =
         Platform.OS !== 'web'
@@ -24,10 +26,14 @@ export default function QuizList(props) {
     return (
         <ListItem {...componentProps}>
             <ListItem.Content>
-                <ListItem.Title>{props.name}</ListItem.Title>
+                <ListItem.Title>{props.quiz.name}</ListItem.Title>
                 <ListItem.Subtitle>
                     {props.quiz?.score?.length || 1}{' '}
                     {QuizLang[props.lang].SuccessfulRatio}
+                </ListItem.Subtitle>
+                <ListItem.Subtitle>
+                    {props.quiz?.content?.length || 1}{' '}
+                    {QuizLang[props.lang].Questions}
                 </ListItem.Subtitle>
             </ListItem.Content>
             <Icon
