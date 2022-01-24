@@ -49,6 +49,12 @@ export const lang = {
         QuizTitle: "Nom du quiz",
         CreatedQuiz: "Quiz crée avec succès !",
         QuizListRedirection: "Vous allez maintenant être redirigé à la liste des quiz.",
+        selectedQuizz: (quizzName) => {
+            return applyBoldStyle({
+                sentence: 'Le quiz sélectionné aléatoirement est: {0}',
+                boldText: [quizzName],
+            });
+        },
         Questions: "question(s)",
     },
     en: {
@@ -78,6 +84,12 @@ export const lang = {
         QuizTitle: "Quiz title",
         CreatedQuiz: "Quiz successfuly created!",
         QuizListRedirection: "You will now be redirect to the quiz list.",
+        selectedQuizz: (quizzName) => {
+            return applyBoldStyle({
+                sentence: 'The randomly selected quiz is: {0}',
+                boldText: [quizzName],
+            });
+        },
         Questions: "question(s)",
     },
 };

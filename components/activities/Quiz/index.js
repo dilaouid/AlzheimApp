@@ -3,10 +3,12 @@ import { View, BackHandler } from 'react-native';
 import { Text } from 'react-native-elements';
 
 import Menu from './Menu';
+import { randomNumber } from '../../../utils/helpers';
 
 // Child components
 import ViewQuiz from './ViewQuiz';
 import CreateQuiz from './Edition/CreateQuiz';
+import Play from './Play';
 
 import * as API from '../../../data/quizApi';
 
@@ -16,14 +18,15 @@ export default function Quiz(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [tab, setTab] = useState(0);
     const [quiz, setQuiz] = useState([]);
+    const [random, setRandom] = useState(0);
 
     useEffect(() => {
         // API.reset();
 
         API.get(props.personId).then((data) => {
-            // setQuiz(['test'])
             if (data.length > 0) {
                 setQuiz(data);
+                setRandom(randomNumber(0, quiz.length - 1));
             }
             setIsLoading(false);
         });
@@ -46,6 +49,12 @@ export default function Quiz(props) {
         };
     }, [tab]);
 
+    const pickRandomQuizz = () => {
+        if (quiz.length > 0) {
+            setRandom(randomNumber(0, quiz.length - 1));
+        }
+    }
+
     const printPage = () => {
         if (tab === 0) {
             return (
@@ -57,7 +66,13 @@ export default function Quiz(props) {
                 />
             );
         } else if (tab === 1) {
-            return <Text>Tab 1 (Play?)</Text>;
+            return <Play
+                quiz={quiz[random]}
+                lang={props.lang}
+                personId={props.personId}
+                setTab={setTab}
+                pickRandomQuizz={pickRandomQuizz}
+            />;
         } else if (tab === 2) {
             return (
                 <ViewQuiz

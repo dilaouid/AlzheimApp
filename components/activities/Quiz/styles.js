@@ -26,6 +26,20 @@ export default StyleSheet.create({
         borderRadius: 10,
         marginHorizontal: 5,
     },
+    leaveButtonPlay: {
+        width: 235,
+        marginTop: 20,
+        backgroundColor: 'red',
+        borderRadius: 10,
+        marginHorizontal: 5,
+    },
+    playButton: {
+        width: 235,
+        marginTop: 10,
+        backgroundColor: 'blue',
+        borderRadius: 10,
+        marginHorizontal: 5,
+    },
     createButton: {
         width: 260,
         borderRadius: 15,
@@ -113,5 +127,11 @@ export default StyleSheet.create({
         alignItems:'center',
         alignContent:'center',
         marginBottom: 50
+    },
+    quizzTitle: {
+        fontWeight: 'bold',
+        fontSize: 25,
+        textAlign: 'center',
+        width: 250
     }
 });

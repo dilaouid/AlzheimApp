@@ -14,6 +14,7 @@ import styles from '../styles';
 
 export default function QuestionList(props) {
     const [modal, setModal] = useState(false);
+    const [edit, setEdit] = useState(false);
 
     const pickOutQuestion = () => {
         const tmp = props.contentList;
@@ -81,7 +82,7 @@ export default function QuestionList(props) {
                 />
             </View>
         </Overlay>
-            <ListItem {...componentProps} >
+            <ListItem {...componentProps} onPress={() => { setEdit(true) }} >
                 { pickCorrectIcon() }
                 <ListItem.Content>
                     <ListItem.Title>{props.content.question}</ListItem.Title>
