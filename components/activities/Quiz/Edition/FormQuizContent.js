@@ -20,8 +20,7 @@ export default function FormQuizContent(props) {
     const [answer, setAnswer] = useState();
 
     const addAnswer = () => {
-        setAnswer();
-        if (answer?.trim()?.length === 0) {
+        if (!answer?.trim()) {
             return null;
         } else if (props.answers?.includes(answer?.trim()?.toLowerCase()) === false) {
             props.setAnswers([...props.answers, answer?.trim()?.toLowerCase()]);
