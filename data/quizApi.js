@@ -103,6 +103,16 @@ export async function create(personId, quiz) {
     });
 };
 
+export async function updateScore(personId, quizId, contentId, success) {
+    const quiz = await db.findAsync({ _id: quizId, personId: personId }, (err, data) => {
+        if (err) console.error(err);
+        return data;
+    });
+    const content = quiz[0].content.find(el => el.id == contentId );
+    const score = content.score.find(el => el.personId = personId);
+    if (success) score.success++
+    else score.failed++
+};
 
 export async function deleteId(personId, quizId) {
     // await ContentDB.removeAsync({ quizId: quizId }, { multi: true });

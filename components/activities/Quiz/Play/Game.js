@@ -7,6 +7,7 @@ import styles from '../styles';
 import { shuffle } from '../utils/gameFunc';
 
 import { lang as QuizLang } from '../../../../language/activities/quiz';
+import * as API from '../../../../data/quizApi';
 
 export default function Game(props) {
     const [game, setGame] = useState([]);
@@ -35,9 +36,11 @@ export default function Game(props) {
         setAnswer('');
         if (game[current].answers.includes(answerTrimedLowercase) === false) {
             // increment the success and update the API
+            API.updateScore(props.personId, props.quizId, game[current].id, false)
             alert('wrong answer');
         } else {
             // increment the fail and update the API
+            API.updateScore(props.personId, props.quizId, game[current].id, true)
             alert('good answer');
         }
         if (current + 1 <= game.length - 1)

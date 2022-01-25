@@ -18,6 +18,8 @@ export default function Play(props) {
         { play ?
             <Game 
                 lang={props.lang}
+                quizId={props.quiz._id}
+                personId={props.personId}
                 quiz={props.quiz.content}
                 setPlay={setPlay}
             />
