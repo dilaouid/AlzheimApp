@@ -133,5 +133,38 @@ export default StyleSheet.create({
         fontSize: 25,
         textAlign: 'center',
         width: 250
+    },
+    topMediaQuestion: {
+        borderRadius: 80,
+        width: 250,
+        height: 250
+    },
+    gameQuestion: {
+        fontSize: 25,
+        marginTop: 10,
+        fontWeight: 'bold',
+        color: '#788bff'
+    },
+    flexQuizGame: {
+        flex: 1,
+        flexDirection: 'row',
+        marginTop: 15,
+        alignContent:'center',
+        width: 70 + '%',
+        justifyContent: 'flex-start'
+    },
+    inputQuizGame: {
+        backgroundColor: 'white',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderColor: 'grey',
+        borderWidth: 1,
+        paddingHorizontal: 20,
+        borderBottomWidth: 0,
+        color: 'grey'
+    },
+    buttonQuizGameOK: {
+        paddingHorizontal: 15,
+        borderRadius: 15
     }
 });

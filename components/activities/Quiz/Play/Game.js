@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
-import { Text, Image } from 'react-native-elements';
+import { Text, Image, Input, Button } from 'react-native-elements';
 
 import styles from '../styles';
 
@@ -16,14 +16,33 @@ export default function Game(props) {
     useEffect( () => {
         setGame(shuffle(props.quiz));
         setLoading(false);
-    });
+    }, []);
+
+    const setMediaType = () => {
+        switch (game[current].fileType) {
+            case 'image':
+                return <Image transition={true} source={ {uri: game[current].uri } } style={styles.topMediaQuestion}  />
+            case 'audio':
+                return <></>;
+            default:
+                return <></>;
+                break;
+        }
+    };
 
     return (
     <>
         {loading ?
             <ActivityIndicator size={'large'} style={{marginTop: 30}} color={'blue'} />
-                :
-            <Text>You are playing</Text>
+               :
+            <>
+                { setMediaType() }
+                <Text style={styles.gameQuestion}>{game[current].question}</Text>
+                <View style={styles.flexQuizGame}>
+                    <Input style={styles.inputQuizGame} />
+                    <Button buttonStyle={styles.buttonQuizGameOK} title={QuizLang[props.lang].OK} />
+                </View>
+            </>
         }
     </>);
 };
