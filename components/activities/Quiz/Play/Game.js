@@ -27,17 +27,23 @@ export default function Game(props) {
                 return <></>;
             default:
                 return <></>;
-                break;
         }
     };
 
     const answerQuestion = () => {
         const answerTrimedLowercase = answer?.trim()?.toLowerCase();
+        setAnswer('');
         if (game[current].answers.includes(answerTrimedLowercase) === false) {
+            // increment the success and update the API
             alert('wrong answer');
         } else {
+            // increment the fail and update the API
             alert('good answer');
         }
+        if (current + 1 <= game.length - 1)
+            setCurrent(current + 1);
+        else
+            alert('game over')
     };
 
     return (
