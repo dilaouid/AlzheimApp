@@ -20,7 +20,7 @@ export default function FormQuizContent(props) {
     const [answer, setAnswer] = useState();
 
     const addAnswer = () => {
-        if (!answer?.trim()) {
+        if (!answer?.trim() || props.answers.length >= 10) {
             return null;
         } else if (props.answers?.includes(answer?.trim()?.toLowerCase()) === false) {
             props.setAnswers([...props.answers, answer?.trim()?.toLowerCase()]);
@@ -127,6 +127,7 @@ export default function FormQuizContent(props) {
                             />
                         }
                         onPress={() => addAnswer()}
+                        disabled={props.answers.length >= 10}
                     />
                     </View>
                 </View>
