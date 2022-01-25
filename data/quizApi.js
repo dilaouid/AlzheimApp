@@ -108,10 +108,11 @@ export async function updateScore(personId, quizId, contentId, success) {
         if (err) console.error(err);
         return data;
     });
-    const content = quiz[0].content.find(el => el.id == contentId );
-    const score = content.score.find(el => el.personId = personId);
-    if (success) score.success++
-    else score.failed++
+    const contentIndex = quiz[0].content.findIndex(el => el.id == contentId );
+    const scoreIndex = quiz[0].content[contentIndex].score.findIndex(el => el.personId = personId);
+    if (success) quiz[0].content[contentIndex].score[scoreIndex].success++
+    else quiz[0].content[contentIndex].score[scoreIndex].failed++
+    return db.updateAsync({_id: quizId}, {...quiz[0]});
 };
 
 export async function deleteId(personId, quizId) {
