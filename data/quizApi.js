@@ -103,32 +103,6 @@ export async function create(personId, quiz) {
     });
 };
 
-export function addContent(quizId, personId, content) {
-    const data = db.find({ _id: quizId, personId: personId }, (err, data) => {
-        if (err) {
-            console.error(err);
-        } else {
-            return data;
-        }
-    });
-    if (!data)
-        return null;
-    if (['audio', 'image'].includes(content.type) && content.path === null) {
-        console.error('A path is required when the type is "audio" or "image".');
-        return null;
-    } else if (!content.question || content.answers?.length === 0) {
-        console.error('Please fill the required fields');
-        return null;
-    }
-    return db.insertAsync({ ...content }, (err, result) => {
-        if (err) {
-            console.error(err);
-            return null;
-        } else {
-            return result;
-        }
-    });
-}
 
 export async function deleteId(personId, quizId) {
     // await ContentDB.removeAsync({ quizId: quizId }, { multi: true });
