@@ -12,6 +12,7 @@ export default function Game(props) {
     const [game, setGame] = useState([]);
     const [loading, setLoading] = useState(true);
     const [current, setCurrent] = useState(0);
+    const [answer, setAnswer] = useState();
 
     useEffect( () => {
         setGame(shuffle(props.quiz));
@@ -30,6 +31,15 @@ export default function Game(props) {
         }
     };
 
+    const answerQuestion = () => {
+        const answerTrimedLowercase = answer?.trim()?.toLowerCase();
+        if (game[current].answers.includes(answerTrimedLowercase) === false) {
+            alert('wrong answer');
+        } else {
+            alert('good answer');
+        }
+    };
+
     return (
     <>
         {loading ?
@@ -39,8 +49,8 @@ export default function Game(props) {
                 { setMediaType() }
                 <Text style={styles.gameQuestion}>{game[current].question}</Text>
                 <View style={styles.flexQuizGame}>
-                    <Input style={styles.inputQuizGame} />
-                    <Button buttonStyle={styles.buttonQuizGameOK} title={QuizLang[props.lang].OK} />
+                    <Input style={styles.inputQuizGame} onChangeText={(e) => { setAnswer(e); }} value={answer} />
+                    <Button buttonStyle={styles.buttonQuizGameOK} title={QuizLang[props.lang].OK} onPress={() => { answerQuestion() }} />
                 </View>
             </>
         }
