@@ -131,8 +131,16 @@ export function addContent(quizId, personId, content) {
 }
 
 export async function deleteId(personId, quizId) {
-    // @todo remove files linked to the quiz
     // await ContentDB.removeAsync({ quizId: quizId }, { multi: true });
+    const quiz = await db.findAsync({ _id: quizId, personId: personId }, (err, data) => {
+        if (err) console.error(err);
+        return data;
+    });
+    for (let i = 0; i < quiz[0].content.length; i++) {
+        const el = quiz[0].content[i];
+        if (['audio', 'image'].includes(el.fileType))
+            await FileSystem.deleteAsync(el.uri);
+    }
     return db.removeAsync({ _id: quizId, personId: personId });
 }
 
