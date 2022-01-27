@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
-import { Text, Image, Input, Button } from 'react-native-elements';
+import { Text, Image, Input, Button, Icon } from 'react-native-elements';
 
 import styles from '../styles';
 
@@ -8,24 +8,54 @@ import { shuffle } from '../utils/gameFunc';
 
 import { lang as QuizLang } from '../../../../language/activities/quiz';
 import * as API from '../../../../data/quizApi';
+import { Audio } from 'expo-av';
 
 export default function Game(props) {
     const [game, setGame] = useState([]);
     const [loading, setLoading] = useState(true);
     const [current, setCurrent] = useState(0);
     const [answer, setAnswer] = useState();
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [sound, setSound] = useState(new Audio.Sound());
 
     useEffect( () => {
         setGame(shuffle(props.quiz));
         setLoading(false);
     }, []);
 
+    const pauseSound = async () => {
+        const getSoundStatus = await sound?.getStatusAsync();
+        if (getSoundStatus.isLoaded)
+            await sound.pauseAsync();
+        setIsPlaying(false);
+    };
+
+    const playSound = async () => {
+        setIsPlaying(true);
+        await Audio.setAudioModeAsync({
+            staysActiveInBackground: true,
+            shouldDuckAndroid: true,
+        });
+        const getSoundStatus = await sound?.getStatusAsync();
+        if (getSoundStatus?.isLoaded === false) {
+            await sound.loadAsync({ uri: game[current].uri });
+            setSound(sound);
+        }
+        await sound.playAsync();
+        sound.setOnPlaybackStatusUpdate(async (playbackStatus) => {
+            if (playbackStatus.didJustFinish) {
+                await sound.unloadAsync();
+                setIsPlaying(false);
+            }
+        });
+    };
+
     const setMediaType = () => {
         switch (game[current].fileType) {
             case 'image':
                 return <Image transition={true} source={ {uri: game[current].uri } } style={styles.topMediaQuestion}  />
             case 'audio':
-                return <></>;
+                return <Icon onPress={() => isPlaying ? pauseSound() : playSound() } raised size={50} name={isPlaying ? "pause-circle-outline" : "play-circle-outline"} color={'#246364'} type={"ionicon"} containerStyle={{marginBottom: 30}} />
             default:
                 return <></>;
         }
@@ -33,6 +63,7 @@ export default function Game(props) {
 
     const answerQuestion = () => {
         const answerTrimedLowercase = answer?.trim()?.toLowerCase();
+        pauseSound();
         setAnswer('');
         if (game[current].answers.includes(answerTrimedLowercase) === false) {
             // increment the success and update the API
