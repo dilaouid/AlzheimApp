@@ -12,13 +12,13 @@ import * as DocumentPicker from 'expo-document-picker';
 import { lang as QuizLang } from '../../../../language/activities/quiz';
 import SuccessContent from './SuccessContent';
 
-import * as API from '../../../../data/quizApi';
+import { Audio } from 'expo-av';
 
 import styles from '../styles';
 
 export default function FormQuizContent(props) {
     const [answer, setAnswer] = useState();
-
+    
     const addAnswer = () => {
         if (!answer?.trim() || props.answers.length >= 10) {
             return null;
@@ -40,8 +40,28 @@ export default function FormQuizContent(props) {
         props.setUri();
     };
 
+    const playSound = async () => {
+        props.setIsPlaying(true);
+        await Audio.setAudioModeAsync({
+            staysActiveInBackground: true,
+            shouldDuckAndroid: true,
+        });
+        const getSoundStatus = await props.sound?.getStatusAsync();
+        if (getSoundStatus?.isLoaded === false) {
+            await props.sound.loadAsync({ uri: props.uri });
+            props.setSound(props.sound);
+        }
+        await props.sound.playAsync();
+        props.sound.setOnPlaybackStatusUpdate(async (playbackStatus) => {
+            if (playbackStatus.didJustFinish) {
+                await props.sound.unloadAsync();
+                props.setIsPlaying(false);
+            }
+        });
+    };
+
     const printFile = () => {
-        if (props.fileType == 'image') {
+        if (props.fileType === 'image') {
             return (
                 <View>
                     <FAB
@@ -55,7 +75,22 @@ export default function FormQuizContent(props) {
                     />
                     <Image source={{uri: props.uri}} style={{width: 200, height: 200, borderRadius: 100, marginBottom: 30}} />
                 </View>
-            )
+            );
+        } else if (props.fileType === 'audio') {
+            return (
+                <View>
+                    <FAB
+                        color='red'
+                        style={{marginLeft: 100, position:'absolute', zIndex: 9}}
+                        size="small"
+                        icon={{name: 'close-circle-outline', type: 'ionicon', color:'white' }}
+                        onPress={() => {
+                            clearFile();
+                        }}
+                    />
+                    <Icon onPress={() => props.isPlaying ? props.pauseSound() : playSound() } raised size={50} name={props.isPlaying ? "pause-circle-outline" : "play-circle-outline"} color={'#246364'} type={"ionicon"} containerStyle={{marginBottom: 30, zIndex: 2}} />
+                </View>
+            );
         }
     };
 

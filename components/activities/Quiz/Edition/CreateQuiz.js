@@ -16,6 +16,7 @@ import FormQuizContent from './FormQuizContent';
 
 import { lang as QuizLang } from '../../../../language/activities/quiz';
 import * as API from '../../../../data/quizApi';
+import { Audio } from 'expo-av';
 
 import styles from '../styles';
 
@@ -33,6 +34,8 @@ export default function CreateQuiz(props) {
     const [answers, setAnswers] = useState([]);
     const [question, setQuestion] = useState();
     const [success, setSuccess] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [sound, setSound] = useState(new Audio.Sound());
 
     useEffect( () => {
         if (answers?.length > 0 && question) {
@@ -85,6 +88,11 @@ export default function CreateQuiz(props) {
         setSuccess(true);
     };
 
+    const pauseSound = async () => {
+        await sound.pauseAsync();
+        setIsPlaying(false);
+    };
+
     return (
         <>
             {/* Confirmation quiz creation (setting quiz name and complete creation) */}
@@ -129,6 +137,7 @@ export default function CreateQuiz(props) {
                     }
                     disabled={ (createQuestion && disable) || (!createQuestion && content?.length === 0) ? true : false}
                     onPress={() => {
+                        pauseSound();
                         if (createQuestion) pushContent();
                         else setModal(true);
                     }}
@@ -138,7 +147,10 @@ export default function CreateQuiz(props) {
                     style={{marginLeft: 20}}
                     size="small"
                     icon={{name: 'caret-back-outline', type: 'ionicon', color:'white' }}
-                    onPress={() => { createQuestion ? setCreateQuestion(false) : props.setTab(2) }}
+                    onPress={() => {
+                        pauseSound();
+                        createQuestion ? setCreateQuestion(false) : props.setTab(2)
+                    }}
                 />
             </View>
             <Divider
@@ -157,12 +169,17 @@ export default function CreateQuiz(props) {
                     setUri={setUri}
                     setFilename={setFilename}
                     setSuccess={setSuccess}
+                    setSound={setSound}
+                    setIsPlaying={setIsPlaying}
+                    pauseSound={pauseSound}
                     uri={uri}
                     filename={filename}
                     answers={answers}
                     fileType={fileType}
                     question={question}
                     success={success}
+                    sound={sound}
+                    isPlaying={isPlaying}
                 /> :
                 <SafeAreaView style={styles.safeArea}>
                     <Button
