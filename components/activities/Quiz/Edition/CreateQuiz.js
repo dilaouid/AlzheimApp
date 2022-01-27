@@ -89,7 +89,9 @@ export default function CreateQuiz(props) {
     };
 
     const pauseSound = async () => {
-        await sound.pauseAsync();
+        const getSoundStatus = await sound?.getStatusAsync();
+        if (getSoundStatus.isLoaded)
+            await sound.pauseAsync();
         setIsPlaying(false);
     };
 
