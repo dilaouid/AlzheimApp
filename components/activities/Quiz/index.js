@@ -90,6 +90,7 @@ export default function Quiz(props) {
         } else if (tab === 1) {
             return <Play
                 quiz={quiz[random]}
+                quizLength={quiz.length}
                 lang={props.lang}
                 personId={props.personId}
                 setTab={setTab}

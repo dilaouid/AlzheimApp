@@ -8,17 +8,16 @@ import ThinkingLottie from '../../../../assets/lottie/thinking.json';
 import { lang as QuizLang } from '../../../../language/activities/quiz';
 
 export default function Menu(props) {
-    const ThinkingImage = require('../../../../assets/img/activities/quiz/thinking.gif')
-
+    const ThinkingImage = require('../../../../assets/img/activities/quiz/thinking.gif');
     return (
     <>
-        <FAB
+        { props.quizLength > 1 ? <FAB
             style={{marginTop: 140, position: 'absolute', zIndex: 10}}
             containerStyle={{marginLeft: 120}}
             size="small"
             icon={{name: 'repeat-sharp', type: 'ionicon', color:'white' }}
             onPress={() => props.pickRandomQuizz()}
-        />
+        /> : <></> }
         <Lottie LottieSource={ThinkingLottie} ImageSource={ThinkingImage} LottieStyle={{marginTop: -25, height: 250, marginBottom: -30}} />
         <Text style={styles.quizzTitle}>{QuizLang[props.lang].selectedQuizz(props.quiz.name)}</Text>
         <Button

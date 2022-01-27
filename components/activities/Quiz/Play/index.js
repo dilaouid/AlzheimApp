@@ -27,6 +27,7 @@ export default function Play(props) {
                 quiz={props.quiz}
                 setTab={props.setTab}
                 setPlay={setPlay}
+                quizLength={props.quizLength}
             />
         }
     </View>);
