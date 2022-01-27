@@ -3,7 +3,7 @@ import { View, BackHandler, Alert } from 'react-native';
 import { Text } from 'react-native-elements';
 
 import Menu from './Menu';
-import { randomNumber } from '../../../utils/helpers';
+import { randomNumber, randomArrayElement } from '../../../utils/helpers';
 
 // Child components
 import ViewQuiz from './ViewQuiz';
@@ -72,7 +72,8 @@ export default function Quiz(props) {
 
     const pickRandomQuizz = () => {
         if (quiz.length > 0) {
-            setRandom(randomNumber(0, quiz.length - 1));
+            let rand = randomArrayElement(random, 0, quiz.length - 1);
+            setRandom(rand);
         }
     }
 
