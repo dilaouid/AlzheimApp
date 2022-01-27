@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, BackHandler } from 'react-native';
+import { View, BackHandler, Alert } from 'react-native';
 import { Text } from 'react-native-elements';
 
 import Menu from './Menu';
@@ -11,6 +11,7 @@ import CreateQuiz from './Edition/CreateQuiz';
 import Play from './Play';
 
 import * as API from '../../../data/quizApi';
+import { lang as QuizLang } from '../../../language/activities/quiz';
 
 import styles from './styles';
 
@@ -35,7 +36,26 @@ export default function Quiz(props) {
         // BackHandler managment
         const backAction = () => {
             if (tab > 0) {
-                setTab(0);
+                if (tab === 1) {
+                    Alert.alert(
+                        QuizLang[props.lang].GiveUpQuizTitle,
+                        QuizLang[props.lang].GiveUpQuiz,
+                        [
+                            {
+                                text: QuizLang[props.lang].Leave,
+                                onPress: () => { null },
+                                style: 'cancel'
+                            },
+                            {
+                                text: QuizLang[props.lang].OK,
+                                onPress: () => {
+                                    setTab(0);
+                                }
+                            },
+                        ]
+                    )
+                }
+                else setTab(0);
             } else {
                 props.setPage(null);
             }
