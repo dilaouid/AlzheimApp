@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, ActivityIndicator } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 
 import { lang as QuizLang } from '../../../language/activities/quiz';
@@ -13,24 +13,21 @@ export default function Menu(props) {
         <>
             <Image source={QuizLogo} style={styles.logo} />
 
-            {props.quiz?.length > 0 ? (
-                <Button
-                    title={QuizLang[props.lang].Play}
-                    containerStyle={styles.button}
-                    onPress={() => props.setTab(1)}
-                    icon={
-                        <Icon
-                            name={'play-outline'}
-                            type={'ionicon'}
-                            color={'white'}
-                            size={15}
-                            style={{ marginHorizontal: 5 }}
-                        />
-                    }
-                />
-            ) : (
-                <></>
-            )}
+            <Button
+                title={props.isLoading ? <ActivityIndicator color={'blue'} size={'small'} /> : QuizLang[props.lang].Play}
+                containerStyle={styles.button}
+                onPress={() => props.setTab(1)}
+                icon={
+                    <Icon
+                        name={'play-outline'}
+                        type={'ionicon'}
+                        color={'white'}
+                        size={15}
+                        style={{ marginHorizontal: 5 }}
+                    />
+                }
+                disabled={props.quiz.length === 0}
+            />
 
             <Button
                 title={QuizLang[props.lang].View}

@@ -64,6 +64,7 @@ export default function Quiz(props) {
                     lang={props.lang}
                     setPage={props.setPage}
                     quiz={quiz}
+                    isLoading={isLoading}
                 />
             );
         } else if (tab === 1) {
