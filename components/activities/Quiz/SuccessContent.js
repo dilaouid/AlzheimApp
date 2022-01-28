@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, Platform } from 'react-native';
-import { Button, Image } from 'react-native-elements';
+import { View, Text } from 'react-native';
+import { Button } from 'react-native-elements';
 import Lottie from '../../utils/Lottie';
 
-import SuccessImage from '../../../../assets/img/activities/quiz/success.gif';
+import SuccessImage from '../../../assets/img/activities/quiz/success.gif';
 
 import styles from './styles';
 
