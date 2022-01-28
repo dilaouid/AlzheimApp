@@ -66,7 +66,7 @@ export const lang = {
             return applyBoldStyle({
                 sentence:
                     "Ce nom d'utilisateur correspond au nom de la personne qui s'occupe de la personne atteinte de l'Alzheimer (ou {0} en anglais), ou de votre nom si vous êtes vous même un jeune malade.",
-                boldText: ['Caretaker'],
+                boldText: ['Caregiver'],
             });
         },
     },
@@ -120,7 +120,7 @@ export const lang = {
             return applyBoldStyle({
                 sentence:
                     "This is the Alzheimer ${0} username. If you are yourself diagnosed with the Alzheimer's disease, you can set your own name or username in this field.",
-                boldText: ['Caretaker'],
+                boldText: ['Caregiver'],
             });
         },
     },
