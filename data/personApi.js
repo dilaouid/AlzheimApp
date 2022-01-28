@@ -73,7 +73,9 @@ export function getById(id) {
 export async function deleteById(id) {
     await SimonDB.removeAsync({ personId: id });
     await DictaphoneDB.removeAsync({ personId: id });
-    await FileSystem.deleteAsync(`${FileSystem.documentDirectory}persons/${id}`);
+    await FileSystem.deleteAsync(`${FileSystem.documentDirectory}persons/${id}`).catch(err => {
+        console.error('folder delete err:',err);
+    });
     return db.removeAsync({ _id: id });
 };
 
