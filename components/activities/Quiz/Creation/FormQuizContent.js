@@ -10,7 +10,7 @@ import { Button, Icon, Input, Badge, FAB } from 'react-native-elements';
 import * as DocumentPicker from 'expo-document-picker';
 
 import { lang as QuizLang } from '../../../../language/activities/quiz';
-import SuccessContent from './SuccessContent';
+import SuccessContent from '../SuccessContent';
 
 import { Audio } from 'expo-av';
 

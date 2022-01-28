@@ -7,7 +7,7 @@ import { randomNumber, randomArrayElement } from '../../../utils/helpers';
 
 // Child components
 import ViewQuiz from './ViewQuiz';
-import CreateQuiz from './Edition/CreateQuiz';
+import CreateQuiz from './Creation/CreateQuiz';
 import Play from './Play';
 
 import * as API from '../../../data/quizApi';
