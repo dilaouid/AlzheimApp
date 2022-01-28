@@ -45,6 +45,12 @@ export default function Game(props) {
         setIsPlaying(false);
     };
 
+    const stopSound = async () => {
+        await pauseSound();
+        setSound(new Audio.Sound());
+        await sound?.unloadAsync();
+    }
+
     const playSound = async () => {
         setIsPlaying(true);
         await Audio.setAudioModeAsync({
@@ -101,7 +107,7 @@ export default function Game(props) {
 
     const answerQuestion = async () => {
         const answerTrimedLowercase = answer?.trim()?.toLowerCase();
-        pauseSound();
+        stopSound();
         setAnswer('');
         const result = game[current].answers.includes(answerTrimedLowercase);
         if (result === false) {

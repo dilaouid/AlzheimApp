@@ -83,14 +83,14 @@ export async function create(personId, quiz) {
         el.id = uuidv4();
         el.score = [{personId: personId, success: 0, failed: 0}];
         if (['audio', 'image'].includes(el.fileType)) {
-            const filename = uuidv4() + el.type === 'audio' ? '.m4a' : 'png';
+            const filename = `${uuidv4()}${el.fileType == 'audio' ? '.m4a' : '.png'}`;
             const path = `${FileSystem.documentDirectory}quiz/${el.fileType}/`;
             await FileSystem.copyAsync({
                 from: el.uri,
-                to: path + filename
+                to: `${path}${filename}`
             });
             await FileSystem.deleteAsync(el.uri);
-            el.uri = path + filename;
+            el.uri = `${path}${filename}`;
         }
     }
     return db.insertAsync({ ...quiz }, (err, result) => {
