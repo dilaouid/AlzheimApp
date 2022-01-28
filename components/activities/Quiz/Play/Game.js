@@ -27,6 +27,7 @@ export default function Game(props) {
 
     const [success, setSuccess] = useState(0);
     const [fail, setFail] = useState(0);
+    const [confetti, setConfetti] = useState(false);
 
     useEffect( () => {
         setGame(shuffle(props.quiz));
@@ -88,6 +89,7 @@ export default function Game(props) {
                             if (current + 1 <= game.length - 1)
                                 setCurrent(current + 1);
                             else {
+                                if (success >= fail) setConfetti(true);
                                 setModal(true);
                             }
                         },
@@ -120,6 +122,17 @@ export default function Game(props) {
             <ActivityIndicator size={'large'} style={{marginTop: 30}} color={'blue'} />
                :
             <>
+                {confetti ? (
+                    <ConfettiCannon
+                        fadeOut={true}
+                        autoStart={true}
+                        fallSpeed={6000}
+                        count={50}
+                        origin={{ x: -20, y: -35 }}
+                    />
+                ) : (
+                    <></>
+                )}
                 <Overlay
                     visible={modal}
                     overlayStyle={styles.overlay}
