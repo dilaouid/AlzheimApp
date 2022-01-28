@@ -18,6 +18,7 @@ export default function Play(props) {
                 quizId={props.quiz._id}
                 personId={props.personId}
                 quiz={props.quiz.content}
+                setTab={props.setTab}
                 setPlay={setPlay}
             />
             :

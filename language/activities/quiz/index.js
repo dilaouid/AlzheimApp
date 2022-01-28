@@ -1,6 +1,6 @@
 import { Text } from 'react-native';
 
-const applyBoldStyle = (text, clr) => {
+const applyBoldStyle = (text, clr, pos) => {
     var color = '#3B8EFF';
     if (clr === 'red') {
         color = '#FF5755';
@@ -13,7 +13,7 @@ const applyBoldStyle = (text, clr) => {
         result.splice(
             ++numberOfItemsAdded + i,
             0,
-            <Text key={i} style={{ fontWeight: 'bold', color: color }}>
+            <Text key={i} style={{ fontWeight: 'bold', color: i == pos ? color : '#3B8EFF' }}>
                 {boldText}
             </Text>
         )
@@ -53,13 +53,34 @@ export const lang = {
         QuizTitle: "Nom du quiz",
         CreatedQuiz: "Quiz crée avec succès !",
         QuizListRedirection: "Vous allez maintenant être redirigé à la liste des quiz.",
-        selectedQuizz: (quizzName) => {
+        selectedQuizz: (quizName) => {
             return applyBoldStyle({
                 sentence: 'Le quiz sélectionné aléatoirement est: {0}',
-                boldText: [quizzName],
+                boldText: [quizName],
             });
         },
         Questions: "question(s)",
+        SuccessTitle: "Bien joué !! 😄",
+        Success: "Bien joué ! C'est la bonne réponse !! Vous pouvez maintenant passer à la suite !",
+        FailedTitle: "Dommage... 😥",
+        Failed: (answers) => {
+            let answersText = answers.join(', ');
+            return `Dommage, mais ce n'était pas la bonne réponse ! Les réponses possibles étaient: ${answersText}.`
+        },
+        SuccessQuizTitle: "Haut la main !",
+        SuccessQuiz: (fail, success) => {
+            return applyBoldStyle({
+                sentence: 'Fantastique !! Vous avez réussi ce quiz ! Votre score est de {0} réussite(s) pour {1} erreur(s) !',
+                boldText: [success, fail]
+            }, 'red', 1)
+        },
+        FailQuizTitle: "Une autre fois ! ...",
+        FailQuiz: (fail, success) => {
+            return applyBoldStyle({
+                sentence: 'Dommage... Vous avez raté ce quiz ! ... Votre score est de {0} réussite(s) pour {1} erreur(s) !',
+                boldText: [success, fail]
+            }, 'red', 1)
+        },
     },
     en: {
         Play: 'Play',
@@ -92,12 +113,33 @@ export const lang = {
         QuizTitle: "Quiz title",
         CreatedQuiz: "Quiz successfuly created!",
         QuizListRedirection: "You will now be redirect to the quiz list.",
-        selectedQuizz: (quizzName) => {
+        selectedQuizz: (quizName) => {
             return applyBoldStyle({
                 sentence: 'The randomly selected quiz is: {0}',
-                boldText: [quizzName],
+                boldText: [quizName],
             });
         },
         Questions: "question(s)",
+        SuccessTitle: "Well played!! 😄",
+        Success: "Well played! That's the good answer!! You can now go to the next question!",
+        FailedTitle: "Oops... 😥",
+        Failed: (answers) => {
+            let answersText = answers.join(', ');
+            return `Oops, that's not a valid answer... the valid answer${answers.length > 0 ? 's were' : ' was'} : ${answersText}.`
+        },
+        SuccessQuizTitle: "Easy peasy!",
+        SuccessQuiz: (fail, success) => {
+            return applyBoldStyle({
+                sentence: 'Congratulations!! You won this quiz! Your score is for {0} good answer(s) for {1} mistake!',
+                boldText: [success, fail]
+            }, 'red', 1)
+        },
+        FailQuizTitle: "Une autre fois ! ...",
+        FailQuiz: (fail, success) => {
+            return applyBoldStyle({
+                sentence: "It's alright... You failed this quiz!... Your score is for {0} good answer(s) for {1} mistake!",
+                boldText: [success, fail]
+            }, 'red', 1)
+        },
     },
 };
