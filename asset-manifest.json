@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/AlzheimApp/static/js/app.6f8069d0.chunk.js",
-    "app.js.map": "/AlzheimApp/static/js/app.6f8069d0.chunk.js.map",
+    "app.js": "/AlzheimApp/static/js/app.c39ba76e.chunk.js",
+    "app.js.map": "/AlzheimApp/static/js/app.c39ba76e.chunk.js.map",
     "runtime~app.js": "/AlzheimApp/static/js/runtime~app.1747fd2b.js",
     "runtime~app.js.map": "/AlzheimApp/static/js/runtime~app.1747fd2b.js.map",
-    "static/js/2.aa5d5d90.chunk.js": "/AlzheimApp/static/js/2.aa5d5d90.chunk.js",
-    "static/js/2.aa5d5d90.chunk.js.map": "/AlzheimApp/static/js/2.aa5d5d90.chunk.js.map",
+    "static/js/2.483d465a.chunk.js": "/AlzheimApp/static/js/2.483d465a.chunk.js",
+    "static/js/2.483d465a.chunk.js.map": "/AlzheimApp/static/js/2.483d465a.chunk.js.map",
     "fonts/AntDesign.ttf": "/AlzheimApp/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/AlzheimApp/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/AlzheimApp/./fonts/Feather.ttf",
@@ -21,7 +21,7 @@
     "index.html": "/AlzheimApp/index.html",
     "manifest.json": "/AlzheimApp/manifest.json",
     "serve.json": "/AlzheimApp/serve.json",
-    "static/js/2.aa5d5d90.chunk.js.LICENSE.txt": "/AlzheimApp/static/js/2.aa5d5d90.chunk.js.LICENSE.txt",
+    "static/js/2.483d465a.chunk.js.LICENSE.txt": "/AlzheimApp/static/js/2.483d465a.chunk.js.LICENSE.txt",
     "static/media/1.png": "/AlzheimApp/static/media/1.ede08671.png",
     "static/media/2.png": "/AlzheimApp/static/media/2.b87932e3.png",
     "static/media/3.png": "/AlzheimApp/static/media/3.3ed4e762.png",
@@ -41,6 +41,7 @@
     "static/media/profile.jpg": "/AlzheimApp/static/media/profile.5d930b6c.jpg",
     "static/media/red.mp3": "/AlzheimApp/static/media/red.5974021a.mp3",
     "static/media/rocket.png": "/AlzheimApp/static/media/rocket.d2f3bf41.png",
+    "static/media/sad.gif": "/AlzheimApp/static/media/sad.bfdab12f.gif",
     "static/media/star.png": "/AlzheimApp/static/media/star.69c71386.png",
     "static/media/success.gif": "/AlzheimApp/static/media/success.5d28b463.gif",
     "static/media/swipe-right.gif": "/AlzheimApp/static/media/swipe-right.6dde9c7c.gif",
@@ -50,7 +51,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.1747fd2b.js",
-    "static/js/2.aa5d5d90.chunk.js",
-    "static/js/app.6f8069d0.chunk.js"
+    "static/js/2.483d465a.chunk.js",
+    "static/js/app.c39ba76e.chunk.js"
   ]
 }
