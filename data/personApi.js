@@ -3,6 +3,7 @@ import * as FileSystem from 'expo-file-system';
 
 import { db as DictaphoneDB } from './dictaphoneApi';
 import { db as SimonDB } from './simonApi';
+import { db as QuizDB } from './quizApi'
 
 import { pushErrors } from '../utils/helpers';
 
@@ -79,8 +80,11 @@ export async function deleteById(id) {
     return db.removeAsync({ _id: id });
 };
 
-export function reset() {
-    return FileSystem.deleteAsync(`${FileSystem.documentDirectory}persons`).then(res => {
+export async function reset() {
+    return FileSystem.deleteAsync(`${FileSystem.documentDirectory}persons`).then(async res => {
+        await SimonDB.removeAsync({}, { multi: true });
+        await QuizDB.removeAsync({}, { multi: true });
+        await DictaphoneDB.removeAsync({}, { multi: true });
         return db.removeAsync({}, { multi: true });
     });
 };

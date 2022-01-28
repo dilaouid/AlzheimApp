@@ -51,11 +51,6 @@ export const db = new Datastore({
     storage: AsyncStorage,
     autoload: true,
 });
-export const ContentDB = new Datastore({
-    filename: 'ContentQuizSchema',
-    storage: AsyncStorage,
-    autoload: true,
-});
 
 export function get(personId) {
     return db
@@ -67,10 +62,6 @@ export function get(personId) {
             }
             return data;
         });
-}
-
-export function getContent(quizId) {
-    return ContentDB.findAsync({ quizId: quizId });
 }
 
 export async function create(personId, quiz) {
@@ -116,7 +107,6 @@ export async function updateScore(personId, quizId, contentId, success) {
 };
 
 export async function deleteId(personId, quizId) {
-    // await ContentDB.removeAsync({ quizId: quizId }, { multi: true });
     const quiz = await db.findAsync({ _id: quizId, personId: personId }, (err, data) => {
         if (err) console.error(err);
         return data;
@@ -130,6 +120,5 @@ export async function deleteId(personId, quizId) {
 }
 
 export async function reset() {
-    await ContentDB.removeAsync({}, { multi: true });
     return db.removeAsync({}, { multi: true });
 }
