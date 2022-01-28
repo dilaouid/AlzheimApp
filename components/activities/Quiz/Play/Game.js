@@ -99,19 +99,19 @@ export default function Game(props) {
         )
     };
 
-    const answerQuestion = () => {
+    const answerQuestion = async () => {
         const answerTrimedLowercase = answer?.trim()?.toLowerCase();
         pauseSound();
         setAnswer('');
         const result = game[current].answers.includes(answerTrimedLowercase);
         if (result === false) {
             // increment the fail and update the API
-            API.updateScore(props.personId, props.quizId, game[current].id, false);
             setFail(fail + 1);
+            await API.updateScore(props.personId, props.quizId, game[current].id, false);
         } else {
             // increment the success and update the API
-            API.updateScore(props.personId, props.quizId, game[current].id, true)
             setSuccess(success + 1);
+            await API.updateScore(props.personId, props.quizId, game[current].id, true)
         }
         openAlertResultQuestion(result);
     };
@@ -122,7 +122,7 @@ export default function Game(props) {
             <ActivityIndicator size={'large'} style={{marginTop: 30}} color={'blue'} />
                :
             <>
-                {confetti ? (
+                {confetti && success >= fail ? (
                     <ConfettiCannon
                         fadeOut={true}
                         autoStart={true}
