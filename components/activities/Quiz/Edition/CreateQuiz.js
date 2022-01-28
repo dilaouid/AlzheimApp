@@ -137,7 +137,7 @@ export default function CreateQuiz(props) {
                             style={{ marginHorizontal: 5 }}
                         />
                     }
-                    disabled={ (createQuestion && disable) || (!createQuestion && content?.length === 0) ? true : false}
+                    disabled={ (createQuestion && disable) || (!createQuestion && content?.length < 2) ? true : false}
                     onPress={() => {
                         pauseSound();
                         if (createQuestion) pushContent();
