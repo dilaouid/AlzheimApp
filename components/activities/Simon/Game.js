@@ -7,7 +7,7 @@ import { Audio } from 'expo-av';
 import ConfettiCannon from 'react-native-confetti-cannon';
 
 import Lottie from '../../utils/Lottie';
-import TrophyImage from '../../../assets/img/activities/simon/trophy.gif';
+import TrophyImage from '../../../assets/img/activities/trophy.gif';
 
 import * as API from '../../../data/simonApi';
 
