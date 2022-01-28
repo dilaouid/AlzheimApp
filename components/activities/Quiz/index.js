@@ -75,7 +75,7 @@ export default function Quiz(props) {
             let rand = randomArrayElement(random, 0, quiz.length - 1);
             setRandom(rand);
         }
-    }
+    };
 
     const printPage = () => {
         if (tab === 0) {

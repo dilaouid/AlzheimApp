@@ -142,6 +142,12 @@ export default function Dictaphone(props) {
             });
     };
 
+    const goBack = async () => {
+        await recording?.stopAndUnloadAsync();
+        stopPlayingSounds();
+        props.setPage(0);
+    }
+
     // Unload all sounds before the backhandler
     const stopPlayingSounds = () => {
         playingSounds.map((el, i) => {
@@ -271,9 +277,23 @@ export default function Dictaphone(props) {
                         }}
                         onPress={stopRecording}
                     />
+                    <Button
+                        containerStyle={styles.actionButtons}
+                        icon={{
+                            name: 'caret-back-outline',
+                            type: 'ionicon',
+                            size: 15,
+                            color: 'white',
+                        }}
+                        buttonStyle={styles.recordButton}
+                        title={{}}
+                        titleStyle={styles.titleButton}
+                        onPress={() => goBack()}
+                    />
                 </View>
             ) : (
                 // Not recording
+                <View style={styles.actionButtonsView}>
                 <Button
                     containerStyle={styles.containerStyle}
                     icon={{
@@ -287,6 +307,20 @@ export default function Dictaphone(props) {
                     titleStyle={styles.titleButton}
                     onPress={startRecording}
                 />
+                <Button
+                    containerStyle={styles.actionButtons}
+                    icon={{
+                        name: 'caret-back-outline',
+                        type: 'ionicon',
+                        size: 15,
+                        color: 'white',
+                    }}
+                    buttonStyle={styles.recordButton}
+                    title={{}}
+                    titleStyle={styles.titleButton}
+                    onPress={() => goBack()}
+                />
+                </View>
             )}
             <Divider style={styles.divider} width={2} />
             <SafeAreaView style={styles.safeArea}>
