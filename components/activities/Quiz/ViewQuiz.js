@@ -72,6 +72,7 @@ export default function ViewQuiz(props) {
                                     quiz={el}
                                     lang={props.lang}
                                     deleteId={deleteId}
+                                    personId={props.personId}
                                 />
                             );
                         })

@@ -23,12 +23,13 @@ export default function QuizList(props) {
                   containerStyle: mod,
               }
             : { key: props._id, bottomDivider: true, containerStyle: mod };
+
     return (
         <ListItem {...componentProps}>
             <ListItem.Content>
                 <ListItem.Title>{props.quiz.name}</ListItem.Title>
                 <ListItem.Subtitle>
-                    {props.quiz?.score?.length || 1}{' '}
+                    {ScoreRatio(props.quiz.content, props.personId) || 1}{' '}
                     {QuizLang[props.lang].SuccessfulRatio}
                 </ListItem.Subtitle>
                 <ListItem.Subtitle>
