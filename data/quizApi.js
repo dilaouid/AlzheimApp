@@ -117,8 +117,28 @@ export async function deleteId(personId, quizId) {
             await FileSystem.deleteAsync(el.uri);
     }
     return db.removeAsync({ _id: quizId, personId: personId });
-}
+};
+
+export async function deleteQuestion(quizId, questionId) {
+    const quiz = await db.findAsync({ _id: quizId}, (err, data) => {
+        if (err) console.error('cannot find quiz:', err);
+        return (data);
+    });
+    const content = quiz[0].content;
+    const contentIndex = content.findIndex(el => el.id == questionId );
+    if (['audio', 'image'].includes(content[contentIndex]))
+        await FileSystem.deleteAsync(content.uri);
+    quiz[0].content = content.splice(0, contentIndex);
+    return db.updateAsync({_id: quizId}, {...quiz[0]})
+};
+
+export async function getById(quizId) {
+    return db.findAsync({ _id: quizId }, (err, data) => {
+        if (err) console.error('cannot find quiz:', err);
+        return (data);
+    });
+};
 
 export async function reset() {
     return db.removeAsync({}, { multi: true });
-}
+};

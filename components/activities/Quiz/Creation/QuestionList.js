@@ -8,6 +8,8 @@ import {
 import { Platform, Modal, View, Text } from 'react-native';
 import { lang as QuizLang } from '../../../../language/activities/quiz';
 
+import * as API from '../../../../data/quizApi';
+
 import { pickCorrectIcon } from '../utils/quizFunc';
 
 import styles from '../styles';
@@ -16,10 +18,12 @@ export default function QuestionList(props) {
     const [modal, setModal] = useState(false);
     const [edit, setEdit] = useState(false);
 
-    const pickOutQuestion = () => {
+    const pickOutQuestion = async () => {
         const tmp = props.quizEdition ? props.content : props.contentList;
         if (props.quizEdition === true) {
-            // API Update here
+            await API.deleteQuestion(props.id, props.content.id)
+            const quiz = await API.getById(props.id);
+            props.setQuizEdit(quiz[0]);
         } else {
             tmp.splice(props.index, 1)
             props.setContent([...tmp]);

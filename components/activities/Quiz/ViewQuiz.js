@@ -11,7 +11,6 @@ import { Button, Icon, Divider, FAB } from 'react-native-elements';
 import QuizList from './QuizList';
 
 import QuestionList from './Creation/QuestionList';
-import ViewContentQuiz from './Edition/ViewContentQuiz';
 
 import { lang as QuizLang } from '../../../language/activities/quiz';
 import * as API from '../../../data/quizApi';
@@ -70,6 +69,7 @@ export default function ViewQuiz(props) {
                                 id={quizEdit._id || 0}
                                 content={el}
                                 lang={props.lang}
+                                setQuizEdit={setQuizEdit}
                                 quizEdition={true}
                             />
                         );
