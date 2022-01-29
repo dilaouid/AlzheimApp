@@ -68,6 +68,7 @@ export default function ViewQuiz(props) {
                                 key={i}
                                 id={quizEdit._id || 0}
                                 content={el}
+                                contentLength={quizEdit.content.length}
                                 lang={props.lang}
                                 setQuizEdit={setQuizEdit}
                                 quizEdition={true}

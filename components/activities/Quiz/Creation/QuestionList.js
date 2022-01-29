@@ -20,6 +20,7 @@ export default function QuestionList(props) {
 
     const pickOutQuestion = async () => {
         const tmp = props.quizEdition ? props.content : props.contentList;
+        if (props.contentLength <= 2 && quizEdition) return;
         if (props.quizEdition === true) {
             await API.deleteQuestion(props.id, props.content.id)
             const quiz = await API.getById(props.id);
@@ -65,7 +66,7 @@ export default function QuestionList(props) {
                     <ListItem.Title>{props.content.question}</ListItem.Title>
                     <ListItem.Subtitle>{props.content?.answers?.length || 1} {QuizLang[props.lang].PossibleAnswers}</ListItem.Subtitle>
                 </ListItem.Content>
-                <Icon reverse size={15} style={{backgroundColor:'red'}} name={'trash-outline'} type={'ionicon'} color={'red'} onPress={(e) => { setModal(true) }} />
+                <Icon disabled={props.quizEdition == true && props.contentLength <= 2} reverse size={15} style={{backgroundColor:'red'}} name={'trash-outline'} type={'ionicon'} color={'red'} onPress={(e) => { setModal(true) }} />
             </ListItem>
         </>
     )
