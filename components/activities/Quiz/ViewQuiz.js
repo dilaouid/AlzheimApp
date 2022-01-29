@@ -12,7 +12,6 @@ import QuestionList from './Creation/QuestionList';
 import ViewQuizList from './ViewQuizList';
 
 import { lang as QuizLang } from '../../../language/activities/quiz';
-import * as API from '../../../data/quizApi';
 
 import styles from './styles';
 
@@ -28,6 +27,36 @@ export default function ViewQuiz(props) {
 
     // the new content to add in an existing quiz
     const [newContent, setNewContent] = useState([]);
+
+    const viewPage = () => {
+        if (newQuestion) // if the user wants to set a new question for quiz edition
+            return (<Text>wip</Text>);
+        else if (edit && !newQuestion) {
+             // if the user want to see all the question for the quiz edition
+            return quizEdit.content?.map((el, i) => {
+                return (<QuestionList
+                    index={i}
+                    key={i}
+                    id={quizEdit._id || 0}
+                    content={el}
+                    contentLength={quizEdit.content.length}
+                    lang={props.lang}
+                    setQuizEdit={setQuizEdit}
+                    quizEdition={true}
+                />);
+            })
+        } else {
+             // if the user want to see all the existing quiz for the quiz edition
+            return (<ViewQuizList
+                quiz={props.quiz}
+                loading={props.loading}
+                lang={props.lang}
+                personId={props.personId}
+                setEdit={setEdit}
+                setQuizEdit={setQuizEdit}
+            />);
+        }
+    };
 
     return (
         <>
@@ -62,47 +91,7 @@ export default function ViewQuiz(props) {
                 style={{ width: 100 + '%', marginTop: 20 }}
             />
             <SafeAreaView style={styles.safeArea}>
-                {
-                    edit && !newQuestion ?
-                    <Button
-                        title={QuizLang[props.lang].AddQuestion}
-                        icon={
-                            <Icon
-                                name={'add-circle-outline'}
-                                type={'ionicon'}
-                                color={'white'}
-                                size={15}
-                                style={{ marginHorizontal: 5 }}
-                            />
-                        }
-                        onPress={() => console.log('wip') }
-                    /> : <></>
-                }
-                {edit && !newQuestion ?
-                    quizEdit.content?.map((el, i) => {
-                        return (
-                            <QuestionList
-                                index={i}
-                                key={i}
-                                id={quizEdit._id || 0}
-                                content={el}
-                                contentLength={quizEdit.content.length}
-                                lang={props.lang}
-                                setQuizEdit={setQuizEdit}
-                                quizEdition={true}
-                            />
-                        );
-                    })
-                    :
-                    <ViewQuizList
-                        quiz={props.quiz}
-                        loading={props.loading}
-                        lang={props.lang}
-                        personId={props.personId}
-                        setEdit={setEdit}
-                        setQuizEdit={setQuizEdit}
-                    />
-                }
+                { viewPage() }
             </SafeAreaView>
         </>
     );
