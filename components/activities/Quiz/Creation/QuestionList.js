@@ -9,6 +9,7 @@ import {
 import { Platform, Modal, View, Text } from 'react-native';
 import { lang as QuizLang } from '../../../../language/activities/quiz';
 
+import { pickCorrectIcon } from '../utils/quizFunc';
 
 import styles from '../styles';
 
@@ -20,37 +21,6 @@ export default function QuestionList(props) {
         const tmp = props.contentList;
         tmp.splice(props.index, 1)
         props.setContent([...tmp]);
-    };
-
-    const pickCorrectIcon = () => {
-        if (props.content.fileType === 'image') {
-            return (
-                <Avatar
-                    source={{ uri: props.content.uri }}
-                    rounded
-                    size={'medium'}
-                    containerStyle={{marginHorizontal: 8}}
-                />
-            );
-        } else if (props.content.fileType === 'audio') {
-            return (
-                <Icon
-                    raised
-                    name={'musical-notes-outline'}
-                    type={'ionicon'}
-                    color={'#8F9EB0'}
-                />
-            );
-        } else {
-            return (
-                <Icon
-                    raised
-                    name={'text-outline'}
-                    type={'ionicon'}
-                    color={'#8F9EB0'}
-                />
-            );
-        }
     };
 
     var TouchableScale = Platform.OS !== 'web' ? require('react-native-touchable-scale').default : null;
@@ -83,7 +53,7 @@ export default function QuestionList(props) {
             </View>
         </Overlay>
             <ListItem {...componentProps} onPress={() => { setEdit(true) }} >
-                { pickCorrectIcon() }
+                { pickCorrectIcon(props.content.fileType, props.content.uri) }
                 <ListItem.Content>
                     <ListItem.Title>{props.content.question}</ListItem.Title>
                     <ListItem.Subtitle>{props.content?.answers?.length || 1} {QuizLang[props.lang].PossibleAnswers}</ListItem.Subtitle>

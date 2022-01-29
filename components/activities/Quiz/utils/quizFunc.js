@@ -58,3 +58,34 @@ export const playSound = async (setIsPlaying, sound, setSound, uri) => {
         }
     });
 };
+
+export const pickCorrectIcon = (fileType, uri) => {
+    if (fileType === 'image') {
+        return (
+            <Avatar
+                source={{ uri: uri }}
+                rounded
+                size={'medium'}
+                containerStyle={{marginHorizontal: 8}}
+            />
+        );
+    } else if (fileType === 'audio') {
+        return (
+            <Icon
+                raised
+                name={'musical-notes-outline'}
+                type={'ionicon'}
+                color={'#8F9EB0'}
+            />
+        );
+    } else {
+        return (
+            <Icon
+                raised
+                name={'text-outline'}
+                type={'ionicon'}
+                color={'#8F9EB0'}
+            />
+        );
+    }
+};
