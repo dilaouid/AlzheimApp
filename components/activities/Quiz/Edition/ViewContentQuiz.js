@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 import styles from '../styles';
 
-import { lang as QuizLang } from '../../../language/activities/quiz';
+import { lang as QuizLang } from '../../../../language/activities/quiz';
 
 export default function ViewContentQuiz(props) {
     return (
