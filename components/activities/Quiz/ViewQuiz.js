@@ -8,9 +8,8 @@ import {
 } from 'react-native';
 import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
-import QuizList from './QuizList';
-
 import QuestionList from './Creation/QuestionList';
+import ViewQuizList from './ViewQuizList';
 
 import { lang as QuizLang } from '../../../language/activities/quiz';
 import * as API from '../../../data/quizApi';
@@ -18,14 +17,17 @@ import * as API from '../../../data/quizApi';
 import styles from './styles';
 
 export default function ViewQuiz(props) {
+    // if the user is editing or not an existing quiz
     const [edit, setEdit] = useState(false);
+
+    // if the user want to add a question to an existing quiz
+    const [newQuestion, setNewQuestion] = useState(false);
+
+    // the existing quiz to edit
     const [quizEdit, setQuizEdit] = useState();
 
-    const deleteId = (quizId) => {
-        API.deleteId(props.personId, quizId).then((data) => {
-            props.setReload(!props.reload);
-        });
-    };
+    // the new content to add in an existing quiz
+    const [newContent, setNewContent] = useState([]);
 
     return (
         <>
@@ -61,7 +63,7 @@ export default function ViewQuiz(props) {
             />
             <SafeAreaView style={styles.safeArea}>
                 {
-                    edit ?
+                    edit && !newQuestion ?
                     <Button
                         title={QuizLang[props.lang].AddQuestion}
                         icon={
@@ -76,7 +78,7 @@ export default function ViewQuiz(props) {
                         onPress={() => console.log('wip') }
                     /> : <></>
                 }
-                {edit ?
+                {edit && !newQuestion ?
                     quizEdit.content?.map((el, i) => {
                         return (
                             <QuestionList
@@ -92,34 +94,14 @@ export default function ViewQuiz(props) {
                         );
                     })
                     :
-                    <ScrollView>
-                        {props.loading ? (
-                            <ActivityIndicator
-                                color={'blue'}
-                                size={'small'}
-                                style={styles.loading}
-                            />
-                        ) : props.quiz?.length > 0 ? (
-                            props.quiz?.map((el, i) => {
-                                return (
-                                    <QuizList
-                                        index={i}
-                                        key={el._id}
-                                        quiz={el}
-                                        lang={props.lang}
-                                        deleteId={deleteId}
-                                        personId={props.personId}
-                                        setEdit={setEdit}
-                                        setQuizEdit={setQuizEdit}
-                                    />
-                                );
-                            })
-                        ) : (
-                            <Text style={styles.nothingYet}>
-                                {QuizLang[props.lang].NothingYet}
-                            </Text>
-                        )}
-                    </ScrollView>
+                    <ViewQuizList
+                        quiz={props.quiz}
+                        loading={props.loading}
+                        lang={props.lang}
+                        personId={props.personId}
+                        setEdit={setEdit}
+                        setQuizEdit={setQuizEdit}
+                    />
                 }
             </SafeAreaView>
         </>
