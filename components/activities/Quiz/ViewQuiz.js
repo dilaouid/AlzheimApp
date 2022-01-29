@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import {
     View,
-    ActivityIndicator,
     Text,
-    ScrollView,
     SafeAreaView,
 } from 'react-native';
 import { Button, Icon, Divider, FAB } from 'react-native-elements';
@@ -58,11 +56,29 @@ export default function ViewQuiz(props) {
         }
     };
 
+    const goBack = () => {
+        if (newQuestion)
+            setNewQuestion(false);
+        else if (edit)
+            setEdit(false);
+        else
+            props.setTab(0);
+    };
+
+    const titleButtonTop = () => {
+        if (newQuestion)
+            return QuizLang[props.lang].AddContent
+        else if (edit)
+            return QuizLang[props.lang].Save
+        else
+            return QuizLang[props.lang].Create
+    };
+
     return (
         <>
             <View style={{ flexDirection: 'row' }}>
                 <Button
-                    title={edit ? QuizLang[props.lang].Save : QuizLang[props.lang].Create}
+                    title={ titleButtonTop() }
                     containerStyle={styles.createButton}
                     icon={
                         <Icon
@@ -82,7 +98,7 @@ export default function ViewQuiz(props) {
                     style={{marginLeft: 20}}
                     size="small"
                     icon={{name: 'caret-back-outline', type: 'ionicon', color:'white' }}
-                    onPress={() => edit ? setEdit(false) : props.setTab(0)}
+                    onPress={() => goBack() }
                 />
             </View>
             <Divider
@@ -104,7 +120,7 @@ export default function ViewQuiz(props) {
                                 style={{ marginHorizontal: 5 }}
                             />
                         }
-                        onPress={() => console.log('wip') }
+                        onPress={() => setNewQuestion(true) }
                     /> : <></>
                 }
                 { viewPage() }

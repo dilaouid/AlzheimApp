@@ -82,6 +82,8 @@ export const lang = {
             }, 'red', 1)
         },
         Save: 'Sauvegarder le quiz',
+        SaveContent: "Sauvegarder la question",
+        AddContent: "Ajouter la question",
     },
     en: {
         Play: 'Play',
@@ -143,5 +145,7 @@ export const lang = {
             }, 'red', 1)
         },
         Save: 'Save the quiz',
+        SaveContent: "Save the question",
+        AddContent: "Add the question",
     },
 };
