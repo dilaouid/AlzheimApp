@@ -75,7 +75,7 @@ export default function Game(props) {
         if (!game[current]) return;
         switch (game[current].fileType) {
             case 'image':
-                return <Image transition={true} source={ {uri: game[current].uri } } style={styles.topMediaQuestion}  />
+                return <Image source={ {uri: game[current].uri } } style={styles.topMediaQuestion}  />
             case 'audio':
                 return <Icon onPress={() => isPlaying ? pauseSound() : playSound() } raised size={50} name={isPlaying ? "pause-circle-outline" : "play-circle-outline"} color={'#246364'} type={"ionicon"} containerStyle={{marginBottom: 30}} />
             default:

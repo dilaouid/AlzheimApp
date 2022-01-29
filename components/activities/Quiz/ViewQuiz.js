@@ -60,6 +60,22 @@ export default function ViewQuiz(props) {
                 style={{ width: 100 + '%', marginTop: 20 }}
             />
             <SafeAreaView style={styles.safeArea}>
+                {
+                    edit ?
+                    <Button
+                        title={QuizLang[props.lang].AddQuestion}
+                        icon={
+                            <Icon
+                                name={'add-circle-outline'}
+                                type={'ionicon'}
+                                color={'white'}
+                                size={15}
+                                style={{ marginHorizontal: 5 }}
+                            />
+                        }
+                        onPress={() => console.log('wip') }
+                    /> : <></>
+                }
                 {edit ?
                     quizEdit.content?.map((el, i) => {
                         return (

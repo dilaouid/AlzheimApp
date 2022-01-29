@@ -69,6 +69,7 @@ export default function CreateQuiz(props) {
         });
     };
 
+    // Add a new question on the list
     const pushContent = () => {
         const newContent = {
             uri: uri,
