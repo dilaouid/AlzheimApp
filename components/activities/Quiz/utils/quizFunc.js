@@ -2,7 +2,7 @@ import {
     View,
     Image
 } from 'react-native';
-import { Icon, FAB } from 'react-native-elements';
+import { Icon, FAB, Avatar } from 'react-native-elements';
 import { Audio } from 'expo-av';
 
 export const printFile = (fileType, uri, clearFile, isPlaying, pauseSound, setIsPlaying, sound, setSound) => {
