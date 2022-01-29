@@ -81,6 +81,7 @@ export const lang = {
                 boldText: [success, fail]
             }, 'red', 1)
         },
+        Save: 'Sauvegarder le quiz',
     },
     en: {
         Play: 'Play',
@@ -141,5 +142,6 @@ export const lang = {
                 boldText: [success, fail]
             }, 'red', 1)
         },
+        Save: 'Save the quiz',
     },
 };

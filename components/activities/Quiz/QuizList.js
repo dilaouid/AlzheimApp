@@ -25,7 +25,10 @@ export default function QuizList(props) {
             : { key: props._id, bottomDivider: true, containerStyle: mod };
 
     return (
-        <ListItem {...componentProps}>
+        <ListItem {...componentProps} onPress={() => {
+                props.setEdit(true);
+                props.setQuizEdit(props.quiz);
+            }}>
             <ListItem.Content>
                 <ListItem.Title>{props.quiz.name}</ListItem.Title>
                 <ListItem.Subtitle>
