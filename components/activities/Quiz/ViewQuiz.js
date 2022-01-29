@@ -9,6 +9,8 @@ import {
 import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
 import QuizList from './QuizList';
+
+import QuestionList from './Creation/QuestionList';
 import ViewContentQuiz from './Edition/ViewContentQuiz';
 
 import { lang as QuizLang } from '../../../language/activities/quiz';
@@ -60,7 +62,18 @@ export default function ViewQuiz(props) {
             />
             <SafeAreaView style={styles.safeArea}>
                 {edit ?
-                    <ViewContentQuiz quizEdit={quizEdit} />
+                    quizEdit.content?.map((el, i) => {
+                        return (
+                            <QuestionList
+                                index={i}
+                                key={i}
+                                id={quizEdit._id || 0}
+                                content={el}
+                                lang={props.lang}
+                                quizEdition={true}
+                            />
+                        );
+                    })
                     :
                     <ScrollView>
                         {props.loading ? (

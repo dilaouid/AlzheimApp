@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
     ListItem,
     Icon,
-    Avatar,
     Overlay,
     Button
 } from 'react-native-elements';
@@ -18,9 +17,13 @@ export default function QuestionList(props) {
     const [edit, setEdit] = useState(false);
 
     const pickOutQuestion = () => {
-        const tmp = props.contentList;
-        tmp.splice(props.index, 1)
-        props.setContent([...tmp]);
+        const tmp = props.quizEdition ? props.content : props.contentList;
+        if (props.quizEdition === true) {
+            // API Update here
+        } else {
+            tmp.splice(props.index, 1)
+            props.setContent([...tmp]);
+        }
     };
 
     var TouchableScale = Platform.OS !== 'web' ? require('react-native-touchable-scale').default : null;
