@@ -3,6 +3,7 @@ import {
     View,
     Text,
     SafeAreaView,
+    ScrollView
 } from 'react-native';
 import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
@@ -102,6 +103,7 @@ export default function ViewQuiz(props) {
                     content={el}
                     contentLength={quizEdit.content.length + newContent.length}
                     lang={props.lang}
+                    questionId={el.id || i}
                     setQuizEdit={setQuizEdit}
                     quizEdition={true}
                 />);
@@ -198,7 +200,9 @@ export default function ViewQuiz(props) {
                         onPress={() => setNewQuestion(true) }
                     /> : <></>
                 }
+                <ScrollView style={{marginBottom: 40}}>
                 { viewPage() }
+                </ScrollView>
             </SafeAreaView>
         </>
     );
