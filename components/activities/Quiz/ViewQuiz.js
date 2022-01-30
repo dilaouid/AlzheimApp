@@ -10,6 +10,9 @@ import QuestionList from './Creation/QuestionList';
 import ViewQuizList from './ViewQuizList';
 
 import { lang as QuizLang } from '../../../language/activities/quiz';
+import FormQuizContent from './Creation/FormQuizContent';
+
+import { Audio } from 'expo-av';
 
 import styles from './styles';
 
@@ -26,18 +29,74 @@ export default function ViewQuiz(props) {
     // the new content to add in an existing quiz
     const [newContent, setNewContent] = useState([]);
 
+    // the states for the quiz edition (add / edit question)
+    const [question, setQuestion] = useState();
+    const [answers, setAnswers] = useState([]);
+    const [uri, setUri] = useState();
+    const [filename, setFilename] = useState();
+    const [fileType, setFileType] = useState();
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [sound, setSound] = useState(new Audio.Sound());
+    const [success, setSuccess] = useState(false);
+
+    // Add a new question on the list
+    const pushContent = () => {
+        const push = {
+            uri: uri,
+            filename: filename,
+            answers: answers,
+            question: question,
+            fileType: fileType
+        };
+        // Clear the creation form
+        setFileType();
+        setUri();
+        setFilename();
+        setAnswers([]);
+        setQuestion();
+
+        setNewContent([...newContent, push]);
+        setSuccess(true);
+    };
+
+    const pauseSound = async () => {
+        const getSoundStatus = await sound?.getStatusAsync();
+        if (getSoundStatus.isLoaded)
+            await sound.pauseAsync();
+        setIsPlaying(false);
+    };
+
     const viewPage = () => {
-        if (newQuestion) // if the user wants to set a new question for quiz edition
-            return (<Text>wip</Text>);
-        else if (edit && !newQuestion) {
+        if (newQuestion) { // if the user wants to set a new question for quiz edition
+            return (<FormQuizContent
+                        lang={props.lang}
+                        setAnswers={setAnswers}
+                        setFileType={setFileType}
+                        setQuestion={setQuestion}
+                        setUri={setUri}
+                        setFilename={setFilename}
+                        setSuccess={setSuccess}
+                        setSound={setSound}
+                        setIsPlaying={setIsPlaying}
+                        pauseSound={pauseSound}
+                        uri={uri}
+                        filename={filename}
+                        answers={answers}
+                        fileType={fileType}
+                        question={question}
+                        success={success}
+                        sound={sound}
+                        isPlaying={isPlaying}
+                />);
+        } else if (edit && !newQuestion) {
              // if the user want to see all the question for the quiz edition
-            return quizEdit.content?.map((el, i) => {
+            return (quizEdit.content)?.concat(newContent)?.map((el, i) => {
                 return (<QuestionList
                     index={i}
                     key={i}
                     id={quizEdit._id || 0}
                     content={el}
-                    contentLength={quizEdit.content.length}
+                    contentLength={quizEdit.content.length + newContent.length}
                     lang={props.lang}
                     setQuizEdit={setQuizEdit}
                     quizEdition={true}
@@ -65,20 +124,30 @@ export default function ViewQuiz(props) {
             props.setTab(0);
     };
 
-    const titleButtonTop = () => {
-        if (newQuestion)
-            return QuizLang[props.lang].AddContent
-        else if (edit)
-            return QuizLang[props.lang].Save
-        else
-            return QuizLang[props.lang].Create
+    const buttonTop = (mode) => {
+        if (newQuestion) {
+            // add a question button
+            if (mode == 'title') return QuizLang[props.lang].AddContent;
+            else if (mode == 'disabled') return !(answers.length > 0 && question.length > 2);
+            else if (mode == 'onpress') return pushContent();
+        } else if (edit) {
+            // save the quiz button
+            if (mode == 'title') return QuizLang[props.lang].Save;
+            else if (mode == 'disabled') return !(answers.length > 0 && question.length > 2);
+            else if (mode == 'onpress') return pushContent();
+        } else {
+            // create a quiz button
+            if (mode == 'title') return QuizLang[props.lang].Create;
+            else if (mode == 'disabled') false;
+            else if (mode == 'onpress') return props.setTab(4);
+        }
     };
 
     return (
         <>
             <View style={{ flexDirection: 'row' }}>
                 <Button
-                    title={ titleButtonTop() }
+                    title={ buttonTop('title') }
                     containerStyle={styles.createButton}
                     icon={
                         <Icon
@@ -90,8 +159,9 @@ export default function ViewQuiz(props) {
                         />
                     }
                     onPress={() => {
-                        props.setTab(4);
+                        buttonTop('onpress')
                     }}
+                    disabled={ buttonTop('disabled') }
                 />
                 <FAB
                     color='red'

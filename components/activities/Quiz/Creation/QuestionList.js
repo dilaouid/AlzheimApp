@@ -23,7 +23,9 @@ export default function QuestionList(props) {
         if (props.contentLength <= 2 && quizEdition) return;
         if (props.quizEdition === true) {
             await API.deleteQuestion(props.id, props.content.id)
-            const quiz = await API.getById(props.id);
+            // todo not get by api but update quizedit state
+            // update api only when saving quiz
+            const quiz = await API.getById(props.id); // to change later (asap plz)
             props.setQuizEdit(quiz[0]);
         } else {
             tmp.splice(props.index, 1)
