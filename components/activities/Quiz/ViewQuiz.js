@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     View,
     Text,
@@ -42,6 +42,11 @@ export default function ViewQuiz(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [sound, setSound] = useState(new Audio.Sound());
     const [success, setSuccess] = useState(false);
+    const [reload, setReload] = useState(false);
+
+    useEffect( () => {
+        console.log('---- reloaded list ----');
+    }, [reload]);
 
     // Add a new question on the list
     const pushContent = () => {
@@ -108,6 +113,9 @@ export default function ViewQuiz(props) {
                     setQuizEdit={setQuizEdit}
                     setNewContent={setNewContent}
                     quizEdition={true}
+                    reload={reload}
+                    setReload={setReload}
+                    setEditedQuiz={setEditedQuiz}
                 />);
             })
         } else {

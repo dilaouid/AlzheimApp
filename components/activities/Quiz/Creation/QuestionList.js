@@ -16,13 +16,11 @@ import styles from '../styles';
 
 export default function QuestionList(props) {
     const [modal, setModal] = useState(false);
-    const [edit, setEdit] = useState(false);
 
     const length = props.quizEdit?.content?.length + props.newContent?.length;
 
-    const pickOutQuestion = async () => {
-        const tmp = props.quizEdition ? props.content : props.contentList;
-        if (length <= 2 && quizEdition) return;
+    const pickOutQuestion = () => {
+        if (length <= 2 && props.quizEdition) return;
         if (props.quizEdition === true) {
             if (Number.isInteger(props.questionId)) {
                 // if the questionId is an integer, it means it has not
@@ -39,11 +37,19 @@ export default function QuestionList(props) {
             } else {
                 // todo not get by api but update quizedit state
                 // update api only when saving quiz
+                const index = props.quizEdit.content.findIndex(el => el.id == props.questionId );
+                const tmp = props.quizEdit;
+                tmp.content.splice(index, 1);
+                props.setQuizEdit(tmp);
+                props.setReload(!props.reload)
+                props.setEditedQuiz(true);
             }
         } else {
+            const tmp = props.quizEdition ? props.content : props.contentList;
             tmp.splice(props.index, 1)
             props.setContent([...tmp]);
         }
+        setModal(false);
     };
 
     var TouchableScale = Platform.OS !== 'web' ? require('react-native-touchable-scale').default : null;
@@ -71,11 +77,11 @@ export default function QuestionList(props) {
                 <Button
                     title={QuizLang[props.lang].OK}
                     buttonStyle={{ fontWeight: 'bold' }}
-                    onPress={pickOutQuestion}
+                    onPress={() => pickOutQuestion() }
                 />
             </View>
         </Overlay>
-            <ListItem {...componentProps} onPress={() => { setEdit(true) }} >
+            <ListItem {...componentProps} onPress={() => { console.log(true) }} >
                 { pickCorrectIcon(props.content.fileType, props.content.uri) }
                 <ListItem.Content>
                     <ListItem.Title>{props.content.question}</ListItem.Title>
