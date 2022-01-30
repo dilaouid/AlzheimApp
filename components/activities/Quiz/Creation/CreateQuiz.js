@@ -165,7 +165,6 @@ export default function CreateQuiz(props) {
                 <FormQuizContent
                     /* Form to create a quiz */
                     lang={props.lang}
-                    setCreateQuestion={setCreateQuestion}
                     setAnswers={setAnswers}
                     setFileType={setFileType}
                     setQuestion={setQuestion}
