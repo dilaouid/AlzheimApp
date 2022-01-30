@@ -29,6 +29,9 @@ export default function ViewQuiz(props) {
     // the new content to add in an existing quiz
     const [newContent, setNewContent] = useState([]);
 
+    // check if something has been edited
+    const [editedQuiz, setEditedQuiz] = useState(false);
+
     // the states for the quiz edition (add / edit question)
     const [question, setQuestion] = useState();
     const [answers, setAnswers] = useState([]);
@@ -56,6 +59,7 @@ export default function ViewQuiz(props) {
         setQuestion();
 
         setNewContent([...newContent, push]);
+        setEditedQuiz(true);
         setSuccess(true);
     };
 
@@ -111,6 +115,7 @@ export default function ViewQuiz(props) {
                 personId={props.personId}
                 setEdit={setEdit}
                 setQuizEdit={setQuizEdit}
+                setReload={props.setReload}
             />);
         }
     };
@@ -133,7 +138,7 @@ export default function ViewQuiz(props) {
         } else if (edit) {
             // save the quiz button
             if (mode == 'title') return QuizLang[props.lang].Save;
-            else if (mode == 'disabled') return !(answers.length > 0 && question.length > 2);
+            else if (mode == 'disabled') return !(editedQuiz);
             else if (mode == 'onpress') return pushContent();
         } else {
             // create a quiz button

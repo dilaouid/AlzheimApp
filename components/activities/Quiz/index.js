@@ -119,6 +119,7 @@ export default function Quiz(props) {
                     setTab={setTab}
                     lang={props.lang}
                     setPage={props.setPage}
+                    setReload={setReload}
                 />
             );
         } else {
