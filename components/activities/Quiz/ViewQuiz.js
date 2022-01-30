@@ -100,11 +100,13 @@ export default function ViewQuiz(props) {
                     index={i}
                     key={i}
                     id={quizEdit._id || 0}
+                    quizEdit={quizEdit}
+                    newContent={newContent}
                     content={el}
-                    contentLength={quizEdit.content.length + newContent.length}
                     lang={props.lang}
                     questionId={el.id || i}
                     setQuizEdit={setQuizEdit}
+                    setNewContent={setNewContent}
                     quizEdition={true}
                 />);
             })

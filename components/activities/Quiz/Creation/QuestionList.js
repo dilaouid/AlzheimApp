@@ -18,15 +18,28 @@ export default function QuestionList(props) {
     const [modal, setModal] = useState(false);
     const [edit, setEdit] = useState(false);
 
+    const length = props.quizEdit?.content?.length + props.newContent?.length;
+
     const pickOutQuestion = async () => {
         const tmp = props.quizEdition ? props.content : props.contentList;
-        if (props.contentLength <= 2 && quizEdition) return;
+        if (length <= 2 && quizEdition) return;
         if (props.quizEdition === true) {
-            await API.deleteQuestion(props.id, props.content.id)
-            // todo not get by api but update quizedit state
-            // update api only when saving quiz
-            const quiz = await API.getById(props.id); // to change later (asap plz)
-            props.setQuizEdit(quiz[0]);
+            if (Number.isInteger(props.questionId)) {
+                // if the questionId is an integer, it means it has not
+                // been added to the api yet, so it's an index of the
+                // newContent array passed in the props from the ViewQuiz Component
+
+                const index = props.questionId - props.quizEdit?.content?.length;
+                const tmp = props.newContent;
+                tmp.splice(index, 1);
+                // take out the new content from the newContent state in the
+                // parent component
+                props.setNewContent([...tmp]);
+
+            } else {
+                // todo not get by api but update quizedit state
+                // update api only when saving quiz
+            }
         } else {
             tmp.splice(props.index, 1)
             props.setContent([...tmp]);
@@ -68,7 +81,7 @@ export default function QuestionList(props) {
                     <ListItem.Title>{props.content.question}</ListItem.Title>
                     <ListItem.Subtitle>{props.content?.answers?.length || 1} {QuizLang[props.lang].PossibleAnswers}</ListItem.Subtitle>
                 </ListItem.Content>
-                <Icon disabled={props.quizEdition == true && props.contentLength <= 2} reverse size={15} style={{backgroundColor:'red'}} name={'trash-outline'} type={'ionicon'} color={'red'} onPress={(e) => { setModal(true) }} />
+                <Icon disabled={props.quizEdition == true && length <= 2} reverse size={15} style={{backgroundColor:'red'}} name={'trash-outline'} type={'ionicon'} color={'red'} onPress={(e) => { setModal(true) }} />
             </ListItem>
         </>
     )
