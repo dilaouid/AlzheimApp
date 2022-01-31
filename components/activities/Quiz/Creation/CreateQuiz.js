@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     View,
     ActivityIndicator,
@@ -23,7 +23,6 @@ import styles from '../styles';
 export default function CreateQuiz(props) {
     const [createQuestion, setCreateQuestion] = useState(false);
     const [content, setContent] = useState([]);
-    const [disable, setDisable] = useState(true);
     const [name, setName] = useState('');
     const [modal, setModal] = useState(false);
 
@@ -38,14 +37,6 @@ export default function CreateQuiz(props) {
     const [success, setSuccess] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [sound, setSound] = useState(new Audio.Sound());
-
-    useEffect( () => {
-        if (answers?.length > 0 && question) {
-            setDisable(false);
-        } else {
-            setDisable(true);
-        }
-    }, [answers, question]);
 
     const createQuiz = () => {
         API.create(props.personId, {
@@ -98,6 +89,15 @@ export default function CreateQuiz(props) {
         setIsPlaying(false);
     };
 
+    const clearState = () => {
+        setAnswers([]);
+        setFileType();
+        setFilename();
+        setUri();
+        setQuestion();
+        setSuccess(false);
+    };
+
     const printQuestionList = () => {
         if (content.length === 0) {
             return (<Text style={styles.nothingYet}>
@@ -114,6 +114,7 @@ export default function CreateQuiz(props) {
                         lang={props.lang}
                         setContent={setContent}
                         setEditContent={setEditContent}
+                        questionId={i}
                         contentList={content}
                     />
                 );
@@ -121,7 +122,34 @@ export default function CreateQuiz(props) {
         }
     };
 
+    const buttonTop = (mode) => {
+        if (editContent) {
+            // edit a question button
+            if (mode == 'title') return QuizLang[props.lang].SaveContent;
+            else if (mode == 'disabled') return !(answers?.length > 0 && question.length > 2);
+            else if (mode == 'onpress') { pauseSound(); return saveContent(); }
+        } else if (createQuestion) {
+            // add a question button
+            if (mode == 'title') return QuizLang[props.lang].OK;
+            else if (mode == 'disabled') return !(answers?.length > 0 && question.length > 2);
+            else if (mode == 'onpress') { pauseSound(); setModal(false); return pushContent(); }
+        } else {
+            if (mode == 'title') return QuizLang[props.lang].Complete;
+            else if (mode == 'disabled') return !(content.length > 0);
+            else if (mode == 'onpress') { return setModal(true);  }
+        }
+    };
+
     const printPage = () => {
+        if (editContent !== undefined && !createQuestion) {
+            if (success) setSuccess(false);
+            setAnswers(content[editContent].answers);
+            setFileType(content[editContent].fileType);
+            setFilename(content[editContent].filename);
+            setUri(content[editContent].uri);
+            setQuestion(content[editContent].question);
+            setCreateQuestion(true);
+        }
         if (createQuestion) { // if the user is creating a new question
             return <FormQuizContent
                 /* Form to create a quiz */
@@ -203,7 +231,7 @@ export default function CreateQuiz(props) {
             <View style={{ flexDirection: 'row' }}>
                 <Button
                     /* Complete the quiz or question creation / edition */
-                    title={createQuestion ? QuizLang[props.lang].OK : QuizLang[props.lang].Complete}
+                    title={ buttonTop('title') }
                     containerStyle={styles.createButton}
                     icon={
                         <Icon
@@ -214,12 +242,8 @@ export default function CreateQuiz(props) {
                             style={{ marginHorizontal: 5 }}
                         />
                     }
-                    disabled={ (createQuestion && disable) || (!createQuestion && content?.length < 2) ? true : false}
-                    onPress={() => {
-                        pauseSound();
-                        if (createQuestion) pushContent();
-                        else setModal(true);
-                    }}
+                    disabled={ buttonTop('disabled') }
+                    onPress={ () => buttonTop('onpress') }
                 />
                 <FAB
                     color='red'
@@ -227,8 +251,13 @@ export default function CreateQuiz(props) {
                     size="small"
                     icon={{name: 'caret-back-outline', type: 'ionicon', color:'white' }}
                     onPress={() => {
+                        setEditContent();
+                        clearState();
                         pauseSound();
-                        createQuestion ? setCreateQuestion(false) : props.setTab(2)
+                        if (createQuestion) {
+                            setCreateQuestion(!createQuestion);
+                        }
+                        else props.setTab(2);
                     }}
                 />
             </View>
