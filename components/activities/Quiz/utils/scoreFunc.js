@@ -9,5 +9,5 @@ export function ScoreRatio (content, personId) {
         });
     });
     const total = success + fail;
-    return (success / (total));
+    return ((success / total) * 100).toFixed(2);
 };
