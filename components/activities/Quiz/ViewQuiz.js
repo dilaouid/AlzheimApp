@@ -3,7 +3,8 @@ import {
     View,
     SafeAreaView,
     ScrollView,
-    Alert
+    Alert,
+    Text
 } from 'react-native';
 import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
@@ -25,6 +26,9 @@ export default function ViewQuiz(props) {
 
     // if the user want to add a question to an existing quiz
     const [newQuestion, setNewQuestion] = useState(false);
+
+    // if the user want to edit an existing question to an existing quiz
+    const [editContent, setEditContent] = useState();
 
     // the existing quiz to edit
     const [quizEdit, setQuizEdit] = useState();
@@ -66,6 +70,16 @@ export default function ViewQuiz(props) {
         setSuccess(true);
     };
 
+    // clear the states before edition or creation of a content
+    const clearState = () => {
+        setAnswers([]);
+        setQuestion();
+        setFileType();
+        setFilename();
+        setUri();
+        setSound(new Audio.Sound());
+    };
+
     // Save the edited quiz
     const saveQuiz = () => {
         if (!editedQuiz) return;
@@ -96,7 +110,9 @@ export default function ViewQuiz(props) {
     };
 
     const viewPage = () => {
-        if (newQuestion) { // if the user wants to set a new question for quiz edition
+        if (editContent) {
+            return <Text>WIP</Text>
+        } else if (newQuestion) { // if the user wants to set a new question for quiz edition
             return (<FormQuizContent
                         lang={props.lang}
                         setAnswers={setAnswers}
@@ -129,12 +145,13 @@ export default function ViewQuiz(props) {
                     content={el}
                     lang={props.lang}
                     questionId={el.id || i}
+                    quizEdition={true}
                     reload={props.reload}
                     setReload={props.setReload}
+                    setEditedQuiz={setEditedQuiz}
+                    setEditContent={setEditContent}
                     setQuizEdit={setQuizEdit}
                     setNewContent={setNewContent}
-                    quizEdition={true}
-                    setEditedQuiz={setEditedQuiz}
                 />);
             })
         } else {
@@ -152,12 +169,15 @@ export default function ViewQuiz(props) {
     };
 
     const goBack = () => {
-        if (newQuestion)
+        if (editContent) {
+            clearState();
+            setEditContent();
+        } else if (newQuestion)
             setNewQuestion(false);
         else if (edit) {
             setEditedQuiz(false);
             setEdit(false);
-        else
+        } else
             props.setTab(0);
     };
 
@@ -215,7 +235,7 @@ export default function ViewQuiz(props) {
             />
             <SafeAreaView style={styles.safeArea}>
                 {
-                    edit && !newQuestion ?
+                    edit && !newQuestion && !editContent ?
                     <Button
                         title={QuizLang[props.lang].AddQuestion}
                         icon={

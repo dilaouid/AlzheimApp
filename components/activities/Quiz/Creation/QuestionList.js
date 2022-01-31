@@ -78,7 +78,7 @@ export default function QuestionList(props) {
                 />
             </View>
         </Overlay>
-            <ListItem {...componentProps} onPress={() => { console.log(true) }} >
+            <ListItem {...componentProps} onPress={() => { props.setEditContent(props.id) }} >
                 { pickCorrectIcon(props.content.fileType, props.content.uri) }
                 <ListItem.Content>
                     <ListItem.Title>{props.content.question}</ListItem.Title>
