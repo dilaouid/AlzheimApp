@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { _DEFAULT_PROGRESS_UPDATE_INTERVAL_MILLIS } from 'expo-av/build/AV';
 import * as FileSystem from 'expo-file-system';
 
 import { v4 as uuidv4 } from 'uuid';
@@ -52,6 +53,21 @@ export const db = new Datastore({
     autoload: true,
 });
 
+const createQuizContent = async (personId, el) => {
+    el.id = uuidv4();
+    el.score = [{personId: personId, success: 0, failed: 0}];
+    if (['audio', 'image'].includes(el.fileType)) {
+        const filename = `${uuidv4()}${el.fileType == 'audio' ? '.m4a' : '.png'}`;
+        const path = `${FileSystem.documentDirectory}quiz/${el.fileType}/`;
+        await FileSystem.copyAsync({
+            from: el.uri,
+            to: `${path}${filename}`
+        });
+        await FileSystem.deleteAsync(el.uri);
+        el.uri = `${path}${filename}`;
+    }
+};
+
 export function get(personId) {
     return db
         .find({ personId: personId })
@@ -71,18 +87,7 @@ export async function create(personId, quiz) {
     }
     for (let i = 0; i < quiz.content.length; i++) {
         const el = quiz.content[i];
-        el.id = uuidv4();
-        el.score = [{personId: personId, success: 0, failed: 0}];
-        if (['audio', 'image'].includes(el.fileType)) {
-            const filename = `${uuidv4()}${el.fileType == 'audio' ? '.m4a' : '.png'}`;
-            const path = `${FileSystem.documentDirectory}quiz/${el.fileType}/`;
-            await FileSystem.copyAsync({
-                from: el.uri,
-                to: `${path}${filename}`
-            });
-            await FileSystem.deleteAsync(el.uri);
-            el.uri = `${path}${filename}`;
-        }
+        await createQuizContent(personId, el);
     }
     return db.insertAsync({ ...quiz }, (err, result) => {
         if (err) {
@@ -137,6 +142,21 @@ export async function getById(quizId) {
         if (err) console.error('cannot find quiz:', err);
         return (data);
     });
+};
+
+export async function saveQuiz(personId, quizId, content) {
+    const quiz = await db.findAsync({ _id: quizId}, (err, data) => {
+        if (err) console.error('cannot find quiz:', err);
+        return (data);
+    });
+    if (!quiz) return;
+    for (let i = 0; i < content.length; i++) {
+        const el = content[i];
+        if (!el.id)
+            await createQuizContent(personId, el);
+    }
+    quiz[0].content = content;
+    return db.updateAsync({_id: quizId}, {...quiz[0]});
 };
 
 export async function reset() {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
     View,
-    Text,
     SafeAreaView,
     ScrollView
 } from 'react-native';
@@ -9,6 +8,8 @@ import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
 import QuestionList from './Creation/QuestionList';
 import ViewQuizList from './ViewQuizList';
+
+import * as API from '../../../data/quizApi';
 
 import { lang as QuizLang } from '../../../language/activities/quiz';
 import FormQuizContent from './Creation/FormQuizContent';
@@ -68,6 +69,16 @@ export default function ViewQuiz(props) {
         setEditedQuiz(true);
         setSuccess(true);
     };
+
+    // Save the edited quiz
+    const saveQuiz = () => {
+        if (!editedQuiz) return;
+        const content = quizEdit.content.concat(newContent);
+        API.saveQuiz(props.personId, quizEdit._id, content).then((data) => {
+            setReload(!reload);
+            goBack();
+        });
+    }
 
     const pauseSound = async () => {
         const getSoundStatus = await sound?.getStatusAsync();
@@ -151,7 +162,7 @@ export default function ViewQuiz(props) {
             // save the quiz button
             if (mode == 'title') return QuizLang[props.lang].Save;
             else if (mode == 'disabled') return !(editedQuiz);
-            else if (mode == 'onpress') return pushContent();
+            else if (mode == 'onpress') return saveQuiz();
         } else {
             // create a quiz button
             if (mode == 'title') return QuizLang[props.lang].Create;
