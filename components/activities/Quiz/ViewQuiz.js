@@ -123,7 +123,7 @@ export default function ViewQuiz(props) {
             setFileType(content.fileType);
             setUri(content.uri);
             setQuestion(content.question);
-            setAnswers(content.answers);
+            setAnswers([...content.answers]);
             setNewQuestion(true);
         } else if (newQuestion) { // if the user wants to set a new question for quiz edition
             return (<FormQuizContent
@@ -196,7 +196,11 @@ export default function ViewQuiz(props) {
     };
 
     const buttonTop = (mode) => {
-        if (newQuestion) {
+        if (editContent) {
+            if (mode == 'title') return QuizLang[props.lang].SaveContent;
+            else if (mode == 'disabled') return !(answers.length > 0 && question.length > 2);
+            else if (mode == 'onpress') return pushContent(); // to replace with edition in array
+        } else if (newQuestion) {
             // add a question button
             if (mode == 'title') return QuizLang[props.lang].AddContent;
             else if (mode == 'disabled') return !(answers.length > 0 && question.length > 2);
