@@ -57,15 +57,19 @@ const createQuizContent = async (personId, el) => {
     el.id = uuidv4();
     el.score = [{personId: personId, success: 0, failed: 0}];
     if (['audio', 'image'].includes(el.fileType)) {
-        const filename = `${uuidv4()}${el.fileType == 'audio' ? '.m4a' : '.png'}`;
-        const path = `${FileSystem.documentDirectory}quiz/${el.fileType}/`;
-        await FileSystem.copyAsync({
-            from: el.uri,
-            to: `${path}${filename}`
-        });
-        await FileSystem.deleteAsync(el.uri);
-        el.uri = `${path}${filename}`;
+        await uploadQuizFile(el);
     }
+};
+
+const uploadQuizFile = async (el) => {
+    const filename = `${uuidv4()}${el.fileType == 'audio' ? '.m4a' : '.png'}`;
+    const path = `${FileSystem.documentDirectory}quiz/${el.fileType}/`;
+    await FileSystem.copyAsync({
+        from: el.uri,
+        to: `${path}${filename}`
+    });
+    await FileSystem.deleteAsync(el.uri);
+    el.uri = `${path}${filename}`;
 };
 
 export function get(personId) {
@@ -154,6 +158,10 @@ export async function saveQuiz(personId, quizId, content) {
         const el = content[i];
         if (!el.id)
             await createQuizContent(personId, el);
+        else if (el.id && el.editedFile) {
+            await uploadQuizFile(el);
+            delete el.editedFile;
+        }
     }
     quiz[0].content = content;
     return db.updateAsync({_id: quizId}, {...quiz[0]});
