@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     View,
     SafeAreaView,
     ScrollView,
     Alert,
+    Modal,
     Text
 } from 'react-native';
-import { Button, Icon, Divider, FAB } from 'react-native-elements';
+import { Button, Icon, Divider, FAB, Overlay } from 'react-native-elements';
 
 import QuestionList from './Creation/QuestionList';
 import ViewQuizList from './ViewQuizList';
@@ -38,6 +39,9 @@ export default function ViewQuiz(props) {
 
     // check if something has been edited
     const [editedQuiz, setEditedQuiz] = useState(false);
+
+    // open the modal of going back without saving confirmation
+    const [modal, setModal] = useState(false);
 
     // the states for the quiz edition (add / edit question)
     const [question, setQuestion] = useState();
@@ -217,6 +221,14 @@ export default function ViewQuiz(props) {
     };
 
     const goBack = () => {
+
+        setSuccess(false);
+
+        if (editedQuiz && !newQuestion) {
+            setModal(true);
+            return;
+        }
+
         if (editContent) {
             clearState();
             setEditContent();
@@ -257,6 +269,36 @@ export default function ViewQuiz(props) {
     return (
         <>
             <View style={{ flexDirection: 'row' }}>
+
+                <Overlay
+                    visible={modal}
+                    overlayStyle={styles.overlay}
+                    onBackdropPress={() => setModal(false)}
+                    ModalComponent={Modal}
+                >
+                    <Text style={{marginBottom: 30, width: 250, textAlign: 'center'}}>{QuizLang[props.lang].SureCancelEdition}</Text>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Button
+                            title={QuizLang[props.lang].Leave}
+                            buttonStyle={{ backgroundColor: 'red' }}
+                            containerStyle={{ marginRight: 10 }}
+                            onPress={() => setModal(false)}
+                        />
+                        <Button
+                            title={QuizLang[props.lang].GoBack}
+                            buttonStyle={{ fontWeight: 'bold' }}
+                            onPress={() => {
+                                setEditedQuiz(false);
+                                setEditContent();
+                                setEdit(false);
+                                setNewContent([]);
+                                setModal(false);
+                            } }
+                        />
+                    </View>
+                </Overlay>
+
+
                 <Button
                     title={ buttonTop('title') }
                     containerStyle={styles.createButton}

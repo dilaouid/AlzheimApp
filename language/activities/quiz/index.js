@@ -28,6 +28,8 @@ export const lang = {
         Create: 'Créer un quiz',
         Help: 'Comment ça marche',
         Leave: 'Retour',
+        Cancel: 'Annuler',
+        GoBack: "Oui, j'annule l'édition du quiz",
         NothingYet: 'Aucun quiz crée pour le moment.',
         NoQuestionYet: 'Aucune question crée pour le moment.',
         SuccessfulRatio: 'de réussite',
@@ -85,6 +87,7 @@ export const lang = {
         Save: 'Sauvegarder le quiz',
         SaveContent: "Sauvegarder la question",
         AddContent: "Ajouter la question",
+        SureCancelEdition: "Êtes-vous sûr de bien vouloir abandonner l'édition de ce quiz? Vous ne pourrez pas récupérer vos modifications."
     },
     en: {
         Play: 'Play',
@@ -92,6 +95,8 @@ export const lang = {
         Create: 'Create a quiz',
         Help: 'How does it works',
         Leave: 'Leave',
+        Cancel: 'Cancel',
+        GoBack: 'Yes, I want to go back',
         NothingYet: 'No quiz has been created yet.',
         NoQuestionYet: 'No question has been created yet.',
         SuccessfulRatio: 'of success',
@@ -149,5 +154,6 @@ export const lang = {
         Save: 'Save the quiz',
         SaveContent: "Save the question",
         AddContent: "Add the question",
+        SureCancelEdition: "Are you sure to cancel this quiz edition? Your modification would not be saved",
     },
 };
