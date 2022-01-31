@@ -82,6 +82,17 @@ export default function CreateQuiz(props) {
         setSuccess(true);
     };
 
+    // Save an existing question
+    const saveContent = () => {
+        content[editContent].fileType = fileType;
+        content[editContent].filename = filename;
+        content[editContent].uri = uri;
+        content[editContent].question = question;
+        content[editContent].answers = answers;
+        setContent([...content]);
+        setSuccess(true);
+    };
+
     const pauseSound = async () => {
         const getSoundStatus = await sound?.getStatusAsync();
         if (getSoundStatus.isLoaded)
@@ -123,7 +134,7 @@ export default function CreateQuiz(props) {
     };
 
     const buttonTop = (mode) => {
-        if (editContent) {
+        if (editContent !== undefined) {
             // edit a question button
             if (mode == 'title') return QuizLang[props.lang].SaveContent;
             else if (mode == 'disabled') return !(answers?.length > 0 && question.length > 2);
