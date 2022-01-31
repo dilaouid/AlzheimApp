@@ -27,6 +27,8 @@ export default function CreateQuiz(props) {
     const [name, setName] = useState('');
     const [modal, setModal] = useState(false);
 
+    const [editContent, setEditContent] = useState();
+
     // Related to the Create Content Component
     const [uri, setUri] = useState();
     const [filename, setFilename] = useState();
@@ -210,9 +212,11 @@ export default function CreateQuiz(props) {
                                     <QuestionList
                                         index={i}
                                         key={i}
+                                        id={i}
                                         content={el}
                                         lang={props.lang}
                                         setContent={setContent}
+                                        setEditContent={setEditContent}
                                         contentList={content}
                                     />
                                 );

@@ -110,8 +110,21 @@ export default function ViewQuiz(props) {
     };
 
     const viewPage = () => {
-        if (editContent) {
-            return <Text>WIP</Text>
+        if (editContent && !newQuestion) {
+            let content;
+            if (Number.isInteger(editContent)) {
+                content = newContent[editContent];
+            } else {
+                const index = quizEdit.content.findIndex(el => el.id == editContent);
+                content = quizEdit.content[index];
+            }
+            if (!content) return;
+            setFilename(content.filename);
+            setFileType(content.fileType);
+            setUri(content.uri);
+            setQuestion(content.question);
+            setAnswers(content.answers);
+            setNewQuestion(true);
         } else if (newQuestion) { // if the user wants to set a new question for quiz edition
             return (<FormQuizContent
                         lang={props.lang}
@@ -172,6 +185,7 @@ export default function ViewQuiz(props) {
         if (editContent) {
             clearState();
             setEditContent();
+            setNewQuestion(false);
         } else if (newQuestion)
             setNewQuestion(false);
         else if (edit) {
