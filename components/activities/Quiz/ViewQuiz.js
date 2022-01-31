@@ -70,6 +70,40 @@ export default function ViewQuiz(props) {
         setSuccess(true);
     };
 
+    const saveContent = () => {
+        let content;
+        let index;
+        if (Number.isInteger(editContent)) {
+            // edit newContent array
+            content = newContent[editContent - quizEdit?.content?.length];
+        } else {
+            // edit quizEdit array
+
+            // for already in api content -- think of reuploading the file
+            // if there's a new one, or to delete it
+            index = quizEdit.content.findIndex(el => el.id == editContent);
+            content = quizEdit.content[index];
+            if (fileType != content.fileType || uri != content.uri)
+                content.editedFile = true;
+        }
+        content.filename= filename;
+        content.fileType = fileType;
+        content.uri = uri;
+        content.answers = answers;
+        content.question = question;
+        setEditedQuiz(true);
+        setSuccess(true);
+        if (Number.isInteger(editContent)) {
+            if (newContent.length == 1)
+                setNewContent([content]);
+            else
+                setNewContent([...content]);
+        } else {
+            quizEdit.content[index] = content;
+            setQuizEdit(quizEdit);
+        }
+    };
+
     // clear the states before edition or creation of a content
     const clearState = () => {
         setAnswers([]);
@@ -111,9 +145,10 @@ export default function ViewQuiz(props) {
 
     const viewPage = () => {
         if (editContent && !newQuestion) {
+            if (success) setSuccess(false);
             let content;
             if (Number.isInteger(editContent)) {
-                content = newContent[editContent];
+                content = newContent[editContent - quizEdit?.content?.length];
             } else {
                 const index = quizEdit.content.findIndex(el => el.id == editContent);
                 content = quizEdit.content[index];
@@ -197,9 +232,10 @@ export default function ViewQuiz(props) {
 
     const buttonTop = (mode) => {
         if (editContent) {
+            // edit a question button
             if (mode == 'title') return QuizLang[props.lang].SaveContent;
             else if (mode == 'disabled') return !(answers.length > 0 && question.length > 2);
-            else if (mode == 'onpress') return pushContent(); // to replace with edition in array
+            else if (mode == 'onpress') return saveContent();
         } else if (newQuestion) {
             // add a question button
             if (mode == 'title') return QuizLang[props.lang].AddContent;
