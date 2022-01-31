@@ -44,11 +44,6 @@ export default function ViewQuiz(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [sound, setSound] = useState(new Audio.Sound());
     const [success, setSuccess] = useState(false);
-    const [reload, setReload] = useState(false);
-
-    useEffect( () => {
-        console.log('---- reloaded list ----');
-    }, [reload]);
 
     // Add a new question on the list
     const pushContent = () => {
@@ -134,11 +129,11 @@ export default function ViewQuiz(props) {
                     content={el}
                     lang={props.lang}
                     questionId={el.id || i}
+                    reload={props.reload}
+                    setReload={props.setReload}
                     setQuizEdit={setQuizEdit}
                     setNewContent={setNewContent}
                     quizEdition={true}
-                    reload={reload}
-                    setReload={setReload}
                     setEditedQuiz={setEditedQuiz}
                 />);
             })
@@ -159,7 +154,8 @@ export default function ViewQuiz(props) {
     const goBack = () => {
         if (newQuestion)
             setNewQuestion(false);
-        else if (edit)
+        else if (edit) {
+            setEditedQuiz(false);
             setEdit(false);
         else
             props.setTab(0);
