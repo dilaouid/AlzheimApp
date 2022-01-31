@@ -222,9 +222,10 @@ export default function ViewQuiz(props) {
 
     const goBack = () => {
 
-        setSuccess(false);
+        if (!success) setSuccess(false);
 
-        if (editedQuiz && !newQuestion) {
+        console.log(newContent);
+        if ( (editedQuiz && !newQuestion) || newContent.length > 0) {
             setModal(true);
             return;
         }

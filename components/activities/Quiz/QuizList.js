@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ListItem, Icon } from 'react-native-elements';
 import { Platform, Alert } from 'react-native';
 import { lang as QuizLang } from '../../../language/activities/quiz';

@@ -25,6 +25,7 @@ export default function CreateQuiz(props) {
     const [content, setContent] = useState([]);
     const [name, setName] = useState('');
     const [modal, setModal] = useState(false);
+    const [modalConfirmation, setModalConfirmation] = useState(false);
 
     const [editContent, setEditContent] = useState();
 
@@ -97,7 +98,7 @@ export default function CreateQuiz(props) {
         const getSoundStatus = await sound?.getStatusAsync();
         if (getSoundStatus.isLoaded)
             await sound.pauseAsync();
-        setIsPlaying(false);
+        if (isPlaying) setIsPlaying(false);
     };
 
     const clearState = () => {
@@ -239,6 +240,32 @@ export default function CreateQuiz(props) {
                 </View>
             </Overlay>
 
+            {/* Confirmation give up quiz creation */}
+            <Overlay
+                visible={modalConfirmation}
+                overlayStyle={styles.overlay}
+                onBackdropPress={() => setModalConfirmation(false)}
+                ModalComponent={Modal}
+            >
+                <Text style={{marginBottom: 30, width: 250, textAlign: 'center'}}>{QuizLang[props.lang].SureCancelEdition}</Text>
+                <View style={{ flexDirection: 'row' }}>
+                    <Button
+                        title={QuizLang[props.lang].Cancel}
+                        buttonStyle={{ backgroundColor: 'red' }}
+                        containerStyle={{ marginRight: 10 }}
+                        onPress={() => setModalConfirmation(false)}
+                    />
+                    <Button
+                        title={QuizLang[props.lang].GoBack}
+                        buttonStyle={{ fontWeight: 'bold' }}
+                        onPress={() => {
+                            setModalConfirmation(false);
+                            props.setTab(2);
+                        } }
+                    />
+                </View>
+            </Overlay>
+
             <View style={{ flexDirection: 'row' }}>
                 <Button
                     /* Complete the quiz or question creation / edition */
@@ -262,13 +289,12 @@ export default function CreateQuiz(props) {
                     size="small"
                     icon={{name: 'caret-back-outline', type: 'ionicon', color:'white' }}
                     onPress={() => {
-                        setEditContent();
                         clearState();
                         pauseSound();
-                        if (createQuestion) {
+                        if (createQuestion)
                             setCreateQuestion(!createQuestion);
-                        }
-                        else props.setTab(2);
+                        else if (content.length == 0) props.setTab(2);
+                        else setModalConfirmation(true)
                     }}
                 />
             </View>
