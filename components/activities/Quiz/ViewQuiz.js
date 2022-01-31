@@ -76,7 +76,6 @@ export default function ViewQuiz(props) {
         if (!editedQuiz) return;
         const content = quizEdit.content.concat(newContent);
         API.saveQuiz(props.personId, quizEdit._id, content).then((data) => {
-            setReload(!reload);
             return Alert.alert(
                 QuizLang[props.lang].EditedQuiz,
                 QuizLang[props.lang].QuizListRedirection,
@@ -84,6 +83,8 @@ export default function ViewQuiz(props) {
                     {
                         text: QuizLang[props.lang].OK,
                         onPress: () => {
+                            props.setReload(!props.reload);
+                            setNewContent([]);
                             goBack();
                         },
                     }
