@@ -52,6 +52,7 @@ export const lang = {
         CompleteQuizTitle: "Vous êtes sur le point de créer un nouveau quiz. Merci de lui attribuer un titre afin que vous puissez le retrouver plus rapidement.",
         QuizTitle: "Nom du quiz",
         CreatedQuiz: "Quiz crée avec succès !",
+        EditedQuiz: "Quiz modifié avec succès !",
         QuizListRedirection: "Vous allez maintenant être redirigé à la liste des quiz.",
         selectedQuizz: (quizName) => {
             return applyBoldStyle({
@@ -115,6 +116,7 @@ export const lang = {
         CompleteQuizTitle: "You are about to complete the quiz creation. Please provide a title in order to help you find it easier later.",
         QuizTitle: "Quiz title",
         CreatedQuiz: "Quiz successfuly created!",
+        EditedQuiz: "Quiz successfuly edited!",
         QuizListRedirection: "You will now be redirect to the quiz list.",
         selectedQuizz: (quizName) => {
             return applyBoldStyle({

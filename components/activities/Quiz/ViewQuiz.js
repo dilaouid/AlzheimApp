@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
     View,
     SafeAreaView,
-    ScrollView
+    ScrollView,
+    Alert
 } from 'react-native';
 import { Button, Icon, Divider, FAB } from 'react-native-elements';
 
@@ -76,7 +77,18 @@ export default function ViewQuiz(props) {
         const content = quizEdit.content.concat(newContent);
         API.saveQuiz(props.personId, quizEdit._id, content).then((data) => {
             setReload(!reload);
-            goBack();
+            return Alert.alert(
+                QuizLang[props.lang].EditedQuiz,
+                QuizLang[props.lang].QuizListRedirection,
+                [
+                    {
+                        text: QuizLang[props.lang].OK,
+                        onPress: () => {
+                            goBack();
+                        },
+                    }
+                ]
+            );
         });
     }
 
