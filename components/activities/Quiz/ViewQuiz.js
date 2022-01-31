@@ -279,7 +279,7 @@ export default function ViewQuiz(props) {
                     <Text style={{marginBottom: 30, width: 250, textAlign: 'center'}}>{QuizLang[props.lang].SureCancelEdition}</Text>
                     <View style={{ flexDirection: 'row' }}>
                         <Button
-                            title={QuizLang[props.lang].Leave}
+                            title={QuizLang[props.lang].Cancel}
                             buttonStyle={{ backgroundColor: 'red' }}
                             containerStyle={{ marginRight: 10 }}
                             onPress={() => setModal(false)}
