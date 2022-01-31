@@ -98,6 +98,80 @@ export default function CreateQuiz(props) {
         setIsPlaying(false);
     };
 
+    const printQuestionList = () => {
+        if (content.length === 0) {
+            return (<Text style={styles.nothingYet}>
+                {QuizLang[props.lang].NoQuestionYet}
+            </Text>);
+        } else {
+            return content?.map((el, i) => {
+                return (
+                    <QuestionList
+                        index={i}
+                        key={i}
+                        id={i}
+                        content={el}
+                        lang={props.lang}
+                        setContent={setContent}
+                        setEditContent={setEditContent}
+                        contentList={content}
+                    />
+                );
+            });
+        }
+    };
+
+    const printPage = () => {
+        if (createQuestion) { // if the user is creating a new question
+            return <FormQuizContent
+                /* Form to create a quiz */
+                lang={props.lang}
+                setAnswers={setAnswers}
+                setFileType={setFileType}
+                setQuestion={setQuestion}
+                setUri={setUri}
+                setFilename={setFilename}
+                setSuccess={setSuccess}
+                setSound={setSound}
+                setIsPlaying={setIsPlaying}
+                pauseSound={pauseSound}
+                uri={uri}
+                filename={filename}
+                answers={answers}
+                fileType={fileType}
+                question={question}
+                success={success}
+                sound={sound}
+                isPlaying={isPlaying}
+            />
+        } else {
+            return <SafeAreaView style={styles.safeArea}>
+                <Button
+                    title={QuizLang[props.lang].AddQuestion}
+                    icon={
+                        <Icon
+                            name={'add-circle-outline'}
+                            type={'ionicon'}
+                            color={'white'}
+                            size={15}
+                            style={{ marginHorizontal: 5 }}
+                        />
+                    }
+                    onPress={() => setCreateQuestion(true)}
+                />
+                <ScrollView style={{marginBottom: 40}}>
+                    { props.loading ? (
+                        <ActivityIndicator
+                            color={'blue'}
+                            size={'small'}
+                            style={styles.loading}
+                        />
+                    ) : printQuestionList() }
+                </ScrollView>    
+            </SafeAreaView>
+        }
+    };
+
     return (
         <>
             {/* Confirmation quiz creation (setting quiz name and complete creation) */}
@@ -163,72 +237,7 @@ export default function CreateQuiz(props) {
                 width={1}
                 style={{ width: 100 + '%', marginTop: 20 }}
             />
-                {createQuestion === true ?
-                <FormQuizContent
-                    /* Form to create a quiz */
-                    lang={props.lang}
-                    setAnswers={setAnswers}
-                    setFileType={setFileType}
-                    setQuestion={setQuestion}
-                    setUri={setUri}
-                    setFilename={setFilename}
-                    setSuccess={setSuccess}
-                    setSound={setSound}
-                    setIsPlaying={setIsPlaying}
-                    pauseSound={pauseSound}
-                    uri={uri}
-                    filename={filename}
-                    answers={answers}
-                    fileType={fileType}
-                    question={question}
-                    success={success}
-                    sound={sound}
-                    isPlaying={isPlaying}
-                /> :
-                <SafeAreaView style={styles.safeArea}>
-                    <Button
-                        title={QuizLang[props.lang].AddQuestion}
-                        icon={
-                            <Icon
-                                name={'add-circle-outline'}
-                                type={'ionicon'}
-                                color={'white'}
-                                size={15}
-                                style={{ marginHorizontal: 5 }}
-                            />
-                        }
-                        onPress={() => setCreateQuestion(true)}
-                    />
-                    <ScrollView style={{marginBottom: 40}}>
-                        {props.loading ? (
-                            <ActivityIndicator
-                                color={'blue'}
-                                size={'small'}
-                                style={styles.loading}
-                            />
-                        ) : content?.length > 0 ? (
-                            content?.map((el, i) => {
-                                return (
-                                    <QuestionList
-                                        index={i}
-                                        key={i}
-                                        id={i}
-                                        content={el}
-                                        lang={props.lang}
-                                        setContent={setContent}
-                                        setEditContent={setEditContent}
-                                        contentList={content}
-                                    />
-                                );
-                            })
-                        ) : (
-                            <Text style={styles.nothingYet}>
-                                {QuizLang[props.lang].NoQuestionYet}
-                            </Text>
-                        )}
-                    </ScrollView>    
-                </SafeAreaView>
-            }
+            { printPage() }
         </>
     );
 }
