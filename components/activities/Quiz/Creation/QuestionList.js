@@ -8,8 +8,6 @@ import {
 import { Platform, Modal, View, Text } from 'react-native';
 import { lang as QuizLang } from '../../../../language/activities/quiz';
 
-import * as API from '../../../../data/quizApi';
-
 import { pickCorrectIcon } from '../utils/quizFunc';
 
 import styles from '../styles';
@@ -33,7 +31,6 @@ export default function QuestionList(props) {
                 // take out the new content from the newContent state in the
                 // parent component
                 props.setNewContent([...tmp]);
-
             } else {
                 // todo not get by api but update quizedit state
                 // update api only when saving quiz
