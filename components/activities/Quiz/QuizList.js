@@ -32,7 +32,7 @@ export default function QuizList(props) {
             <ListItem.Content>
                 <ListItem.Title>{props.quiz.name}</ListItem.Title>
                 <ListItem.Subtitle>
-                    {ScoreRatio(props.quiz.content, props.personId) || 1}{'% '}
+                    { ScoreRatio(props.quiz.content, props.personId) }{'% '}
                     {QuizLang[props.lang].SuccessfulRatio}
                 </ListItem.Subtitle>
                 <ListItem.Subtitle>
