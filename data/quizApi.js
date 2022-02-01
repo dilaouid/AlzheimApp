@@ -1,5 +1,4 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { _DEFAULT_PROGRESS_UPDATE_INTERVAL_MILLIS } from 'expo-av/build/AV';
 import * as FileSystem from 'expo-file-system';
 
 import { v4 as uuidv4 } from 'uuid';
