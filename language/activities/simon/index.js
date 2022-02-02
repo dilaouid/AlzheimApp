@@ -102,6 +102,12 @@ export const lang = {
         Start: 'Commencer une partie',
         Cancel: 'Annuler',
         TimeToStop: "Oui, je m'arrête là",
+
+
+
+
+        // Help section
+        Head: "Le Simon, comment ça marche ?",
     },
     en: {
         Play: 'Play',
@@ -183,5 +189,11 @@ export const lang = {
         Start: 'Start a game',
         Cancel: 'Cancel',
         TimeToStop: 'Yes, I want to stop',
+
+
+
+
+        // Help section
+        Head: `The Simon, how does it works?`,
     },
 };

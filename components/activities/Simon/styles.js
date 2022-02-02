@@ -86,4 +86,35 @@ export default StyleSheet.create({
         marginBottom: 20,
         textAlign: 'center',
     },
+
+
+    // Help section
+    viewHelpPage: {
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: 'white',
+        width: 100 + '%',
+        height: 150 + '%',
+        marginTop: -20
+    },
+    leaveButtonHelpPage: {
+        width: 235,
+        backgroundColor: 'red',
+        borderRadius: 10,
+        marginTop: 20,
+        marginHorizontal: 5,
+    },
+    helpHead: {
+        marginVertical: 25,
+        fontWeight: 'bold',
+        fontSize: 25,
+        textAlign: 'center',
+        color: '#4954FF'
+    },
+    helpQuestionMark: {
+        position: 'absolute',
+        width: 450,
+        opacity: .4,
+        zIndex: -1
+    }
 });

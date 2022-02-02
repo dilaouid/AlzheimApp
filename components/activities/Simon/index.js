@@ -7,6 +7,7 @@ import { Audio } from 'expo-av';
 // Child Components
 import Menu from './Menu';
 import Game from './Game';
+import Help from './Help';
 
 import styles from './styles';
 
@@ -64,7 +65,7 @@ export default function Simon(props) {
                 />
             );
         } else if (tab === 2) {
-            return <Text>Tab 2 (Help)</Text>;
+            return <Help lang={props.lang} setTab={setTab} />;
         } else {
             return <Text>Invalid tab</Text>;
         }
