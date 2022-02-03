@@ -2,6 +2,8 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { lang as ActivitiesLang } from '../../language/activities';
 
+import { useNavigate } from 'react-router-native';
+
 import { Icon } from 'react-native-elements';
 
 import Settings from './Settings';
@@ -11,6 +13,9 @@ import Score from './Score';
 const Tab = createBottomTabNavigator();
 
 export default function Tabs(props) {
+    
+    const navigate = useNavigate();
+
     return (
         <Tab.Navigator
             screenOptions={{
@@ -77,6 +82,25 @@ export default function Tabs(props) {
                         setFullname={props.setFullname}
                     />
                 )}
+            />
+            <Tab.Screen
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({ focused }) => {
+                        return (
+                            <Icon
+                                type={'ionicon'}
+                                color={'#5bc0de'}
+                                name={`exit${focused ? '' : '-outline'}`}
+                            />
+                        );
+                    },
+                }}
+                name={ActivitiesLang[props.lang]?.Home}
+                children={(e) => {
+                    navigate('/home');
+                    return null;
+                }}
             />
         </Tab.Navigator>
     );
