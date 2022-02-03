@@ -29,8 +29,8 @@ export default StyleSheet.create({
         marginHorizontal: 5,
     },
     RectoCard: {
-        width: 70,
-        height: 70,
+        width: 80,
+        height: 80,
         backgroundColor: '#C3C3CF',
         borderRadius: 20,
         borderColor: '#858593',
@@ -40,7 +40,7 @@ export default StyleSheet.create({
         marginVertical: 5
     },
     IconCard: {
-        marginTop: 20
+        marginTop: 25
     },
     viewGame: {
         flex: 1,
