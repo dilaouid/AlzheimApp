@@ -34,7 +34,7 @@ export default function Menu(props) {
                 onPress={(e) => props.setTab(2)}
                 icon={
                     <Icon
-                        name={'help-circle-outline'}
+                        name={'information-circle-outline'}
                         type={'ionicon'}
                         color={'white'}
                         size={15}
