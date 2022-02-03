@@ -166,5 +166,54 @@ export default StyleSheet.create({
     buttonQuizGameOK: {
         paddingHorizontal: 15,
         borderRadius: 15
-    }
+    },
+
+
+
+    /// Help page related
+    viewHelpPage: {
+        alignItems: 'center',
+        backgroundColor: 'white',
+        marginTop: -20,
+        width: 100 + '%',
+        height: 120 + '%'
+    },
+    leaveButtonHelpPage: {
+        width: 235,
+        backgroundColor: 'red',
+        alignSelf: 'center',
+        borderRadius: 10,
+        marginTop: 20,
+        marginHorizontal: 5,
+    },
+    helpHead: {
+        marginVertical: 25,
+        width: 250,
+        fontWeight: 'bold',
+        fontSize: 25,
+        textAlign: 'center',
+        color: '#4954FF',
+        alignSelf: 'center'
+    },
+    helpStepHead: {
+        marginBottom: 10,
+        fontWeight: 'bold',
+        fontSize: 20,
+        textAlign: 'left',
+        alignSelf: 'flex-start',
+        marginLeft: 20,
+        color: '#1C2068',
+        textTransform: 'uppercase'
+    },
+    helpStep: {
+        marginHorizontal: 25,
+        marginBottom: 40,
+        width: 290,
+    },
+    helpQuestionMark: {
+        position: 'absolute',
+        width: 450,
+        opacity: .4,
+        zIndex: -1
+    },
 });

@@ -87,7 +87,10 @@ export const lang = {
         Save: 'Sauvegarder le quiz',
         SaveContent: "Sauvegarder la question",
         AddContent: "Ajouter la question",
-        SureCancelEdition: "Êtes-vous sûr de bien vouloir abandonner l'édition de ce quiz? Vous ne pourrez pas récupérer vos modifications."
+        SureCancelEdition: "Êtes-vous sûr de bien vouloir abandonner l'édition de ce quiz? Vous ne pourrez pas récupérer vos modifications.",
+
+        // Help page related
+        Head: 'Le quiz, comment ça marche ?',
     },
     en: {
         Play: 'Play',
@@ -155,5 +158,8 @@ export const lang = {
         SaveContent: "Save the question",
         AddContent: "Add the question",
         SureCancelEdition: "Are you sure to cancel this quiz edition? Your modification would not be saved",
+
+        // Help page related
+        Head: 'The quiz, how does it works?',
     },
 };

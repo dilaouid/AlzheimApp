@@ -9,6 +9,7 @@ import { randomNumber, randomArrayElement } from '../../../utils/helpers';
 import ViewQuiz from './ViewQuiz';
 import CreateQuiz from './Creation/CreateQuiz';
 import Play from './Play';
+import Help from './Help';
 
 import * as API from '../../../data/quizApi';
 import { lang as QuizLang } from '../../../language/activities/quiz';
@@ -111,7 +112,7 @@ export default function Quiz(props) {
                 />
             );
         } else if (tab === 3) {
-            return <Text>Tab 3 (Help?)</Text>;
+            return <Help lang={props.lang} setTab={setTab} />;
         } else if (tab === 4) {
             return (
                 <CreateQuiz
