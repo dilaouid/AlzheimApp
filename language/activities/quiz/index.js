@@ -196,5 +196,24 @@ export const lang = {
                 boldText: ["optionally accompanied by an image or a sound", "several possible"],
             });
         },
+        Custom: () => {
+            return applyBoldStyle({
+                sentence: `There are no default quizzes. It is up to you to {0} and {1} them as you wish!\nTo do this, you must go to the "{2}" section.\nThere you will see the list of quizzes that you have already created. If you haven't created any yet, create your first quiz with the "{3}" button.\n\nHere you can add questions with the "{4}" button. You are asked to {5} (optional), which is a sound or image file to illustrate your question.\n\nThen you have to {6}. This question will be asked to the player.\n\nAnd finally, {7}. Once you have entered a valid answer, click on the {8} symbol next to it, and your answer would be added to the list of the valid answers to the question. You can have a maximum of 10 possible answers.\n\nIf you made a mistake on one of the answers, {9} to remove it from the list.\n\nOnce you have filled in all the elements of the question, click "{10}" above to save the question and return to the list of questions. Add as many as you want to this quiz.\n\nYou can also {11}.\n\nOnce the quiz is completed, click "{12}" and that's it! Fill in the name of this quiz and it's done, the quiz is now playable!`,
+                boldText: ["create",
+                    "customize",
+                    "View quizzes",
+                    "Create a quiz",
+                    "Add a question",
+                    "import a reference file",
+                    "fill in the question",
+                    "add the possible answers",
+                    "( + )",
+                    "simply click on it",
+                    "Submit",
+                    "click on a question to edit it",
+                    "Complete the quiz creation"
+                ],
+            });
+        }
     },
 };
