@@ -8,7 +8,9 @@ import {
 import { lang as DoubleLang } from '../../../language/activities/double';
 
 import styles from './styles';
+
 import Menu from './Menu';
+import Play from './Play';
 
 export default function Double(props) {
     const [isLoading, setIsLoading] = useState(true);
@@ -45,7 +47,7 @@ export default function Double(props) {
                 />
             );
         } else if (tab === 1) {
-            return <Text>(Playing page)</Text>;
+            return <Play lang={props.lang} />;
         } else if (tab === 2) {
             return (
                 <Text>(Help page)</Text>
