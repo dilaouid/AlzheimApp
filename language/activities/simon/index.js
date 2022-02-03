@@ -108,6 +108,20 @@ export const lang = {
 
         // Help section
         Head: "Le Simon, comment ça marche ?",
+        RulesHead: "Les règles",
+        TriesHead: "Les essais",
+        Rules: () => {
+            return applyBoldStyle({
+                sentence: `Le jeu Simon est un {0} de forme circulaire comportant quatre gros boutons de couleurs différentes: rouge, vert, jaune et bleu.\n\nLe jeu {1} une des quatres couleurs et {2} toujours associé à cette couleur. Le joueur doit alors {3}.\n\nLe jeu {4}, puis {5} une nouvelle couleur. Le jour doit reproduire cette nouvelle séquence. Chaque fois que le joueur reproduit correctement la séquence, le jeu ajoute une nouvelle couleur.`,
+                boldText: ['jeu de mémoire', 'éclaire', 'produit un son', "appuyer sur la touche de la couleur qui vient de s'allumer", 'répète la même couleur et le même son', 'ajoute'],
+            });
+        },
+        TriesExplain: () => {
+            return applyBoldStyle({
+                sentence: `A chaque fois que vous raté une séquence, vous {0}. Au cours d'une partie, vous avez le droit à seulement {1}.\n\nUne fois les quatre erreurs faites, ou alors lorsque vous {2}, votre score est compatibilisé en fonction du nombre de touches dans la séquence actuelle.\n\nChaque jour, {3}.`,
+                boldText: ['perdez un essai', 'quatre erreurs', 'abandonnez la partie en cours', 'votre score journalier est remit à zéro'],
+            });
+        },
     },
     en: {
         Play: 'Play',
@@ -195,5 +209,19 @@ export const lang = {
 
         // Help section
         Head: `The Simon, how does it works?`,
+        RulesHead: "The rules",
+        TriesHead: "The tries",
+        Rules: () => {
+            return applyBoldStyle({
+                sentence: `The Simon is a circular shaped {0} with four different colored buttons: red, green, yellow and blue.\n\nThe game {1} one of the four colors and {2} always associated to this color. The player shall {3}.\n\nThe game {4}, then {5} another color. The player will have to reproduces this sequence. Each time the player successfully reproduces the sequence, the game adds another color in this sequence.`,
+                boldText: ['memory game', 'lighten', 'produces a sound', "press the colored button which has just turned on", 'repeat the same color with the same sound', 'add'],
+            });
+        },
+        TriesExplain: () => {
+            return applyBoldStyle({
+                sentence: `Each time you fail a sequence, you {0}. In a game, you are allowed up to {1}.\n\nOnce the four fails made, or when you {2}, you will have the number of elements in the current sequence saved as your score.\n\nEach day, {3}.`,
+                boldText: ['lose a try', 'four maximum fails', 'give up the current game', 'your daily score is reset to zero'],
+            });
+        },
     },
 };

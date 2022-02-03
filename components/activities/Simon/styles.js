@@ -110,10 +110,25 @@ export default StyleSheet.create({
         textAlign: 'center',
         color: '#4954FF'
     },
+    helpStepHead: {
+        marginBottom: 10,
+        fontWeight: 'bold',
+        fontSize: 20,
+        textAlign: 'left',
+        alignSelf: 'flex-start',
+        marginLeft: 20,
+        color: '#1C2068',
+        textTransform: 'uppercase'
+    },
+    helpStep: {
+        marginHorizontal: 25,
+        marginBottom: 40,
+        width: 290,
+    },
     helpQuestionMark: {
         position: 'absolute',
         width: 450,
         opacity: .4,
         zIndex: -1
-    }
+    },
 });
