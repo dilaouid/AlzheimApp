@@ -118,7 +118,7 @@ export const lang = {
         },
         TriesExplain: () => {
             return applyBoldStyle({
-                sentence: `A chaque fois que vous raté une séquence, vous {0}. Au cours d'une partie, vous avez le droit à seulement {1}.\n\nUne fois les quatre erreurs faites, ou alors lorsque vous {2}, votre score est compatibilisé en fonction du nombre de touches dans la séquence actuelle.\n\nChaque jour, {3}.`,
+                sentence: `A chaque fois que vous ratez une séquence, vous {0}. Au cours d'une partie, vous avez le droit à seulement {1}.\n\nUne fois les quatre erreurs faites, ou alors lorsque vous {2}, votre score est compatibilisé en fonction du nombre de touches dans la séquence actuelle.\n\nChaque jour, {3}.`,
                 boldText: ['perdez un essai', 'quatre erreurs', 'abandonnez la partie en cours', 'votre score journalier est remit à zéro'],
             });
         },
