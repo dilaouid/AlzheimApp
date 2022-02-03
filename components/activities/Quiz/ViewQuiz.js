@@ -224,7 +224,6 @@ export default function ViewQuiz(props) {
 
         if (!success) setSuccess(false);
 
-        console.log(newContent);
         if ( (editedQuiz && !newQuestion) || newContent.length > 0) {
             setModal(true);
             return;
