@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     view: {
-        marginVertical: 20,
+        paddingTop: 20,
         flex: 1,
-        alignItems: 'center',
+        alignItems: 'center'
     },
     logo: {
         width: 80,
@@ -90,16 +90,15 @@ export default StyleSheet.create({
 
     // Help section
     viewHelpPage: {
-        flex: 1,
         alignItems: 'center',
         backgroundColor: 'white',
+        marginTop: -20,
         width: 100 + '%',
-        height: 150 + '%',
-        marginTop: -20
     },
     leaveButtonHelpPage: {
         width: 235,
         backgroundColor: 'red',
+        alignSelf: 'center',
         borderRadius: 10,
         marginTop: 20,
         marginHorizontal: 5,
