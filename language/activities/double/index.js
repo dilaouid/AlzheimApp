@@ -17,9 +17,13 @@ const applyBoldStyle = (text) => {
 
 export const lang = {
     fr: {
-        
+        Play: 'Jouer',
+        Help: 'Comment ça marche',
+        Leave: 'Retour',
     },
     en: {
-
+        Play: 'Play',
+        Help: 'How does it work',
+        Leave: 'Back',
     },
 };
