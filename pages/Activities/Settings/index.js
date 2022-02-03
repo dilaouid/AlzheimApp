@@ -1,7 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState } from 'react';
 
-import { ScrollView, Alert, SafeAreaView, View } from 'react-native';
+import { ScrollView, Alert, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import Success from '../../../components/home/PersonCreation/Success';
 
@@ -50,13 +49,6 @@ export default function Settings(props) {
 
         description: description,
         setDescription: setDescription,
-    };
-
-    const debug = async () => {
-        await Person.reset();
-        await AsyncStorage.clear();
-        navigate('/home');
-        return true;
     };
 
     const deletePerson = () => {
@@ -142,19 +134,6 @@ export default function Settings(props) {
                         onPress={() => {
                             navigate('/home');
                         }}
-                    />
-                    <Button
-                        icon={{
-                            name: 'bug',
-                            type: 'font-awesome',
-                            size: 15,
-                            color: 'white',
-                        }}
-                        iconContainerStyle={{ marginRight: 10 }}
-                        buttonStyle={styles.buttonStyleDebug}
-                        containerStyle={styles.containerStyle}
-                        title={ActivitiesLang[props.lang]?.ResetAccount}
-                        onPress={debug}
                     />
                 </ScrollView>
             ) : (
