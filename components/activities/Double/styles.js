@@ -28,4 +28,25 @@ export default StyleSheet.create({
         borderRadius: 10,
         marginHorizontal: 5,
     },
+    RectoCard: {
+        width: 70,
+        height: 70,
+        backgroundColor: '#C3C3CF',
+        borderRadius: 20,
+        borderColor: '#858593',
+        borderWidth: 1,
+        opacity: .8,
+        marginHorizontal: 5,
+        marginVertical: 5
+    },
+    IconCard: {
+        marginTop: 20
+    },
+    viewGame: {
+        flex: 1,
+        width: 300,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center'
+    }
 });
