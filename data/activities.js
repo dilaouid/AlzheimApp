@@ -2,6 +2,7 @@ import { lang as ActivitiesLang } from '../language/activities';
 import Dictaphone from '../components/activities/Dictaphone';
 import Simon from '../components/activities/Simon';
 import Quiz from '../components/activities/Quiz';
+import Double from '../components/activities/Double';
 
 export default function Activities(lang, personId) {
     return [
@@ -18,7 +19,7 @@ export default function Activities(lang, personId) {
             name: ActivitiesLang[lang]?.DoubleMemory,
             icon: 'copy-outline',
             returnComponent: (lang, setPage) => {
-                return null;
+                return <Double lang={lang} setPage={setPage} personId={personId} />;
             },
         },
         {
