@@ -121,7 +121,7 @@ export const lang = {
     },
     en: {
         Play: 'Play',
-        View: 'View quiz',
+        View: 'View quizzes',
         Create: 'Create a quiz',
         Help: 'How does it works',
         Leave: 'Leave',
@@ -137,7 +137,7 @@ export const lang = {
         WhatIsTheQuestion: "What is the question?",
         AddAnswer: "Add an answer",
         WhatIsAnswer: "You can set up many answers. When you have done creating one, click on the (+) button. Once added, you can click on the answer in order to delete it.",
-        OK: "Valider",
+        OK: "Submit",
         GiveUpQuizTitle: "Give up",
         GiveUpQuiz: "Are you sure to give up this quiz? The score will be saved.",
         ReturnToForm: "Return to the question edition",
