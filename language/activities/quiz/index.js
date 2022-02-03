@@ -91,6 +91,33 @@ export const lang = {
 
         // Help page related
         Head: 'Le quiz, comment ça marche ?',
+        RulesHead: "Les règles",
+        CustomHead: "Personnalisation",
+        Rules: () => {
+            return applyBoldStyle({
+                sentence: `Les règles du quiz sont basiques: il y a des questions {0}, et le joueur doit y répondre. Il peut y avoir {1} réponses possibles, une bonne réponse et c'est un point ajouté au score.\n\nIl n'y a pas de perte de points suite à une mauvaise réponse.`,
+                boldText: ["facultativement accompagnées d'une image ou d'un son", "plusieurs"],
+            });
+        },
+        Custom: () => {
+            return applyBoldStyle({
+                sentence: `Il n'y a pas de quiz par défaut. C'est à vous d'en {0} et de les {1} à votre guise !\nPour cela, vous devez vous rendre dans la partie "{2}".\n\nVous aurez là la liste des quiz que vous avez préalablement crée. Si vous n'en avez encore créé aucun, façonnez votre premier quiz avec le bouton "{3}".\n\nIci vous pourrez ajouter des question avec le bouton "{4}". Il vous est demandé {5} (facultatif), qui correspond à un son ou une image pour illustrer votre question.\n\nEnsuite, vous devez {6}. Ce sera cette question qui sera ensuite demandée au joueur.\n\nEt enfin, {7}. Une fois une réponse valide renseignée, cliquez sur le symbole {8} à côté, et votre réponse est ajoutée à la liste des réponses valides à la question. Vous pouvez en avoir 10 maximum.\n\nSi vous avez fait une erreur sur une des réponses, {9} pour la retirer de la liste.\n\nUne fois tous les éléments de la question renseignées, cliquez sur "{10}" au dessus pour enregistrer la question et retourner à la liste des questions précédemment crées. Ajoutez-en autant que vous voulez pour un quiz.\n\nVous pouvez également {11}.\n\nUne fois le quiz complet, cliquez sur "{12}", et voilà ! Renseignez le nom de ce quiz et c'est terminé, le quiz est désormais jouable !`,
+                boldText: ["créer",
+                    "personnaliser",
+                    "Voir les quiz",
+                    "Créer un quiz",
+                    "Ajouter une question",
+                    "d'importer un fichier de référence",
+                    "renseigner la question",
+                    "ajouter les réponses éventuelles",
+                    "( + )",
+                    "cliquez simplement dessus",
+                    "Valider",
+                    "cliquer sur une question pour la modifier",
+                    "Terminer la création"
+                ],
+            });
+        }
     },
     en: {
         Play: 'Play',
@@ -161,5 +188,13 @@ export const lang = {
 
         // Help page related
         Head: 'The quiz, how does it works?',
+        RulesHead: "The rules",
+        CustomHead: "Customization",
+        Rules: () => {
+            return applyBoldStyle({
+                sentence: `This is a basic quiz game: there are questions {1}, and the player must answer them. There can be {1} answers, one correct answer and it's a point added to the score.\n\nThere is no loss of points for a wrong answer.`,
+                boldText: ["optionally accompanied by an image or a sound", "several possible"],
+            });
+        },
     },
 };

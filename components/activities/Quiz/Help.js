@@ -40,6 +40,32 @@ export default function Help(props) {
                 />
                 <Text style={styles.helpHead}>{QuizLang[props.lang].Head}</Text>
 
+                <Text style={styles.helpStepHead}>
+                    <Icon
+                        name={'school-outline'}
+                        type={'ionicon'}
+                        color={'black'}
+                        size={15}
+                        style={{ marginHorizontal: 5 }}
+                    />
+                    {QuizLang[props.lang].RulesHead}
+                </Text>
+                <Text style={styles.helpStep}>{QuizLang[props.lang].Rules()}</Text>
+
+
+                <Text style={styles.helpStepHead}>
+                    <Icon
+                        name={'school-outline'}
+                        type={'ionicon'}
+                        color={'black'}
+                        size={15}
+                        style={{ marginHorizontal: 5 }}
+                    />
+                    {QuizLang[props.lang].CustomHead}
+                </Text>
+                <Text style={styles.helpStep}>{QuizLang[props.lang].Custom()}</Text>
+
+
             </ScrollView>
         </SafeAreaView>
     );

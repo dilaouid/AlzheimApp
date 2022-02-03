@@ -176,7 +176,8 @@ export default StyleSheet.create({
         backgroundColor: 'white',
         marginTop: -20,
         width: 100 + '%',
-        height: 120 + '%'
+        height: 120 + '%',
+        paddingBottom: 20
     },
     leaveButtonHelpPage: {
         width: 235,
@@ -213,7 +214,7 @@ export default StyleSheet.create({
     helpQuestionMark: {
         position: 'absolute',
         width: 450,
-        opacity: .4,
+        opacity: .3,
         zIndex: -1
     },
 });
