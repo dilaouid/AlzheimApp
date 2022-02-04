@@ -255,40 +255,36 @@ export default function Game(props) {
             )}
 
             {/* Overlay modal end of the game */}
-            {success ? (
-                <Overlay
-                    visible={success}
-                    overlayStyle={styles.overlayStyle}
-                    onBackdropPress={() => setSuccess(false)}
-                    ModalComponent={Modal}
-                >
-                    {scoreBeaten ? successOverlay() : failOverlay()}
-                    <View style={{ flexDirection: 'row', marginTop: 30 }}>
-                        <Button
-                            raised
-                            onPress={() => {
-                                retryGame();
-                            }}
-                            title={SimonLang[props.lang].Retry}
-                            containerStyle={{
-                                borderRadius: 13,
-                                marginRight: 10,
-                            }}
-                        />
-                        <Button
-                            raised
-                            onPress={() => {
-                                props.setTab(0);
-                            }}
-                            title={SimonLang[props.lang].Exit}
-                            containerStyle={{ borderRadius: 13 }}
-                            buttonStyle={{ backgroundColor: 'red' }}
-                        />
-                    </View>
-                </Overlay>
-            ) : (
-                <></>
-            )}
+            <Overlay
+                visible={success}
+                overlayStyle={styles.overlayStyle}
+                onBackdropPress={() => setSuccess(false)}
+                ModalComponent={Modal}
+            >
+                {scoreBeaten ? successOverlay() : failOverlay()}
+                <View style={{ flexDirection: 'row', marginTop: 30 }}>
+                    <Button
+                        raised
+                        onPress={() => {
+                            retryGame();
+                        }}
+                        title={SimonLang[props.lang].Retry}
+                        containerStyle={{
+                            borderRadius: 13,
+                            marginRight: 10,
+                        }}
+                    />
+                    <Button
+                        raised
+                        onPress={() => {
+                            props.setTab(0);
+                        }}
+                        title={SimonLang[props.lang].Exit}
+                        containerStyle={{ borderRadius: 13 }}
+                        buttonStyle={{ backgroundColor: 'red' }}
+                    />
+                </View>
+            </Overlay>
 
             {/* Are you sure to exit - Overlay */}
             <Overlay
