@@ -218,8 +218,9 @@ export default function Play(props) {
             <View style={styles.viewGame}>
                 { printCards() }
             </View>
-            <View style={{alignItems: 'center', width: 100 + '%'}}>
+            <View style={{alignItems: 'center', width: 100 + '%', marginTop: -10}}>
                 <Text>{DoubleLang[props.lang].Score(props.score)}</Text>
+                <Text>{DoubleLang[props.lang].BestDayScore(props.bestScoreDay)}</Text>
                 <Text>{DoubleLang[props.lang].RemaningTries(tries)}</Text>
                 { printButton() }
             </View>

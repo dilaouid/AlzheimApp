@@ -47,6 +47,12 @@ export const lang = {
         SoBad: 'Dommage...',
         ScoreNotBeated: "Votre score du jour n'a pas été battu... Mais vous pouvez toujours recommencer !",
         Retry: "Recommencer",
+        BestDayScore: (score) => {
+            return applyBoldStyle({
+                sentence: 'Meilleur score du jour: {0}',
+                boldText: [score],
+            });
+        },
     },
     en: {
         Play: 'Play',
@@ -79,5 +85,11 @@ export const lang = {
         SoBad: 'So sad...',
         ScoreNotBeated: 'Your daily score has not been beaten... But you can retry!',
         Retry: "Retry",
+        BestDayScore: (score) => {
+            return applyBoldStyle({
+                sentence: 'Best score made today: {0}',
+                boldText: [score],
+            });
+        },
     },
 };
