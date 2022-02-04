@@ -18,6 +18,7 @@ export default function Play(props) {
     const [play, setPlay] = useState([]); // the current play of the player, an array with two values max, corresponding to the cards the player played
     const [show, setShow] = useState(true);
     const [pause, setPause] = useState(false);
+    const [score, setScore] = useState(0);
 
     // Exemple game element:
     /*
@@ -46,6 +47,15 @@ export default function Play(props) {
         ] // this is a fail array
     */
 
+    const newModel = () => {
+        const currentGameLength = game.length;
+        setShow(true);
+        setTries(3);
+        setFound([]);
+        setPlay([]);
+        setGame([...generateRandomPair(currentGameLength)]);
+    };
+
     const printButton = () => {
         if (show) {
             return (
@@ -70,9 +80,33 @@ export default function Play(props) {
         if (playing.length == 2) {
             // check if same card or return all and lose a try
             if (playing[0].color === playing[1].color && playing[0].icon === playing[1].icon) {
+                const currentGameLength = game.length;
                 const nFound = [...found, playing[0], playing[1]];
-                setFound(nFound);
+                if (nFound.length == currentGameLength) {
+                    newModel()
+                    setScore(prevScore => prevScore + 1);
+                    setTries(3);
+                    if (score % 5 === 0 && currentGameLength != 12)
+                        setGame([...generateRandomPair(currentGameLength + 2)]);
+                    else
+                        setGame([...generateRandomPair(currentGameLength)]);
+                    setFound([]);
+                } else {
+                    setFound(nFound);
+                }
                 setPlay([]);
+            } else {
+                setPause(true);
+                setTimeout(() => {
+                    if (tries != 0) setTries(prevTries => prevTries - 1);
+                    if (tries === 0)
+                        alert('gameOver()')
+                    else {
+                        setPlay([]);
+                        setFound([]);
+                    }
+                    setPause(false);
+                }, 1000);
             }
         }
     };
