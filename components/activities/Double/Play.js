@@ -71,10 +71,10 @@ export default function Play(props) {
                 <Button title={DoubleLang[props.lang].Reinit} buttonStyle={[styles.playButtons, {backgroundColor: 'green'}]} onPress={() => newModel() } disabled={score === 0} />
             </View>);
         }
-    }
+    };
 
     const ReturnCard = (key) => {
-        if (pause) return;
+        if (pause || show) return;
         const currentPlay = play;
         const indexGame = game[key];
         const playing = [...currentPlay, indexGame]
