@@ -49,9 +49,7 @@ export default function Double(props) {
         } else if (tab === 1) {
             return <Play lang={props.lang} />;
         } else if (tab === 2) {
-            return (
-                <Text>(Help page)</Text>
-            );
+            return (<Text>(Help page)</Text>);
         } else {
             return <Text>Invalid tab</Text>;
         }
