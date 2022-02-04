@@ -48,7 +48,9 @@ export default function Play(props) {
     */
 
     const newModel = () => {
+        if (score == 0) return;
         const currentGameLength = game.length;
+        setScore(prevScore => prevScore - 1);
         setShow(true);
         setTries(3);
         setFound([]);
@@ -66,7 +68,7 @@ export default function Play(props) {
             return (
             <View style={styles.buttonViewPlay}>
                 <Button title={DoubleLang[props.lang].GiveUp} buttonStyle={[styles.playButtons, {backgroundColor: 'red', marginRight: 10}] } />
-                <Button title={DoubleLang[props.lang].Reinit} buttonStyle={[styles.playButtons, {backgroundColor: 'green'}]} onPress={() => newModel() } />
+                <Button title={DoubleLang[props.lang].Reinit} buttonStyle={[styles.playButtons, {backgroundColor: 'green'}]} onPress={() => newModel() } disabled={score === 0} />
             </View>);
         }
     }
@@ -85,6 +87,7 @@ export default function Play(props) {
                 if (nFound.length == currentGameLength) {
                     newModel()
                     setScore(prevScore => prevScore + 1);
+                    setShow(true);
                     setTries(3);
                     if (score % 5 === 0 && currentGameLength != 12)
                         setGame([...generateRandomPair(currentGameLength + 2)]);
