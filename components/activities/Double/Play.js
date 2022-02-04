@@ -47,6 +47,14 @@ export default function Play(props) {
         const indexGame = game[key];
         const playing = [...currentPlay, indexGame]
         setPlay(playing);
+        if (playing.length == 2) {
+            // check if same card or return all and lose a try
+            if (playing[0].color === playing[1].color && playing[0].icon === playing[1].icon) {
+                const nFound = [...found, playing[0], playing[1]];
+                setFound(nFound);
+                setPlay([]);
+            }
+        }
     };
 
     const printCards = () => {

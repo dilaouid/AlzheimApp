@@ -7,7 +7,7 @@ import styles from '../styles';
 export default function Card(props) {
     var cardStyles;
     if (props.inPlay) cardStyles = [{backgroundColor: props.backgroundColor}, [styles.PlayingCard]];
-    else if (props.inFound) cardStyles = [{backgroundColor: props.backgroundColor}, [styles.RectoCard]];
+    else if (props.inFound) cardStyles = [{backgroundColor: props.backgroundColor}, [styles.VersoCard]];
     else cardStyles = styles.RectoCard
 
     const icon = !props.inFound && !props.inPlay ? 'help-circle-outline' : props.icon;

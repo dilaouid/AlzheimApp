@@ -49,6 +49,14 @@ export default StyleSheet.create({
         marginHorizontal: 5,
         marginVertical: 5
     },
+    VersoCard: {
+        width: 80,
+        height: 80,
+        borderRadius: 20,
+        opacity: .8,
+        marginHorizontal: 5,
+        marginVertical: 5
+    },
     IconCard: {
         marginTop: 25
     },
