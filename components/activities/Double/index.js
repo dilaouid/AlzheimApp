@@ -3,7 +3,8 @@ import {
     View,
     Text,
     BackHandler,
-    ScrollView
+    ScrollView,
+    Alert
 } from 'react-native';
 
 import { lang as DoubleLang } from '../../../language/activities/double';
@@ -16,11 +17,16 @@ import Play from './Play';
 export default function Double(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [tab, setTab] = useState(0);
+    const [score, setScore] = useState(0);
+    const [modal, setModal] = useState(false);
 
     useEffect(() => {
         // BackHandler managment
         const backAction = () => {
             if (tab > 0) {
+                if (tab === 1 && score > 0) {
+
+                }
                 setTab(0);
             } else {
                 props.setPage(null);
@@ -36,6 +42,30 @@ export default function Double(props) {
         };
     }, [tab]);
 
+    const endGame = () => {
+        setModal(true);
+    };
+    
+    const giveUp = () => {
+        if (score === 0) setTab(0);
+        else return Alert.alert(
+            DoubleLang[props.lang].TitleGiveUp,
+            DoubleLang[props.lang].SureToGiveUp,
+            [
+                {
+                    text: DoubleLang[props.lang].Leave,
+                    onPress: () => { null },
+                    style: 'cancel'
+                },
+                {
+                    text: DoubleLang[props.lang].GiveUp,
+                    onPress: () => {
+                        endGame();
+                    }
+                },
+            ]
+        )
+    };
 
     const printPage = () => {
         if (tab === 0) {
@@ -48,7 +78,15 @@ export default function Double(props) {
                 />
             );
         } else if (tab === 1) {
-            return <Play lang={props.lang} />;
+            return <Play
+                        lang={props.lang}
+                        setTab={setTab}
+                        score={score}
+                        setScore={setScore}
+                        giveUp={giveUp}
+                        modal={modal}
+                        setModal={setModal}
+                    />;
         } else if (tab === 2) {
             return (<Text>(Help page)</Text>);
         } else {

@@ -35,6 +35,8 @@ export const lang = {
         Start: "Commencer",
         GiveUp: "Abandonner",
         Reinit: "Nouveau modèle",
+        TitleGiveUp: "Abandonner la partie",
+        SureToGiveUp: "Êtes-vous sûr(e) de vouloir abandonner la partie? Votre score sera enregistré."
     },
     en: {
         Play: 'Play',
@@ -55,5 +57,7 @@ export const lang = {
         Start: "Start",
         GiveUp: "Give up",
         Reinit: "New model",
+        TitleGiveUp: "Give up the game",
+        SureToGiveUp: "Are you sure to give up this party? Your score will be saved."
     },
 };

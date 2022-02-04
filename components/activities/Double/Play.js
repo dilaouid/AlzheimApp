@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Modal } from 'react-native';
 
-import { Button } from 'react-native-elements';
+import { Button, Overlay } from 'react-native-elements';
 
 import { lang as DoubleLang } from '../../../language/activities/double';
 
@@ -18,7 +18,6 @@ export default function Play(props) {
     const [play, setPlay] = useState([]); // the current play of the player, an array with two values max, corresponding to the cards the player played
     const [show, setShow] = useState(true);
     const [pause, setPause] = useState(false);
-    const [score, setScore] = useState(0);
 
     // Exemple game element:
     /*
@@ -48,9 +47,9 @@ export default function Play(props) {
     */
 
     const newModel = () => {
-        if (score == 0) return;
+        if (props.score == 0) return;
         const currentGameLength = game.length;
-        setScore(prevScore => prevScore - 1);
+        props.setScore(prevScore => prevScore - 1);
         setShow(true);
         setTries(3);
         setFound([]);
@@ -63,12 +62,13 @@ export default function Play(props) {
             return (
             <View style={styles.buttonViewPlay}>
                 <Button title={DoubleLang[props.lang].Start} onPress={() => setShow(false) } buttonStyle={styles.playButtons} />
+            <Button title={DoubleLang[props.lang].Leave} onPress={() => props.giveUp() } buttonStyle={[styles.playButtons, , {backgroundColor: 'red', marginLeft: 10}]} />
             </View>);
         } else {
             return (
             <View style={styles.buttonViewPlay}>
-                <Button title={DoubleLang[props.lang].GiveUp} buttonStyle={[styles.playButtons, {backgroundColor: 'red', marginRight: 10}] } />
-                <Button title={DoubleLang[props.lang].Reinit} buttonStyle={[styles.playButtons, {backgroundColor: 'green'}]} onPress={() => newModel() } disabled={score === 0} />
+                <Button title={DoubleLang[props.lang].Reinit} buttonStyle={[styles.playButtons, {backgroundColor: 'green'}]} onPress={() => newModel() } disabled={props.score === 0} />
+                <Button title={DoubleLang[props.lang].GiveUp} buttonStyle={[styles.playButtons, {backgroundColor: 'red', marginLeft: 10}] } onPress={() => giveUp() } />
             </View>);
         }
     };
@@ -85,10 +85,10 @@ export default function Play(props) {
                 const currentGameLength = game.length;
                 const nFound = [...found, playing[0], playing[1]];
                 if (nFound.length == currentGameLength) {
-                    setScore(prevScore => prevScore + 1);
+                    props.setScore(prevScore => prevScore + 1);
                     setShow(true);
                     setTries(3);
-                    if (score % 8 === 0 && currentGameLength != 12)
+                    if (props.score % 8 === 0 && currentGameLength != 12)
                         setGame([...generateRandomPair(currentGameLength + 2)]);
                     else
                         setGame([...generateRandomPair(currentGameLength)]);
@@ -125,11 +125,19 @@ export default function Play(props) {
 
     return (
         <>
+            <Overlay
+                visible={props.modal}
+                overlayStyle={styles.overlay}
+                onBackdropPress={() => props.setModal(false)}
+                ModalComponent={Modal}
+            >
+                
+            </Overlay>
             <View style={styles.viewGame}>
                 { printCards() }
             </View>
             <View style={{alignItems: 'center', width: 100 + '%'}}>
-                <Text>{DoubleLang[props.lang].Score(score)}</Text>
+                <Text>{DoubleLang[props.lang].Score(props.score)}</Text>
                 <Text>{DoubleLang[props.lang].RemaningTries(tries)}</Text>
                 { printButton() }
             </View>
