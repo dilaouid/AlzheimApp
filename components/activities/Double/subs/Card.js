@@ -19,8 +19,8 @@ export default function Card(props) {
             }}>
                 <Icon
                     name={icon}
-                    size={24}
-                    color='grey'
+                    size={props.inFound || props.show || props.inPlay ? 30 : 24}
+                    color={props.inFound || props.show || props.inPlay ? 'white' : 'grey'}
                     type="ionicon"
                     style={styles.IconCard}
                 />

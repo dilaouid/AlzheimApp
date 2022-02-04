@@ -7,7 +7,7 @@ const shuffle = (arr) => {
 };
 
 export const generateRandomPair = (length) => {
-    const colorsTmp = [
+    const colors = [
         '#791414',
         '#143479',
         '#791462',
@@ -15,11 +15,25 @@ export const generateRandomPair = (length) => {
         '#797714',
         '#14AB9D'
     ];
+    const icons = [
+        'airplane',
+        'boat',
+        'bulb',
+        'color-palette',
+        'earth',
+        'gift',
+        'happy',
+        'heart-circle',
+        'restaurant',
+        'ribbon'
+    ]
     var arr = [];
     for (let i = 0; i < length / 2; i++) {
-        var index = Math.floor(Math.random() * colorsTmp.length);
-        arr.push({ color: colorsTmp[index], icon: null }, { color: colorsTmp[index], icon: null });
-        colorsTmp.splice(index, 1);
+        var indexColor = Math.floor(Math.random() * colors.length);
+        var indexIcon = Math.floor(Math.random() * icons.length);
+        arr.push({ color: colors[indexColor], icon: icons[indexIcon] }, { color: colors[indexColor], icon: icons[indexIcon] });
+        colors.splice(indexColor, 1);
+        icons.splice(indexIcon, 1);
     }
     arr = shuffle(arr);
     for (let i = 0; i < arr.length; i++) {
