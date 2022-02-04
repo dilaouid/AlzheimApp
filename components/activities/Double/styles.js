@@ -61,10 +61,25 @@ export default StyleSheet.create({
         marginTop: 25
     },
     viewGame: {
-        flex: 1,
         width: 300,
+        height: 370,
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center'
+    },
+    buttonViewPlay: {
+        // flex: 1,
+        flexDirection: 'row',
+        width: 100 + '%',
+        justifyContent: 'center',
+        alignContent: 'center',
+        marginTop: 10
+    },
+    playButtons: {
+        alignContent: 'center',
+        textAlign: 'center',
+        paddingHorizontal: 30,
+        borderRadius: 10,
+        // marginRight: 20
     }
 });
