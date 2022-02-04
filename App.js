@@ -22,6 +22,10 @@ export default function App() {
         loadDataCallback();
     }, [loadDataCallback]);
 
+    useEffect( () => {
+        console.log('- Imported config file -');
+    }, [config])
+
     let local = Localization.locale?.split('-')[0] || 'fr';
     const lang = ['en', 'fr'].includes(local) ? local : 'fr';
 
