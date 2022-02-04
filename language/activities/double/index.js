@@ -36,7 +36,17 @@ export const lang = {
         GiveUp: "Abandonner",
         Reinit: "Nouveau modèle",
         TitleGiveUp: "Abandonner la partie",
-        SureToGiveUp: "Êtes-vous sûr(e) de vouloir abandonner la partie? Votre score sera enregistré."
+        SureToGiveUp: "Êtes-vous sûr(e) de vouloir abandonner la partie? Votre score sera enregistré.",
+        Congratulations: 'Félicitations !!',
+        BestScoreToday: (score) => {
+            return applyBoldStyle({
+                sentence: 'Vous venez de battre votre record du jour : {0} !',
+                boldText: [score],
+            });
+        },
+        SoBad: 'Dommage...',
+        ScoreNotBeated: "Votre score du jour n'a pas été battu... Mais vous pouvez toujours recommencer !",
+        Retry: "Recommencer",
     },
     en: {
         Play: 'Play',
@@ -58,6 +68,16 @@ export const lang = {
         GiveUp: "Give up",
         Reinit: "New model",
         TitleGiveUp: "Give up the game",
-        SureToGiveUp: "Are you sure to give up this party? Your score will be saved."
+        SureToGiveUp: "Are you sure to give up this party? Your score will be saved.",
+        Congratulations: 'Congratulations!!',
+        BestScoreToday: (score) => {
+            return applyBoldStyle({
+                sentence: 'You did your day best score : {0}!',
+                boldText: [score],
+            });
+        },
+        SoBad: 'So sad...',
+        ScoreNotBeated: 'Your daily score has not been beaten... But you can retry!',
+        Retry: "Retry",
     },
 };

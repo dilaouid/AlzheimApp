@@ -88,15 +88,14 @@ export default StyleSheet.create({
         paddingVertical: 30,
         alignItems: 'center',
     },
-    overlayTitle: {
+    headerOverlay: {
+        fontSize: 20,
         fontWeight: 'bold',
-        textAlign: 'center',
-        fontSize: 18,
-        marginVertical: 10,
     },
-    overlayDescription: {
+    textOverlay: {
+        width: 190,
+        fontSize: 18,
+        marginBottom: 20,
         textAlign: 'center',
-        marginVertical: 10,
-        width: 160,
     },
 });

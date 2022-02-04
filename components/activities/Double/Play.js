@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, Modal } from 'react-native';
 
-import { Button, Overlay } from 'react-native-elements';
+import { Button, Overlay, Icon } from 'react-native-elements';
 
 import { lang as DoubleLang } from '../../../language/activities/double';
+
+import TrophyImage from '../../../assets/img/activities/trophy.gif';
+import SadImage from '../../../assets/img/activities/sad.gif';
+
+import Lottie from '../../utils/Lottie';
 
 import styles from './styles';
 
@@ -17,7 +22,11 @@ export default function Play(props) {
     const [tries, setTries] = useState(3);
     const [play, setPlay] = useState([]); // the current play of the player, an array with two values max, corresponding to the cards the player played
     const [show, setShow] = useState(true);
+    const [confetti, setConfetti] = useState(false);
     const [pause, setPause] = useState(false);
+
+    const TrophyLottie = require('../../../assets/lottie/trophy.json');
+    const SadLottie = require('../../../assets/lottie/sad.json');
 
     // Exemple game element:
     /*
@@ -46,6 +55,49 @@ export default function Play(props) {
         ] // this is a fail array
     */
 
+    const failOverlay = () => {
+        return (
+            <>
+                <Lottie
+                    LottieSource={SadLottie}
+                    ImageSource={SadImage}
+                    autoplay={true}
+                    loop={true}
+                    LottieStyle={{ height: 60 }}
+                    ImageStyle={{ height: 60 }}
+                />
+                <Text style={styles.headerOverlay}>
+                    {DoubleLang[props.lang].SoBad}
+                </Text>
+                <Text style={styles.textOverlay}>
+                    {DoubleLang[props.lang].ScoreNotBeated}
+                </Text>
+            </>
+        );
+    };
+
+    const successOverlay = () => {
+        if (!confetti) setConfetti(true);
+        return (
+            <>
+                <Text style={styles.headerOverlay}>
+                    {DoubleLang[props.lang].Congratulations}
+                </Text>
+                <Text style={styles.textOverlay}>
+                    {DoubleLang[props.lang].BestScoreToday(props.bestScoreDay)}
+                </Text>
+                <Lottie
+                    LottieSource={TrophyLottie}
+                    ImageSource={TrophyImage}
+                    autoplay={true}
+                    loop={false}
+                    LottieStyle={{ height: 60 }}
+                    ImageStyle={{ height: 60 }}
+                />
+            </>
+        );
+    };
+    
     const newModel = () => {
         if (props.score == 0) return;
         const currentGameLength = game.length;
@@ -68,7 +120,7 @@ export default function Play(props) {
             return (
             <View style={styles.buttonViewPlay}>
                 <Button title={DoubleLang[props.lang].Reinit} buttonStyle={[styles.playButtons, {backgroundColor: 'green'}]} onPress={() => newModel() } disabled={props.score === 0} />
-                <Button title={DoubleLang[props.lang].GiveUp} buttonStyle={[styles.playButtons, {backgroundColor: 'red', marginLeft: 10}] } onPress={() => giveUp() } />
+                <Button title={DoubleLang[props.lang].GiveUp} buttonStyle={[styles.playButtons, {backgroundColor: 'red', marginLeft: 10}] } onPress={() => props.giveUp() } />
             </View>);
         }
     };
@@ -102,7 +154,7 @@ export default function Play(props) {
                 setTimeout(() => {
                     if (tries != 0) setTries(prevTries => prevTries - 1);
                     if (tries === 0)
-                        alert('gameOver()')
+                        props.endGame();
                     else {
                         setPlay([]);
                         setFound([]);
@@ -123,6 +175,15 @@ export default function Play(props) {
         });
     };
 
+    const newGame = () => {
+        props.setModal(false);
+        setShow(true);
+        setTries(3);
+        setFound([]);
+        setPlay([]);
+        setGame([...generateRandomPair(4)]);
+    };
+
     return (
         <>
             <Overlay
@@ -131,7 +192,28 @@ export default function Play(props) {
                 onBackdropPress={() => props.setModal(false)}
                 ModalComponent={Modal}
             >
-                
+                { props.success ? successOverlay() : failOverlay() }
+                <View style={{flexDirection: 'row', marginTop: 20}}>
+                    <Button title={DoubleLang[props.lang].Retry} onPress={() => newGame()} buttonStyle={{marginRight: 10}} icon={
+                        <Icon
+                            name={'play-outline'}
+                            type={'ionicon'}
+                            color={'white'}
+                            size={15}
+                            style={{ marginHorizontal: 5 }}
+                        />
+                    } />
+
+                    <Button title={DoubleLang[props.lang].Leave} onPress={() => { props.setModal(false); props.setTab(0); }} buttonStyle={{backgroundColor: 'red'}} icon={
+                        <Icon
+                            name={'caret-back-outline'}
+                            type={'ionicon'}
+                            color={'white'}
+                            size={15}
+                            style={{ marginHorizontal: 5 }}
+                        />
+                    } />
+                </View>
             </Overlay>
             <View style={styles.viewGame}>
                 { printCards() }

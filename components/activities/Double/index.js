@@ -24,8 +24,11 @@ export default function Double(props) {
     const [score, setScore] = useState(0);
     const [bestScoreDay, setBestScoreDay] = useState(0);
     const [modal, setModal] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     useEffect( () => {
+        // API.clear();
+
         API.getScoreDay(props.personId, currentDate).then((data) => {
             if (data.length > 0) setBestScoreDay(data[0].score);
         });
@@ -35,8 +38,9 @@ export default function Double(props) {
         // BackHandler managment
         const backAction = () => {
             if (tab > 0) {
-                if (tab === 1 && score > 0) {
-
+                if (tab === 1 && score > 0) {  
+                    giveUp()
+                    return ;
                 }
                 setTab(0);
             } else {
@@ -53,8 +57,14 @@ export default function Double(props) {
         };
     }, [tab]);
 
-    const endGame = () => {
+    const endGame = async () => {
         setModal(true);
+        if (score > bestScoreDay) { 
+            setSuccess(true);
+            setBestScoreDay(score);
+        } else setSuccess(false);
+        await API.insertScore(props.personId, score, currentDate);
+        setScore(0);
     };
     
     const giveUp = () => {
@@ -98,6 +108,8 @@ export default function Double(props) {
                         modal={modal}
                         setModal={setModal}
                         bestScoreDay={bestScoreDay}
+                        success={success}
+                        endGame={endGame}
                     />;
         } else if (tab === 2) {
             return (<Text>(Help page)</Text>);

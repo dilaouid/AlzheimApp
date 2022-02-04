@@ -94,8 +94,7 @@ export const lang = {
         },
         Congratulations: 'Félicitations !!',
         SoBad: 'Dommage...',
-        ScoreNotBeated:
-            "Votre score du jour n'a pas été battu... Mais vous pouvez toujours recommencer !",
+        ScoreNotBeated: "Votre score du jour n'a pas été battu... Mais vous pouvez toujours recommencer !",
         Retry: 'Recommencer',
         Exit: 'Quitter le Simon',
         GiveUp: 'Abandonner',
