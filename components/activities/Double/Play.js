@@ -88,7 +88,7 @@ export default function Play(props) {
                     setScore(prevScore => prevScore + 1);
                     setShow(true);
                     setTries(3);
-                    if (score % 5 === 0 && currentGameLength != 12)
+                    if (score % 8 === 0 && currentGameLength != 12)
                         setGame([...generateRandomPair(currentGameLength + 2)]);
                     else
                         setGame([...generateRandomPair(currentGameLength)]);
