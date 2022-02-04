@@ -11,14 +11,25 @@ import { lang as DoubleLang } from '../../../language/activities/double';
 
 import styles from './styles';
 
+import * as API from '../../../data/doubleApi';
+
 import Menu from './Menu';
 import Play from './Play';
+
+const currentDate = new Date().toLocaleDateString('fr-FR');
 
 export default function Double(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [tab, setTab] = useState(0);
     const [score, setScore] = useState(0);
+    const [bestScoreDay, setBestScoreDay] = useState(0);
     const [modal, setModal] = useState(false);
+
+    useEffect( () => {
+        API.getScoreDay(props.personId, currentDate).then((data) => {
+            if (data.length > 0) setBestScoreDay(data[0].score);
+        });
+    }, []);
 
     useEffect(() => {
         // BackHandler managment
@@ -86,6 +97,7 @@ export default function Double(props) {
                         giveUp={giveUp}
                         modal={modal}
                         setModal={setModal}
+                        bestScoreDay={bestScoreDay}
                     />;
         } else if (tab === 2) {
             return (<Text>(Help page)</Text>);
