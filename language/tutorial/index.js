@@ -119,7 +119,7 @@ export const lang = {
         WhatIsUsername: () => {
             return applyBoldStyle({
                 sentence:
-                    "This is the Alzheimer ${0} username. If you are yourself diagnosed with the Alzheimer's disease, you can set your own name or username in this field.",
+                    "This is the Alzheimer {0} username. If you are yourself diagnosed with the Alzheimer's disease, you can set your own name or username in this field.",
                 boldText: ['Caregiver'],
             });
         },
