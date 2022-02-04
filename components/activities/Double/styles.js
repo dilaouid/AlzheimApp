@@ -39,6 +39,16 @@ export default StyleSheet.create({
         marginHorizontal: 5,
         marginVertical: 5
     },
+    PlayingCard: {
+        width: 80,
+        height: 80,
+        borderRadius: 20,
+        borderColor: '#68FF5C',
+        borderWidth: 5,
+        opacity: .8,
+        marginHorizontal: 5,
+        marginVertical: 5
+    },
     IconCard: {
         marginTop: 25
     },
