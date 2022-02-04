@@ -85,7 +85,6 @@ export default function Play(props) {
                 const currentGameLength = game.length;
                 const nFound = [...found, playing[0], playing[1]];
                 if (nFound.length == currentGameLength) {
-                    newModel()
                     setScore(prevScore => prevScore + 1);
                     setShow(true);
                     setTries(3);
