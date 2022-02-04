@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     view: {
-        marginVertical: 20,
+        height: 100 + '%',
+        paddingBottom: 40,
         flex: 1,
-        alignItems: 'center',
     },
     logo: {
         width: 120,
@@ -27,6 +27,7 @@ export default StyleSheet.create({
         backgroundColor: 'red',
         borderRadius: 10,
         marginHorizontal: 5,
+        marginBottom: 20
     },
     RectoCard: {
         width: 80,
@@ -61,6 +62,7 @@ export default StyleSheet.create({
         marginTop: 25
     },
     viewGame: {
+        marginTop: 20,
         width: 300,
         height: 370,
         flexDirection: 'row',
@@ -68,7 +70,6 @@ export default StyleSheet.create({
         justifyContent: 'center'
     },
     buttonViewPlay: {
-        // flex: 1,
         flexDirection: 'row',
         width: 100 + '%',
         justifyContent: 'center',
@@ -80,6 +81,5 @@ export default StyleSheet.create({
         textAlign: 'center',
         paddingHorizontal: 30,
         borderRadius: 10,
-        // marginRight: 20
     }
 });

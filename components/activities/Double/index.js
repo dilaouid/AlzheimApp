@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
     View,
     Text,
-    BackHandler
+    BackHandler,
+    ScrollView
 } from 'react-native';
 
 import { lang as DoubleLang } from '../../../language/activities/double';
@@ -56,8 +57,8 @@ export default function Double(props) {
     };
 
     return (
-        <View style={styles.view}>
+        <ScrollView style={styles.view} contentContainerStyle={{alignItems: 'center'}}>
             { printPage() }
-        </View>
+        </ScrollView>
     );
 };
