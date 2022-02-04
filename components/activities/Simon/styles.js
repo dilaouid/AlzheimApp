@@ -27,15 +27,15 @@ export default StyleSheet.create({
         marginHorizontal: 5,
     },
     SimonButtonWeb: {
-        flex: 1,
+        // flex: 1,
         width: 250,
         height: 250,
         borderRadius: 10,
         opacity: 0.5,
     },
     SimonButton: {
-        flex: 1,
-        width: 50,
+        //flex: 1,
+        width: 125,
         height: 125,
         borderRadius: 10,
         opacity: 0.5,
