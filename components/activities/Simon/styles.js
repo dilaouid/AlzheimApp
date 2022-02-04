@@ -28,8 +28,8 @@ export default StyleSheet.create({
     },
     SimonButtonWeb: {
         // flex: 1,
-        width: 250,
-        height: 250,
+        width: 125,
+        height: 125,
         borderRadius: 10,
         opacity: 0.5,
     },
