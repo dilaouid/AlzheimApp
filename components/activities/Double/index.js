@@ -13,6 +13,7 @@ import styles from './styles';
 
 import * as API from '../../../data/doubleApi';
 
+import Help from './Help';
 import Menu from './Menu';
 import Play from './Play';
 
@@ -112,7 +113,7 @@ export default function Double(props) {
                         endGame={endGame}
                     />;
         } else if (tab === 2) {
-            return (<Text>(Help page)</Text>);
+            return (<Help lang={props.lang} setTab={setTab} />);
         } else {
             return <Text>Invalid tab</Text>;
         }
