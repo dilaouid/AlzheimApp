@@ -28,6 +28,19 @@ export default function Play(props) {
     const TrophyLottie = require('../../../assets/lottie/trophy.json');
     const SadLottie = require('../../../assets/lottie/sad.json');
 
+    const setLengthGame = () => {
+        if (props.score <= 8)
+            return 4;
+        else if (props.score <= 15)
+            return 6;
+        else if (props.score <= 30)
+            return 8;
+        else if (props.score <= 45)
+            return 10;
+        else
+            return 12;
+    }
+
     // Exemple game element:
     /*
         [
@@ -119,7 +132,7 @@ export default function Play(props) {
         } else {
             return (
             <View style={styles.buttonViewPlay}>
-                <Button title={DoubleLang[props.lang].Reinit} buttonStyle={[styles.playButtons, {backgroundColor: 'green'}]} onPress={() => newModel() } disabled={props.score === 0} />
+                <Button title={DoubleLang[props.lang].Reinit} buttonStyle={[styles.playButtons, {backgroundColor: 'green'}]} onPress={() => newModel() } disabled={props.score === 0 || tries <= 1} />
                 <Button title={DoubleLang[props.lang].GiveUp} buttonStyle={[styles.playButtons, {backgroundColor: 'red', marginLeft: 10}] } onPress={() => props.giveUp() } />
             </View>);
         }
@@ -140,10 +153,7 @@ export default function Play(props) {
                     props.setScore(prevScore => prevScore + 1);
                     setShow(true);
                     setTries(3);
-                    if (props.score % 8 === 0 && currentGameLength != 12)
-                        setGame([...generateRandomPair(currentGameLength + 2)]);
-                    else
-                        setGame([...generateRandomPair(currentGameLength)]);
+                    setGame([...generateRandomPair(setLengthGame())]);
                     setFound([]);
                 } else {
                     setFound(nFound);
