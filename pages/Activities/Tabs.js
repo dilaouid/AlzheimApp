@@ -83,25 +83,6 @@ export default function Tabs(props) {
                     />
                 )}
             />
-            <Tab.Screen
-                options={{
-                    headerShown: false,
-                    tabBarIcon: ({ focused }) => {
-                        return (
-                            <Icon
-                                type={'ionicon'}
-                                color={'#5bc0de'}
-                                name={`exit${focused ? '' : '-outline'}`}
-                            />
-                        );
-                    },
-                }}
-                name={ActivitiesLang[props.lang]?.Home}
-                children={(e) => {
-                    navigate('/home');
-                    return null;
-                }}
-            />
         </Tab.Navigator>
     );
 }
