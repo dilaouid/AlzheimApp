@@ -4,6 +4,7 @@ import { View, Text, Modal } from 'react-native';
 import { Button, Overlay, Icon } from 'react-native-elements';
 
 import { lang as DoubleLang } from '../../../language/activities/double';
+import ConfettiCannon from 'react-native-confetti-cannon';
 
 import TrophyImage from '../../../assets/img/activities/trophy.gif';
 import SadImage from '../../../assets/img/activities/sad.gif';
@@ -186,6 +187,7 @@ export default function Play(props) {
     };
 
     const newGame = () => {
+        setConfetti(false);
         props.setModal(false);
         setShow(true);
         setTries(3);
@@ -196,6 +198,17 @@ export default function Play(props) {
 
     return (
         <>
+            {confetti ? (
+                    <ConfettiCannon
+                        fadeOut={true}
+                        autoStart={true}
+                        fallSpeed={6000}
+                        count={50}
+                        origin={{ x: -20, y: -35 }}
+                    />
+                ) : (
+                    <></>
+            )}
             <Overlay
                 visible={props.modal}
                 overlayStyle={styles.overlay}
