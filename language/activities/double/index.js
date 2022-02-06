@@ -53,6 +53,16 @@ export const lang = {
                 boldText: [score],
             });
         },
+
+        // Help page related
+        Head: 'Le jeu des pairs, comment ça marche ?',
+        RulesHead: "Les règles",
+        Rules: () => {
+            return applyBoldStyle({
+                sentence: `Le jeu des pairs est assez connu et classique. Lorsque vous commencerez la partie, vous aurez un {0}. Cliquez alors sur le bouton "{1}" sur le bas de l’écran pour retourner les cartes face verso.\n\nVous devrez alors {2}. Par exemple, si vous cliquez sur une carte rouge, vous devrez cliquer sur l’autre carte rouge ensuite.\n\n`,
+                boldText: ["schéma de plusieurs paires de cartes face recto", "Commencer", "retourner les paires l'une après l’autre"],
+            });
+        },
     },
     en: {
         Play: 'Play',
@@ -91,5 +101,9 @@ export const lang = {
                 boldText: [score],
             });
         },
+
+        // Help page related
+        Head: 'The double memory, how does it works?',
+        RulesHead: "The rules",
     },
 };
