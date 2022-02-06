@@ -24,7 +24,7 @@ const applyBoldStyle = (text, clr) => {
 export const lang = {
     fr: {
         Play: 'Jouer',
-        Help: 'Aide',
+        Help: 'Comment ça marche',
         Leave: 'Retour',
         AreYouSure: 'En êtes-vous sûr ?',
         ToGiveUp:

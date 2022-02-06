@@ -52,6 +52,19 @@ export default function Help(props) {
                 </Text>
                 <Text style={styles.helpStep}>{DoubleLang[props.lang].Rules()}</Text>
 
+                <Text style={styles.helpStepHead}>
+                    <Icon
+                        name={'school-outline'}
+                        type={'ionicon'}
+                        color={'black'}
+                        size={15}
+                        style={{ marginHorizontal: 5 }}
+                    />
+                    {DoubleLang[props.lang].ScoreHead}
+                </Text>
+                <Text style={styles.helpStep}>{DoubleLang[props.lang].ScoreHelp()}</Text>
+
+
             </ScrollView>
         </SafeAreaView>
     );
