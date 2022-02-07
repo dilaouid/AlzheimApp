@@ -175,6 +175,10 @@ export default function Game(props) {
         await API.insertScore(props.personId, order.length - 1, currentDate);
         setCanPlay(false);
         setSuccess(true);
+        const path = dailyScore < order.length - 1 ? require(`../../../assets/sound/global/applause.mp3`) : require(`../../../assets/sound/global/you_lose.mp3`);
+        const { sound } = await Audio.Sound.createAsync(path);
+        props.setSound(sound);
+        sound.playAsync();
         if (dailyScore < order.length - 1) {
             setScoreBeaten(true);
         } else {
