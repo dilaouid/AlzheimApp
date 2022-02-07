@@ -7,6 +7,7 @@ import {
     Alert
 } from 'react-native';
 
+import { Audio } from 'expo-av';
 import { lang as DoubleLang } from '../../../language/activities/double';
 
 import styles from './styles';
@@ -25,6 +26,7 @@ export default function Double(props) {
     const [score, setScore] = useState(0);
     const [bestScoreDay, setBestScoreDay] = useState(0);
     const [modal, setModal] = useState(false);
+    const [sound, setSound] = useState(new Audio.Sound());
     const [success, setSuccess] = useState(false);
 
     useEffect( () => {
@@ -61,9 +63,13 @@ export default function Double(props) {
     const endGame = async () => {
         setModal(true);
         if (score > bestScoreDay) { 
+            playSound('applause');
             setSuccess(true);
             setBestScoreDay(score);
-        } else setSuccess(false);
+        } else {
+            playSound('lose');
+            setSuccess(false);
+        }
         await API.insertScore(props.personId, score, currentDate);
         setScore(0);
     };
@@ -89,6 +95,36 @@ export default function Double(props) {
         )
     };
 
+    const playSound = async (type) => {
+        if (sound) sound?.unloadAsync();
+        let choosenSound;
+        switch (type) {
+            case "success":
+                choosenSound = require(`../../../assets/sound/double/success.mp3`);;
+                break;
+            case "fail":
+                choosenSound = require(`../../../assets/sound/double/fail.mp3`);;
+                break;
+            case "play":
+                choosenSound = require(`../../../assets/sound/double/play.mp3`);;
+                break;
+            case "next":
+                choosenSound = require(`../../../assets/sound/double/next.mp3`);;
+                break;
+            case "applause":
+                choosenSound = require(`../../../assets/sound/global/applause.mp3`);;
+                break;
+            case "lose":
+                choosenSound = require(`../../../assets/sound/global/you_lose.mp3`);;
+                break;
+            default:
+                break;
+        }
+        const { sound } = await Audio.Sound.createAsync(choosenSound);
+        setSound(sound);
+        sound.playAsync();
+    };
+
     const printPage = () => {
         if (tab === 0) {
             return (
@@ -111,6 +147,7 @@ export default function Double(props) {
                         bestScoreDay={bestScoreDay}
                         success={success}
                         endGame={endGame}
+                        playSound={playSound}
                     />;
         } else if (tab === 2) {
             return (<Help lang={props.lang} setTab={setTab} />);

@@ -16,7 +16,6 @@ import styles from './styles';
 import { generateRandomPair } from './subs/helpers';
 
 import Card from './subs/Card';
-import { Audio } from 'expo-av';
 
 export default function Play(props) {
     const [game, setGame] = useState([...generateRandomPair(4)]); // the current map game
@@ -26,7 +25,6 @@ export default function Play(props) {
     const [show, setShow] = useState(true);
     const [confetti, setConfetti] = useState(false);
     const [pause, setPause] = useState(false);
-    const [sound, setSound] = useState(new Audio.Sound());
 
     const TrophyLottie = require('../../../assets/lottie/trophy.json');
     const SadLottie = require('../../../assets/lottie/sad.json');
@@ -72,6 +70,7 @@ export default function Play(props) {
     */
 
     const failOverlay = () => {
+        if (props.modal == false) return;
         return (
             <>
                 <Lottie
@@ -152,20 +151,20 @@ export default function Play(props) {
                 const currentGameLength = game.length;
                 const nFound = [...found, playing[0], playing[1]];
                 if (nFound.length == currentGameLength) {
-                    playSound('next');
+                    props.playSound('next');
                     props.setScore(prevScore => prevScore + 1);
                     setShow(true);
                     setTries(3);
                     setGame([...generateRandomPair(setLengthGame())]);
                     setFound([]);
                 } else {
-                    playSound('success');
+                    props.playSound('success');
                     setFound(nFound);
                 }
                 setPlay([]);
             } else {
                 setPlay(playing);
-                playSound('fail');
+                props.playSound('fail');
                 setPause(true);
                 setTimeout(() => {
                     if (tries != 0) setTries(prevTries => prevTries - 1);
@@ -180,7 +179,7 @@ export default function Play(props) {
             }
         } else {
             setPlay(playing);
-            playSound('play');
+            props.playSound('play');
         }
     };
 
@@ -202,30 +201,6 @@ export default function Play(props) {
         setFound([]);
         setPlay([]);
         setGame([...generateRandomPair(4)]);
-    };
-
-    const playSound = async (type) => {
-        if (sound) sound?.unloadAsync();
-        let choosenSound;
-        switch (type) {
-            case "success":
-                choosenSound = require(`../../../assets/sound/double/success.mp3`);;
-                break;
-            case "fail":
-                choosenSound = require(`../../../assets/sound/double/fail.mp3`);;
-                break;
-            case "play":
-                choosenSound = require(`../../../assets/sound/double/play.mp3`);;
-                break;
-            case "next":
-                choosenSound = require(`../../../assets/sound/double/next.mp3`);;
-                break;
-            default:
-                break;
-        }
-        const { sound } = await Audio.Sound.createAsync(choosenSound);
-        setSound(sound);
-        sound.playAsync();
     };
 
     return (
