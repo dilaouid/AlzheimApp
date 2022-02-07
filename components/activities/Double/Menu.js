@@ -1,6 +1,6 @@
 import React from 'react';
-import { Image, ActivityIndicator } from 'react-native';
-import { Button, Icon } from 'react-native-elements';
+import { Image, View } from 'react-native';
+import { Button, Icon, FAB } from 'react-native-elements';
 
 import { lang as DoubleLang } from '../../../language/activities/double';
 
@@ -42,6 +42,48 @@ export default function Menu(props) {
                     />
                 }
             />
+
+            <View>
+
+            <FAB
+                color='#2089dc'
+                style={{
+                    position: 'absolute',
+                    marginLeft: -50,
+                    marginTop: -12
+                }}
+                size="small"
+                icon={
+                    {
+                        name: props.ambiantEnabled ? 'volume-high-outline' : 'volume-mute-outline',
+                        type: 'ionicon',
+                        color:'white',
+                        size: 15,
+                        style: {marginTop: 4}
+                    }
+                }
+                onPress={() => props.ambiantSoundPlay() }
+            />
+            <FAB
+                color='#2089dc'
+                style={{
+                    position: 'absolute',
+                    marginLeft: 20,
+                    marginTop: -12
+                }}
+                size="small"
+                icon={
+                    {
+                        name: props.soundEnabled ? 'sound' : 'sound-mute',
+                        type: 'entypo',
+                        color:'white',
+                        size: 15,
+                        style: {marginTop: 4}
+                    }
+                }
+                onPress={() => props.setSoundEnabled(prev => !prev) }
+            />
+            </View>
 
             <Button
                 title={DoubleLang[props.lang].Leave}

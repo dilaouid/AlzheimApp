@@ -6,6 +6,8 @@ import {
     Alert
 } from 'react-native';
 
+import { FAB } from 'react-native-elements';
+
 import { Audio } from 'expo-av';
 import { lang as DoubleLang } from '../../../language/activities/double';
 
@@ -28,6 +30,8 @@ export default function Double(props) {
     const [sound, setSound] = useState(new Audio.Sound());
     const [ambiant, setAmbiant] = useState(new Audio.Sound());
     const [success, setSuccess] = useState(false);
+    const [soundEnabled, setSoundEnabled] = useState(true);
+    const [ambiantEnabled, setAmbiantEnabled] = useState(true);
 
     useEffect( async () => {
         // API.clear();
@@ -93,6 +97,12 @@ export default function Double(props) {
         await API.insertScore(props.personId, score, currentDate, bestDayScore, bestScore);
         setScore(0);
     };
+
+    const ambiantSoundPlay = () => {
+        if (ambiantEnabled) ambiant.pauseAsync();
+        else ambiant.playAsync();
+        setAmbiantEnabled(prevEnable => !prevEnable);
+    };
     
     const giveUp = () => {
         if (score === 0) setTab(0);
@@ -116,6 +126,7 @@ export default function Double(props) {
     };
 
     const playSound = async (type) => {
+        if (!soundEnabled && !['applause', 'lose'].includes(type)) return;
         if (sound) sound?.unloadAsync();
         let choosenSound;
         switch (type) {
@@ -153,6 +164,10 @@ export default function Double(props) {
                     lang={props.lang}
                     setPage={props.setPage}
                     ambiant={ambiant}
+                    setSoundEnabled={setSoundEnabled}
+                    soundEnabled={soundEnabled}
+                    ambiantEnabled={ambiantEnabled}
+                    ambiantSoundPlay={ambiantSoundPlay}
                 />
             );
         } else if (tab === 1) {
@@ -177,8 +192,11 @@ export default function Double(props) {
     };
 
     return (
+        <>
+        
         <ScrollView style={styles.view} contentContainerStyle={{alignItems: 'center'}}>
             { printPage() }
         </ScrollView>
+        </>
     );
 };
