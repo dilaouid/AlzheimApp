@@ -222,7 +222,7 @@ export default function Play(props) {
                 onBackdropPress={() => props.setModal(false)}
                 ModalComponent={Modal}
             >
-                { props.success ? successOverlay() : failOverlay() }
+                { props.success && props.modal ? successOverlay() : failOverlay() }
                 <View style={{flexDirection: 'row', marginTop: 20}}>
                     <Button title={DoubleLang[props.lang].Retry} onPress={() => newGame()} buttonStyle={{marginRight: 10}} icon={
                         <Icon
