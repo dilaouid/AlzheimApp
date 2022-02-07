@@ -24,6 +24,7 @@ export default function Double(props) {
     const [tab, setTab] = useState(0);
     const [score, setScore] = useState(0);
     const [bestScoreDay, setBestScoreDay] = useState(0);
+    const [bestScore, setBestScore] = useState(0);
     const [modal, setModal] = useState(false);
     const [sound, setSound] = useState(new Audio.Sound());
     const [success, setSuccess] = useState(false);
@@ -34,6 +35,11 @@ export default function Double(props) {
         API.getScoreDay(props.personId, currentDate).then((data) => {
             if (data.length > 0) setBestScoreDay(data[0].score);
         });
+
+        API.getBestScore(props.personId).then((data) => {
+            if (data.length > 0) setBestScore(data[0].score);
+        });
+
     }, []);
 
     useEffect(() => {
@@ -61,15 +67,22 @@ export default function Double(props) {
 
     const endGame = async () => {
         setModal(true);
+        let bestDayScore = false;
+        let bestScore = false;
         if (score > bestScoreDay) { 
             playSound('applause');
             setSuccess(true);
             setBestScoreDay(score);
+            bestDayScore = true;
+            if (score > bestScore) {
+                bestScore = true;
+                setBestScore(score);
+            }
         } else {
             playSound('lose');
             setSuccess(false);
         }
-        await API.insertScore(props.personId, score, currentDate);
+        await API.insertScore(props.personId, score, currentDate, bestDayScore, bestScore);
         setScore(0);
     };
     

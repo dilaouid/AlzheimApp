@@ -44,11 +44,13 @@ export function getScore(personId) {
         });
 }
 
-export function insertScore(personId, score, date) {
+export function insertScore(personId, score, date, dailyScoreBeaten, globalScoreBeaten) {
     return db.insertAsync({
         personId: personId,
         date: date,
         score: score,
+        dailyScoreBeaten: dailyScoreBeaten,
+        globalScoreBeaten: globalScoreBeaten
     });
 }
 

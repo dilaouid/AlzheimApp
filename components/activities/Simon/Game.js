@@ -172,7 +172,7 @@ export default function Game(props) {
 
     const completeGame = async () => {
         props.setModal(false);
-        await API.insertScore(props.personId, order.length - 1, currentDate);
+        await API.insertScore(props.personId, order.length - 1, currentDate, dailyScore < order.length - 1, bestScore < order.length - 1);
         setCanPlay(false);
         setSuccess(true);
         const path = dailyScore < order.length - 1 ? require(`../../../assets/sound/global/applause.mp3`) : require(`../../../assets/sound/global/you_lose.mp3`);
