@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/AlzheimApp/static/js/app.fac594bf.chunk.js",
-    "app.js.map": "/AlzheimApp/static/js/app.fac594bf.chunk.js.map",
+    "app.js": "/AlzheimApp/static/js/app.41549900.chunk.js",
+    "app.js.map": "/AlzheimApp/static/js/app.41549900.chunk.js.map",
     "runtime~app.js": "/AlzheimApp/static/js/runtime~app.1747fd2b.js",
     "runtime~app.js.map": "/AlzheimApp/static/js/runtime~app.1747fd2b.js.map",
     "static/js/2.10db8ccb.chunk.js": "/AlzheimApp/static/js/2.10db8ccb.chunk.js",
@@ -34,14 +34,14 @@
     "static/media/bg.gif": "/AlzheimApp/static/media/bg.59f6204f.gif",
     "static/media/brain.gif": "/AlzheimApp/static/media/brain.70fc8c58.gif",
     "static/media/chooseusername.gif": "/AlzheimApp/static/media/chooseusername.e9a02c29.gif",
-    "static/media/fail.mp3": "/AlzheimApp/static/media/fail.98258c42.mp3",
+    "static/media/fail.mp3": "/AlzheimApp/static/media/fail.60814d28.mp3",
     "static/media/green.mp3": "/AlzheimApp/static/media/green.7a0722af.mp3",
     "static/media/heart.png": "/AlzheimApp/static/media/heart.23b5c2c0.png",
     "static/media/loading.gif": "/AlzheimApp/static/media/loading.2460b043.gif",
     "static/media/loading_brain.gif": "/AlzheimApp/static/media/loading_brain.ef5884d9.gif",
     "static/media/logo.png": "/AlzheimApp/static/media/logo.acbb69fd.png",
-    "static/media/next.mp3": "/AlzheimApp/static/media/next.a9958f0c.mp3",
-    "static/media/play.mp3": "/AlzheimApp/static/media/play.f21975b3.mp3",
+    "static/media/next.mp3": "/AlzheimApp/static/media/next.c7b1e976.mp3",
+    "static/media/play.mp3": "/AlzheimApp/static/media/play.25c902a7.mp3",
     "static/media/profile.jpg": "/AlzheimApp/static/media/profile.5d930b6c.jpg",
     "static/media/question_mark.gif": "/AlzheimApp/static/media/question_mark.c1494184.gif",
     "static/media/red.mp3": "/AlzheimApp/static/media/red.5974021a.mp3",
@@ -49,7 +49,7 @@
     "static/media/sad.gif": "/AlzheimApp/static/media/sad.bfdab12f.gif",
     "static/media/star.png": "/AlzheimApp/static/media/star.69c71386.png",
     "static/media/success.gif": "/AlzheimApp/static/media/success.5d28b463.gif",
-    "static/media/success.mp3": "/AlzheimApp/static/media/success.d2ed9596.mp3",
+    "static/media/success.mp3": "/AlzheimApp/static/media/success.83357dfb.mp3",
     "static/media/swipe-right.gif": "/AlzheimApp/static/media/swipe-right.6dde9c7c.gif",
     "static/media/thinking.gif": "/AlzheimApp/static/media/thinking.e82f415e.gif",
     "static/media/trophy.gif": "/AlzheimApp/static/media/trophy.04dc6604.gif",
@@ -59,6 +59,6 @@
   "entrypoints": [
     "static/js/runtime~app.1747fd2b.js",
     "static/js/2.10db8ccb.chunk.js",
-    "static/js/app.fac594bf.chunk.js"
+    "static/js/app.41549900.chunk.js"
   ]
 }
