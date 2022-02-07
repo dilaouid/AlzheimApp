@@ -47,7 +47,10 @@ export default function Menu(props) {
                 title={DoubleLang[props.lang].Leave}
                 buttonStyle={{ backgroundColor: 'red' }}
                 containerStyle={styles.leaveButton}
-                onPress={() => props.setPage(null)}
+                onPress={() => {
+                    props.ambiant.unloadAsync();
+                    props.setPage(null);
+                }}
                 icon={
                     <Icon
                         name={'caret-back-outline'}

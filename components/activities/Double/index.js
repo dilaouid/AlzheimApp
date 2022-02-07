@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-    View,
     Text,
     BackHandler,
     ScrollView,
@@ -27,10 +26,18 @@ export default function Double(props) {
     const [bestScore, setBestScore] = useState(0);
     const [modal, setModal] = useState(false);
     const [sound, setSound] = useState(new Audio.Sound());
+    const [ambiant, setAmbiant] = useState(new Audio.Sound());
     const [success, setSuccess] = useState(false);
 
-    useEffect( () => {
+    useEffect( async () => {
         // API.clear();
+
+        const { sound } = await Audio.Sound.createAsync(
+            // Ambiant music produced by Mathieu COCHET - check his soundcloud here: https://soundcloud.com/mcochet
+            require(`../../../assets/sound/double/ambiant.mp3`)
+        );
+        setAmbiant(sound);
+        sound.playAsync();
 
         API.getScoreDay(props.personId, currentDate).then((data) => {
             if (data.length > 0) setBestScoreDay(data[0].score);
@@ -52,6 +59,7 @@ export default function Double(props) {
                 }
                 setTab(0);
             } else {
+                ambiant.unloadAsync();
                 props.setPage(null);
             }
             return true;
@@ -63,7 +71,7 @@ export default function Double(props) {
         return () => {
             backHandler.remove();
         };
-    }, [tab]);
+    }, [tab, ambiant]);
 
     const endGame = async () => {
         setModal(true);
@@ -144,6 +152,7 @@ export default function Double(props) {
                     setTab={setTab}
                     lang={props.lang}
                     setPage={props.setPage}
+                    ambiant={ambiant}
                 />
             );
         } else if (tab === 1) {
