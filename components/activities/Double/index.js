@@ -100,22 +100,22 @@ export default function Double(props) {
         let choosenSound;
         switch (type) {
             case "success":
-                choosenSound = require(`../../../assets/sound/double/success.mp3`);;
+                choosenSound = require(`../../../assets/sound/double/success.mp3`);
                 break;
             case "fail":
-                choosenSound = require(`../../../assets/sound/double/fail.mp3`);;
+                choosenSound = require(`../../../assets/sound/double/fail.mp3`);
                 break;
             case "play":
-                choosenSound = require(`../../../assets/sound/double/play.mp3`);;
+                choosenSound = require(`../../../assets/sound/double/play.mp3`);
                 break;
             case "next":
-                choosenSound = require(`../../../assets/sound/double/next.mp3`);;
+                choosenSound = require(`../../../assets/sound/double/next.mp3`);
                 break;
             case "applause":
-                choosenSound = require(`../../../assets/sound/global/applause.mp3`);;
+                choosenSound = require(`../../../assets/sound/global/applause.mp3`);
                 break;
             case "lose":
-                choosenSound = require(`../../../assets/sound/global/you_lose.mp3`);;
+                choosenSound = require(`../../../assets/sound/global/you_lose.mp3`);
                 break;
             default:
                 break;

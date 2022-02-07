@@ -91,11 +91,15 @@ export default function Game(props) {
                 [
                     {
                         text: QuizLang[props.lang].OK,
-                        onPress: () => {
+                        onPress: async () => {
                             if (current + 1 <= game.length - 1)
                                 setCurrent(current + 1);
                             else {
+                                const path = success >= fail ? require(`../../../../assets/sound/global/applause.mp3`) : require(`../../../../assets/sound/global/you_lose.mp3`);
                                 if (success >= fail) setConfetti(true);
+                                const { sound } = await Audio.Sound.createAsync(path);
+                                setSound(sound);
+                                sound.playAsync();
                                 setModal(true);
                             }
                         },
