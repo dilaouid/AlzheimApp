@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Modal } from 'react-native';
 
 import { Button, Overlay, Icon } from 'react-native-elements';
@@ -25,6 +25,7 @@ export default function Play(props) {
     const [show, setShow] = useState(true);
     const [confetti, setConfetti] = useState(false);
     const [pause, setPause] = useState(false);
+    const [opacity, setOpacity] = useState(0);
 
     const TrophyLottie = require('../../../assets/lottie/trophy.json');
     const SadLottie = require('../../../assets/lottie/sad.json');
@@ -139,6 +140,15 @@ export default function Play(props) {
         }
     };
 
+    const blinkScreen = async () => {
+        // Change the state every second or the time given by User.
+        setOpacity(100);
+        for (let i = 100; i >= 0; i -= 20) {
+            setOpacity(Number(i));
+            await new Promise(r => setTimeout(r, opacity > 50 ? .5 : .3));
+        }
+    };
+    
     const ReturnCard = (key) => {
         if (pause || show) return;
         const currentPlay = play;
@@ -151,6 +161,7 @@ export default function Play(props) {
                 const currentGameLength = game.length;
                 const nFound = [...found, playing[0], playing[1]];
                 if (nFound.length == currentGameLength) {
+                    blinkScreen();
                     props.setScore(prevScore => prevScore + 1);
                     setShow(true);
                     setTries(3);
@@ -247,6 +258,7 @@ export default function Play(props) {
                 <Text>{DoubleLang[props.lang].RemaningTries(tries)}</Text>
                 { printButton() }
             </View>
+            { opacity > 0 ? <View style={{backgroundColor:'white', height: 120+'%', width: 100+'%', marginBottom: -20, position:'absolute', zIndex: 2, opacity: opacity / 100}} /> : <></> }
         </>
     );
 };
