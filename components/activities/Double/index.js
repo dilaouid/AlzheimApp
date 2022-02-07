@@ -33,7 +33,7 @@ export default function Double(props) {
         // API.clear();
 
         const { sound } = await Audio.Sound.createAsync(
-            // Ambiant music produced by Mathieu COCHET - check his soundcloud here: https://soundcloud.com/mcochet
+            // Ambiant music produced by MCOCHET - check his soundcloud here: https://soundcloud.com/mcochet
             require(`../../../assets/sound/double/ambiant.mp3`)
         );
         setAmbiant(sound);
