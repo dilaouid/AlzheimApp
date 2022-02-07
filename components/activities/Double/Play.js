@@ -145,8 +145,7 @@ export default function Play(props) {
         if (pause || show) return;
         const currentPlay = play;
         const indexGame = game[key];
-        const playing = [...currentPlay, indexGame]
-        setPlay(playing);
+        const playing = [...currentPlay, indexGame];
         if (playing.length == 2) {
             // check if same card or return all and lose a try
             if (playing[0].color === playing[1].color && playing[0].icon === playing[1].icon) {
@@ -165,6 +164,7 @@ export default function Play(props) {
                 }
                 setPlay([]);
             } else {
+                setPlay(playing);
                 playSound('fail');
                 setPause(true);
                 setTimeout(() => {
@@ -179,6 +179,7 @@ export default function Play(props) {
                 }, 1000);
             }
         } else {
+            setPlay(playing);
             playSound('play');
         }
     };
