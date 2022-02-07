@@ -16,6 +16,7 @@ import styles from './styles';
 import { generateRandomPair } from './subs/helpers';
 
 import Card from './subs/Card';
+import { Audio } from 'expo-av';
 
 export default function Play(props) {
     const [game, setGame] = useState([...generateRandomPair(4)]); // the current map game
@@ -25,7 +26,7 @@ export default function Play(props) {
     const [show, setShow] = useState(true);
     const [confetti, setConfetti] = useState(false);
     const [pause, setPause] = useState(false);
-    const [opacity, setOpacity] = useState(0);
+    const [sound, setSound] = useState(new Audio.Sound());
 
     const TrophyLottie = require('../../../assets/lottie/trophy.json');
     const SadLottie = require('../../../assets/lottie/sad.json');
@@ -139,15 +140,6 @@ export default function Play(props) {
             </View>);
         }
     };
-
-    const blinkScreen = async () => {
-        // Change the state every second or the time given by User.
-        setOpacity(100);
-        for (let i = 100; i >= 0; i -= 20) {
-            setOpacity(Number(i));
-            await new Promise(r => setTimeout(r, opacity > 50 ? .5 : .3));
-        }
-    };
     
     const ReturnCard = (key) => {
         if (pause || show) return;
@@ -161,17 +153,19 @@ export default function Play(props) {
                 const currentGameLength = game.length;
                 const nFound = [...found, playing[0], playing[1]];
                 if (nFound.length == currentGameLength) {
-                    blinkScreen();
+                    playSound('next');
                     props.setScore(prevScore => prevScore + 1);
                     setShow(true);
                     setTries(3);
                     setGame([...generateRandomPair(setLengthGame())]);
                     setFound([]);
                 } else {
+                    playSound('success');
                     setFound(nFound);
                 }
                 setPlay([]);
             } else {
+                playSound('fail');
                 setPause(true);
                 setTimeout(() => {
                     if (tries != 0) setTries(prevTries => prevTries - 1);
@@ -184,6 +178,8 @@ export default function Play(props) {
                     setPause(false);
                 }, 1000);
             }
+        } else {
+            playSound('play');
         }
     };
 
@@ -198,13 +194,37 @@ export default function Play(props) {
     };
 
     const newGame = () => {
-        setConfetti(false);
+        if (confetti) setConfetti(false);
         props.setModal(false);
         setShow(true);
         setTries(3);
         setFound([]);
         setPlay([]);
         setGame([...generateRandomPair(4)]);
+    };
+
+    const playSound = async (type) => {
+        if (sound) sound?.unloadAsync();
+        let choosenSound;
+        switch (type) {
+            case "success":
+                choosenSound = require(`../../../assets/sound/double/success.mp3`);;
+                break;
+            case "fail":
+                choosenSound = require(`../../../assets/sound/double/fail.mp3`);;
+                break;
+            case "play":
+                choosenSound = require(`../../../assets/sound/double/play.mp3`);;
+                break;
+            case "next":
+                choosenSound = require(`../../../assets/sound/double/next.mp3`);;
+                break;
+            default:
+                break;
+        }
+        const { sound } = await Audio.Sound.createAsync(choosenSound);
+        setSound(sound);
+        sound.playAsync();
     };
 
     return (
@@ -238,7 +258,11 @@ export default function Play(props) {
                         />
                     } />
 
-                    <Button title={DoubleLang[props.lang].Leave} onPress={() => { props.setModal(false); props.setTab(0); }} buttonStyle={{backgroundColor: 'red'}} icon={
+                    <Button title={DoubleLang[props.lang].Leave} onPress={() => { 
+                        if (confetti) setConfetti(false);
+                        props.setModal(false);
+                        props.setTab(0);
+                    }} buttonStyle={{backgroundColor: 'red'}} icon={
                         <Icon
                             name={'caret-back-outline'}
                             type={'ionicon'}
@@ -258,7 +282,6 @@ export default function Play(props) {
                 <Text>{DoubleLang[props.lang].RemaningTries(tries)}</Text>
                 { printButton() }
             </View>
-            { opacity > 0 ? <View style={{backgroundColor:'white', height: 120+'%', width: 100+'%', marginBottom: -20, position:'absolute', zIndex: 2, opacity: opacity / 100}} /> : <></> }
         </>
     );
 };
