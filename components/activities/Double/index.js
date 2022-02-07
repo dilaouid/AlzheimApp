@@ -21,7 +21,6 @@ import Play from './Play';
 const currentDate = new Date().toLocaleDateString('fr-FR');
 
 export default function Double(props) {
-    const [isLoading, setIsLoading] = useState(true);
     const [tab, setTab] = useState(0);
     const [score, setScore] = useState(0);
     const [bestScoreDay, setBestScoreDay] = useState(0);
@@ -132,7 +131,6 @@ export default function Double(props) {
                     setTab={setTab}
                     lang={props.lang}
                     setPage={props.setPage}
-                    isLoading={isLoading}
                 />
             );
         } else if (tab === 1) {
