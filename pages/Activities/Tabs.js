@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { lang as ActivitiesLang } from '../../language/activities';
 
@@ -46,6 +46,7 @@ export default function Tabs(props) {
             <Tab.Screen
                 options={{
                     headerShown: false,
+                    unmountOnBlur: true,
                     tabBarIcon: ({ focused }) => {
                         return (
                             <Icon
@@ -57,11 +58,12 @@ export default function Tabs(props) {
                     },
                 }}
                 name={ActivitiesLang[props.lang]?.Score}
-                children={() => <Score lang={props.lang} />}
+                children={() => <Score lang={props.lang} personId={props.personId} /> }
             />
             <Tab.Screen
                 options={{
                     headerShown: false,
+                    unmountOnBlur: true,
                     tabBarIcon: ({ focused }) => {
                         return (
                             <Icon

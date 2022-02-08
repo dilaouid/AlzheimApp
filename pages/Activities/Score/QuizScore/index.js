@@ -24,7 +24,7 @@ export default function QuizScore(props) {
             setQuizScore(arr);
             setIsLoading(false);
         });
-    }, [props.reload]);
+    }, []);
 
     const printScore = () => {
         if (quizScore.length === 0)

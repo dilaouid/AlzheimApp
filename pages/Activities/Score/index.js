@@ -8,7 +8,7 @@ import styles from './styles';
 export default function Score(props) {
     return (
         <ScrollView style={{ flex: 1 }}>
-            <QuizScore lang={props.lang} personId={props.personId} reload={props.reload} setReload={props.setReload} />
+            <QuizScore lang={props.lang} personId={props.personId} />
         </ScrollView>
     );
 }
