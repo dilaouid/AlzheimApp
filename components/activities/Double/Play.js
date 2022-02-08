@@ -18,7 +18,7 @@ import { generateRandomPair } from './subs/helpers';
 import Card from './subs/Card';
 
 export default function Play(props) {
-    const [game, setGame] = useState([...generateRandomPair(12)]); // the current map game
+    const [game, setGame] = useState([...generateRandomPair(4)]); // the current map game
     const [found, setFound] = useState([]);
     const [tries, setTries] = useState(3);
     const [play, setPlay] = useState([]); // the current play of the player, an array with two values max, corresponding to the cards the player played
