@@ -6,8 +6,6 @@ import {
     Alert
 } from 'react-native';
 
-import { FAB } from 'react-native-elements';
-
 import { Audio } from 'expo-av';
 import { lang as DoubleLang } from '../../../language/activities/double';
 
@@ -183,6 +181,10 @@ export default function Double(props) {
                         success={success}
                         endGame={endGame}
                         playSound={playSound}
+                        ambiantSoundPlay={ambiantSoundPlay}
+                        ambiantEnabled={ambiantEnabled}
+                        soundEnabled={soundEnabled}
+                        setSoundEnabled={setSoundEnabled}
                     />;
         } else if (tab === 2) {
             return (<Help lang={props.lang} setTab={setTab} />);
@@ -192,11 +194,8 @@ export default function Double(props) {
     };
 
     return (
-        <>
-        
         <ScrollView style={styles.view} contentContainerStyle={{alignItems: 'center'}}>
             { printPage() }
         </ScrollView>
-        </>
     );
 };

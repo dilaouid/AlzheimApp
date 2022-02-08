@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, Modal } from 'react-native';
 
-import { Button, Overlay, Icon } from 'react-native-elements';
+import { Button, Overlay, Icon, FAB } from 'react-native-elements';
 
 import { lang as DoubleLang } from '../../../language/activities/double';
 import ConfettiCannon from 'react-native-confetti-cannon';
@@ -18,7 +18,7 @@ import { generateRandomPair } from './subs/helpers';
 import Card from './subs/Card';
 
 export default function Play(props) {
-    const [game, setGame] = useState([...generateRandomPair(4)]); // the current map game
+    const [game, setGame] = useState([...generateRandomPair(12)]); // the current map game
     const [found, setFound] = useState([]);
     const [tries, setTries] = useState(3);
     const [play, setPlay] = useState([]); // the current play of the player, an array with two values max, corresponding to the cards the player played
@@ -205,6 +205,46 @@ export default function Play(props) {
 
     return (
         <>
+            <View>
+                <FAB
+                    color='#2089dc'
+                    style={{
+                        position: 'absolute',
+                        marginLeft: 130,
+                        marginTop: 390
+                    }}
+                    size="small"
+                    icon={
+                        {
+                            name: props.ambiantEnabled ? 'volume-high-outline' : 'volume-mute-outline',
+                            type: 'ionicon',
+                            color:'white',
+                            size: 15,
+                            style: {marginTop: 4}
+                        }
+                    }
+                    onPress={() => props.ambiantSoundPlay() }
+                />
+                <FAB
+                    color='#2089dc'
+                    style={{
+                        position: 'absolute',
+                        marginLeft: 85,
+                        marginTop: 390
+                    }}
+                    size="small"
+                    icon={
+                        {
+                            name: props.soundEnabled ? 'sound' : 'sound-mute',
+                            type: 'entypo',
+                            color:'white',
+                            size: 15,
+                            style: {marginTop: 4}
+                        }
+                    }
+                    onPress={() => props.setSoundEnabled(prev => !prev) }
+                />
+            </View>
             {confetti ? (
                     <ConfettiCannon
                         fadeOut={true}
