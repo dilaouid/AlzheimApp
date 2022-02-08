@@ -35,6 +35,7 @@ export default function QuizScore(props) {
                     <View style={{marginHorizontal: 15}} key={i}>
                         <Badge
                             value={el.name}
+                            textStyle={{textAlign: 'center'}}
                             badgeStyle={{position:'absolute', paddingHorizontal: 15, height: 30, marginHorizontal: 10, marginVertical: 100, zIndex: 3}}
                         />
                         <CircularProgress

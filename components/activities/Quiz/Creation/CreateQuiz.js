@@ -41,7 +41,7 @@ export default function CreateQuiz(props) {
 
     const createQuiz = () => {
         API.create(props.personId, {
-            name: name,
+            name: name.substring(0, 23),
             content: content,
             personId: props.personId
         }).then(data => {
@@ -236,7 +236,7 @@ export default function CreateQuiz(props) {
                             color={'white'}
                             size={15}
                         />
-                    } disabled={name?.length < 3 ? true : false} onPress={createQuiz} />
+                    } disabled={name?.length < 3 || name.length > 23 ? true : false} onPress={createQuiz} />
                 </View>
             </Overlay>
 
