@@ -37,7 +37,8 @@ export const lang = {
         Quiz: 'Jouer à un quiz',
         SuggestedActivities: 'Activités suggérées',
         Back: 'Retour à la sélection',
-        QuizScore: "Score du quiz",
+        QuizScore: "Score des quiz",
+        SimonScore: "Score du Simon",
         NoScore: "Aucun score enregistré pour cette activité...",
         Success: 'réussite',
 
@@ -65,6 +66,7 @@ export const lang = {
         SuggestedActivities: 'Suggested activities',
         Back: 'Return to the selection',
         QuizScore: "Quiz Score",
+        SimonScore: "Simon Score",
         NoScore: "No score registered for this activity...",
         Success: 'success',
 

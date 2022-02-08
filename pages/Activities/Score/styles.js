@@ -9,6 +9,14 @@ export default StyleSheet.create({
         borderColor: 'grey',
         borderWidth: 1
     },
+    scoreRowSimon: {
+        flex: 1,
+        height: 250,
+        backgroundColor: 'white',
+        marginVertical: 15,
+        borderColor: 'grey',
+        borderWidth: 1
+    },
     scoreHeading: {
         fontSize: 18,
         color: '#2089dc',
