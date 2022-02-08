@@ -1,4 +1,5 @@
 {
+  "background_color": "#355c7d",
   "description": "Cognitive brain training application for people with alzheimer",
   "display": "standalone",
   "lang": "en",
