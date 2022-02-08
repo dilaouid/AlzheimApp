@@ -37,6 +37,9 @@ export const lang = {
         Quiz: 'Jouer à un quiz',
         SuggestedActivities: 'Activités suggérées',
         Back: 'Retour à la sélection',
+        QuizScore: "Score du quiz",
+        NoScore: "Aucun score enregistré pour cette activité...",
+        Success: 'réussite',
 
         ReturnList: 'Retour',
     },
@@ -61,6 +64,9 @@ export const lang = {
         DoubleMemory: 'Double Memory',
         SuggestedActivities: 'Suggested activities',
         Back: 'Return to the selection',
+        QuizScore: "Quiz Score",
+        NoScore: "No score registered for this activity...",
+        Success: 'success',
 
         ReturnList: 'Return',
     },

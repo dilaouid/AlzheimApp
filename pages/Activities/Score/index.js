@@ -1,13 +1,14 @@
 import React from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import { lang as ActivitiesLang } from '../../../language/activities';
+import QuizScore from './QuizScore';
 import styles from './styles';
 
 export default function Score(props) {
     return (
         <ScrollView style={{ flex: 1 }}>
-            <Text>todo</Text>
+            <QuizScore lang={props.lang} personId={props.personId} reload={props.reload} setReload={props.setReload} />
         </ScrollView>
     );
 }
