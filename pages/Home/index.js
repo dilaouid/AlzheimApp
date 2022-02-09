@@ -20,6 +20,8 @@ import CreatePerson from '../../components/home/PersonCreation/CreatePerson';
 
 import * as Person from '../../data/personApi';
 
+import { Audio } from 'expo-av';
+
 import styles from './styles';
 
 export default function Home(props) {
@@ -40,6 +42,7 @@ export default function Home(props) {
     const lang = state?.lang || props.lang;
 
     useEffect(() => {
+        Audio.setIsEnabledAsync(false);
         if (!username || username?.trim()?.length < 2) {
             navigate('/');
         } else {

@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from 'react-native-elements';
 import ActivitiesList from '../../../data/activities';
 
 import styles from './styles';
 
+import { Audio } from 'expo-av';
+
 export default function Activities(props) {
     const [page, setPage] = useState();
+
+    useEffect( () => {
+        Audio.setIsEnabledAsync(true);
+    }, [])
+
     return page ? (
         page
     ) : (
