@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
-import RNPickerSelect from 'react-native-picker-select';
 
 import { ButtonGroup } from 'react-native-elements';
 
@@ -11,8 +10,6 @@ import * as API from '../../../../data/simonApi';
 import {
     BarChart
 } from "react-native-chart-kit";
-
-const currentDate = new Date().toLocaleDateString('fr-FR');
 
 export default function SimonScore(props) {
     const [isLoading, setIsLoading] = useState(true);
