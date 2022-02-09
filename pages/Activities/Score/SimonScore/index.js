@@ -38,22 +38,39 @@ export default function SimonScore(props) {
             const score = [];
 
             const tmp = simonScore.map(item => ({...item}));
+            if (btnIndex === 1) {
+                for (let i = 0; i < tmp.length; i++) {
+                    const el = tmp[i];
+                    if (days.includes(el.date) == false) {
+                        const d = tmp.map(item => ({...item}));
+                        const filtered = d.filter( (e) => e.date === el.date);
+                        let highestToLowest = filtered.sort((a, b) => b.score - a.score);
+                        days.push(el.date);
+                        score.push(highestToLowest[0].score)
+                    }
+                }
+            }
             for (let i = 0; i < tmp.length; i++) {
                 let idx = global.length;
                 const el = tmp[i];
-                if (idx > 0 && global[idx - 1].date == el.date) {
+                if (btnIndex === 0 && idx > 0 && global[idx - 1].date === el.date) {
                     global[idx - 1].score += el.score;
+                } else if (btnIndex === 1 && idx > 0 && global[idx - 1].score < el.score && global[idx - 1].date === el.date) {
+                    global[idx - 1].score = el.score;
+                    tmp.splice(i, 0);
                 } else global.push(el);
             }
-            
-            // ** Save for the global score
-            global.map( (el) => {
-                score.push(el.score)
-            });
 
-            global.map( (el) => {
-                days.push(el.date);
-            });
+            if (btnIndex === 0) {
+                // ** Save for the global score
+                global.map( (el) => {
+                    score.push(el.score)
+                });
+                
+                global.map( (el) => {
+                    days.push(el.date);
+                });
+            }
 
             const data = {
                 labels: days,
