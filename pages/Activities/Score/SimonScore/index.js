@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
+import RNPickerSelect from 'react-native-picker-select';
+
+import { ButtonGroup } from 'react-native-elements';
 
 import { lang as ActivitiesLang } from '../../../../language/activities';
 import styles from '../styles';
@@ -14,11 +17,14 @@ const currentDate = new Date().toLocaleDateString('fr-FR');
 export default function SimonScore(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [simonScore, setSimonScore] = useState([]);
+    const [btnIndex, setBtnIndex] = useState(0);
+
+    const buttons = ['Global', 'Best score by day']
 
     useEffect( () => {
         API.getScore(props.personId).then((result) => {
-            const score = result.filter( (el) => el.score > 0 );
-            setSimonScore(score);
+            const TotalScore = result.filter( (el) => el.score > 0 );
+            setSimonScore(TotalScore)
             setIsLoading(false);
         });
     }, []);
@@ -28,20 +34,23 @@ export default function SimonScore(props) {
             return (<Text style={styles.NoScore}>{ActivitiesLang[props.lang].NoScore}</Text>);
         else {
             const global = [];
-            for (let i = 0; i < simonScore.length; i++) {
+            const days = [];
+            const score = [];
+
+            const tmp = simonScore.map(item => ({...item}));
+            for (let i = 0; i < tmp.length; i++) {
                 let idx = global.length;
-                const el = simonScore[i];
-                if (global[idx - 1] && global[idx - 1].date == el.date) {
+                const el = tmp[i];
+                if (idx > 0 && global[idx - 1].date == el.date) {
                     global[idx - 1].score += el.score;
                 } else global.push(el);
             }
-
+            
             // ** Save for the global score
-            const score = [];
             global.map( (el) => {
                 score.push(el.score)
             });
-            const days = [];
+
             global.map( (el) => {
                 days.push(el.date);
             });
@@ -54,7 +63,6 @@ export default function SimonScore(props) {
                     }
                 ],
             }
-
             return (
                 <View style={{marginHorizontal: 15}} >
                     <BarChart
@@ -68,8 +76,8 @@ export default function SimonScore(props) {
                             backgroundGradientFrom: "#ffffff",
                             backgroundGradientTo: "#ffffff",
                             decimalPlaces: 0,
-                            color: '#2089dc',
-                            labelColor: '#2089dc'
+                            color: () => '#2089dc',
+                            labelColor: () => '#2089dc'
                         }}
                         style={{
                             marginLeft: -30
@@ -83,10 +91,17 @@ export default function SimonScore(props) {
     return (
         <ScrollView style={styles.scoreRowSimon} horizontal={true}>
             <View>
-                <Text style={styles.scoreHeading}>{ActivitiesLang[props.lang].SimonScore}</Text>
-
+                <View style={{flexDirection: 'row'}}>
+                    <Text style={styles.scoreHeading}>{ActivitiesLang[props.lang].SimonScore}</Text>
+                    <ButtonGroup
+                        onPress={(idx) => setBtnIndex(idx) }
+                        selectedIndex={btnIndex}
+                        buttons={buttons}
+                        buttonStyle={{paddingHorizontal: 10}}
+                    />
+                </View>
                 { isLoading ? <ActivityIndicator size={'large'} color={'#2089dc'} style={{marginLeft: 150, marginTop: 80}} /> :
-                    <ScrollView horizontal={true}>
+                    <ScrollView horizontal={true} style={{marginTop: 0}}>
                         { printScore() }
                     </ScrollView>
                 }
