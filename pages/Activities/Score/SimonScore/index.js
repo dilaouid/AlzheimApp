@@ -16,7 +16,7 @@ export default function SimonScore(props) {
     const [simonScore, setSimonScore] = useState([]);
     const [btnIndex, setBtnIndex] = useState(0);
 
-    const buttons = ['Global', 'Best score by day']
+    const buttons = [ActivitiesLang[props.lang].Global, ActivitiesLang[props.lang].BestScoreByDay]
 
     useEffect( () => {
         API.getScore(props.personId).then((result) => {

@@ -41,6 +41,8 @@ export const lang = {
         SimonScore: "Score du Simon",
         NoScore: "Aucun score enregistré pour cette activité...",
         Success: 'réussite',
+        Global: "Vue d'ensemble",
+        BestScoreByDay: 'Meilleur score du jour',
 
         ReturnList: 'Retour',
     },
@@ -69,6 +71,8 @@ export const lang = {
         SimonScore: "Simon Score",
         NoScore: "No score registered for this activity...",
         Success: 'success',
+        Global: "Global view",
+        BestScoreByDay: 'Best score by day',
 
         ReturnList: 'Return',
     },
