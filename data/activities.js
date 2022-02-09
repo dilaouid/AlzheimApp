@@ -7,11 +7,11 @@ import Double from '../components/activities/Double';
 export default function Activities(lang, personId) {
     return [
         {
-            name: ActivitiesLang[lang]?.Simon,
-            icon: 'grid-outline',
+            name: ActivitiesLang[lang]?.Quiz,
+            icon: 'help-circle-outline',
             returnComponent: (lang, setPage) => {
                 return (
-                    <Simon lang={lang} setPage={setPage} personId={personId} />
+                    <Quiz lang={lang} setPage={setPage} personId={personId} />
                 );
             },
         },
@@ -23,19 +23,12 @@ export default function Activities(lang, personId) {
             },
         },
         {
-            name: ActivitiesLang[lang]?.Quiz,
-            icon: 'help-circle-outline',
+            name: ActivitiesLang[lang]?.Simon,
+            icon: 'grid-outline',
             returnComponent: (lang, setPage) => {
                 return (
-                    <Quiz lang={lang} setPage={setPage} personId={personId} />
+                    <Simon lang={lang} setPage={setPage} personId={personId} />
                 );
-            },
-        },
-        {
-            name: ActivitiesLang[lang]?.SuggestedActivities,
-            icon: 'color-palette-outline',
-            returnComponent: (lang, setPage) => {
-                return null;
             },
         },
         {
@@ -49,6 +42,13 @@ export default function Activities(lang, personId) {
                         personId={personId}
                     />
                 );
+            },
+        },
+        {
+            name: ActivitiesLang[lang]?.SuggestedActivities,
+            icon: 'color-palette-outline',
+            returnComponent: (lang, setPage) => {
+                return null;
             },
         },
     ];
