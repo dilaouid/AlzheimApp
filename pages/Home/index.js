@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
     View,
     ScrollView,
-    Image
+    Image,
+    Linking
 } from 'react-native';
 
 import { Button, Icon, Text } from 'react-native-elements';
@@ -112,6 +113,7 @@ export default function Home(props) {
                         />
                     }
                     raised
+                    onPress={() => Linking.openURL('https://github.com/dilaouid/AlzheimApp')}
                 />
                 <Text style={styles.copyleft} >{HomeLang[props.lang].License}</Text>
             </ScrollView>
