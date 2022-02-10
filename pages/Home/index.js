@@ -75,6 +75,7 @@ export default function Home(props) {
                             style={{ marginRight: 20, marginLeft: 10 }}
                         />
                     }
+                    onPress={() => props.setLang(prev => prev == 'fr' ? 'en' : 'fr')}
                     raised
                 />
                 <Button

@@ -18,6 +18,7 @@ import Tutorial from './pages/Tutorial';
 
 export default function App() {
     const [config, setConfig] = useState();
+    const [lang, setLang] = useState('fr');
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -25,11 +26,10 @@ export default function App() {
     }, [loadDataCallback]);
 
     useEffect( () => {
+        let local = Localization.locale?.split('-')[0] || 'fr';
+        setLang(['en', 'fr'].includes(local) ? local : 'fr');
         console.log('- Imported config file -');
-    }, [config])
-
-    let local = Localization.locale?.split('-')[0] || 'fr';
-    const lang = ['en', 'fr'].includes(local) ? local : 'fr';
+    }, [config]);
 
     const loadDataCallback = useCallback(async () => {
         try {
@@ -80,7 +80,7 @@ export default function App() {
                         <Route
                             exact
                             path="/home"
-                            element={<Home lang={lang} username={config?.username} />}
+                            element={<Home lang={lang} username={config?.username} setLang={setLang} />}
                         />
                         <Route
                             exact
