@@ -12,8 +12,7 @@ import { useNavigate } from 'react-router-native';
 
 import { lang as TutorialLang } from '../../language/tutorial';
 import { lang as InterfaceLang } from '../../language/interface';
-import { setUsername, SawTutorial } from '../../data/configApi';
-import * as Config from '../../data/configApi';
+import { setUsername as insertUsername, SawTutorial, getUsername } from '../../data/configApi';
 
 import Home from '../Home';
 
@@ -27,12 +26,13 @@ export default function ChooseUsername(props) {
     const [loadPage, setLoadPage] = useState(true);
     const [confirmed, setConfirmed] = useState(false);
     const [redirect, setRedirect] = useState(false);
-    const [username, setUsername] = useState();
+    const [username, setUsername] = useState('');
 
     useEffect(() => {
-        Config.getUsername()
+        getUsername()
             .then((res) => {
                 if (res[0]?.username) {
+                    console.log(res);
                     setUsername(res[0].username);
                     setRedirect(true);
                 }
@@ -71,7 +71,7 @@ export default function ChooseUsername(props) {
         setIsLoading(true);
         let username = input?.trim() || null;
         if (username && username?.length >= 2 && username?.length < 11) {
-            setUsername(username)
+            insertUsername(username)
                 .then((response) => {
                     setIsLoading(false);
                     setInput(username);

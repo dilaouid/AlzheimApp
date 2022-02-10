@@ -10,6 +10,7 @@ export default StyleSheet.create({
         width: 250,
         height: 40,
         justifyContent: 'flex-start',
+        backgroundColor: '#4d8abd'
     },
     buttonStyleDelete: {
         width: 250,

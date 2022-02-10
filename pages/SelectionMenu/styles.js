@@ -3,28 +3,35 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         flex: 1,
+        zIndex: 1,
     },
     wrapper: {
-        marginTop: 100,
+        marginTop: 20,
         textAlign: 'center',
         alignItems: 'center',
+        zIndex: 1,
+    },
+    topBanner: {
+        backgroundColor:'#355c7d'
     },
     topImage: {
-        flex: 1,
-        width: 80,
-        marginTop: -270,
+        // flex: 1,
+        height: 70,
+        //marginTop: -10,
     },
     heading: {
-        marginTop: -190,
+        marginTop: 10,
         fontSize: 20,
         zIndex: 2,
+        color: 'white'
     },
     boldtext: {
         fontWeight: 'bold',
-        color: '#3B8EFF',
+        color: 'white',
     },
     subtitle: {
         textAlign: 'center',
+        color: 'white'
     },
     image: {
         flex: 1,

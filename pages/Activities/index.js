@@ -4,7 +4,7 @@ import { Text, Divider } from 'react-native-elements';
 
 import { useParams, useNavigate, useLocation } from 'react-router-native';
 
-import SuccessImage from '../../assets/img/activities/brain.gif';
+import TopImage from '../../assets/img/activities/brain.gif';
 import BackgroundImage from '../../assets/img/activities/bg.gif';
 import { lang as ActivitiesLang } from '../../language/activities';
 import Lottie from '../../components/utils/Lottie';
@@ -79,7 +79,7 @@ export default function Activities() {
             <View style={styles.container}>
                 <Lottie
                     LottieSource={LottieSource}
-                    ImageSource={SuccessImage}
+                    ImageSource={TopImage}
                     LottieStyle={styles.topLottie}
                     ImageStyle={styles.topImage}
                     loop={true}

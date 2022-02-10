@@ -7,7 +7,7 @@ const applyBoldStyle = (text) => {
         result.splice(
             ++numberOfItemsAdded + i,
             0,
-            <Text key={i} style={{ fontWeight: 'bold', color: '#3B8EFF' }}>
+            <Text key={i} style={{ fontWeight: 'bold', color: 'white' }}>
                 {boldText}
             </Text>
         )

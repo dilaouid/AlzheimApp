@@ -13,10 +13,12 @@ import Swiper from 'react-native-swiper/src';
 import { Input, FAB } from 'react-native-elements';
 import { useNavigate, useLocation } from 'react-router-native';
 
-import LoadingBrain from '../../assets/img/selection/loading_brain.gif';
+import LoadingBrain from '../../assets/img/activities/brain.gif';
 import { lang as SelectionMenuLang } from '../../language/selection';
 import Rows from '../../components/selection/Rows';
 import CreatePerson from '../../components/selection/PersonCreation/CreatePerson';
+
+import Lottie from '../../components/utils/Lottie';
 
 import * as Person from '../../data/personApi';
 
@@ -38,6 +40,7 @@ export default function SelectionMenu(props) {
     const state = useLocation()?.state;
     const navigate = useNavigate();
 
+    const LottieSource = require('../../assets/img/activities/brain.json');
     const username = state?.username || props.username;
     const lang = state?.lang || props.lang;
 
@@ -99,7 +102,7 @@ export default function SelectionMenu(props) {
     return (
         <View style={styles.container}>
             <FAB
-                color='#2089dc'
+                color='white'
                 style={{
                     position: 'absolute',
                     marginLeft: 305,
@@ -111,18 +114,22 @@ export default function SelectionMenu(props) {
                     {
                         name: 'home-outline',
                         type: 'ionicon',
-                        color:'white',
+                        color:'#355c7d',
                         size: 15,
                         style: {marginTop: 4}
                     }
                 }
                 onPress={() => navigate('/home') }
             />
+            <View style={styles.topBanner}>
             <View style={styles.wrapper}>
-                <Image
-                    source={LoadingBrain}
-                    resizeMode="contain"
-                    style={styles.topImage}
+                <Lottie
+                    LottieSource={LottieSource}
+                    ImageSource={LoadingBrain}
+                    LottieStyle={styles.topImage}
+                    ImageStyle={styles.topImage}
+                    loop={true}
+                    autoPlay={true}
                 />
                 <Text style={styles.heading}>
                     {SelectionMenuLang[lang].Hello(username)}
@@ -146,6 +153,7 @@ export default function SelectionMenu(props) {
                 >
                     <Text style={styles.buttonText}>{btnText}</Text>
                 </TouchableOpacity>
+            </View>
             </View>
             <SafeAreaView style={styles.safeContainer}>
                 {isLoading ? (

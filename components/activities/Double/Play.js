@@ -14,6 +14,7 @@ import Lottie from '../../utils/Lottie';
 import styles from './styles';
 
 import { generateRandomPair } from './subs/helpers';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import Card from './subs/Card';
 
@@ -292,7 +293,7 @@ export default function Play(props) {
             <View style={styles.viewGame}>
                 { printCards() }
             </View>
-            <View style={{alignItems: 'center', width: 100 + '%', marginTop: -10}}>
+            <View style={{alignItems: 'center', width: wp('100%'), marginTop: -10}}>
                 <Text>{DoubleLang[props.lang].Score(props.score)}</Text>
                 <Text>{DoubleLang[props.lang].BestDayScore(props.bestScoreDay)}</Text>
                 <Text>{DoubleLang[props.lang].RemaningTries(tries)}</Text>

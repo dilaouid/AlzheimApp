@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
     view: {
-        height: 100 + '%',
+        height: hp('100%'),
         paddingBottom: 40,
         flex: 1,
     },
@@ -51,27 +52,28 @@ export default StyleSheet.create({
         marginVertical: 5
     },
     VersoCard: {
-        width: 80,
-        height: 80,
+        width: wp('21%'),
+        height: 0,
         borderRadius: 20,
         opacity: .8,
         marginHorizontal: 5,
+        aspectRatio: 1,
         marginVertical: 5
     },
     IconCard: {
         marginTop: 23
     },
     viewGame: {
-        marginTop: 20,
-        width: 300,
-        height: 370,
+        marginTop: 10,
+        width: wp('95%'),
+        height: hp('55%'),
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center'
     },
     buttonViewPlay: {
         flexDirection: 'row',
-        width: 100 + '%',
+        width: wp('100%'),
         justifyContent: 'center',
         alignContent: 'center',
         marginTop: 10
@@ -105,8 +107,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
         paddingTop: 20,
-        width: 100 + '%',
-        height: 120 + '%',
+        width: wp('100%'),
         paddingBottom: 20
     },
     leaveButtonHelpPage: {

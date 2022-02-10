@@ -7,16 +7,16 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     header: {
-        marginTop: 30,
+        marginTop: 10 + '%',
         alignItems: 'center',
         textAlign: 'center'
     },
     logo: {
-        width: 180,
-        height: 180
+        width: 130,
+        height: 130
     },
     menu: {
-        marginTop: 30,
+        marginTop: 10 + '%',
         flex: 1,
         marginBottom: 20
     },

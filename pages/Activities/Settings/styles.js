@@ -9,6 +9,7 @@ export default StyleSheet.create({
     buttonStyle: {
         width: 250,
         height: 40,
+        backgroundColor: '#4d8abd'
     },
     buttonStyleReturn: {
         width: 200,
@@ -21,8 +22,7 @@ export default StyleSheet.create({
     },
     buttonStyleBack: {
         width: 250,
-        height: 40,
-        backgroundColor: '#5EA1E4',
+        height: 40
     },
     buttonStyleDebug: {
         width: 250,

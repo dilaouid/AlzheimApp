@@ -1,27 +1,29 @@
 import { StyleSheet } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
     container: {
         alignItems: 'center',
         alignContent: 'center',
-        marginBottom: 20,
-        width: 100 + '%',
-        backgroundColor: 'white',
+        paddingBottom: 10,
+        width: wp('100%'),
+        backgroundColor: '#355c7d'
     },
     topLottie: {
-        marginTop: -20,
-        width: 200,
-        height: 200,
-        marginBottom: -90,
+        marginTop: 10,
+        width: 60,
+        height: undefined,
+        marginBottom: 15,
+        backgroundColor: '#355c7d'
     },
     bgLottie: {
-        width: 100 + '%',
+        width: wp('100%'),
         opacity: 0.4,
     },
     bgImage: {
         position: 'absolute',
-        width: 100 + '%',
-        height: 100 + '%',
+        width: wp('100%'),
+        height: hp('100%'),
         opacity: 0.4,
     },
     topImage: {
@@ -29,12 +31,12 @@ export default StyleSheet.create({
         width: 200,
         height: 200,
         marginBottom: -70,
-        backgroundColor: 'white',
+        backgroundColor: '#355c7d'
     },
     heading: {
-        fontSize: 24,
-        color: '#3B8EFF',
-        marginTop: 10,
+        fontSize: 20,
+        color: 'white',
+        marginTop: 0,
         zIndex: 2,
     },
     divider: {
@@ -51,6 +53,6 @@ export default StyleSheet.create({
     tabView: {
         alignItems: 'center',
         alignContent: 'center',
-        width: 100 + '%',
+        width: 100 + '%'
     },
 });
