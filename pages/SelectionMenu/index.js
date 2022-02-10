@@ -98,6 +98,26 @@ export default function SelectionMenu(props) {
 
     return (
         <View style={styles.container}>
+            <FAB
+                color='#2089dc'
+                style={{
+                    position: 'absolute',
+                    marginLeft: 305,
+                    marginTop: 15,
+                    zIndex: 3
+                }}
+                size="small"
+                icon={
+                    {
+                        name: 'home-outline',
+                        type: 'ionicon',
+                        color:'white',
+                        size: 15,
+                        style: {marginTop: 4}
+                    }
+                }
+                onPress={() => navigate('/home') }
+            />
             <View style={styles.wrapper}>
                 <Image
                     source={LoadingBrain}

@@ -13,6 +13,7 @@ import Loading from './components/utils/Loading';
 import HomeOrTutorial from './components/utils/HomeOrTutorial';
 import SelectionMenu from './pages/SelectionMenu';
 import Activities from './pages/Activities';
+import Home from './pages/Home';
 
 export default function App() {
     const [config, setConfig] = useState();
@@ -65,6 +66,11 @@ export default function App() {
                                     username={config?.username}
                                 />
                             }
+                        />
+                        <Route
+                            exact
+                            path="/home"
+                            element={<Home lang={lang} />}
                         />
                         <Route
                             exact
