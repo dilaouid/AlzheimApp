@@ -38,24 +38,6 @@ export default function Tutorial(props) {
 
     return (
         <>
-            <Lottie
-                LottieSource={LottieSource}
-                ImageSource={SwipeImage}
-                LottieStyle={{
-                    position: 'absolute',
-                    height: 80,
-                    marginTop: 280,
-                    marginLeft: 80,
-                    opacity: 0.8,
-                }}
-                ImageStyle={{
-                    position: 'absolute',
-                    height: 80,
-                    marginTop: 280,
-                    marginLeft: 80,
-                    opacity: 0.8,
-                }}
-            />
             <Swiper
                 style={styles.wrapper}
                 showsButtons={false}
@@ -74,6 +56,24 @@ export default function Tutorial(props) {
                     <Text style={styles.text}>
                         {TutorialLang[props.lang].Step1Content()}
                     </Text>
+                    <Lottie
+                        LottieSource={LottieSource}
+                        ImageSource={SwipeImage}
+                        LottieStyle={{
+                            position: 'absolute',
+                            height: 80,
+                            marginTop: 280,
+                            marginLeft: 80,
+                            opacity: 0.8,
+                        }}
+                        ImageStyle={{
+                            position: 'absolute',
+                            height: 80,
+                            marginTop: 280,
+                            marginLeft: 80,
+                            opacity: 0.8,
+                        }}
+                    />
                 </View>
 
                 <View style={styles.slideOdd}>
