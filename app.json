@@ -24,5 +24,8 @@
     "image": "./assets/img/alzheimapp_logo.png",
     "backgroundColor": "#355c7d",
     "resizeMode": "contain"
+  },
+  "androidNavigationBar": {
+    "visible": "immersive"
   }
 }
