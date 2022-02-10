@@ -32,7 +32,7 @@ export default function Activities() {
         Person.getById(personId.id)
             .then((result) => {
                 if (!result || result?.length === 0) {
-                    navigate('/home');
+                    navigate('/selection');
                 }
                 setPerson(result[0]);
                 setFullname(result[0]?.fullname);
@@ -40,12 +40,12 @@ export default function Activities() {
             })
             .catch((err) => {
                 console.log(err);
-                navigate('/home', {
+                navigate('/selection', {
                     state: { username: state?.username, lang: lang },
                 });
             });
         const backAction = () => {
-            navigate('/home', {
+            navigate('/selection', {
                 state: { username: state?.username, lang: lang },
             });
             return true;

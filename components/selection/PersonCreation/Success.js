@@ -1,16 +1,16 @@
 import React from 'react';
 import { View, Text, Platform } from 'react-native';
 import { Button, Image } from 'react-native-elements';
-import Lottie from '../../../components/utils/Lottie';
+import Lottie from '../../utils/Lottie';
 
-import SuccessImage from '../../../assets/img/home/addedUser.gif';
+import SuccessImage from '../../../assets/img/selection/addedUser.gif';
 
 import styles from '../styles';
 
 import { lang as InterfaceLang } from '../../../language/interface';
 
 export default function Success(props) {
-    const LottieSource = require('../../../assets/img/home/addedUser.json');
+    const LottieSource = require('../../../assets/img/selection/addedUser.json');
 
     return (
         <View>

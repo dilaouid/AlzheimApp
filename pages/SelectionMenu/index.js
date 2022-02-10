@@ -10,13 +10,13 @@ import {
     BackHandler,
 } from 'react-native';
 import Swiper from 'react-native-swiper/src';
-import { Input } from 'react-native-elements';
+import { Input, FAB } from 'react-native-elements';
 import { useNavigate, useLocation } from 'react-router-native';
 
-import LoadingBrain from '../../assets/img/home/loading_brain.gif';
-import { lang as HomeLang } from '../../language/home';
-import Rows from '../../components/home/Rows';
-import CreatePerson from '../../components/home/PersonCreation/CreatePerson';
+import LoadingBrain from '../../assets/img/selection/loading_brain.gif';
+import { lang as SelectionMenuLang } from '../../language/selection';
+import Rows from '../../components/selection/Rows';
+import CreatePerson from '../../components/selection/PersonCreation/CreatePerson';
 
 import * as Person from '../../data/personApi';
 
@@ -24,13 +24,13 @@ import { Audio } from 'expo-av';
 
 import styles from './styles';
 
-export default function Home(props) {
+export default function SelectionMenu(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [persons, setPersons] = useState();
     const [search, setSearch] = useState();
     const [index, setIndex] = useState(0);
     const [btnText, setBtnTxt] = useState(
-        HomeLang[props.lang || lang].AddAPerson
+        SelectionMenuLang[props.lang || lang].AddAPerson
     );
     const [active, setActive] = useState(true);
 
@@ -71,9 +71,9 @@ export default function Home(props) {
         setIndex(idx);
         setTimeout(() => {
             if (idx === 0) {
-                setBtnTxt(HomeLang[lang].AddAPerson);
+                setBtnTxt(SelectionMenuLang[lang].AddAPerson);
             } else if (idx === 1) {
-                setBtnTxt(HomeLang[lang].ReturnToList);
+                setBtnTxt(SelectionMenuLang[lang].ReturnToList);
             }
             setActive(true);
         }, 400);
@@ -105,10 +105,10 @@ export default function Home(props) {
                     style={styles.topImage}
                 />
                 <Text style={styles.heading}>
-                    {HomeLang[lang].Hello(username)}
+                    {SelectionMenuLang[lang].Hello(username)}
                 </Text>
             </View>
-            <Text style={styles.subtitle}>{HomeLang[lang].WhatsUp}</Text>
+            <Text style={styles.subtitle}>{SelectionMenuLang[lang].WhatsUp}</Text>
             <View style={styles.viewList}>
                 <TouchableOpacity
                     style={styles.button}
@@ -148,7 +148,7 @@ export default function Home(props) {
                     >
                         <ScrollView>
                             <Input
-                                placeholder={HomeLang[lang].Search}
+                                placeholder={SelectionMenuLang[lang].Search}
                                 inputContainerStyle={styles.searchBar}
                                 onChangeText={(e) => {
                                     setSearch(e);
@@ -160,7 +160,7 @@ export default function Home(props) {
                                 printRows(persons)
                             ) : (
                                 <Text style={styles.nobodyYet}>
-                                    {HomeLang[lang].NobodyYet}
+                                    {SelectionMenuLang[lang].NobodyYet}
                                 </Text>
                             )}
                         </ScrollView>

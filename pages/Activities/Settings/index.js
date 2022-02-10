@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { ScrollView, Alert, View } from 'react-native';
 import { Button } from 'react-native-elements';
-import Success from '../../../components/home/PersonCreation/Success';
+import Success from '../../../components/selection/PersonCreation/Success';
 
 import { useNavigate } from 'react-router-native';
 
@@ -11,7 +11,7 @@ import { lang as InterfaceLang } from '../../../language/interface';
 import * as Person from '../../../data/personApi';
 
 import styles from './styles';
-import Form from '../../../components/home/PersonCreation/Form';
+import Form from '../../../components/selection/PersonCreation/Form';
 
 export default function Settings(props) {
     const [edit, setEdit] = useState(false);
@@ -53,7 +53,7 @@ export default function Settings(props) {
 
     const deletePerson = () => {
         Person.deleteById(props.personId).then((deleted) => {
-            navigate('/home');
+            navigate('/selection');
         });
     };
 
@@ -132,7 +132,7 @@ export default function Settings(props) {
                         containerStyle={styles.containerStyle}
                         title={ActivitiesLang[props.lang]?.Back}
                         onPress={() => {
-                            navigate('/home');
+                            navigate('/selection');
                         }}
                     />
                 </ScrollView>

@@ -17,7 +17,7 @@ import { setUsername, SawTutorial } from '../../data/configApi';
 import ChooseUsernameGIF from '../../assets/img/username/chooseusername.gif';
 
 import styles from './styles';
-import Home from '../Home';
+import SelectionMenu from '../SelectionMenu';
 
 export default function ChooseUsername(props) {
     const [input, setInput] = useState('');
@@ -112,6 +112,6 @@ export default function ChooseUsername(props) {
             </View>
         );
     } else {
-        return <Home username={input} lang={props.lang} />;
+        return <SelectionMenu username={input} lang={props.lang} />;
     }
 }

@@ -11,7 +11,7 @@ import ChooseUsername from './pages/ChooseUsername';
 import Loading from './components/utils/Loading';
 
 import HomeOrTutorial from './components/utils/HomeOrTutorial';
-import Home from './pages/Home';
+import SelectionMenu from './pages/SelectionMenu';
 import Activities from './pages/Activities';
 
 export default function App() {
@@ -73,9 +73,9 @@ export default function App() {
                         />
                         <Route
                             exact
-                            path="/home"
+                            path="/selection"
                             element={
-                                <Home
+                                <SelectionMenu
                                     hasSeenTutorial={config?.hasSeenTutorial}
                                     lang={lang}
                                     username={config?.username}

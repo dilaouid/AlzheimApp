@@ -2,7 +2,7 @@ import React from 'react';
 
 import Tutorial from '../../pages/Tutorial';
 import ChooseUsername from '../../pages/ChooseUsername';
-import Home from '../../pages/Home';
+import SelectionMenu from '../../pages/SelectionMenu';
 
 const HomeOrTutorial = (props) => {
     if (!props?.hasSeenTutorial) {
@@ -11,7 +11,7 @@ const HomeOrTutorial = (props) => {
     if (!props?.username || props?.username?.length < 2) {
         return <ChooseUsername lang={props.lang} />;
     }
-    return <Home lang={props.lang} username={props.username} />;
+    return <SelectionMenu lang={props.lang} username={props.username} />;
 };
 
 export default HomeOrTutorial;

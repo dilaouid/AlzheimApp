@@ -19,7 +19,7 @@ import Swiper from 'react-native-swiper/src';
 
 import styles from './styles';
 import * as Config from '../../data/configApi';
-import Home from '../Home';
+import SelectionMenu from '../SelectionMenu';
 
 export default function Tutorial(props) {
     const LottieSource = require('../../assets/lottie/swipe-right.json');
@@ -28,7 +28,7 @@ export default function Tutorial(props) {
         Config.getUsername()
             .then((res) => {
                 if (res[0]?.username) {
-                    return <Home username={res} lang={props.lang} />;
+                    return <SelectionMenu username={res} lang={props.lang} />;
                 }
             })
             .catch((err) => {
