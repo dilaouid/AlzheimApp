@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     view: {
-        marginVertical: 20,
+        marginTop: 20,
         flex: 1,
         alignItems: 'center',
     },
@@ -176,8 +176,7 @@ export default StyleSheet.create({
         backgroundColor: 'white',
         marginTop: -20,
         width: 100 + '%',
-        height: 120 + '%',
-        paddingBottom: 20
+        textAlign: 'center'
     },
     leaveButtonHelpPage: {
         width: 235,

@@ -90,9 +90,8 @@ export default StyleSheet.create({
 
     // Help section
     viewHelpPage: {
-        alignItems: 'center',
-        backgroundColor: 'white',
         marginTop: -20,
+        backgroundColor: 'white',
         width: 100 + '%',
     },
     leaveButtonHelpPage: {
