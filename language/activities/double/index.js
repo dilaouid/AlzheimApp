@@ -118,7 +118,7 @@ export const lang = {
                 boldText: ["pattern of several pairs of cards face up", "Start", "turn over the pairs one after the other", "6 pairs"],
             });
         },
-        ScoreHead: "Le score",
+        ScoreHead: "The score",
         ScoreHelp: () => {
             return applyBoldStyle({
                 sentence: `Each time a pattern is completed (i.e., all the cards have been turned over), {0} and move on to the next pattern, {1}.\n\nThe points can be used to get a nice score, but they can also be used to recreate a new pattern if you've completely forgotten about it. Each time you re-create a pattern, {2}. And you can't recreate a pattern if you don't have {3} left.`,
