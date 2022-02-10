@@ -19,8 +19,8 @@ export default function Tabs(props) {
     return (
         <Tab.Navigator
             screenOptions={{
-                tabBarStyle: [{ height: 60, color: '#5bc0de' }],
-                tabBarLabelStyle: [{ color: '#5bc0de', marginBottom: 10 }],
+                tabBarStyle: [{ height: 60, color: '#3B8EFF' }],
+                tabBarLabelStyle: [{ color: '#3B8EFF', marginBottom: 10 }],
             }}
         >
             <Tab.Screen
@@ -30,7 +30,7 @@ export default function Tabs(props) {
                         return (
                             <Icon
                                 type={'ionicon'}
-                                color={'#5bc0de'}
+                                color={'#3B8EFF'}
                                 name={`game-controller${
                                     focused ? '' : '-outline'
                                 }`}
@@ -51,7 +51,7 @@ export default function Tabs(props) {
                         return (
                             <Icon
                                 type={'ionicon'}
-                                color={'#5bc0de'}
+                                color={'#3B8EFF'}
                                 name={`star${focused ? '' : '-outline'}`}
                             />
                         );
@@ -68,7 +68,7 @@ export default function Tabs(props) {
                         return (
                             <Icon
                                 type={'ionicon'}
-                                color={'#5bc0de'}
+                                color={'#3B8EFF'}
                                 name={`settings${focused ? '' : '-outline'}`}
                             />
                         );

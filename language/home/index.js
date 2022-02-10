@@ -21,7 +21,7 @@ export const lang = {
         Import: "Importer un profil",
         Introduction: "Introduction",
         Source: "Accès au code source",
-        License: "Code sous license GPL v3.\nCréation originale par Diyaeddine LAOUID.",
+        License: "Code sous licence GPL v3.\nCréation originale par Diyaeddine LAOUID.",
         Language: "Changer la langue"
     },
     en: {
