@@ -12,7 +12,7 @@ export default StyleSheet.create({
     slideOdd: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#C8EEFF',
+        backgroundColor: '#355c7d',
     },
     title: {
         color: 'black',
@@ -24,6 +24,21 @@ export default StyleSheet.create({
     },
     text: {
         color: 'black',
+        fontSize: 15,
+        flex: 2,
+        marginTop: -40,
+        textAlign: 'center',
+    },
+    titleOdd: {
+        color: 'white',
+        flex: 1,
+        fontSize: 22,
+        fontWeight: 'bold',
+        marginTop: -50,
+        textAlign: 'center',
+    },
+    textOdd: {
+        color: 'white',
         fontSize: 15,
         flex: 2,
         marginTop: -40,
@@ -44,13 +59,14 @@ export default StyleSheet.create({
         paddingBottom: 15,
         marginLeft: 30,
         marginRight: 30,
-        backgroundColor: '#00BCD4',
+        backgroundColor: '#6396c0',
         borderRadius: 10,
-        borderWidth: 1,
-        borderColor: '#fff',
+        borderColor: 'white',
+        borderWidth: 1
     },
     buttonText: {
-        color: '#fff',
+        color: 'white',
         textAlign: 'center',
+        fontWeight: 'bold'
     },
 });

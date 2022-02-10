@@ -82,10 +82,10 @@ export default function Tutorial(props) {
                         resizeMode="contain"
                         style={styles.image}
                     />
-                    <Text style={styles.title}>
+                    <Text style={styles.titleOdd}>
                         {TutorialLang[props.lang].Step2Header}
                     </Text>
-                    <Text style={styles.text}>
+                    <Text style={styles.textOdd}>
                         {TutorialLang[props.lang].Step2Content}
                     </Text>
                 </View>
@@ -110,10 +110,10 @@ export default function Tutorial(props) {
                         resizeMode="contain"
                         style={styles.image}
                     />
-                    <Text style={styles.title}>
+                    <Text style={styles.titleOdd}>
                         {TutorialLang[props.lang].Step4Header}
                     </Text>
-                    <Text style={styles.text}>
+                    <Text style={styles.textOdd}>
                         {TutorialLang[props.lang].Step4Content()}
                     </Text>
                 </View>
@@ -138,7 +138,7 @@ export default function Tutorial(props) {
                         resizeMode="contain"
                         style={styles.image}
                     />
-                    <Text style={styles.title}>
+                    <Text style={styles.titleOdd}>
                         {TutorialLang[props.lang].LastStepHeader}
                     </Text>
                     <View style={styles.buttonContainer}>
