@@ -65,6 +65,7 @@ export default function App() {
                                     hasSeenTutorial={config?.hasSeenTutorial}
                                     lang={lang}
                                     username={config?.username}
+                                    setLang={setLang}
                                 />
                             }
                         />
