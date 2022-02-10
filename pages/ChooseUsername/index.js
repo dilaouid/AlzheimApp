@@ -13,23 +13,42 @@ import { useNavigate } from 'react-router-native';
 import { lang as TutorialLang } from '../../language/tutorial';
 import { lang as InterfaceLang } from '../../language/interface';
 import { setUsername, SawTutorial } from '../../data/configApi';
+import * as Config from '../../data/configApi';
+
 import Home from '../Home';
 
 import ChooseUsernameGIF from '../../assets/img/username/chooseusername.gif';
 
 import styles from './styles';
-import SelectionMenu from '../SelectionMenu';
 
 export default function ChooseUsername(props) {
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [loadPage, setLoadPage] = useState(true);
     const [confirmed, setConfirmed] = useState(false);
+    const [redirect, setRedirect] = useState(false);
+    const [username, setUsername] = useState();
+
+    useEffect(() => {
+        Config.getUsername()
+            .then((res) => {
+                if (res[0]?.username) {
+                    setUsername(res[0].username);
+                    setRedirect(true);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
+
     const navigate = useNavigate();
 
     useEffect(() => {
         if (props.username?.length > 0)
-            navigate('/home');
+            navigate('/home', {
+                state: { username: props.username }
+            });
         setLoadPage(false);
         const backAction = () => {
             return SawTutorial(false)
@@ -65,6 +84,9 @@ export default function ChooseUsername(props) {
             setIsLoading(false);
         }
     };
+
+    if (redirect)
+        return <Home lang={props.lang} username={username} />
 
     if (loadPage)
         return <View style={styles.container}></View>

@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
-        height: 120 + '%',
+        height: 100 + '%',
         backgroundColor: '#355c7d',
         alignItems: 'center'
     },
@@ -33,7 +33,7 @@ export default StyleSheet.create({
         marginBottom: 20
     },
     copyleft: {
-        marginTop: 60,
+        marginTop: 10 + '%',
         fontSize: 11,
         color: 'white',
         textAlign: 'center',

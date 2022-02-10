@@ -8,7 +8,7 @@ import {
 
 import { Button, Icon, Text } from 'react-native-elements';
 
-import { useNavigate, useLocation } from 'react-router-native';
+import { useNavigate } from 'react-router-native';
 
 import { lang as HomeLang } from '../../language/home';
 import AlzheimApp from '../../assets/img/alzheimapp_logo.png';
@@ -16,7 +16,6 @@ import AlzheimApp from '../../assets/img/alzheimapp_logo.png';
 import styles from './styles';
 
 export default function Home(props) { 
-
     const navigate = useNavigate();
 
     return (
@@ -83,7 +82,7 @@ export default function Home(props) {
                     title={HomeLang[props.lang].Introduction}
                     buttonStyle={styles.button}
                     titleStyle={{ color: '#355c7d' }}
-                    containerStyle={[styles.buttonContainer, {marginBottom: 80}]}
+                    containerStyle={[styles.buttonContainer, {marginBottom: 20}]}
                     iconContainerStyle={{ marginRight: 50 }}
                     icon={
                         <Icon

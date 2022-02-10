@@ -4,7 +4,7 @@ import { NativeRouter, Route, Routes } from 'react-router-native';
 import { View } from 'react-native';
 
 import * as Localization from 'expo-localization';
-import { getConfig } from './data/configApi';
+import { getConfig, reset } from './data/configApi';
 import { lang as LangInterface } from './language/interface';
 
 import ChooseUsername from './pages/ChooseUsername';
@@ -22,6 +22,7 @@ export default function App() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        // reset();
         loadDataCallback();
     }, [loadDataCallback]);
 

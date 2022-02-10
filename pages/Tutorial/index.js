@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 
 import { Link } from 'react-router-native';
@@ -19,22 +19,9 @@ import Swiper from 'react-native-swiper/src';
 
 import styles from './styles';
 import * as Config from '../../data/configApi';
-import SelectionMenu from '../SelectionMenu';
 
 export default function Tutorial(props) {
     const LottieSource = require('../../assets/lottie/swipe-right.json');
-
-    useEffect(() => {
-        Config.getUsername()
-            .then((res) => {
-                if (res[0]?.username) {
-                    return <SelectionMenu username={res} lang={props.lang} />;
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
 
     return (
         <>
