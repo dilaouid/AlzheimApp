@@ -17,9 +17,19 @@ const applyBoldStyle = (text) => {
 
 export const lang = {
     fr: {
-        
+        Select: "Sélection des personnes",
+        Import: "Importer un profil",
+        Introduction: "Introduction",
+        Source: "Accès au code source",
+        License: "Code sous license GPL v3.\nCréation originale par Diyaeddine LAOUID.",
+        Language: "Changer la langue"
     },
     en: {
-
+        Select: "Select a person",
+        Import: "Import a profil",
+        Introduction: "Introduction",
+        Source: "Source code on GitHub",
+        License: "Licensed GPL v3 source code.\nOriginally created by Diyaeddine LAOUID.",
+        Language: "Change language"
     },
 };

@@ -14,6 +14,7 @@ import HomeOrTutorial from './components/utils/HomeOrTutorial';
 import SelectionMenu from './pages/SelectionMenu';
 import Activities from './pages/Activities';
 import Home from './pages/Home';
+import Tutorial from './pages/Tutorial';
 
 export default function App() {
     const [config, setConfig] = useState();
@@ -69,13 +70,22 @@ export default function App() {
                         />
                         <Route
                             exact
+                            path="/tutorial"
+                            element={
+                                <Tutorial
+                                    lang={lang}
+                                />
+                            }
+                        />
+                        <Route
+                            exact
                             path="/home"
-                            element={<Home lang={lang} />}
+                            element={<Home lang={lang} username={config?.username} />}
                         />
                         <Route
                             exact
                             path="/username"
-                            element={<ChooseUsername lang={lang} />}
+                            element={<ChooseUsername lang={lang} username={config?.username} />}
                         />
                         <Route
                             exact

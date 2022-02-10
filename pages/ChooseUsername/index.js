@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-native';
 import { lang as TutorialLang } from '../../language/tutorial';
 import { lang as InterfaceLang } from '../../language/interface';
 import { setUsername, SawTutorial } from '../../data/configApi';
+import Home from '../Home';
 
 import ChooseUsernameGIF from '../../assets/img/username/chooseusername.gif';
 
@@ -22,10 +23,14 @@ import SelectionMenu from '../SelectionMenu';
 export default function ChooseUsername(props) {
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [loadPage, setLoadPage] = useState(true);
     const [confirmed, setConfirmed] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
+        if (props.username?.length > 0)
+            navigate('/home');
+        setLoadPage(false);
         const backAction = () => {
             return SawTutorial(false)
                 .then(() => {
@@ -60,6 +65,9 @@ export default function ChooseUsername(props) {
             setIsLoading(false);
         }
     };
+
+    if (loadPage)
+        return <View style={styles.container}></View>
 
     if (!confirmed) {
         return (
@@ -112,6 +120,6 @@ export default function ChooseUsername(props) {
             </View>
         );
     } else {
-        return <SelectionMenu username={input} lang={props.lang} />;
+        return <Home lang={props.lang} />;
     }
 }
