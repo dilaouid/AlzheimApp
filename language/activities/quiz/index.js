@@ -174,7 +174,7 @@ export const lang = {
                 boldText: [success, fail]
             }, 'red', 1)
         },
-        FailQuizTitle: "Une autre fois ! ...",
+        FailQuizTitle: "Better next time! ...",
         FailQuiz: (fail, success) => {
             return applyBoldStyle({
                 sentence: "It's alright... You failed this quiz!... Your score is for {0} good answer(s) for {1} mistake!",
