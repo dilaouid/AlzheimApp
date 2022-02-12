@@ -1,31 +1,34 @@
 {
-  "name": "AlzheimApp",
-  "description": "",
-  "slug": "AlzheimApp",
-  "version": "1.0.0",
-  "assetBundlePatterns": [
-    "**/*"
-  ],
-  "plugins": [
-    [
-      "expo-image-picker",
-      {
-        "photosPermission": "L'application a besoin d'importer certaines de vos images pour la création de vos quiz et/ou de la personnalisation d'un profil"
-      }
-    ]
-  ],
-  "android": {
-    "package": "org.alzheimApp"
-  },
-  "ios": {
-    "bundleIdentifier": "org.alzheimApp"
-  },
-  "splash": {
-    "image": "./assets/img/alzheimapp_logo.png",
-    "backgroundColor": "#355c7d",
-    "resizeMode": "contain"
-  },
-  "androidNavigationBar": {
-    "visible": "immersive"
+  "expo": {
+    "name": "AlzheimApp",
+    "description": "",
+    "slug": "AlzheimApp",
+    "version": "1.0.0",
+    "icon": "AppIcon.png",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "L'application a besoin d'importer certaines de vos images pour la création de vos quiz et/ou de la personnalisation d'un profil"
+        }
+      ]
+    ],
+    "android": {
+      "package": "org.alzheimApp"
+    },
+    "ios": {
+      "bundleIdentifier": "org.alzheimApp"
+    },
+    "splash": {
+      "image": "./assets/img/alzheimapp_logo.png",
+      "backgroundColor": "#355c7d",
+      "resizeMode": "contain"
+    },
+    "androidNavigationBar": {
+      "visible": "immersive"
+    }
   }
 }
