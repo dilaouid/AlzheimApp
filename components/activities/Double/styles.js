@@ -5,7 +5,7 @@ export default StyleSheet.create({
     view: {
         height: hp('100%'),
         paddingBottom: 40,
-        flex: 1,
+        flex: 1
     },
     logo: {
         width: 120,
@@ -31,22 +31,24 @@ export default StyleSheet.create({
         marginBottom: 20
     },
     RectoCard: {
-        width: 80,
-        height: 80,
+        width: wp('21%'),
+        height: 0,
         backgroundColor: '#C3C3CF',
         borderRadius: 20,
         borderColor: '#858593',
         borderWidth: 1,
+        aspectRatio: 1,
         opacity: .8,
         marginHorizontal: 5,
         marginVertical: 5
     },
     PlayingCard: {
-        width: 80,
-        height: 80,
+        width: wp('21%'),
+        height: 0,
         borderRadius: 20,
+        aspectRatio: 1,
         borderColor: '#68FF5C',
-        borderWidth: 5,
+        borderWidth: 1,
         opacity: .8,
         marginHorizontal: 5,
         marginVertical: 5

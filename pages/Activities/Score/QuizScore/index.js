@@ -44,7 +44,9 @@ export default function QuizScore(props) {
                             title={ActivitiesLang[props.lang].Success}
                             valueSuffix={'%'}
                             titleStyle={{marginBottom: 10}}
-
+                            initialValue={0}
+                            
+                            delay={500}
                             activeStrokeColor={'#2089dc'}
                             radius={65}
                             inActiveStrokeColor={'#9b59b6'}

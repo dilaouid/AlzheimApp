@@ -245,7 +245,7 @@ export default function Play(props) {
                     }
                     onPress={() => props.setSoundEnabled(prev => !prev) }
                 />
-            </View>
+                </View>
             {confetti ? (
                     <ConfettiCannon
                         fadeOut={true}
