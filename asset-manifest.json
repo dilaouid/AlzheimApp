@@ -4,8 +4,8 @@
     "app.js.map": "/AlzheimApp/static/js/app.efb8b2b9.chunk.js.map",
     "runtime~app.js": "/AlzheimApp/static/js/runtime~app.1747fd2b.js",
     "runtime~app.js.map": "/AlzheimApp/static/js/runtime~app.1747fd2b.js.map",
-    "static/js/2.acf99acd.chunk.js": "/AlzheimApp/static/js/2.acf99acd.chunk.js",
-    "static/js/2.acf99acd.chunk.js.map": "/AlzheimApp/static/js/2.acf99acd.chunk.js.map",
+    "static/js/2.b503c344.chunk.js": "/AlzheimApp/static/js/2.b503c344.chunk.js",
+    "static/js/2.b503c344.chunk.js.map": "/AlzheimApp/static/js/2.b503c344.chunk.js.map",
     "fonts/AntDesign.ttf": "/AlzheimApp/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/AlzheimApp/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/AlzheimApp/./fonts/Feather.ttf",
@@ -18,10 +18,13 @@
     "fonts/MaterialCommunityIcons.ttf": "/AlzheimApp/./fonts/MaterialCommunityIcons.ttf",
     "fonts/MaterialIcons.ttf": "/AlzheimApp/./fonts/MaterialIcons.ttf",
     "fonts/SimpleLineIcons.ttf": "/AlzheimApp/./fonts/SimpleLineIcons.ttf",
+    "favicon-16.png": "/AlzheimApp/favicon-16.png",
+    "favicon-32.png": "/AlzheimApp/favicon-32.png",
+    "favicon.ico": "/AlzheimApp/favicon.ico",
     "index.html": "/AlzheimApp/index.html",
     "manifest.json": "/AlzheimApp/manifest.json",
     "serve.json": "/AlzheimApp/serve.json",
-    "static/js/2.acf99acd.chunk.js.LICENSE.txt": "/AlzheimApp/static/js/2.acf99acd.chunk.js.LICENSE.txt",
+    "static/js/2.b503c344.chunk.js.LICENSE.txt": "/AlzheimApp/static/js/2.b503c344.chunk.js.LICENSE.txt",
     "static/media/1.png": "/AlzheimApp/static/media/1.ede08671.png",
     "static/media/2.png": "/AlzheimApp/static/media/2.b87932e3.png",
     "static/media/3.png": "/AlzheimApp/static/media/3.3ed4e762.png",
@@ -59,7 +62,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.1747fd2b.js",
-    "static/js/2.acf99acd.chunk.js",
+    "static/js/2.b503c344.chunk.js",
     "static/js/app.efb8b2b9.chunk.js"
   ]
 }
