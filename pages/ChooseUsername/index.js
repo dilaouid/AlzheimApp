@@ -32,7 +32,6 @@ export default function ChooseUsername(props) {
         getUsername()
             .then((res) => {
                 if (res[0]?.username) {
-                    console.log(res);
                     setUsername(res[0].username);
                     setRedirect(true);
                 }
@@ -40,16 +39,12 @@ export default function ChooseUsername(props) {
             .catch((err) => {
                 console.log(err);
             });
+        setLoadPage(false);
     }, []);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (props.username?.length > 0)
-            navigate('/home', {
-                state: { username: props.username }
-            });
-        setLoadPage(false);
         const backAction = () => {
             return SawTutorial(false)
                 .then(() => {
