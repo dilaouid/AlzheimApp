@@ -36,7 +36,10 @@ export default function Double(props) {
 
         const { sound } = await Audio.Sound.createAsync(
             // Ambiant music produced by MCOCHET - check his soundcloud here: https://soundcloud.com/mcochet
-            require(`../../../assets/sound/double/ambiant.mp3`)
+            require(`../../../assets/sound/double/ambiant.mp3`),
+            {
+                isLooping: true
+            }
         );
         setAmbiant(sound);
         sound.playAsync();
