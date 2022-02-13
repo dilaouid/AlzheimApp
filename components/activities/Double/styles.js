@@ -85,6 +85,7 @@ export default StyleSheet.create({
         textAlign: 'center',
         paddingHorizontal: 30,
         borderRadius: 10,
+        marginHorizontal: 5
     },
     overlay: {
         borderRadius: 20,

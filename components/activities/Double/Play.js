@@ -126,19 +126,62 @@ export default function Play(props) {
     };
 
     const printButton = () => {
-        if (show) {
-            return (
+        return (
             <View style={styles.buttonViewPlay}>
-                <Button title={DoubleLang[props.lang].Start} onPress={() => setShow(false) } buttonStyle={styles.playButtons} />
-            <Button title={DoubleLang[props.lang].Leave} onPress={() => props.giveUp() } buttonStyle={[styles.playButtons, , {backgroundColor: 'red', marginLeft: 10}]} />
+                <Button title={show ? DoubleLang[props.lang].Start : DoubleLang[props.lang].Reinit} onPress={() => { if (show) setShow(false); else newModel(); }} buttonStyle={[styles.playButtons, {backgroundColor: show ? '#208bdc' : 'green'}]} icon={
+                    <Icon
+                    name={show ? "play" : ''}
+                    size={18}
+                    color="white"
+                    type="ionicon"
+                />
+                } iconRight={true} disabled={!show && props.score === 0 || tries <= 1} />
+                <FAB
+                    color='#2089dc'
+                    size="small"
+                    icon={
+                        {
+                            name: props.ambiantEnabled ? 'volume-high-outline' : 'volume-mute-outline',
+                            type: 'ionicon',
+                            color:'white',
+                            size: 15,
+                            style: {marginTop: 4}
+                        }
+                    }
+                    onPress={() => props.ambiantSoundPlay() }
+                    style={{marginHorizontal: 5}}
+                />
+                <FAB
+                    color='#2089dc'
+                    size="small"
+                    icon={
+                        {
+                            name: props.soundEnabled ? 'sound' : 'sound-mute',
+                            type: 'entypo',
+                            color:'white',
+                            size: 15,
+                            style: {marginTop: 4}
+                        }
+                    }
+                    onPress={() => props.setSoundEnabled(prev => !prev) }
+                    style={{marginHorizontal: 5}}
+                />
+                <FAB
+                    color='red'
+                    size="small"
+                    icon={
+                        {
+                            name: 'caret-back',
+                            type: 'ionicon',
+                            color:'white',
+                            size: 15,
+                            style: {marginTop: 4}
+                        }
+                    }
+                    onPress={() => props.giveUp() }
+                    style={{marginHorizontal: 5}}
+                />
             </View>);
-        } else {
-            return (
-            <View style={styles.buttonViewPlay}>
-                <Button title={DoubleLang[props.lang].Reinit} buttonStyle={[styles.playButtons, {backgroundColor: 'green'}]} onPress={() => newModel() } disabled={props.score === 0 || tries <= 1} />
-                <Button title={DoubleLang[props.lang].GiveUp} buttonStyle={[styles.playButtons, {backgroundColor: 'red', marginLeft: 10}] } onPress={() => props.giveUp() } />
-            </View>);
-        }
     };
     
     const ReturnCard = (key) => {
@@ -206,46 +249,6 @@ export default function Play(props) {
 
     return (
         <>
-            <View>
-                <FAB
-                    color='#2089dc'
-                    style={{
-                        position: 'absolute',
-                        marginLeft: 130,
-                        marginTop: 390
-                    }}
-                    size="small"
-                    icon={
-                        {
-                            name: props.ambiantEnabled ? 'volume-high-outline' : 'volume-mute-outline',
-                            type: 'ionicon',
-                            color:'white',
-                            size: 15,
-                            style: {marginTop: 4}
-                        }
-                    }
-                    onPress={() => props.ambiantSoundPlay() }
-                />
-                <FAB
-                    color='#2089dc'
-                    style={{
-                        position: 'absolute',
-                        marginLeft: 85,
-                        marginTop: 390
-                    }}
-                    size="small"
-                    icon={
-                        {
-                            name: props.soundEnabled ? 'sound' : 'sound-mute',
-                            type: 'entypo',
-                            color:'white',
-                            size: 15,
-                            style: {marginTop: 4}
-                        }
-                    }
-                    onPress={() => props.setSoundEnabled(prev => !prev) }
-                />
-                </View>
             {confetti ? (
                     <ConfettiCannon
                         fadeOut={true}

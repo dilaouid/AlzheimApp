@@ -32,7 +32,7 @@ export const lang = {
                 boldText: [score],
             });
         },
-        Start: "Commencer",
+        Start: "Commencer ",
         GiveUp: "Abandonner",
         Reinit: "Nouveau modèle",
         TitleGiveUp: "Abandonner la partie",
@@ -87,7 +87,7 @@ export const lang = {
                 boldText: [score],
             });
         },
-        Start: "Start",
+        Start: "Start ",
         GiveUp: "Give up",
         Reinit: "New model",
         TitleGiveUp: "Give up the game",
