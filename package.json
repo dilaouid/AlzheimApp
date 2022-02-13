@@ -40,7 +40,7 @@
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "@react-navigation/stack": "^6.0.11",
-    "expo-document-picker": "^10.1.0",
+    "expo-document-picker": "^10.1.3",
     "lottie-react-native": "5.0.1",
     "modal-react-native-web": "^0.2.0",
     "react": "17.0.1",
