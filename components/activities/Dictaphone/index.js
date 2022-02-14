@@ -68,7 +68,12 @@ export default function Dictaphone(props) {
 
     async function startRecording() {
         try {
-            await Audio.requestPermissionsAsync();
+            await Audio.requestPermissionsAsync().then( () => {
+                console.log('[+] Permission granted!');
+            })
+            .catch(e => {
+                console.error(e);
+            });            
             await Audio.setAudioModeAsync({
                 allowsRecordingIOS: true,
                 playsInSilentModeIOS: true,
@@ -143,7 +148,7 @@ export default function Dictaphone(props) {
     };
 
     const goBack = async () => {
-        await recording?.stopAndUnloadAsync();
+        if (recording) await recording?.stopAndUnloadAsync();
         stopPlayingSounds();
         props.setPage(0);
     }
@@ -151,7 +156,7 @@ export default function Dictaphone(props) {
     // Unload all sounds before the backhandler
     const stopPlayingSounds = () => {
         playingSounds.map((el, i) => {
-            el.unloadAsync();
+            if (el) el?.unloadAsync();
         });
     };
 
