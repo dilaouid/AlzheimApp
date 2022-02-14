@@ -43,6 +43,7 @@ export default function SelectionMenu(props) {
     const LottieSource = require('../../assets/img/activities/brain.json');
     const username = state?.username || props.username;
     const lang = state?.lang || props.lang;
+    const setLang = state?.setLang || props.setLang;
 
     useEffect(() => {
         Audio.setIsEnabledAsync(false);
@@ -120,7 +121,7 @@ export default function SelectionMenu(props) {
                     }
                 }
                 onPress={() => navigate('/home', {
-                    state: { username: username }
+                    state: { username: username, setLang: setLang }
                 }) }
             />
             <View style={styles.topBanner}>

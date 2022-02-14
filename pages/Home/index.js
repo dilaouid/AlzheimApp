@@ -19,7 +19,7 @@ export default function Home(props) {
     const navigate = useNavigate();
     const state = useLocation()?.state;
 
-    const username = props.username || state.username;
+    const username = props.username || state?.username;
 
     return (
         <View style={styles.container}>
@@ -43,7 +43,7 @@ export default function Home(props) {
                     }
                     raised
                     onPress={() => navigate('/selection', {
-                        state: { username: username, lang: props.lang }
+                        state: { username: username, lang: props.lang, setLang: props.setLang }
                     })}
                 />
                 <Button

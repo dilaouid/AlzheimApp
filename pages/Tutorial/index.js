@@ -136,7 +136,10 @@ export default function Tutorial(props) {
                             onPress={(e) => {
                                 Config.SawTutorial(true);
                             }}
-                            activeOpacity={0.5}
+                            activeOpacity={0.5}s
+                            state={
+                                { setLang: props.setLang }
+                            }
                         >
                             <Text style={styles.buttonText}>
                                 {' '}

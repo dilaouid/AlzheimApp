@@ -87,7 +87,7 @@ export default function App() {
                         <Route
                             exact
                             path="/username"
-                            element={<ChooseUsername lang={lang} username={config?.username} />}
+                            element={<ChooseUsername lang={lang} username={config?.username} setLang={setLang} />}
                         />
                         <Route
                             exact

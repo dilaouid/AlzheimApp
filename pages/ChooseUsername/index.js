@@ -8,7 +8,7 @@ import {
     Image,
     BackHandler,
 } from 'react-native';
-import { useNavigate } from 'react-router-native';
+import { useNavigate, useLocation } from 'react-router-native';
 
 import { lang as TutorialLang } from '../../language/tutorial';
 import { lang as InterfaceLang } from '../../language/interface';
@@ -35,11 +35,12 @@ export default function ChooseUsername(props) {
                     setUsername(res[0].username);
                     setRedirect(true);
                 }
+                setLoadPage(false);
             })
             .catch((err) => {
                 console.log(err);
+                setLoadPage(false);
             });
-        setLoadPage(false);
     }, []);
 
     const navigate = useNavigate();
@@ -82,7 +83,7 @@ export default function ChooseUsername(props) {
     };
 
     if (redirect)
-        return <Home lang={props.lang} username={username} />
+        return <Home lang={props.lang} username={username} setLang={props.setLang} />
 
     if (loadPage)
         return <View style={styles.container}></View>
@@ -138,6 +139,6 @@ export default function ChooseUsername(props) {
             </View>
         );
     } else {
-        return <Home lang={props.lang} username={username} />;
+        return <Home lang={props.lang} username={username} setLang={props.setLang} />;
     }
 }
