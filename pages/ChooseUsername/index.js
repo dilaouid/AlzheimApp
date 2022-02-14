@@ -70,6 +70,7 @@ export default function ChooseUsername(props) {
                 .then((response) => {
                     setIsLoading(false);
                     setInput(username);
+                    setUsername(username);
                     setConfirmed(true);
                 })
                 .catch((err) => {
@@ -137,6 +138,6 @@ export default function ChooseUsername(props) {
             </View>
         );
     } else {
-        return <Home lang={props.lang} />;
+        return <Home lang={props.lang} username={username} />;
     }
 }

@@ -119,7 +119,9 @@ export default function SelectionMenu(props) {
                         style: {marginTop: 4}
                     }
                 }
-                onPress={() => navigate('/home') }
+                onPress={() => navigate('/home', {
+                    state: { username: username }
+                }) }
             />
             <View style={styles.topBanner}>
             <View style={styles.wrapper}>

@@ -8,7 +8,7 @@ import {
 
 import { Button, Icon, Text } from 'react-native-elements';
 
-import { useNavigate } from 'react-router-native';
+import { useNavigate, useLocation } from 'react-router-native';
 
 import { lang as HomeLang } from '../../language/home';
 import AlzheimApp from '../../assets/img/alzheimapp_logo.png';
@@ -17,6 +17,9 @@ import styles from './styles';
 
 export default function Home(props) { 
     const navigate = useNavigate();
+    const state = useLocation()?.state;
+
+    const username = props.username || state.username;
 
     return (
         <View style={styles.container}>
@@ -40,7 +43,7 @@ export default function Home(props) {
                     }
                     raised
                     onPress={() => navigate('/selection', {
-                        state: { username: props.username, lang: props.lang }
+                        state: { username: username, lang: props.lang }
                     })}
                 />
                 <Button
