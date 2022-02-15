@@ -44,6 +44,7 @@ export const lang = {
         Success: 'réussite',
         Global: "Vue d'ensemble",
         BestScoreByDay: 'Meilleur score du jour',
+        ExportedProfile: 'Profil exporté',
 
         ReturnList: 'Retour',
     },
@@ -75,6 +76,7 @@ export const lang = {
         Success: 'success',
         Global: "Global view",
         BestScoreByDay: 'Best score by day',
+        ExportedProfile: 'Profile exported',
 
         ReturnList: 'Return',
     },

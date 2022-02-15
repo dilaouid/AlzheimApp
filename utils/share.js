@@ -57,6 +57,15 @@ const formatLog = async (log) => {
     return (log);
 };
 
+export const writeDataFile = async (fullname, content) => {
+    let fileUri = FileSystem.documentDirectory + `${fullname}.alz`;
+    return await FileSystem.writeAsStringAsync(fileUri, content).catch(err => {
+        console.log(err);
+    }).then( (e) => {
+        return (fileUri);
+    });
+};
+
 export const exportPerson = async (personId, key) => {
     const personFind = await personAPI.findAsync({ _id: personId });
     if (!personFind) return ('PERSON_NOT_FOUND');
@@ -76,7 +85,7 @@ export const exportPerson = async (personId, key) => {
     const dictaphone = await dictaphoneAPI.findAsync({ personId: personId });
     const dictaphoneData = dictaphone ? await formatLog(dictaphone) : []; // converting files into base64 here
 
-    const result = {
+    const result = JSON.stringify({
         _id: personData._id,
         description: personData.description,
         fullname: personData.fullname,
@@ -87,7 +96,7 @@ export const exportPerson = async (personId, key) => {
             simon: simonData,
             dictaphone: dictaphoneData
         }
-    };
-    if (key) return dilacrypt.encrypt(JSON.stringify(result), key);
-    return (result);
+    });
+    const uri = await writeDataFile(personData.fullname, key ? dilacrypt.encrypt(result, key) : result);
+    return (uri);
 };

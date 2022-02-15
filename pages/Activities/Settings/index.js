@@ -9,9 +9,15 @@ import { useNavigate } from 'react-router-native';
 import { lang as ActivitiesLang } from '../../../language/activities';
 import { lang as InterfaceLang } from '../../../language/interface';
 import * as Person from '../../../data/personApi';
+import { exportPerson } from '../../../utils/share';
+import * as Sharing from 'expo-sharing';
+
+import * as FileSystem from 'expo-file-system';
 
 import styles from './styles';
 import Form from '../../../components/selection/PersonCreation/Form';
+import { ActivityIndicator } from 'react-native';
+
 
 export default function Settings(props) {
     const [edit, setEdit] = useState(false);
@@ -20,6 +26,7 @@ export default function Settings(props) {
     const [fullname, setFullname] = useState(props.person.fullname);
     const [uriPreview, setUriPreview] = useState(props.person.picture);
     const [description, setDescription] = useState(props.person.description);
+    const [load, setLoad] = useState(false);
 
     const navigate = useNavigate();
 
@@ -95,7 +102,7 @@ export default function Settings(props) {
                     />
                     <Button
                         icon={{
-                            name: 'bluetooth',
+                            name: load ? '' : 'share-alt',
                             type: 'font-awesome',
                             size: 15,
                             color: 'white',
@@ -103,7 +110,19 @@ export default function Settings(props) {
                         iconContainerStyle={{ marginRight: 10 }}
                         buttonStyle={styles.buttonStyle}
                         containerStyle={styles.containerStyle}
-                        title={ActivitiesLang[props.lang]?.ShareProfile}
+                        title={load ? <ActivityIndicator color={'white'} size={'small'} /> : ActivitiesLang[props.lang]?.ShareProfile}
+                        onPress={async () => {
+                            setLoad(true)
+                            console.log('[~] Pressing export button');
+                            console.log('[+] Exporting person...');
+                            const uri = await exportPerson(props.personId, null);
+                            console.log('[+] Exported person! uri is: ' + uri);
+                            Sharing.shareAsync(uri).then( async (e) => {
+                                await FileSystem.deleteAsync(uri);
+                                setLoad(false);
+                            });
+                        }}
+                        disabled={load}
                     />
                     <Button
                         icon={{
