@@ -38,5 +38,12 @@ export default StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         fontStyle: 'italic'
+    },
+    ErrorMessage: {
+        color: 'red',
+        fontWeight: 'bold',
+        textAlign:'center',
+        marginTop: 20,
+        marginHorizontal: 40
     }
 });
