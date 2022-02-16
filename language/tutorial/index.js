@@ -37,8 +37,8 @@ export const lang = {
         Step3Content: () => {
             return applyBoldStyle({
                 sentence:
-                    "Vous êtes une structure hospitalière ou une famille, et désirez partager le suivi d'une personne ? C'est possible, le partage est réalisable entre deux appareils par {0} !",
-                boldText: ['Bluetooth'],
+                    "Vous êtes une structure hospitalière ou une famille, et désirez partager le suivi d'une personne ? Il est possible {0} la donnée d'une personne et {1} dans un autre appareil !",
+                boldText: ["d'exporter", "d'importer"],
             });
         },
 
@@ -91,8 +91,8 @@ export const lang = {
         Step3Content: () => {
             return applyBoldStyle({
                 sentence:
-                    "Your are a hospital or a family, and wants to share the follow-up of a specific person? It's possible, you can share data between two devices with {0} technology!",
-                boldText: ['Bluetooth'],
+                    "Your are a hospital or a family, and wants to share the follow-up of a specific person? It's possible, you can {0} a person's data and {1} it in another device!",
+                boldText: ['export', 'import'],
             });
         },
 
