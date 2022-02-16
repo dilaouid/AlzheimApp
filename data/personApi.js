@@ -4,6 +4,7 @@ import * as FileSystem from 'expo-file-system';
 import { db as DictaphoneDB } from './dictaphoneApi';
 import { db as SimonDB } from './simonApi';
 import { db as QuizDB } from './quizApi'
+import { db as DoubleDB } from './doubleApi';
 
 import { pushErrors } from '../utils/helpers';
 
@@ -74,6 +75,8 @@ export function getById(id) {
 export async function deleteById(id) {
     await SimonDB.removeAsync({ personId: id });
     await DictaphoneDB.removeAsync({ personId: id });
+    await DoubleDB.removeAsync({ personId: id });
+    await QuizDB.removeAsync({ personId: id });
     await FileSystem.deleteAsync(`${FileSystem.documentDirectory}persons/${id}`).catch(err => {
         console.error('folder delete err:',err);
     });
