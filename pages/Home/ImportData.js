@@ -143,7 +143,7 @@ export default function ImportData(props) {
                 return <Text key={i} style={ stepStyle(e) }> { HomeLang[props.lang]['Step' + e] } { printActivity(e) }</Text>
             }) }
             { error ? <Text style={styles.ErrorMessage}>{ error }</Text> :  <></> }
-            <Button containerStyle={{marginTop: 150}} title={'Go back'} onPress={() => props.setImportFile(null)}/>
+            <Button disabled={!error && step < 14} containerStyle={{marginTop: 150, borderRadius: 15}} title={HomeLang[props.lang].GoBack} onPress={() => props.setImportFile(null)}/>
         </ScrollView>
     );
 }
