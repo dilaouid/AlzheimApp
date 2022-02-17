@@ -44,12 +44,12 @@ export default function Activities(lang, personId) {
                 );
             },
         },
-        {
+        /* {
             name: ActivitiesLang[lang]?.SuggestedActivities,
             icon: 'color-palette-outline',
             returnComponent: (lang, setPage) => {
                 return null;
             },
-        },
+        }, */
     ];
 }
