@@ -33,9 +33,12 @@ export default function Menu(props) {
                     />
                 }
                 raised
-                onPress={() => navigate('/selection', {
-                    state: { username: props.username, lang: props.lang, setLang: props.setLang }
-                })}
+                onPress={async () => {
+                    await props.ambiant.unloadAsync()
+                    navigate('/selection', {
+                        state: { username: props.username, lang: props.lang, setLang: props.setLang }
+                    })
+                }}
             />
             <Button
                 title={HomeLang[props.lang].Import}
@@ -93,7 +96,10 @@ export default function Menu(props) {
                     />
                 }
                 raised
-                onPress={() => navigate('/tutorial') }
+                onPress={async () => {
+                    await props.ambiant.unloadAsync()
+                    navigate('/tutorial');
+                }}
             />
             <Button
                 title={HomeLang[props.lang].Source}
