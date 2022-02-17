@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/AlzheimApp/static/js/app.2d97684f.chunk.js",
-    "app.js.map": "/AlzheimApp/static/js/app.2d97684f.chunk.js.map",
+    "app.js": "/AlzheimApp/static/js/app.2f39cfd2.chunk.js",
+    "app.js.map": "/AlzheimApp/static/js/app.2f39cfd2.chunk.js.map",
     "runtime~app.js": "/AlzheimApp/static/js/runtime~app.1747fd2b.js",
     "runtime~app.js.map": "/AlzheimApp/static/js/runtime~app.1747fd2b.js.map",
     "static/js/2.fc1e516c.chunk.js": "/AlzheimApp/static/js/2.fc1e516c.chunk.js",
@@ -33,7 +33,7 @@
     "static/media/6.png": "/AlzheimApp/static/media/6.7911d645.png",
     "static/media/addedUser.gif": "/AlzheimApp/static/media/addedUser.8426bfb9.gif",
     "static/media/alzheimapp_logo.png": "/AlzheimApp/static/media/alzheimapp_logo.e07c8c32.png",
-    "static/media/ambiant.mp3": "/AlzheimApp/static/media/ambiant.458ba883.mp3",
+    "static/media/ambiant.mp3": "/AlzheimApp/static/media/ambiant.af08ce07.mp3",
     "static/media/applause.mp3": "/AlzheimApp/static/media/applause.bfbba08b.mp3",
     "static/media/bell.png": "/AlzheimApp/static/media/bell.cf04af27.png",
     "static/media/bg.gif": "/AlzheimApp/static/media/bg.59f6204f.gif",
@@ -63,6 +63,6 @@
   "entrypoints": [
     "static/js/runtime~app.1747fd2b.js",
     "static/js/2.fc1e516c.chunk.js",
-    "static/js/app.2d97684f.chunk.js"
+    "static/js/app.2f39cfd2.chunk.js"
   ]
 }
