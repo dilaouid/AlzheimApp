@@ -17,7 +17,6 @@ import styles from './styles';
 
 export default function Home(props) {
     const [importFile, setImportFile] = useState();
-    const [tutorial, setTutorial] = useState(false);
     const [ambiant, setAmbiant] = useState();
     Audio.setIsEnabledAsync(true);
 

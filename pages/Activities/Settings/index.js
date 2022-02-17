@@ -151,7 +151,9 @@ export default function Settings(props) {
                         containerStyle={styles.containerStyle}
                         title={ActivitiesLang[props.lang]?.Back}
                         onPress={() => {
-                            navigate('/selection');
+                            navigate('/selection', {
+                                state: { username: props.username, lang: props.lang }
+                            });
                         }}
                     />
                 </ScrollView>
