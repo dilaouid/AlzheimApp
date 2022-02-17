@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/AlzheimApp/static/js/app.75d28d69.chunk.js",
-    "app.js.map": "/AlzheimApp/static/js/app.75d28d69.chunk.js.map",
+    "app.js": "/AlzheimApp/static/js/app.531cfdf9.chunk.js",
+    "app.js.map": "/AlzheimApp/static/js/app.531cfdf9.chunk.js.map",
     "runtime~app.js": "/AlzheimApp/static/js/runtime~app.1747fd2b.js",
     "runtime~app.js.map": "/AlzheimApp/static/js/runtime~app.1747fd2b.js.map",
     "static/js/2.407e7d5d.chunk.js": "/AlzheimApp/static/js/2.407e7d5d.chunk.js",
@@ -25,12 +25,12 @@
     "manifest.json": "/AlzheimApp/manifest.json",
     "serve.json": "/AlzheimApp/serve.json",
     "static/js/2.407e7d5d.chunk.js.LICENSE.txt": "/AlzheimApp/static/js/2.407e7d5d.chunk.js.LICENSE.txt",
-    "static/media/1.png": "/AlzheimApp/static/media/1.ede08671.png",
-    "static/media/2.png": "/AlzheimApp/static/media/2.b87932e3.png",
-    "static/media/3.png": "/AlzheimApp/static/media/3.3ed4e762.png",
-    "static/media/4.png": "/AlzheimApp/static/media/4.80535fcd.png",
-    "static/media/5.png": "/AlzheimApp/static/media/5.da0bedf3.png",
-    "static/media/6.png": "/AlzheimApp/static/media/6.7911d645.png",
+    "static/media/1.png": "/AlzheimApp/static/media/1.5ec5d57f.png",
+    "static/media/2.png": "/AlzheimApp/static/media/2.de882169.png",
+    "static/media/3.png": "/AlzheimApp/static/media/3.d9d4fbec.png",
+    "static/media/4.png": "/AlzheimApp/static/media/4.bf12d899.png",
+    "static/media/5.png": "/AlzheimApp/static/media/5.ec18db81.png",
+    "static/media/6.png": "/AlzheimApp/static/media/6.28b6e6fb.png",
     "static/media/addedUser.gif": "/AlzheimApp/static/media/addedUser.8426bfb9.gif",
     "static/media/alzheimapp_logo.png": "/AlzheimApp/static/media/alzheimapp_logo.e07c8c32.png",
     "static/media/ambiant.mp3": "/AlzheimApp/static/media/ambiant.e46e92e2.mp3",
@@ -63,6 +63,6 @@
   "entrypoints": [
     "static/js/runtime~app.1747fd2b.js",
     "static/js/2.407e7d5d.chunk.js",
-    "static/js/app.75d28d69.chunk.js"
+    "static/js/app.531cfdf9.chunk.js"
   ]
 }
