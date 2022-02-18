@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image } from 'react-native';
+import { Button } from 'react-native-elements';
 
-import { Link } from 'react-router-native';
+import { useNavigate } from 'react-router-native';
 
 import StepOne from '../../assets/img/tutorial/1.png';
 import StepTwo from '../../assets/img/tutorial/2.png';
@@ -10,10 +11,7 @@ import StepFour from '../../assets/img/tutorial/4.png';
 import StepFive from '../../assets/img/tutorial/5.png';
 import StepSixth from '../../assets/img/tutorial/6.png';
 
-import SwipeImage from '../../assets/img/tutorial/swipe-right.gif';
-
 import { lang as TutorialLang } from '../../language/tutorial';
-import Lottie from '../../components/utils/Lottie';
 
 import Swiper from 'react-native-swiper/src';
 
@@ -21,7 +19,7 @@ import styles from './styles';
 import * as Config from '../../data/configApi';
 
 export default function Tutorial(props) {
-    const LottieSource = require('../../assets/lottie/swipe-right.json');
+    const navigate = useNavigate();
 
     return (
         <>
@@ -43,24 +41,6 @@ export default function Tutorial(props) {
                     <Text style={styles.text}>
                         {TutorialLang[props.lang].Step1Content()}
                     </Text>
-                    <Lottie
-                        LottieSource={LottieSource}
-                        ImageSource={SwipeImage}
-                        LottieStyle={{
-                            position: 'absolute',
-                            height: 80,
-                            marginTop: 280,
-                            marginLeft: 80,
-                            opacity: 0.8,
-                        }}
-                        ImageStyle={{
-                            position: 'absolute',
-                            height: 80,
-                            marginTop: 280,
-                            marginLeft: 80,
-                            opacity: 0.8,
-                        }}
-                    />
                 </View>
 
                 <View style={styles.slideOdd}>
@@ -129,23 +109,18 @@ export default function Tutorial(props) {
                         {TutorialLang[props.lang].LastStepHeader}
                     </Text>
                     <View style={styles.buttonContainer}>
-                        <Link
-                            to="/username"
-                            component={TouchableOpacity}
-                            style={styles.button}
-                            onPress={(e) => {
+                        <Button 
+                            title={TutorialLang[props.lang].LastStepButton}
+                            buttonStyle={styles.button}
+                            containerStyle={styles.buttonContainer}
+                            onPress={() => {
                                 Config.SawTutorial(true);
+                                navigate('/username', {
+                                    state: { setLang: props.setLang }
+                                });
                             }}
-                            activeOpacity={0.5}s
-                            state={
-                                { setLang: props.setLang }
-                            }
-                        >
-                            <Text style={styles.buttonText}>
-                                {' '}
-                                {TutorialLang[props.lang].LastStepButton}{' '}
-                            </Text>
-                        </Link>
+                            titleStyle={styles.buttonText}
+                        />
                     </View>
                 </View>
             </Swiper>

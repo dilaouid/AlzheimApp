@@ -28,7 +28,7 @@ export const lang = {
         },
 
         // Second step of the tutorial
-        Step2Header: 'Aucune connexion internet requise',
+        Step2Header: 'Aucune connexion internet\nrequise',
         Step2Content:
             "Vos données ne sont pas sauvegardées sur des serveurs. Vos données vous appartenant, tout est stocké localement sur votre appareil. Même en mode avion, l'application fonctionnera normalement.",
 
@@ -37,8 +37,8 @@ export const lang = {
         Step3Content: () => {
             return applyBoldStyle({
                 sentence:
-                    "Vous êtes une structure hospitalière ou une famille, et désirez partager le suivi d'une personne ? Il est possible {0} la donnée d'une personne et {1} dans un autre appareil !",
-                boldText: ["d'exporter", "d'importer"],
+                    "Vous êtes une structure hospitalière ou une famille, et désirez partager le suivi d'une personne ? Il est possible {0} la donnée d'une personne et de {1} dans un autre appareil !",
+                boldText: ["d'exporter", "l'importer"],
             });
         },
 

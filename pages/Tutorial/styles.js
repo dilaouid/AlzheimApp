@@ -6,67 +6,58 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     slide: {
-        flex: 1,
+        height: 100 + '%',
         padding: 20,
+        alignItems: 'center'
     },
     slideOdd: {
-        flex: 1,
-        padding: 20,
+        height: 100 + '%',
+        alignItems: 'center',
         backgroundColor: '#355c7d',
     },
     title: {
         color: 'black',
-        flex: 1,
         fontSize: 22,
         fontWeight: 'bold',
-        marginTop: -50,
         textAlign: 'center',
+        marginBottom: 20
     },
     text: {
         color: 'black',
         fontSize: 15,
-        flex: 2,
-        marginTop: -40,
+        width: 70 + '%',
         textAlign: 'center',
     },
     titleOdd: {
         color: 'white',
-        flex: 1,
         fontSize: 22,
         fontWeight: 'bold',
-        marginTop: -50,
         textAlign: 'center',
+        marginBottom: 20
     },
     textOdd: {
         color: 'white',
         fontSize: 15,
-        flex: 2,
-        marginTop: -40,
+        width: 70 + '%',
         textAlign: 'center',
     },
     image: {
-        flex: 3,
-        width: 100 + '%',
-        height: 400,
-    },
-    buttonContainer: {
-        flex: 2,
-        marginTop: -40,
+        height: 30 + '%',
+        marginBottom: 40,
+        marginTop: 20,
+        aspectRatio: 1
     },
     button: {
-        marginTop: 10,
-        paddingTop: 15,
-        paddingBottom: 15,
-        marginLeft: 30,
-        marginRight: 30,
-        backgroundColor: '#6396c0',
+        marginTop: 20,
+        backgroundColor: 'white',
         borderRadius: 10,
-        borderColor: 'white',
-        borderWidth: 1
+        borderWidth: 1,
+        height: 60
     },
     buttonText: {
-        color: 'white',
-        textAlign: 'center',
-        fontWeight: 'bold'
+        color: '#355c7d'
     },
+    buttonContainer: {
+        width: 250,
+    }
 });
