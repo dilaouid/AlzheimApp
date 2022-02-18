@@ -22,7 +22,7 @@ export default StyleSheet.create({
     },
     button: {
         width: 250,
-        height: 40,
+        height: 50,
         backgroundColor: 'white',
         color: '#355c7d',
         justifyContent: 'flex-start'

@@ -11,7 +11,6 @@ import { useLocation } from 'react-router-native';
 import AlzheimApp from '../../assets/img/alzheimapp_logo.png';
 import Menu from './Menu'
 import ImportData from './ImportData';
-import Tutorial from '../Tutorial';
 
 import styles from './styles';
 
