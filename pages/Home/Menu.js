@@ -34,7 +34,7 @@ export default function Menu(props) {
                 }
                 raised
                 onPress={async () => {
-                    await props.ambiant.unloadAsync()
+                    if (props.ambiant) await props.ambiant?.unloadAsync()
                     navigate('/selection', {
                         state: { username: props.username, lang: props.lang, setLang: props.setLang }
                     })

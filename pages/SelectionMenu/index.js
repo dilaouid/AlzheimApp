@@ -106,7 +106,7 @@ export default function SelectionMenu(props) {
                 color='white'
                 style={{
                     position: 'absolute',
-                    marginLeft: 305,
+                    marginLeft: 85 + '%',
                     marginTop: 15,
                     zIndex: 3
                 }}
