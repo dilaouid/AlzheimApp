@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pc-api-7920789988698421370-583",
+  "private_key_id": "8b6b17a6af0d75a88c9274874c68b067735c3fea",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDcToXWtTprMq0f\npzbkmR696wLpnv2Qdah8NX7/ACip5WFFF7HwVW/C4Gu+A1H88n9ho+EGX+ATOful\nn6X1YABa3WHYU106tQQ9J6EQQPyqA0AgYZXucCELeaZZMl3Mu4gbe41bNboxIaWF\nt6LE3NCmEAqOAtrfAaNRc55DCoEkFo9dutvD8VkITe7k8C9daBBxpf4uGeDEiIYL\n03xbmpDWA/JstR3xRNGIhTzRl8qfj3LLvsuRrDLqsDEZoriCvEWxzIJ1WaimGMWv\nNm8iOYCOXRYG2+6I+eibDpK5t7zFsTDrgLHE5Rj/lygZHFMiWF+uU0gFhpMIr9ub\nPlK4iVBjAgMBAAECggEAWenUVvZdMt4aaUZKMY9KzDFL3YRtsZVLn/IHdFSgxAJh\nqhzLGy8Lb4o/fuwE/MsN8RA86Wic38v06DpZteUqD+u1oOAZNzok0j7HzgXv+QVd\nmTmqwwdRfUj3ewUC4mmRWcIZxaWOabn1P7dcf6MtpvD6Fc6VfJnDCZ259FunrE2k\n9IsaiYYRXNZUfqEIot7r/fRdjtFI7jit7BeIo2WFF9F49JU2+m5gxB1hYfC0RG4C\n1aOlR1U5/c/4A/vx/kuozeW88km8JHTsq2GmcVMJj7ruA6ft2S/4+jKogUo3UjHh\n4ahbQD9e8EzI+RJ6xCqDDkPV27YrCl55NG/GsFW3PQKBgQDwoabSlsdG4GJRaXLm\nd8zALOkT4BiVqS/DtOYtBU0y1JZtGn14tz3w+z3ywmx/BhSXDh5mmHeFQsPCmWg4\nL3dAB94MAuxOz8SyeX5MNASGKQ2atW9tF3ceNJdD7X/QirbIacRvOWCMwEFmYlTA\nTuDTbq3pPllcB+43dtn/TwGF3QKBgQDqYI9WjoASdo79HvFEqt08K618mHMfoWu8\nrjXFCD/Rz7EJZT4sGEfrcZfOJThH+cLqcfLtBAQizyt2iUOPeBQDTwy985rj7i29\n9UeQbXj57dJRztBcFjNayVtjJWnEdYC3mKQqdWcf9akApj3KiFd1gCGtUmfQy0TQ\nzlgXyK5rPwKBgF6I83QaXlG/B4E6bzSR7jO1sR/o01/Apw44/JDFW23TzQEx/gc1\n3jTVT6IWte81YVNy7Yia76G/+A50nFgudagHLzoCz/mqcHk5d9/SM9DNQhX8n7j5\nFggc2yyJmsRAKs0TmGOl5AOH6Gmjye3/Tx5hhhtzLkIUr4bEv6Io1M1VAoGAQv2O\nesMIQD666AZsF6Bu07/4OmCopyXQUYHJxKNy+llO1MynVJssE1PIfBePWqM83x3q\nvWwkcn6cgakCMoOz1K5HihOS9gsh7+WnqtRfe7BKKS/fxjJiQ1TCVjhfXtPnEpMC\neVBNRYlF4PWjO7x0oxUYix2+pqMy7CvOah3mHKkCgYEAkYoZPPpU9Fd1D1mk6jqF\nax2bM3+aIjARXt+d0mRSAhQcxUjR5sbNPwhNthDVCT1rQAraL7qRn+EGx74EBqog\nLBcF64e/znQ12mLMvbPSFvhVkO6yrRT3seSPn03wivHOL64YP3xsvmK2n63C0MB2\nn07jkFtaaKJ2PSgKm7Ont3g=\n-----END PRIVATE KEY-----\n",
+  "client_email": "expo-alzheimapp@pc-api-7920789988698421370-583.iam.gserviceaccount.com",
+  "client_id": "118402777715479254401",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/expo-alzheimapp%40pc-api-7920789988698421370-583.iam.gserviceaccount.com"
+}
