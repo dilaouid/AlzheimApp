@@ -3,7 +3,7 @@
     "name": "AlzheimApp",
     "description": "",
     "slug": "AlzheimApp",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "icon": "AppIcon.png",
     "assetBundlePatterns": [
       "**/*"
@@ -17,7 +17,8 @@
       ]
     ],
     "android": {
-      "package": "org.alzheimApp"
+      "package": "org.alzheimApp",
+      "versionCode": 2
     },
     "ios": {
       "bundleIdentifier": "org.alzheimApp"
