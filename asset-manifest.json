@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/AlzheimApp/static/js/app.658f7960.chunk.js",
-    "app.js.map": "/AlzheimApp/static/js/app.658f7960.chunk.js.map",
+    "app.js": "/AlzheimApp/static/js/app.0be32b95.chunk.js",
+    "app.js.map": "/AlzheimApp/static/js/app.0be32b95.chunk.js.map",
     "runtime~app.js": "/AlzheimApp/static/js/runtime~app.1747fd2b.js",
     "runtime~app.js.map": "/AlzheimApp/static/js/runtime~app.1747fd2b.js.map",
-    "static/js/2.5c117ee1.chunk.js": "/AlzheimApp/static/js/2.5c117ee1.chunk.js",
-    "static/js/2.5c117ee1.chunk.js.map": "/AlzheimApp/static/js/2.5c117ee1.chunk.js.map",
+    "static/js/2.358f5e8b.chunk.js": "/AlzheimApp/static/js/2.358f5e8b.chunk.js",
+    "static/js/2.358f5e8b.chunk.js.map": "/AlzheimApp/static/js/2.358f5e8b.chunk.js.map",
     "fonts/AntDesign.ttf": "/AlzheimApp/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/AlzheimApp/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/AlzheimApp/./fonts/Feather.ttf",
@@ -24,13 +24,13 @@
     "index.html": "/AlzheimApp/index.html",
     "manifest.json": "/AlzheimApp/manifest.json",
     "serve.json": "/AlzheimApp/serve.json",
-    "static/js/2.5c117ee1.chunk.js.LICENSE.txt": "/AlzheimApp/static/js/2.5c117ee1.chunk.js.LICENSE.txt",
-    "static/media/1.png": "/AlzheimApp/static/media/1.afa6932d.png",
-    "static/media/2.png": "/AlzheimApp/static/media/2.4b0c0ccd.png",
-    "static/media/3.png": "/AlzheimApp/static/media/3.e349ccd3.png",
-    "static/media/4.png": "/AlzheimApp/static/media/4.3485bb76.png",
-    "static/media/5.png": "/AlzheimApp/static/media/5.9bd1e9bf.png",
-    "static/media/6.png": "/AlzheimApp/static/media/6.0fcb7c80.png",
+    "static/js/2.358f5e8b.chunk.js.LICENSE.txt": "/AlzheimApp/static/js/2.358f5e8b.chunk.js.LICENSE.txt",
+    "static/media/1.png": "/AlzheimApp/static/media/1.c4ec63da.png",
+    "static/media/2.png": "/AlzheimApp/static/media/2.c9afe178.png",
+    "static/media/3.png": "/AlzheimApp/static/media/3.95e52180.png",
+    "static/media/4.png": "/AlzheimApp/static/media/4.e18a9e44.png",
+    "static/media/5.png": "/AlzheimApp/static/media/5.1a0c5df5.png",
+    "static/media/6.png": "/AlzheimApp/static/media/6.64d544d0.png",
     "static/media/addedUser.gif": "/AlzheimApp/static/media/addedUser.8426bfb9.gif",
     "static/media/alzheimapp_logo.png": "/AlzheimApp/static/media/alzheimapp_logo.01f37bd0.png",
     "static/media/ambiant.mp3": "/AlzheimApp/static/media/ambiant.e46e92e2.mp3",
@@ -61,7 +61,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.1747fd2b.js",
-    "static/js/2.5c117ee1.chunk.js",
-    "static/js/app.658f7960.chunk.js"
+    "static/js/2.358f5e8b.chunk.js",
+    "static/js/app.0be32b95.chunk.js"
   ]
 }
