@@ -14,8 +14,8 @@ export default StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 20,
-        marginHorizontal: 25,
         marginHorizontal: 40,
+        marginTop: -40,
         textAlign: 'center',
         color: 'black',
     },
@@ -28,10 +28,9 @@ export default StyleSheet.create({
         color: 'grey',
     },
     textInput: {
-        height: 40,
+        height: 50,
         borderColor: 'gray',
         borderRadius: 20,
-        paddingHorizontal: 20,
         color: 'black',
         backgroundColor: 'white',
         shadowOpacity: 0.5,
@@ -40,11 +39,13 @@ export default StyleSheet.create({
             height: 0,
             width: 0,
         },
-        elevation: 2,
+        width: 180,
+        textAlign: 'center',
+        elevation: 10
     },
     image: {
         flex: 1,
-        width: 200,
+        width: 100
     },
     buttonContainer: {
         alignItems: 'stretch',
@@ -55,9 +56,9 @@ export default StyleSheet.create({
         borderRadius: 10,
         width: 80,
         marginLeft: 10,
+        height: 50
     },
     buttonText: {
-        paddingTop: 10,
         color: 'white',
         textAlign: 'center',
     },

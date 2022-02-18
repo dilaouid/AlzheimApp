@@ -19,6 +19,7 @@ import Home from '../Home';
 import ChooseUsernameGIF from '../../assets/img/username/chooseusername.gif';
 
 import styles from './styles';
+import { Button } from 'react-native-elements';
 
 export default function ChooseUsername(props) {
     const [input, setInput] = useState('');
@@ -115,26 +116,22 @@ export default function ChooseUsername(props) {
                             setInput(e);
                         }}
                     />
-                    <TouchableOpacity
-                        style={styles.button}
-                        activeOpacity={0.5}
+                    <Button
+                        title={isLoading ? (
+                            <ActivityIndicator
+                                color="white"
+                                size="small"
+                                animating={true}
+                            />
+                        ) : (
+                            'OK'
+                        )}
                         onPress={(e) => {
                             parseUsername(input);
                         }}
-                    >
-                        <Text style={styles.buttonText}>
-                            {' '}
-                            {isLoading ? (
-                                <ActivityIndicator
-                                    color="white"
-                                    size="small"
-                                    animating={true}
-                                />
-                            ) : (
-                                'OK'
-                            )}
-                        </Text>
-                    </TouchableOpacity>
+                        buttonStyle={styles.button}
+                        titleStyle={styles.buttonText}
+                    />
                 </View>
             </View>
         );
