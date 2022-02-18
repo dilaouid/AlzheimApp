@@ -63,7 +63,7 @@ export default StyleSheet.create({
         marginVertical: 5
     },
     IconCard: {
-        marginTop: 23
+        marginTop: 28 + '%'
     },
     viewGame: {
         marginTop: 10,

@@ -2,6 +2,11 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
 
+import { Dimensions } from 'react-native'
+
+const SCREEN_WIDTH = Dimensions.get("window").width;
+const SCREEN_HEIGHT = Dimensions.get("window").height;
+
 import styles from '../styles';
 
 export default function Card(props) {
@@ -19,7 +24,7 @@ export default function Card(props) {
             }}>
                 <Icon
                     name={icon}
-                    size={props.inFound || props.show || props.inPlay ? 30 : 24}
+                    size={props.inFound || props.show || props.inPlay ? SCREEN_WIDTH * .08 : SCREEN_WIDTH * .08}
                     color={props.inFound || props.show || props.inPlay ? 'white' : 'grey'}
                     type="ionicon"
                     style={styles.IconCard}
