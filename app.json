@@ -18,7 +18,7 @@
     ],
     "android": {
       "package": "org.alzheimApp",
-      "versionCode": 2
+      "versionCode": 3
     },
     "ios": {
       "bundleIdentifier": "org.alzheimApp"
