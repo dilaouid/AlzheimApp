@@ -17,7 +17,7 @@ export default function Menu(props) {
     const navigate = useNavigate();
 
     return (
-        <ScrollView style={styles.menu}>
+        <ScrollView style={styles.menu} showsVerticalScrollIndicator={false}>
             <Button
                 title={HomeLang[props.lang].Select}
                 buttonStyle={styles.button}

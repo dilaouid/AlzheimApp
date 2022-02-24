@@ -16,7 +16,7 @@ export default StyleSheet.create({
         height: 130
     },
     menu: {
-        marginTop: 10 + '%',
+        marginTop: 2 + '%',
         flex: 1,
         marginBottom: 20
     },

@@ -1,5 +1,12 @@
 import { StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+const SCREEN_WIDTH = Dimensions.get("window").width;
+const SCREEN_HEIGHT = Dimensions.get("window").height;
+
+const mode = SCREEN_WIDTH >= SCREEN_HEIGHT ? 'landscape' : 'portrait';
+const factor = mode == 'landscape' ? hp : wp;
 
 export default StyleSheet.create({
     view: {
@@ -31,7 +38,7 @@ export default StyleSheet.create({
         marginBottom: 20
     },
     RectoCard: {
-        width: wp('21%'),
+        width: factor('21%'),
         height: 0,
         backgroundColor: '#C3C3CF',
         borderRadius: 20,
@@ -43,7 +50,7 @@ export default StyleSheet.create({
         marginVertical: 5
     },
     PlayingCard: {
-        width: wp('21%'),
+        width: factor('21%'),
         height: 0,
         borderRadius: 20,
         aspectRatio: 1,
@@ -54,7 +61,7 @@ export default StyleSheet.create({
         marginVertical: 5
     },
     VersoCard: {
-        width: wp('21%'),
+        width: factor('21%'),
         height: 0,
         borderRadius: 20,
         opacity: .8,
@@ -75,7 +82,7 @@ export default StyleSheet.create({
     },
     buttonViewPlay: {
         flexDirection: 'row',
-        width: wp('100%'),
+        width: mode == 'portrait' ? wp('100%') : hp('100%'),
         justifyContent: 'center',
         alignContent: 'center',
         marginTop: 10

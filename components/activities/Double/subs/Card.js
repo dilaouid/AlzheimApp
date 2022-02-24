@@ -11,6 +11,7 @@ import styles from '../styles';
 
 export default function Card(props) {
     var cardStyles;
+    const factor = SCREEN_WIDTH >= SCREEN_HEIGHT ? SCREEN_HEIGHT : SCREEN_WIDTH;
     if (props.inPlay) cardStyles = [{backgroundColor: props.backgroundColor}, [styles.PlayingCard]];
     else if (props.inFound || props.show) cardStyles = [{backgroundColor: props.backgroundColor}, [styles.VersoCard]];
     else cardStyles = styles.RectoCard
@@ -24,7 +25,7 @@ export default function Card(props) {
             }}>
                 <Icon
                     name={icon}
-                    size={props.inFound || props.show || props.inPlay ? SCREEN_WIDTH * .08 : SCREEN_WIDTH * .08}
+                    size={props.inFound || props.show || props.inPlay ? factor * .08 : factor * .08}
                     color={props.inFound || props.show || props.inPlay ? 'white' : 'grey'}
                     type="ionicon"
                     style={styles.IconCard}
