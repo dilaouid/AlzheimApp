@@ -60,7 +60,9 @@ export default function Settings(props) {
 
     const deletePerson = () => {
         Person.deleteById(props.personId).then((deleted) => {
-            navigate('/selection');
+            navigate('/selection', {
+                state: { username: props.username, lang: props.lang }
+            });
         });
     };
 
