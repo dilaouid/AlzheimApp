@@ -69,7 +69,7 @@ export default function Settings(props) {
     const openModalDeleteProfile = () => {
         return Alert.alert(
             InterfaceLang[props.lang].AreYouSure,
-            InterfaceLang[props.lang].DeletePerson(props.username),
+            InterfaceLang[props.lang].DeletePerson(props.fullname),
             [
                 {
                     text: InterfaceLang[props.lang].Yes,

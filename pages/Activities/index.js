@@ -105,7 +105,8 @@ export default function Activities() {
                 <NavigationContainer theme={navTheme} style={{ padding: 400 }}>
                     <Tabs
                         lang={lang}
-                        username={person?.fullname}
+                        username={state?.username}
+                        fullname={person?.fullname}
                         personId={personId.id}
                         person={person}
                         setFullname={setFullname}

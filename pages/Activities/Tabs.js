@@ -79,6 +79,7 @@ export default function Tabs(props) {
                     <Settings
                         lang={props.lang}
                         username={props?.username}
+                        fullname={props?.fullname}
                         person={props.person}
                         personId={props.personId}
                         setFullname={props.setFullname}
