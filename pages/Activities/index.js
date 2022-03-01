@@ -109,6 +109,7 @@ export default function Activities() {
                         fullname={person?.fullname}
                         personId={personId.id}
                         person={person}
+                        setPerson={setPerson}
                         setFullname={setFullname}
                     />
                 </NavigationContainer>

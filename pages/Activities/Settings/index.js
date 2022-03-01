@@ -31,14 +31,13 @@ export default function Settings(props) {
     const navigate = useNavigate();
 
     const good = () => {
+        Person.getById(props.personId).then((result) => {
+            props.setPerson(result[0])
+        });
         setSuccess(true);
     };
 
     const clear = () => {
-        setFullname(props.person.fullname);
-        setUriPreview(props.person.picture);
-        setImage('');
-        setDescription(props.person.description);
         setSuccess(false);
     };
 
@@ -172,7 +171,13 @@ export default function Settings(props) {
                         buttonStyle={styles.buttonStyleReturn}
                         containerStyle={styles.containerStyle}
                         title={ActivitiesLang[props.lang]?.ReturnList}
-                        onPress={() => setEdit(false)}
+                        onPress={() => {
+                            setFullname(props.person.fullname);
+                            setUriPreview(props.person.picture);
+                            setImage('');
+                            setDescription(props.person.description);
+                            setEdit(false)
+                        }}
                     />
                     {success ? (
                         <Success {...compProps} close={clear} edit={true} />

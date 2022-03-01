@@ -83,6 +83,7 @@ export default function Tabs(props) {
                         person={props.person}
                         personId={props.personId}
                         setFullname={props.setFullname}
+                        setPerson={props.setPerson}
                     />
                 )}
             />
