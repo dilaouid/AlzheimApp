@@ -4,17 +4,16 @@ import {
     View,
     TextInput,
     ActivityIndicator,
-    TouchableOpacity,
     Image,
     BackHandler,
 } from 'react-native';
-import { useNavigate, useLocation } from 'react-router-native';
+import { useNavigate } from 'react-router-native';
 
 import { lang as TutorialLang } from '../../language/tutorial';
 import { lang as InterfaceLang } from '../../language/interface';
 import { setUsername as insertUsername, SawTutorial, getUsername } from '../../data/configApi';
 
-import Home from '../Home';
+import SelectionMenu from '../SelectionMenu';
 
 import ChooseUsernameGIF from '../../assets/img/username/chooseusername.gif';
 
@@ -84,7 +83,7 @@ export default function ChooseUsername(props) {
     };
 
     if (redirect)
-        return <Home lang={props.lang} username={username} setLang={props.setLang} />
+        return <SelectionMenu username={username} lang={props.lang} setLang={props.setLang} slide={1} />
 
     if (loadPage)
         return <View style={styles.container}></View>
@@ -136,6 +135,6 @@ export default function ChooseUsername(props) {
             </View>
         );
     } else {
-        return <Home lang={props.lang} username={username} setLang={props.setLang} />;
+        return <SelectionMenu username={username} lang={props.lang} setLang={props.setLang} slide={1} />
     }
 }

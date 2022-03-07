@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import {
     Text,
     View,
-    Image,
     TouchableOpacity,
     SafeAreaView,
     ScrollView,
@@ -44,6 +43,7 @@ export default function SelectionMenu(props) {
     const username = state?.username || props.username;
     const lang = state?.lang || props.lang;
     const setLang = state?.setLang || props.setLang;
+    const slidePropsState = state?.slide || props?.slide;
 
     useEffect(() => {
         Audio.setIsEnabledAsync(false);
@@ -63,6 +63,11 @@ export default function SelectionMenu(props) {
         );
         return () => backHandler.remove();
     }, [search, username, navigate]);
+
+    useEffect( () => {
+        setBtnTxt(SelectionMenuLang[lang].ReturnToList);
+        setIndex(slidePropsState || 0);
+    }, [])
 
     const swipePage = (idx) => {
         if (idx === -1) {
@@ -171,7 +176,7 @@ export default function SelectionMenu(props) {
                         scrollEnabled={false}
                         loop
                         pagingEnabled
-                        index={0}
+                        index={slidePropsState || 0}
                         showsPagination={false}
                         onIndexChanged={(e) => {
                             changeIndex(e);
