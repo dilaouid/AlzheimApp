@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as FileSystem from 'expo-file-system';
 
 const Datastore = require('react-native-local-mongodb');
 
@@ -65,5 +66,8 @@ export function getPersons() {
 }
 
 export function reset() {
+    FileSystem.deleteAsync(`${FileSystem.documentDirectory}persons`).catch(err => {
+        console.error('folder delete err:',err);
+    });
     return AsyncStorage.clear();
 }
