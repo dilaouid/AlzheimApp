@@ -40,7 +40,7 @@ export const lang = {
                 boldText: [username],
             });
         },
-        WhatsUp: 'What are you about to produce today?',
+        WhatsUp: 'What are you about to achieve today?',
         AddAPerson: 'Add a person',
         Edit: 'Edit',
         Delete: 'Delete',
