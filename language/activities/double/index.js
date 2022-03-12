@@ -1,13 +1,16 @@
 import { Text } from 'react-native';
 
-const applyBoldStyle = (text) => {
+const applyBoldStyle = (text, clr) => {
+    var color = '#3B8EFF';
+    if (clr === 'green')
+        color = '#459449';
     let numberOfItemsAdded = 0;
     const result = text.sentence.split(/\{\d+\}/);
     text.boldText.forEach((boldText, i) =>
         result.splice(
             ++numberOfItemsAdded + i,
             0,
-            <Text key={i} style={{ fontWeight: 'bold', color: '#3B8EFF' }}>
+            <Text key={i} style={{ fontWeight: 'bold', color: color }}>
                 {boldText}
             </Text>
         )
@@ -70,6 +73,12 @@ export const lang = {
                 boldText: ["vous gagnez un point", "potentiellement plus difficile", "vous perdez un point", "qu’un essai pour le schéma actuel"],
             });
         },
+        Remember: () => {
+            return applyBoldStyle({
+                sentence: '{0}',
+                boldText: ['Mémorisez bien ce schéma!'],
+            }, 'green');
+        }
     },
     en: {
         Play: 'Play',
@@ -125,5 +134,11 @@ export const lang = {
                 boldText: ["you earn a point", "potentially more challenging", "you lose a point", "than a try for the current pattern"],
             });
         },
+        Remember: () => {
+            return applyBoldStyle({
+                sentence: '{0}',
+                boldText: ['Remember this schema carefully!'],
+            }, 'green');
+        }
     },
 };
