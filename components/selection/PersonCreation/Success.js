@@ -37,7 +37,7 @@ export default function Success(props) {
                     }}
                     buttonStyle={{marginRight: 20, borderRadius: 15,paddingHorizontal: 15, backgroundColor: 'red'}}
                 />
-                <Button
+                { props.edit == false ? <Button
                     title={InterfaceLang[props.lang].OpenActivity}
                     onPress={(e) => {
                         navigate(`/activities/${props.id}`, {
@@ -48,7 +48,7 @@ export default function Success(props) {
                     });
                     }}
                     buttonStyle={{borderRadius: 15, paddingHorizontal: 15}}
-                />
+                /> : <></> }
             </View>
         </View>
     );
