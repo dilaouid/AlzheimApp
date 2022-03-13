@@ -27,6 +27,7 @@ export default function Settings(props) {
     const [uriPreview, setUriPreview] = useState(props.person.picture);
     const [description, setDescription] = useState(props.person.description);
     const [load, setLoad] = useState(false);
+    const [id, setId] = useState(0);
 
     const navigate = useNavigate();
 
@@ -55,6 +56,9 @@ export default function Settings(props) {
 
         description: description,
         setDescription: setDescription,
+
+        id: id,
+        setId: setId
     };
 
     const deletePerson = () => {

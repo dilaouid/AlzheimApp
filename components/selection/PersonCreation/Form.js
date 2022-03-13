@@ -44,6 +44,7 @@ export default function Form(props) {
         } else {
             if (personId === 0)
                 personId = result._id;
+            props.setId(personId);
             await FileSystem.makeDirectoryAsync(`${FileSystem.documentDirectory}persons/${personId}`, {intermediates: true});
             if (props.image?.length > 0) {
                 let imgName = uuidv4();

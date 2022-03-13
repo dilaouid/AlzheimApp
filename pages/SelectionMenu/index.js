@@ -65,9 +65,9 @@ export default function SelectionMenu(props) {
     }, [search, username, navigate]);
 
     useEffect( () => {
-        setBtnTxt(SelectionMenuLang[lang].ReturnToList);
         setIndex(slidePropsState || 0);
-    }, [])
+        setBtnTxt(index === 0 ? SelectionMenuLang[lang].AddAPerson : SelectionMenuLang[lang].ReturnToList);
+    }, []);
 
     const swipePage = (idx) => {
         if (idx === -1) {

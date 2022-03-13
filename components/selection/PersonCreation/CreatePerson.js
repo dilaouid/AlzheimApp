@@ -11,6 +11,7 @@ export default function CreatePerson(props) {
     const [uriPreview, setUriPreview] = useState();
     const [description, setDescription] = useState('');
     const [success, setSuccess] = useState(false);
+    const [id, setId] = useState(0);
 
     const good = () => {
         setSuccess(true);
@@ -38,6 +39,9 @@ export default function CreatePerson(props) {
 
         description: description,
         setDescription: setDescription,
+
+        id: id,
+        setId: setId
     };
 
     return (

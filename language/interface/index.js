@@ -32,7 +32,8 @@ export const lang = {
         Save: 'Enregistrer',
         CreatedPerson: 'La personne a bien été rajoutée à votre liste !',
         EditedPerson: 'Le profil a été modifié avec succès !',
-        ReturnToForm: 'Retourner sur le formulaire',
+        ReturnToForm: 'Retour',
+        OpenActivity: 'Ouvrir le profil',
 
         // Modal related
         Yes: 'Oui',
@@ -61,6 +62,7 @@ export const lang = {
         CreatedPerson: 'The person has been successfully added to your list!',
         EditedPerson: 'The profile has been successfully edited!',
         ReturnToForm: 'Return to the form',
+        OpenActivity: 'Open this profile',
 
         // Modal related
         Yes: 'Yes',
