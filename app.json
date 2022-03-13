@@ -3,7 +3,7 @@
     "name": "AlzheimApp",
     "description": "",
     "slug": "AlzheimApp",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "icon": "./AppIcon.png",
     "assetBundlePatterns": [
       "**/*"
@@ -18,7 +18,7 @@
     ],
     "android": {
       "package": "org.alzheimApp",
-      "versionCode": 6,
+      "versionCode": 7,
       "adaptiveIcon": {
         "backgroundImage": "./assets/adaptativeIcon/background.png",
         "foregroundImage": "./assets/adaptativeIcon/foreground.png"
