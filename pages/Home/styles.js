@@ -25,7 +25,8 @@ export default StyleSheet.create({
         height: 50,
         backgroundColor: 'white',
         color: '#355c7d',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        borderRadius: 25
     },
     buttonContainer: {
         borderRadius: 25,

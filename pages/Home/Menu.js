@@ -21,7 +21,7 @@ export default function Menu(props) {
             <Button
                 title={HomeLang[props.lang].Select}
                 buttonStyle={styles.button}
-                titleStyle={{ color: '#355c7d', textAlign: 'center' }}
+                titleStyle={{ color: '#355c7d', textAlign: 'center', fontSize: 16 }}
                 containerStyle={styles.buttonContainer}
                 icon={
                     <Icon
@@ -43,7 +43,7 @@ export default function Menu(props) {
             <Button
                 title={HomeLang[props.lang].Import}
                 buttonStyle={styles.button}
-                titleStyle={{ color: '#355c7d' }}
+                titleStyle={{ color: '#355c7d', fontSize: 16 }}
                 containerStyle={styles.buttonContainer}
                 iconContainerStyle={{ marginRight: 50 }}
                 icon={
@@ -65,7 +65,7 @@ export default function Menu(props) {
             <Button
                 title={HomeLang[props.lang].Language}
                 buttonStyle={styles.button}
-                titleStyle={{ color: '#355c7d' }}
+                titleStyle={{ color: '#355c7d', fontSize: 16 }}
                 containerStyle={styles.buttonContainer}
                 iconContainerStyle={{ marginRight: 50 }}
                 icon={
@@ -83,7 +83,7 @@ export default function Menu(props) {
             <Button
                 title={HomeLang[props.lang].Introduction}
                 buttonStyle={styles.button}
-                titleStyle={{ color: '#355c7d' }}
+                titleStyle={{ color: '#355c7d', fontSize: 16 }}
                 containerStyle={[styles.buttonContainer, {marginBottom: 20}]}
                 iconContainerStyle={{ marginRight: 50 }}
                 icon={
@@ -104,7 +104,7 @@ export default function Menu(props) {
             <Button
                 title={HomeLang[props.lang].Source}
                 buttonStyle={styles.button}
-                titleStyle={{ color: '#355c7d' }}
+                titleStyle={{ color: '#355c7d', fontSize: 16 }}
                 containerStyle={styles.buttonContainer}
                 iconContainerStyle={{ marginRight: 50 }}
                 icon={

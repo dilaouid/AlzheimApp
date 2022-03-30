@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Platform } from 'react-native';
 
 export default StyleSheet.create({
     container: {
@@ -48,7 +49,7 @@ export default StyleSheet.create({
     buttonText: {
         color: 'white',
         textAlign: 'center',
-        marginTop: 10,
+        marginTop: Platform.OS === 'ios' ? 0 : 10
     },
     viewList: {
         textAlign: 'center',
