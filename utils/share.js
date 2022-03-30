@@ -351,6 +351,6 @@ export const exportPerson = async (personId, key) => {
             dictaphone: dictaphoneData
         }
     });
-    const uri = await writeDataFile(personData.fullname, key ? dilacrypt.encrypt(result, key) : result);
+    const uri = await writeDataFile(personData.fullname.replace(' ', '_'), key ? dilacrypt.encrypt(result, key) : result);
     return (uri);
 };

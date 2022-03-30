@@ -124,8 +124,10 @@ export default function Settings(props) {
                             console.log('[+] Exported person! uri is: ' + uri);
                             Sharing.shareAsync(uri).then( async (e) => {
                                 await FileSystem.deleteAsync(uri);
-                                setLoad(false);
+                            }).catch(err => {
+                                console.log(err);
                             });
+                            setLoad(false);
                         }}
                         disabled={load}
                     />
