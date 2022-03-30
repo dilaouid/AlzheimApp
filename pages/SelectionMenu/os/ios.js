@@ -73,7 +73,7 @@ export default function SelectionMenuIOS(props) {
                     {SelectionMenuLang[props.lang].Hello(props.username)}
                 </Text>
             </View>
-            <Text style={styles.subtitle}>{SelectionMenuLang[props.lang].WhatsUp} {props.index}</Text>
+            <Text style={styles.subtitle}>{SelectionMenuLang[props.lang].WhatsUp}</Text>
             <View style={styles.viewList}>
                 <Button
                     containerStyle={styles.button}

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Platform } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
@@ -7,13 +8,14 @@ export default StyleSheet.create({
         alignContent: 'center',
         paddingBottom: 10,
         width: wp('100%'),
+        height: hp('17%'),
         backgroundColor: '#355c7d'
     },
     topLottie: {
-        marginTop: 10,
+        marginTop: 13,
         width: 60,
         height: undefined,
-        marginBottom: 15,
+        marginBottom: Platform.OS === 'ios' ? 35 : 15,
         backgroundColor: '#355c7d'
     },
     bgLottie: {
