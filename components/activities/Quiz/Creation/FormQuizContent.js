@@ -4,6 +4,7 @@ import {
     Text,
     ScrollView,
     SafeAreaView,
+    KeyboardAvoidingView,
 } from 'react-native';
 import { Button, Icon, Input, Badge, FAB } from 'react-native-elements';
 import * as DocumentPicker from 'expo-document-picker';
@@ -70,62 +71,64 @@ export default function FormQuizContent(props) {
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            <ScrollView contentContainerStyle={styles.ScrollView}>
-                { printFile(props.fileType, props.uri, clearFile, props.isPlaying, props.pauseSound, props.setIsPlaying, props.sound, props.setSound) }
-                <Button
-                    title={QuizLang[props.lang].ImportFile}
-                    buttonStyle={{ borderRadius: 15 }}
-                    onPress={pickFile}
-                />
-                <Text style={styles.overlayDescriptionReference}>
-                    {QuizLang[props.lang].ReferenceFile}
-                </Text>
-                <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 45, flexShrink: 1, flexWrap:'wrap'}}>
-                    <Input
-                        value={props.question}
-                        inputStyle={{fontSize: 14}}
-                        containerStyle={{marginBottom: 50}}
-                        placeholder={QuizLang[props.lang].WhatIsTheQuestion}
-                        onChangeText={(e) => props.setQuestion(e)}
-                    />
-                    <View style={{flexDirection: 'row', alignItems: 'center', flexShrink: 1, flexWrap:'nowrap', width: 90 + '%'}}>
-                    <Input
-                        placeholder={QuizLang[props.lang].AddAnswer}
-                        inputStyle={{fontSize: 14}}
-                        value={answer}
-                        onChangeText={(e) => setAnswer(e)}
-                    />
+            <KeyboardAvoidingView behavior='padding' style={{flex:1}}>
+                <ScrollView contentContainerStyle={styles.ScrollView}>
+                    { printFile(props.fileType, props.uri, clearFile, props.isPlaying, props.pauseSound, props.setIsPlaying, props.sound, props.setSound) }
                     <Button
-                        icon={
-                            <Icon
-                                name={'add-circle'}
-                                type={'ionicon'}
-                                color={'white'}
-                                size={18}
-                                style={{ marginHorizontal: 5 }}
-                            />
-                        }
-                        onPress={() => addAnswer()}
-                        disabled={props.answers.length >= 10}
+                        title={QuizLang[props.lang].ImportFile}
+                        buttonStyle={{ borderRadius: 15 }}
+                        onPress={pickFile}
                     />
+                    <Text style={styles.overlayDescriptionReference}>
+                        {QuizLang[props.lang].ReferenceFile}
+                    </Text>
+                    <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 45, flexShrink: 1, flexWrap:'wrap'}}>
+                        <Input
+                            value={props.question}
+                            inputStyle={{fontSize: 14}}
+                            containerStyle={{marginBottom: 50}}
+                            placeholder={QuizLang[props.lang].WhatIsTheQuestion}
+                            onChangeText={(e) => props.setQuestion(e)}
+                        />
+                        <View style={{flexDirection: 'row', alignItems: 'center', flexShrink: 1, flexWrap:'nowrap', width: 90 + '%'}}>
+                        <Input
+                            placeholder={QuizLang[props.lang].AddAnswer}
+                            inputStyle={{fontSize: 14}}
+                            value={answer}
+                            onChangeText={(e) => setAnswer(e)}
+                        />
+                        <Button
+                            icon={
+                                <Icon
+                                    name={'add-circle'}
+                                    type={'ionicon'}
+                                    color={'white'}
+                                    size={18}
+                                    style={{ marginHorizontal: 5 }}
+                                />
+                            }
+                            onPress={() => addAnswer()}
+                            disabled={props.answers.length >= 10}
+                        />
+                        </View>
                     </View>
-                </View>
-                <Text style={styles.overlayDescriptionReference}>
-                    {QuizLang[props.lang].WhatIsAnswer}
-                </Text>
-                <View style={styles.badgesView}>
-                    {props.answers.map( (el, i) => {
-                        return(
-                            <Badge
-                                key={i}
-                                value={el}
-                                badgeStyle={{paddingHorizontal: 15, height: 30, marginHorizontal: 10, marginVertical: 4}}
-                                onPress={() => pickOutAnswer(i)}
-                            />
-                        )
-                    })}
-                </View>
-            </ScrollView>
+                    <View style={styles.badgesView}>
+                        {props.answers.map( (el, i) => {
+                            return(
+                                <Badge
+                                    key={i}
+                                    value={el}
+                                    badgeStyle={{paddingHorizontal: 15, height: 30, marginHorizontal: 10, marginVertical: 4}}
+                                    onPress={() => pickOutAnswer(i)}
+                                />
+                            )
+                        })}
+                    </View>
+                    <Text style={styles.overlayDescriptionAnswers}>
+                        {QuizLang[props.lang].WhatIsAnswer}
+                    </Text>
+                </ScrollView>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     );
 };

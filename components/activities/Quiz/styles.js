@@ -71,6 +71,13 @@ export default StyleSheet.create({
         color: '#495058',
         marginVertical: 15
     },
+    overlayDescriptionAnswers: {
+        width: 250,
+        textAlign: 'center',
+        color: '#495058',
+        marginVertical: 15,
+        marginBottom: 150
+    },
     ScrollView: {
         alignItems: 'center',
         marginVertical: 30,
@@ -126,7 +133,7 @@ export default StyleSheet.create({
         flexWrap:'wrap',
         alignItems:'center',
         alignContent:'center',
-        marginBottom: 50
+        marginBottom: 10
     },
     quizzTitle: {
         fontWeight: 'bold',
