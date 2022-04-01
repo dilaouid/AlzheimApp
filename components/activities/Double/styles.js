@@ -12,16 +12,14 @@ export default StyleSheet.create({
     view: {
         height: hp('100%'),
         paddingBottom: 40,
-        flex: 1
+        flex: 1,
     },
     logo: {
-        width: 120,
-        height: undefined,
+        width: 90,
+        height: 80,
         marginVertical: 20,
         opacity: 0.8,
-        marginBottom: 40,
-        resizeMode: "center",
-        aspectRatio: 1
+        marginBottom: 40
     },
     button: {
         width: 235,

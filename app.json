@@ -25,6 +25,7 @@
       }
     },
     "ios": {
+      "supportsTablet": true,
       "bundleIdentifier": "org.alzheimApp"
     },
     "splash": {

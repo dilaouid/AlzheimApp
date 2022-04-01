@@ -20,7 +20,7 @@ export default StyleSheet.create({
     },
     bgLottie: {
         width: wp('100%'),
-        opacity: 0.4,
+        opacity: Platform.OS === 'ios' ? 0.8 : 0.4,
     },
     bgImage: {
         position: 'absolute',

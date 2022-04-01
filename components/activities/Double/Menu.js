@@ -11,7 +11,7 @@ import styles from './styles';
 export default function Menu(props) {
     return (
         <>
-            <Image source={DoubleLogo} style={styles.logo} resizeMode={'cover'} />
+            <Image source={DoubleLogo} style={styles.logo} />
 
             <Button
                 title={DoubleLang[props.lang].Play}

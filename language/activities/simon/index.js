@@ -106,7 +106,7 @@ export const lang = {
 
 
         // Help section
-        Head: "Le Simon, comment ça marche ?",
+        Head: "Le Simon, comment ça\nmarche ?",
         RulesHead: "Les règles",
         TriesHead: "Les essais",
         Rules: () => {

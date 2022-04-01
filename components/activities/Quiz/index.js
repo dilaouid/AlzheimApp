@@ -128,5 +128,9 @@ export default function Quiz(props) {
         }
     };
 
-    return <View style={styles.view}>{printPage()}</View>;
+    return (
+        <View style={styles.view}>
+            {printPage()}
+        </View>
+    );
 }
