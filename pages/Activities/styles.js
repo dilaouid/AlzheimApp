@@ -7,7 +7,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
         paddingBottom: 10,
-        width: wp('100%'),
+        width: 100+'%',
         height: hp('17%'),
         backgroundColor: '#355c7d'
     },

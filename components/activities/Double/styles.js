@@ -74,7 +74,7 @@ export default StyleSheet.create({
     },
     viewGame: {
         marginTop: 10,
-        width: wp('95%'),
+        width: 95+'%',
         height: hp('55%'),
         flexDirection: 'row',
         flexWrap: 'wrap',
