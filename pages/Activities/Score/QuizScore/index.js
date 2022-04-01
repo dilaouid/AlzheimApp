@@ -33,27 +33,31 @@ export default function QuizScore(props) {
             return quizScore.map( (el,i) => {
                 return (
                     <View style={{marginHorizontal: 15}} key={i}>
-                        <Badge
-                            value={el.name}
-                            textStyle={{textAlign: 'center'}}
-                            badgeStyle={{position:'absolute', paddingHorizontal: 15, height: 30, marginHorizontal: 10, marginVertical: 100, zIndex: 3}}
-                        />
-                        <CircularProgress
-                            value={el.score}
-                            textStyle={{marginBottom: -10}}
-                            title={ActivitiesLang[props.lang].Success}
-                            valueSuffix={'%'}
-                            titleStyle={{marginBottom: 10}}
-                            initialValue={0}
-                            
-                            delay={500}
-                            activeStrokeColor={'#2089dc'}
-                            radius={65}
-                            inActiveStrokeColor={'#9b59b6'}
-                            inActiveStrokeOpacity={0.5}
-                            inActiveStrokeWidth={6}
-                            activeStrokeWidth={12}
-                        />
+                        <View style={{zIndex: 20}}>
+                            <Badge
+                                value={el.name}
+                                textStyle={{textAlign: 'center', zIndex: 20}}
+                                badgeStyle={{position:'absolute', paddingHorizontal: 15, height: 30, marginHorizontal: 10, marginVertical: 100, zIndex: 100}}
+                                titleStyle={{zIndex: 20}}
+                            />
+                        </View>
+                        <View style={{zIndex: 1}}>
+                            <CircularProgress
+                                value={el.score}
+                                textStyle={{marginBottom: -10}}
+                                title={ActivitiesLang[props.lang].Success}
+                                valueSuffix={'%'}
+                                titleStyle={{marginBottom: 10}}
+                                initialValue={0}
+                                delay={500}
+                                activeStrokeColor={'#2089dc'}
+                                radius={65}
+                                inActiveStrokeColor={'#9b59b6'}
+                                inActiveStrokeOpacity={0.5}
+                                inActiveStrokeWidth={6}
+                                activeStrokeWidth={12}
+                            />
+                        </View>
                     </View>
                 );
             });
