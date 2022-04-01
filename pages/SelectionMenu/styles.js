@@ -17,8 +17,8 @@ export default StyleSheet.create({
     },
     topImage: {
         // flex: 1,
-        height: 70,
-        //marginTop: -10,
+        height: Platform.OS === 'ios' ? 50 : 70,
+        marginTop: Platform.OS === 'ios' ? 5 : 0,
     },
     heading: {
         marginTop: 10,
@@ -59,7 +59,7 @@ export default StyleSheet.create({
         overflow: 'hidden',
     },
     safeContainer: {
-        flex: 1,
+        flex: 1
     },
     nobodyYet: {
         textAlign: 'center',

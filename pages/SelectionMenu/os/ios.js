@@ -5,7 +5,8 @@ import {
     SafeAreaView,
     ScrollView,
     ActivityIndicator,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    Platform
 } from 'react-native';
 import Swiper from 'react-native-swiper/src';
 import { Input, FAB, Button } from 'react-native-elements';
@@ -92,6 +93,7 @@ export default function SelectionMenuIOS(props) {
                 />
             </View>
             </View>
+            <KeyboardAvoidingView behavior={"height"} style={{ flex: 1 }}>
             <SafeAreaView style={styles.safeContainer}>
                 {props.isLoading ? (
                     <ActivityIndicator
@@ -126,7 +128,7 @@ export default function SelectionMenuIOS(props) {
                                 </Text>
                             )}
                         </ScrollView>
-                        <ScrollView >
+                        <ScrollView>
                             <CreatePerson
                                 persons={props.persons}
                                 setPersons={props.setPersons}
@@ -136,6 +138,8 @@ export default function SelectionMenuIOS(props) {
                     </Swiper>
                 )}
             </SafeAreaView>
+            
+            </KeyboardAvoidingView>
         </View>
     );
 }
