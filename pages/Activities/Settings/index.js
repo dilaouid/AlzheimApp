@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { ScrollView, Alert, View } from 'react-native';
+import { ScrollView, Alert, View, KeyboardAvoidingView } from 'react-native';
 import { Button } from 'react-native-elements';
 import Success from '../../../components/selection/PersonCreation/Success';
 
@@ -165,7 +165,7 @@ export default function Settings(props) {
                     />
                 </ScrollView>
             ) : (
-                <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
+                <KeyboardAvoidingView behavior='height' style={{ flex: 1, backgroundColor: 'white' }}>
                     <Button
                         icon={{
                             name: 'arrow-circle-o-up',
@@ -197,7 +197,7 @@ export default function Settings(props) {
                             scs={good}
                         />
                     )}
-                </ScrollView>
+                </KeyboardAvoidingView>
             )}
         </View>
     );
