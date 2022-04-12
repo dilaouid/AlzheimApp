@@ -4,8 +4,6 @@
 
 [FR]
 
-# AlzheimApp
-
 ### Prérequis
 
 L'application a besoin des paquets suivants pour fonctionner correctement :
