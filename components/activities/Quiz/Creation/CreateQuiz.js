@@ -14,7 +14,7 @@ import { Button, Icon, Divider, FAB, Overlay, Input } from 'react-native-element
 import QuestionList from './QuestionList';
 
 import FormQuizContentAndroid from './FormQuizContentAndroid';
-import FormQuizContentIOS from './Creation/FormQuizContentIOS';
+import FormQuizContentIOS from './FormQuizContentIOS';
 
 import { lang as QuizLang } from '../../../../language/activities/quiz';
 import * as API from '../../../../data/quizApi';
