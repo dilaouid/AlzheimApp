@@ -6,7 +6,7 @@ import {
     SafeAreaView,
     KeyboardAvoidingView,
 } from 'react-native';
-import { Button, Icon, Input, Badge, FAB } from 'react-native-elements';
+import { Button, Icon, Input, Badge } from 'react-native-elements';
 import * as DocumentPicker from 'expo-document-picker';
 import { printFile } from '../utils/quizFunc';
 
@@ -15,7 +15,7 @@ import SuccessContent from '../SuccessContent';
 
 import styles from '../styles';
 
-export default function FormQuizContent(props) {
+export default function FormQuizContentIOS(props) {
     const [answer, setAnswer] = useState();
     
     const addAnswer = () => {

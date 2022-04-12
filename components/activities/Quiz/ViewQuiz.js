@@ -5,7 +5,8 @@ import {
     ScrollView,
     Alert,
     Modal,
-    Text
+    Text,
+    Platform
 } from 'react-native';
 import { Button, Icon, Divider, FAB, Overlay } from 'react-native-elements';
 
@@ -15,7 +16,9 @@ import ViewQuizList from './ViewQuizList';
 import * as API from '../../../data/quizApi';
 
 import { lang as QuizLang } from '../../../language/activities/quiz';
-import FormQuizContent from './Creation/FormQuizContent';
+
+import FormQuizContentAndroid from './Creation/FormQuizContentAndroid';
+import FormQuizContentIOS from './Creation/FormQuizContentIOS';
 
 import { Audio } from 'expo-av';
 
@@ -164,27 +167,34 @@ export default function ViewQuiz(props) {
             setQuestion(content.question);
             setAnswers([...content.answers]);
             setNewQuestion(true);
-        } else if (newQuestion) { // if the user wants to set a new question for quiz edition
-            return (<FormQuizContent
-                        lang={props.lang}
-                        setAnswers={setAnswers}
-                        setFileType={setFileType}
-                        setQuestion={setQuestion}
-                        setUri={setUri}
-                        setFilename={setFilename}
-                        setSuccess={setSuccess}
-                        setSound={setSound}
-                        setIsPlaying={setIsPlaying}
-                        pauseSound={pauseSound}
-                        uri={uri}
-                        filename={filename}
-                        answers={answers}
-                        fileType={fileType}
-                        question={question}
-                        success={success}
-                        sound={sound}
-                        isPlaying={isPlaying}
-                />);
+        } else if (newQuestion) {
+            // if the user wants to set a new question for quiz edition
+            const propsFormQuizContent = {
+                lang: props.lang,
+                uri: uri,
+                filename: filename,
+                answers: answers,
+                fileType: fileType,
+                question: question,
+                success: success,
+                sound: sound,
+                isPlaying: isPlaying,
+
+                setAnswers: setAnswers,
+                setFileType: setFileType,
+                setQuestion: setQuestion,
+                setUri: setUri,
+                setFilename: setFilename,
+                setSuccess: setSuccess,
+                setSound: setSound,
+                setIsPlaying: setIsPlaying,
+                pauseSound: pauseSound
+            };
+            if (Platform.OS === 'ios') {
+                console.log("iOS component insertion");
+            } else {
+                return <FormQuizContentAndroid {...propsFormQuizContent} />
+            }
         } else if (edit && !newQuestion) {
              // if the user want to see all the question for the quiz edition
             return (quizEdit.content)?.concat(newContent)?.map((el, i) => {
