@@ -38,6 +38,11 @@ export default function SelectionMenu(props) {
     const setLang = state?.setLang || props.setLang;
     const slidePropsState = state?.slide || props?.slide;
 
+    useEffect( () => {
+        setIndex(slidePropsState || 0);
+        setBtnTxt(index === 0 ? SelectionMenuLang[lang].AddAPerson : SelectionMenuLang[lang].ReturnToList);
+    }, []);
+
     useEffect(() => {
         Audio.setIsEnabledAsync(false);
         if (!username || username?.trim()?.length < 2) {
@@ -56,11 +61,6 @@ export default function SelectionMenu(props) {
         );
         return () => backHandler.remove();
     }, [search, username, navigate]);
-
-    useEffect( () => {
-        setIndex(slidePropsState || 0);
-        setBtnTxt(index === 0 ? SelectionMenuLang[lang].AddAPerson : SelectionMenuLang[lang].ReturnToList);
-    }, []);
 
     const printAccordingToOS = () => {
         const propsSelectionMenuComponent = {

@@ -14,17 +14,17 @@ export function SawTutorial(bool) {
         { hasSeenTutorial: { $exists: true } },
         { hasSeenTutorial: bool }
     );
-}
+};
 
 export async function setUsername(input) {
     return db.updateAsync({ username: { $exists: true } }, { username: input });
-}
+};
 
 export async function getUsername() {
     return db.findAsync({ username: { $exists: true } }, (err, docs) => {
         return docs;
     });
-}
+};
 
 export async function getConfig() {
     // db.remove({});
@@ -59,15 +59,19 @@ export async function getConfig() {
             return resp[0]?.hasSeenTutorial || false;
         });
     return { username, hasSeenTutorial };
-}
+};
 
 export function getPersons() {
     return db.findAsync({ person: { $exists: true } });
-}
+};
 
-export function reset() {
-    FileSystem.deleteAsync(`${FileSystem.documentDirectory}persons`).catch(err => {
-        console.error('folder delete err:',err);
-    });
+export async function reset() {
+    const path = `${FileSystem.documentDirectory}persons`;
+    const folder = await FileSystem.getInfoAsync(path);
+    if (folder.exists) {
+        FileSystem.deleteAsync(path).catch(err => {
+            console.error('folder delete err:',err);
+        });
+    }
     return AsyncStorage.clear();
-}
+};
