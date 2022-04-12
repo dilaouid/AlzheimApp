@@ -189,7 +189,7 @@ export default function CreateQuiz(props) {
 
             /* Form to create a quiz */
             if (Platform.OS === 'ios') {
-                console.log("iOS component insertion");
+                return <FormQuizContentIOS {...propsFormQuizContent} />
             } else
                 return <FormQuizContentAndroid {...propsFormQuizContent} />
         } else {

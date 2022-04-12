@@ -191,7 +191,7 @@ export default function ViewQuiz(props) {
                 pauseSound: pauseSound
             };
             if (Platform.OS === 'ios') {
-                console.log("iOS component insertion");
+                return <FormQuizContentIOS {...FormQuizContentIOS} />
             } else {
                 return <FormQuizContentAndroid {...propsFormQuizContent} />
             }
