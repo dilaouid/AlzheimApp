@@ -1,12 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import {
     Text,
     View,
     SafeAreaView,
     ScrollView,
     ActivityIndicator,
-    KeyboardAvoidingView,
-    Platform
+    KeyboardAvoidingView
 } from 'react-native';
 import Swiper from 'react-native-swiper/src';
 import { Input, FAB, Button } from 'react-native-elements';
@@ -21,18 +20,22 @@ import styles from '../styles';
 
 export default function SelectionMenuIOS(props) {
 
+    const [idx, setIdx] = useState(parseInt(props.index));
+
     const swiper = useRef(null);
     const navigate = useNavigate();
 
-    const swipePage = (idx) => {
-        if (idx > 1) idx = 0;
+    const swipePage = () => {
         setTimeout(() => {
-            if (idx % 2 === 0) {
-                props.setBtnTxt(SelectionMenuLang[props.lang].AddAPerson); 
-            } else props.setBtnTxt(SelectionMenuLang[props.lang].ReturnToList); 
-            props.setIndex(idx);
+            if (idx === 1) {
+                props.setBtnTxt(props.redirected ? SelectionMenuLang[props.lang].ReturnToList : SelectionMenuLang[props.lang].AddAPerson); 
+            } else {
+                props.setBtnTxt(props.redirected ? SelectionMenuLang[props.lang].AddAPerson : SelectionMenuLang[props.lang].ReturnToList);
+            }
             swiper.current.scrollBy(1, true);
             props.setActive(true);
+            if (idx == 1) setIdx(parseInt(0));
+            else setIdx(1);
         }, 250);
     };
 
@@ -86,7 +89,7 @@ export default function SelectionMenuIOS(props) {
                         props.setBtnTxt(
                             <ActivityIndicator color={'white'} size={'small'} />
                         );
-                        swipePage(props.index + 1);
+                        swipePage(idx + 1);
                     }}
                     title={props.btnText}
                     titleStyle={styles.buttonText}
@@ -109,6 +112,7 @@ export default function SelectionMenuIOS(props) {
                         loadMinimal={true}
                         loop={true}
                         showsPagination={false}
+                        index={props.index}
                     >
                         <ScrollView >
                             <Input

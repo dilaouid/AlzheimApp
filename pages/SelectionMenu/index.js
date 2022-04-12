@@ -25,7 +25,7 @@ export default function SelectionMenu(props) {
     const [search, setSearch] = useState();
     const [index, setIndex] = useState(0);
     const [btnText, setBtnTxt] = useState(
-        SelectionMenuLang[props.lang || lang].AddAPerson
+        props.redirected == 1 ? SelectionMenuLang[props.lang || lang].ReturnToList : SelectionMenuLang[props.lang || lang].AddAPerson
     );
     const [active, setActive] = useState(true);
 
@@ -40,7 +40,7 @@ export default function SelectionMenu(props) {
 
     useEffect( () => {
         setIndex(slidePropsState || 0);
-        setBtnTxt(index === 0 ? SelectionMenuLang[lang].AddAPerson : SelectionMenuLang[lang].ReturnToList);
+        setBtnTxt(index === 0 && props?.redirected != 1 ? SelectionMenuLang[lang].AddAPerson : SelectionMenuLang[lang].ReturnToList);
     }, []);
 
     useEffect(() => {
@@ -75,6 +75,7 @@ export default function SelectionMenu(props) {
             persons: persons,
             btnText: btnText,
             active: active,
+            redirected: props.redirected,
 
             setIndex: setIndex,
             setIsLoading: setIsLoading,
