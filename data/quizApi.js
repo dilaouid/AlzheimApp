@@ -61,14 +61,20 @@ const createQuizContent = async (personId, el) => {
 };
 
 const uploadQuizFile = async (el) => {
-    const filename = `${uuidv4()}${el.fileType == 'audio' ? '.m4a' : '.png'}`;
+    const filename = `${uuidv4()}${el.fileType == 'audio' ? '.m4a' : '.jpg'}`;
     const path = `${FileSystem.documentDirectory}quiz/${el.fileType}/`;
+    await FileSystem.getInfoAsync(el.uri).then(e => {
+        console.log(e);
+    })
     await FileSystem.copyAsync({
         from: el.uri,
         to: `${path}${filename}`
+    }).then(async e => {
+        await FileSystem.deleteAsync(el.uri);
+        el.uri = `${path}${filename}`;
+    }).catch(err => {
+        console.log(err);
     });
-    await FileSystem.deleteAsync(el.uri);
-    el.uri = `${path}${filename}`;
 };
 
 export function get(personId) {
