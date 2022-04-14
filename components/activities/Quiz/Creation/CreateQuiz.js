@@ -6,13 +6,15 @@ import {
     ScrollView,
     SafeAreaView,
     Modal,
-    Alert
+    Alert,
+    Platform
 } from 'react-native';
 import { Button, Icon, Divider, FAB, Overlay, Input } from 'react-native-elements';
 
 import QuestionList from './QuestionList';
 
-import FormQuizContent from './FormQuizContent';
+import FormQuizContentAndroid from './FormQuizContentAndroid';
+import FormQuizContentIOS from './FormQuizContentIOS';
 
 import { lang as QuizLang } from '../../../../language/activities/quiz';
 import * as API from '../../../../data/quizApi';
@@ -163,27 +165,33 @@ export default function CreateQuiz(props) {
             setCreateQuestion(true);
         }
         if (createQuestion) { // if the user is creating a new question
-            return <FormQuizContent
-                /* Form to create a quiz */
-                lang={props.lang}
-                setAnswers={setAnswers}
-                setFileType={setFileType}
-                setQuestion={setQuestion}
-                setUri={setUri}
-                setFilename={setFilename}
-                setSuccess={setSuccess}
-                setSound={setSound}
-                setIsPlaying={setIsPlaying}
-                pauseSound={pauseSound}
-                uri={uri}
-                filename={filename}
-                answers={answers}
-                fileType={fileType}
-                question={question}
-                success={success}
-                sound={sound}
-                isPlaying={isPlaying}
-            />
+            const propsFormQuizContent = {
+                lang: props.lang,
+                uri: uri,
+                filename: filename,
+                answers: answers,
+                fileType: fileType,
+                question: question,
+                success: success,
+                sound: sound,
+                isPlaying: isPlaying,
+
+                setAnswers: setAnswers,
+                setFileType: setFileType,
+                setQuestion: setQuestion,
+                setUri: setUri,
+                setFilename: setFilename,
+                setSuccess: setSuccess,
+                setSound: setSound,
+                setIsPlaying: setIsPlaying,
+                pauseSound: pauseSound
+            };
+
+            /* Form to create a quiz */
+            if (Platform.OS === 'ios') {
+                return <FormQuizContentIOS {...propsFormQuizContent} />
+            } else
+                return <FormQuizContentAndroid {...propsFormQuizContent} />
         } else {
             return <SafeAreaView style={styles.safeArea}>
                 <Button

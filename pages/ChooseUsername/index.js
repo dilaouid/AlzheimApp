@@ -135,6 +135,6 @@ export default function ChooseUsername(props) {
             </View>
         );
     } else {
-        return <SelectionMenu username={username} lang={props.lang} setLang={props.setLang} slide={1} />
+        return <SelectionMenu username={username} lang={props.lang} setLang={props.setLang} slide={1} redirected={1} />
     }
 }

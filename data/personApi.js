@@ -84,10 +84,16 @@ export async function deleteById(id) {
 };
 
 export async function reset() {
-    return FileSystem.deleteAsync(`${FileSystem.documentDirectory}persons`).then(async res => {
-        await SimonDB.removeAsync({}, { multi: true });
-        await QuizDB.removeAsync({}, { multi: true });
-        await DictaphoneDB.removeAsync({}, { multi: true });
-        return db.removeAsync({}, { multi: true });
-    });
+    const path = `${FileSystem.documentDirectory}persons`;
+    const file = await FileSystem.getInfoAsync(path);
+    if (file.exists) {
+        FileSystem.deleteAsync(`${FileSystem.documentDirectory}persons`).then(async res => {
+            await SimonDB.removeAsync({}, { multi: true });
+            await QuizDB.removeAsync({}, { multi: true });
+            await DictaphoneDB.removeAsync({}, { multi: true });
+        }).catch(err => {
+            console.log('[!] Directory does not exists');
+        });
+    }
+    return db.removeAsync({}, { multi: true });
 };

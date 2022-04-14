@@ -42,23 +42,6 @@ export default function SelectionMenuAndroid(props) {
         }, 400);
     };
 
-    const printRows = (list) => {
-        return list.map((el, i) => {
-            return (
-                <Rows
-                    index={i}
-                    key={el._id}
-                    username={props.username}
-                    id={el._id}
-                    fullname={el.fullname}
-                    description={el.description}
-                    picture={el.picture}
-                    lang={props.lang}
-                />
-            );
-        });
-    };
-
     return (
         <View style={styles.container}>
             <FAB

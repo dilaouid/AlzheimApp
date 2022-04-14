@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({
     wrapper: {
@@ -42,9 +42,9 @@ export default StyleSheet.create({
         textAlign: 'center',
     },
     image: {
-        height: 30 + '%',
+        height: Platform.OS === 'ios' ? 20 + '%' : 30 + '%',
         marginBottom: 40,
-        marginTop: 20,
+        marginTop: Platform.OS === 'ios' ? 60 : 20,
         aspectRatio: 1
     },
     button: {
