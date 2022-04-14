@@ -24,7 +24,7 @@ target 'AlzheimApp' do
 
   pod 'RNI18n', :path => '../node_modules/react-native-i18n'
 
-  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+  # pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
 
