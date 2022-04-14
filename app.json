@@ -14,12 +14,6 @@
         {
           "photosPermission": "L'application a besoin d'importer certaines de vos images pour la création de vos quiz et/ou de la personnalisation d'un profil"
         }
-      ],
-      [
-        "expo-document-picker",
-        {
-          "appleTeamId": "3847DKZ9VR"
-        }
       ]
     ],
     "android": {

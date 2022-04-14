@@ -56,3 +56,7 @@ web-build/
 dist/
 
 package-lock.json
+
+eas.json
+
+ios/AlzApp/Supporting/Expo.plist
