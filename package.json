@@ -45,7 +45,6 @@
     "expo-updates": "^0.11.6",
     "lottie-ios": "^3.2.3",
     "lottie-react-native": "5.0.1",
-    "modal-react-native-web": "^0.2.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
