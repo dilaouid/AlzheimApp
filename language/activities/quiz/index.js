@@ -88,6 +88,8 @@ export const lang = {
         SaveContent: "Sauvegarder la question",
         AddContent: "Ajouter la question",
         SureCancelEdition: "Êtes-vous sûr de bien vouloir abandonner l'édition de ce quiz? Vous ne pourrez pas récupérer vos modifications.",
+        ImportImage: "Importer une image",
+        ImportSound: "Importer un son",
 
         // Help page related
         Head: 'Le quiz, comment ça marche ?',
@@ -185,7 +187,9 @@ export const lang = {
         SaveContent: "Save the question",
         AddContent: "Add the question",
         SureCancelEdition: "Are you sure to cancel this quiz edition? Your modification would not be saved",
-
+        ImportImage: "Import a picture",
+        ImportSound: "Import a sound",
+        
         // Help page related
         Head: 'The quiz, how does it works?',
         RulesHead: "The rules",

@@ -57,8 +57,10 @@ export default function Menu(props) {
                 }
                 raised
                 onPress={() => {
-                    DocumentPicker.getDocumentAsync({multiple: false}).then( e => {
+                    DocumentPicker.getDocumentAsync({multiple: false, type: '*/*', copyToCacheDirectory: true}).then( e => {
                         props.setImportFile(e.uri);
+                    }).catch(e => {
+                        console.log(e);
                     })
                 }}
             />

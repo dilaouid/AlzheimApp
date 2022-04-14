@@ -7,7 +7,10 @@ import {
     KeyboardAvoidingView,
 } from 'react-native';
 import { Button, Icon, Input, Badge } from 'react-native-elements';
+
 import * as DocumentPicker from 'expo-document-picker';
+import * as ImagePicker from 'expo-image-picker';
+
 import { printFile } from '../utils/quizFunc';
 
 import { lang as QuizLang } from '../../../../language/activities/quiz';
@@ -39,21 +42,30 @@ export default function FormQuizContentIOS(props) {
         props.setUri();
     };
 
-    const pickFile = async () => {
-        if (Platform.OS === 'web') {
-            alert('todo');
-            return;
-        }
-
-        let result = await DocumentPicker.getDocumentAsync({type: ['image/*', 'audio/*']});
+    const pickAudioFile = async () => {
+        let result = await DocumentPicker.getDocumentAsync({type: 'audio/*', copyToCacheDirectory: true, multiple:false});
         if (result.type === 'cancel') {
             return;
         }
-
         props.setUri(result.uri);
         props.setFileType(result.mimeType.split('/')[0]);
         props.setFilename(result.name);
     };
+
+    const pickImageFile = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [1, 1],
+            quality: 1,
+        });
+        if (result.type === 'cancel') {
+            return;
+        }
+        props.setUri(result.uri);
+        props.setFileType(result.type);
+        props.setFilename(result.name);
+    }
 
     const close = () => {
         props.setSuccess(false);
@@ -74,11 +86,18 @@ export default function FormQuizContentIOS(props) {
             <KeyboardAvoidingView behavior='padding' style={{flex:1}}>
                 <ScrollView contentContainerStyle={styles.ScrollView}>
                     { printFile(props.fileType, props.uri, clearFile, props.isPlaying, props.pauseSound, props.setIsPlaying, props.sound, props.setSound) }
-                    <Button
-                        title={QuizLang[props.lang].ImportFile}
-                        buttonStyle={{ borderRadius: 15 }}
-                        onPress={pickFile}
-                    />
+                    <View style={{flexDirection: 'row', alignItems: 'center', flexShrink: 1, flexWrap:'wrap'}}>
+                        <Button
+                            title={QuizLang[props.lang].ImportImage}
+                            buttonStyle={{ borderRadius: 15, marginRight: 15 }}
+                            onPress={pickImageFile}
+                        />
+                        <Button
+                            title={QuizLang[props.lang].ImportSound}
+                            buttonStyle={{ borderRadius: 15 }}
+                            onPress={pickAudioFile}
+                        />
+                    </View>
                     <Text style={styles.overlayDescriptionReference}>
                         {QuizLang[props.lang].ReferenceFile}
                     </Text>

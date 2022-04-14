@@ -21,6 +21,7 @@ export default function ImportData(props) {
 
             // Import and check file data
             const content = await FileSystem.readAsStringAsync(props.importFile).catch(e => {
+                console.log(e);
                 throw HomeLang[props.lang].InvalidFile;
             });
             const parsed = parseJSON(content);

@@ -312,7 +312,7 @@ export const importLog = async (dictaphone, personId) => {
 };
 
 export const writeDataFile = async (fullname, content) => {
-    let fileUri = FileSystem.documentDirectory + `${fullname}.alz`;
+    let fileUri = FileSystem.documentDirectory + `${fullname}.json`;
     return await FileSystem.writeAsStringAsync(fileUri, content).catch(err => {
         console.log(err);
     }).then( (e) => {
