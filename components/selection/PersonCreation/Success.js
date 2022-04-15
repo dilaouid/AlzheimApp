@@ -13,7 +13,6 @@ import { lang as InterfaceLang } from '../../../language/interface';
 export default function Success(props) {
     const LottieSource = require('../../../assets/img/selection/addedUser.json');
     const navigate = useNavigate();
-
     return (
         <View>
             <Lottie
@@ -29,13 +28,13 @@ export default function Success(props) {
                     ? InterfaceLang[props.lang].CreatedPerson
                     : InterfaceLang[props.lang].EditedPerson}
             </Text>
-            <View style={{flexDirection: 'row', flexWrap: 'wrap', flexShrink: 1, alignItems: 'center', alignContent: 'center', flex: 1, alignSelf: 'center'}}>
+            <View style={{flexDirection: 'row', alignItems: 'center', alignContent: 'center', alignSelf: 'center'}}>
                 <Button
                     title={InterfaceLang[props.lang].ReturnToForm}
                     onPress={(e) => {
                         props.close();
                     }}
-                    buttonStyle={{marginRight: 20, borderRadius: 15,paddingHorizontal: 15, backgroundColor: 'red'}}
+                    buttonStyle={ props.edit ? {marginHorizontal: 20, borderRadius: 15, backgroundColor: 'red', height: 40} : {marginRight: 20, borderRadius: 15, backgroundColor: 'red', height: 40}}
                 />
                 { props.edit == false ? <Button
                     title={InterfaceLang[props.lang].OpenActivity}
