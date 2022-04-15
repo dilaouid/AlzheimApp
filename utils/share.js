@@ -312,7 +312,7 @@ export const importLog = async (dictaphone, personId) => {
 };
 
 export const writeDataFile = async (fullname, content) => {
-    let fileUri = FileSystem.documentDirectory + `${fullname}.json`;
+    let fileUri = FileSystem.documentDirectory + `${fullname.replace(/\s/g, '_')}.json`;
     return await FileSystem.writeAsStringAsync(fileUri, content).catch(err => {
         console.log(err);
     }).then( (e) => {
@@ -351,6 +351,6 @@ export const exportPerson = async (personId, key) => {
             dictaphone: dictaphoneData
         }
     });
-    const uri = await writeDataFile(personData.fullname.replace(' ', '_'), key ? dilacrypt.encrypt(result, key) : result);
+    const uri = await writeDataFile(personData.fullname, key ? dilacrypt.encrypt(result, key) : result);
     return (uri);
 };

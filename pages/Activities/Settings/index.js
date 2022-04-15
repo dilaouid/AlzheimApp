@@ -117,17 +117,23 @@ export default function Settings(props) {
                         containerStyle={styles.containerStyle}
                         title={load ? <ActivityIndicator color={'white'} size={'small'} /> : ActivitiesLang[props.lang]?.ShareProfile}
                         onPress={async () => {
-                            setLoad(true)
-                            console.log('[~] Pressing export button');
-                            console.log('[+] Exporting person...');
-                            const uri = await exportPerson(props.personId, null);
-                            console.log('[+] Exported person! uri is: ' + uri);
-                            Sharing.shareAsync(uri).then( async (e) => {
-                                await FileSystem.deleteAsync(uri);
-                            }).catch(err => {
-                                console.log(err);
+                            setLoad(true);
+                            Sharing.isAvailableAsync().then(async isAvailable => {
+                                if (!isAvailable) {
+                                    alert('Sharing is not available');
+                                    return;
+                                }
+                                console.log('[~] Pressing export button');
+                                console.log('[+] Exporting person...');
+                                const uri = await exportPerson(props.personId, null);
+                                console.log('[+] Exported person! uri is: ' + uri);
+                                Sharing.shareAsync(uri).then( async (e) => {
+                                    await FileSystem.deleteAsync(uri);
+                                }).catch(err => {
+                                    console.log(err);
+                                });
+                                setLoad(false);
                             });
-                            setLoad(false);
                         }}
                         disabled={load}
                     />
@@ -182,7 +188,8 @@ export default function Settings(props) {
                             setUriPreview(props.person.picture);
                             setImage('');
                             setDescription(props.person.description);
-                            setEdit(false)
+                            setEdit(false);
+                            setSuccess(false);
                         }}
                     />
                     {success ? (
