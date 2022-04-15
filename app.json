@@ -3,7 +3,7 @@
     "name": "AlzheimApp",
     "description": "",
     "slug": "AlzheimApp",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "icon": "./assets/img/AppIcon.png",
     "assetBundlePatterns": [
       "**/*"
@@ -33,7 +33,7 @@
         "UIBackgroundModes": "audio"
       },
       "usesIcloudStorage": true,
-      "buildNumber": 2
+      "buildNumber": "2"
     },
     "splash": { 
       "image": "./assets/img/alzheimapp_logo.png",
