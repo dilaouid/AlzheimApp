@@ -34,6 +34,16 @@ import { db as quizAPI } from '../data/quizApi';
 import { db as doubleAPI } from '../data/doubleApi';
 
 const isValidDate = (d) => {
+    let split = d.split('/');
+    const currentDate = new Date();
+    if (split.length != 3) return false;
+    if (split[2] > currentDate.getFullYear()) return false;
+    if (split[0] > 12) {
+        let tmp = split[1];
+        split[1] = split[0];
+        split[0] = tmp;
+    }
+    d = split.join('/');
     let n = new Date(d);
     return n instanceof Date && !isNaN(n);
 };
