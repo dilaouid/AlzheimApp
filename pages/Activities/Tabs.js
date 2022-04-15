@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { lang as ActivitiesLang } from '../../language/activities';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Platform } from 'react-native';
 
 import { useNavigate } from 'react-router-native';
@@ -20,7 +21,7 @@ export default function Tabs(props) {
     return (
         <Tab.Navigator
             screenOptions={{
-                tabBarStyle: [{ height: Platform.OS == 'ios' ? 100 : 60, color: '#3B8EFF', backgroundColor: '#355c7d' }],
+                tabBarStyle: [{ height: Platform.OS == 'ios' ? hp('10%') : hp('10%'), color: '#3B8EFF', backgroundColor: '#355c7d' }],
                 tabBarLabelStyle: [{ color: 'white', marginBottom: 10 }],
             }}
         >

@@ -12,10 +12,10 @@ export default StyleSheet.create({
         backgroundColor: '#355c7d'
     },
     topLottie: {
-        marginTop: 13,
+        marginTop: 6,
         width: 60,
         height: undefined,
-        marginBottom: Platform.OS === 'ios' ? 35 : 15,
+        marginBottom: Platform.OS === 'ios' ? 25 : 15,
         backgroundColor: '#355c7d'
     },
     bgLottie: {
