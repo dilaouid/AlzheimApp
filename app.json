@@ -4,7 +4,7 @@
     "description": "",
     "slug": "AlzheimApp",
     "version": "1.0.5",
-    "icon": "./AppIcon.png",
+    "icon": "./assets/img/AppIcon.png",
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -32,9 +32,10 @@
         "NSPhotoLibraryUsageDescription": "AlzheimApp a besoin de récupérer des fichiers pour la création de quiz et l'édition de profil.",
         "UIBackgroundModes": "audio"
       },
-      "usesIcloudStorage": true
+      "usesIcloudStorage": true,
+      "buildNumber": 2
     },
-    "splash": {
+    "splash": { 
       "image": "./assets/img/alzheimapp_logo.png",
       "backgroundColor": "#355c7d",
       "resizeMode": "contain"
