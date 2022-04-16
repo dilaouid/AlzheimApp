@@ -8,14 +8,13 @@ export default StyleSheet.create({
         alignContent: 'center',
         paddingBottom: 10,
         width: 100+'%',
-        height: hp('17%'),
         backgroundColor: '#355c7d'
     },
     topLottie: {
-        marginTop: 6,
-        width: 60,
+        marginTop: hp('1%'),
+        width: wp('10%'),
         height: undefined,
-        marginBottom: Platform.OS === 'ios' ? 25 : 15,
+        marginBottom: hp('3%'),
         backgroundColor: '#355c7d'
     },
     bgLottie: {
@@ -30,13 +29,13 @@ export default StyleSheet.create({
     },
     topImage: {
         marginTop: -40,
-        width: 200,
+        width: wp('20%'),
         height: 200,
         marginBottom: -70,
         backgroundColor: '#355c7d'
     },
     heading: {
-        fontSize: 20,
+        fontSize: hp('3%'),
         color: 'white',
         marginTop: 0,
         zIndex: 2,

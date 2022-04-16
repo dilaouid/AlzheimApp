@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
     containerStyle: {
@@ -7,26 +8,26 @@ export default StyleSheet.create({
         marginBottom: 10,
     },
     buttonStyle: {
-        width: 250,
-        height: 40,
+        width: wp('80%'),
+        height: hp('7%'),
         backgroundColor: '#4d8abd'
     },
     buttonStyleReturn: {
-        width: 200,
-        height: 40,
+        width: wp('80%'),
+        height: hp('7%'),
     },
     buttonStyleDelete: {
-        width: 250,
-        height: 40,
+        width: wp('80%'),
+        height: hp('7%'),
         backgroundColor: 'red',
     },
     buttonStyleBack: {
-        width: 250,
-        height: 40
+        width: wp('80%'),
+        height: hp('7%'),
     },
     buttonStyleDebug: {
-        width: 250,
-        height: 40,
+        width: wp('80%'),
+        height: hp('7%'),
         backgroundColor: 'orange',
     },
 });

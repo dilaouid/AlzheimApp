@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from 'react-native-elements';
 import ActivitiesList from '../../../data/activities';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import styles from './styles';
 
@@ -24,14 +25,15 @@ export default function Activities(props) {
                         icon={{
                             name: el.icon,
                             type: 'ionicon',
-                            size: 15,
+                            size: wp('6%'),
                             color: 'white',
                         }}
                         key={i}
                         iconPosition={'left'}
-                        iconContainerStyle={{ marginRight: 50 }}
+                        iconContainerStyle={{ marginRight: wp('15%'), marginLeft: wp('5%') }}
                         buttonStyle={styles.buttonStyle}
                         containerStyle={styles.containerStyle}
+                        titleStyle={{fontSize: wp('4%')}}
                         title={el.name}
                         onPress={(e) => {
                             setPage(

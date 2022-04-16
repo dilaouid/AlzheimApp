@@ -1,6 +1,7 @@
 import React from 'react';
 import { ListItem, Avatar } from 'react-native-elements';
 import { Platform } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import DefaultProfilePicture from '../../assets/img/interface/profile.jpg';
 import { useNavigate } from 'react-router-native';
@@ -14,8 +15,8 @@ export default function Rows(props) {
             : null;
     let mod =
         props.index % 2 === 0
-            ? { backgroundColor: 'white' }
-            : { backgroundColor: '#f3f3f3' };
+            ? { backgroundColor: 'white', paddingVertical: hp('3%') }
+            : { backgroundColor: '#f3f3f3', paddingVertical: hp('3%') };
     let componentProps =
         Platform.OS !== 'web'
             ? {
@@ -44,10 +45,11 @@ export default function Rows(props) {
                         : DefaultProfilePicture
                 }
                 rounded
+                containerStyle={{width: wp('10%'), height: undefined, borderRadius: 300, aspectRatio: 1}}
             />
             <ListItem.Content>
-                <ListItem.Title>{props.fullname}</ListItem.Title>
-                <ListItem.Subtitle>{props.description}</ListItem.Subtitle>
+                <ListItem.Title style={{fontSize: hp('2%')}}>{props.fullname}</ListItem.Title>
+                <ListItem.Subtitle style={{fontSize: hp('2%'), color:'gray'}}>{props.description}</ListItem.Subtitle>
             </ListItem.Content>
             <ListItem.Chevron color="grey" />
         </ListItem>
