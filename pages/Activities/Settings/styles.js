@@ -10,20 +10,24 @@ export default StyleSheet.create({
     buttonStyle: {
         width: wp('80%'),
         height: hp('7%'),
+        justifyContent: 'flex-start',
         backgroundColor: '#4d8abd'
     },
     buttonStyleReturn: {
         width: wp('80%'),
         height: hp('7%'),
+        justifyContent: 'flex-start',
     },
     buttonStyleDelete: {
         width: wp('80%'),
         height: hp('7%'),
+        justifyContent: 'flex-start',
         backgroundColor: 'red',
     },
     buttonStyleBack: {
         width: wp('80%'),
         height: hp('7%'),
+        justifyContent: 'flex-start',
     },
     buttonStyleDebug: {
         width: wp('80%'),

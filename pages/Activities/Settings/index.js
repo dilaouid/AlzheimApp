@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { ScrollView, Alert, View, KeyboardAvoidingView } from 'react-native';
+import { ScrollView, Alert, View, KeyboardAvoidingView, ActivityIndicator } from 'react-native';
 import { Button } from 'react-native-elements';
 import Success from '../../../components/selection/PersonCreation/Success';
 
@@ -16,7 +16,7 @@ import * as FileSystem from 'expo-file-system';
 
 import styles from './styles';
 import Form from '../../../components/selection/PersonCreation/Form';
-import { ActivityIndicator } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 
 export default function Settings(props) {
@@ -94,11 +94,12 @@ export default function Settings(props) {
                         icon={{
                             name: 'user',
                             type: 'font-awesome',
-                            size: 15,
+                            size: wp('6%'),
                             color: 'white',
                         }}
-                        iconContainerStyle={{ marginRight: 10 }}
+                        iconContainerStyle={{ marginRight: wp('15%'), marginLeft: wp('5%') }}
                         buttonStyle={styles.buttonStyle}
+                        titleStyle={{fontSize: wp('4%')}}
                         containerStyle={styles.containerStyle}
                         onPress={() => {
                             setEdit(true);
@@ -109,11 +110,12 @@ export default function Settings(props) {
                         icon={{
                             name: load ? '' : 'share-alt',
                             type: 'font-awesome',
-                            size: 15,
+                            size: wp('6%'),
                             color: 'white',
                         }}
-                        iconContainerStyle={{ marginRight: 10 }}
+                        iconContainerStyle={{ marginRight: wp('15%'), marginLeft: wp('5%') }}
                         buttonStyle={styles.buttonStyle}
+                        titleStyle={{fontSize: wp('4%')}}
                         containerStyle={styles.containerStyle}
                         title={load ? <ActivityIndicator color={'white'} size={'small'} /> : ActivitiesLang[props.lang]?.ShareProfile}
                         onPress={async () => {
@@ -141,13 +143,15 @@ export default function Settings(props) {
                         icon={{
                             name: 'remove',
                             type: 'font-awesome',
-                            size: 15,
+                            size: wp('6%'),
                             color: 'white',
                         }}
-                        iconContainerStyle={{ marginRight: 10 }}
+                        iconPosition={'left'}
+                        iconContainerStyle={{ marginRight: wp('15%'), marginLeft: wp('5%') }}
                         buttonStyle={styles.buttonStyleDelete}
                         containerStyle={styles.containerStyle}
                         title={ActivitiesLang[props.lang]?.DeleteProfile}
+                        titleStyle={{fontSize: wp('4%')}}
                         onPress={() => {
                             openModalDeleteProfile();
                         }}
@@ -156,11 +160,13 @@ export default function Settings(props) {
                         icon={{
                             name: 'caret-left',
                             type: 'font-awesome',
-                            size: 15,
+                            size: wp('6%'),
                             color: 'white',
                         }}
-                        iconContainerStyle={{ marginRight: 10 }}
+                        iconPosition={'left'}
+                        iconContainerStyle={{ marginRight: wp('18%'), marginLeft: wp('5%') }}
                         buttonStyle={styles.buttonStyleBack}
+                        titleStyle={{fontSize: wp('4%')}}
                         containerStyle={styles.containerStyle}
                         title={ActivitiesLang[props.lang]?.Back}
                         onPress={() => {
@@ -176,12 +182,13 @@ export default function Settings(props) {
                         icon={{
                             name: 'arrow-circle-o-up',
                             type: 'font-awesome',
-                            size: 15,
+                            size: wp('6%'),
                             color: 'white',
                         }}
-                        iconContainerStyle={{ marginRight: 10 }}
+                        iconContainerStyle={{ marginRight: wp('23%'), marginLeft: wp('5%') }}
                         buttonStyle={styles.buttonStyleReturn}
                         containerStyle={styles.containerStyle}
+                        titleStyle={{fontSize: wp('4%')}}
                         title={ActivitiesLang[props.lang]?.ReturnList}
                         onPress={() => {
                             setFullname(props.person.fullname);
