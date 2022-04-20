@@ -1,4 +1,5 @@
 import { StyleSheet, Platform } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
     wrapper: {
@@ -17,32 +18,33 @@ export default StyleSheet.create({
     },
     title: {
         color: 'black',
-        fontSize: 22,
+        fontSize: wp('5%'),
         fontWeight: 'bold',
         textAlign: 'center',
-        marginBottom: 20
+        marginBottom: hp('2%')
     },
     text: {
         color: 'black',
-        fontSize: 15,
+        fontSize: wp('3%'),
         width: 70 + '%',
         textAlign: 'center',
     },
     titleOdd: {
         color: 'white',
-        fontSize: 22,
+        fontSize: wp('5%'),
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 20
     },
     textOdd: {
         color: 'white',
-        fontSize: 15,
+        fontSize: wp('3%'),
         width: 70 + '%',
         textAlign: 'center',
     },
     image: {
-        height: Platform.OS === 'ios' ? 20 + '%' : 30 + '%',
+        width: wp('30%'),
+        height: undefined,
         marginBottom: 40,
         marginTop: Platform.OS === 'ios' ? 60 : 20,
         aspectRatio: 1
