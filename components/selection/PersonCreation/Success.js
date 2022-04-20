@@ -34,7 +34,8 @@ export default function Success(props) {
                     onPress={(e) => {
                         props.close();
                     }}
-                    buttonStyle={ props.edit ? {marginHorizontal: 20, borderRadius: 15, backgroundColor: 'red', height: 40} : {marginRight: 20, borderRadius: 15, backgroundColor: 'red', height: 40}}
+                    buttonStyle={ styles.ReturnToForm(props.edit) }
+                    titleStyle= { styles.title }
                 />
                 { props.edit == false ? <Button
                     title={InterfaceLang[props.lang].OpenActivity}
@@ -46,7 +47,8 @@ export default function Success(props) {
                         }
                     });
                     }}
-                    buttonStyle={{borderRadius: 15, paddingHorizontal: 15}}
+                    buttonStyle={ styles.openActivity }
+                    titleStyle={ styles.title }
                 /> : <></> }
             </View>
         </View>

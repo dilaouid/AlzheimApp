@@ -190,7 +190,7 @@ export default function Settings(props) {
                         containerStyle={styles.containerStyle}
                         titleStyle={{fontSize: wp('4%')}}
                         title={ActivitiesLang[props.lang]?.ReturnList}
-                        onPress={() => {
+                        onPress={() => { 
                             setFullname(props.person.fullname);
                             setUriPreview(props.person.picture);
                             setImage('');

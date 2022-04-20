@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import {
     Text,
     View,
@@ -8,11 +8,10 @@ import {
     ActivityIndicator,
 } from 'react-native';
 import Swiper from 'react-native-swiper/src';
-import { Input, FAB } from 'react-native-elements';
+import { Input, FAB, Button } from 'react-native-elements';
 import { useNavigate } from 'react-router-native';
 
 import { lang as SelectionMenuLang } from '../../../language/selection';
-import Rows from '../../../components/selection/Rows';
 import CreatePerson from '../../../components/selection/PersonCreation/CreatePerson';
 
 import Lottie from '../../../components/utils/Lottie';
@@ -82,8 +81,9 @@ export default function SelectionMenuAndroid(props) {
             </View>
             <Text style={styles.subtitle}>{SelectionMenuLang[props.lang].WhatsUp}</Text>
             <View style={styles.viewList}>
-                <TouchableOpacity
+                <Button
                     style={styles.button}
+                    containerStyle={styles.buttonContainer}
                     activeOpacity={0.4}
                     onPress={(e) => {
                         if (props.active === false) {
@@ -95,9 +95,9 @@ export default function SelectionMenuAndroid(props) {
                         );
                         swipePage(props.index - 1);
                     }}
-                >
-                    <Text style={styles.buttonText}>{props.btnText}</Text>
-                </TouchableOpacity>
+                    title={props.btnText}
+                    titleStyle={styles.buttonText}
+                />
             </View>
             </View>
             <SafeAreaView style={styles.safeContainer}>

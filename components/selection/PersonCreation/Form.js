@@ -4,6 +4,7 @@ import { Button, Divider, Icon, Input } from 'react-native-elements';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import { v4 as uuidv4 } from 'uuid';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import defaultProfilPicture from '../../../assets/img/interface/profile.jpg';
 import styles from '../styles';
@@ -139,14 +140,14 @@ export default function Form(props) {
             <Button
                 title={InterfaceLang[props?.lang].ImportImage}
                 onPress={pickImage}
-                titleStyle={{ fontSize: 15 }}
+                titleStyle={{ fontSize: wp('3%') }}
                 buttonStyle={styles.btnImport}
                 icon={
                     <Icon
                         name="image"
-                        size={15}
+                        size={wp('4%')}
                         color="white"
-                        style={{ marginHorizontal: 5 }}
+                        style={{ marginHorizontal: wp('2%') }}
                     />
                 }
             />
@@ -156,15 +157,16 @@ export default function Form(props) {
             />
             <Input
                 placeholder={InterfaceLang[props?.lang].SetFullName}
-                leftIcon={<Icon name="person" size={24} color="grey" />}
+                leftIcon={<Icon name="person" size={wp('6%')} color="grey" containerStyle={styles.icon}  />}
                 label={InterfaceLang[props?.lang].FullName}
+                labelStyle={ styles.label }
                 errorStyle={{ color: 'red' }}
                 renderErrorMessage={true}
                 maxLength={25}
                 errorMessage={fullnameError}
-                inputStyle={{ fontSize: 14, marginHorizontal: 10 }}
+                inputStyle={styles.input}
                 value={props.fullname}
-                containerStyle={{ width: 300, marginTop: -10 }}
+                containerStyle={ styles.inputContainer }
                 onChangeText={(e) => {
                     props.setFullname(e);
                 }}
@@ -172,14 +174,15 @@ export default function Form(props) {
 
             <Input
                 placeholder={InterfaceLang[props?.lang].SetDescription}
-                leftIcon={<Icon name="info" size={24} color="grey" />}
+                leftIcon={<Icon name="info" size={wp('6%')} color="grey" containerStyle={styles.icon} />}
                 label={InterfaceLang[props?.lang].Description}
+                labelStyle={styles.label}
                 errorStyle={{ color: 'red' }}
                 maxLength={100}
                 renderErrorMessage={true}
                 errorMessage={descriptionError}
-                inputStyle={{ fontSize: 14, marginHorizontal: 10 }}
-                containerStyle={{ width: 300, marginBottom: 0 }}
+                inputStyle={ styles.input }
+                containerStyle={ styles.inputContainer }
                 value={props.description}
                 onChangeText={(e) => {
                     props.setDescription(e);
@@ -192,15 +195,16 @@ export default function Form(props) {
                 onPress={(e) => {
                     confirm();
                 }}
-                titleStyle={{ fontSize: 15 }}
+                titleStyle={{ fontSize: wp('3%') }}
                 buttonStyle={styles.btnSave}
+                containerStyle={{ marginTop: hp('1%')}}
                 iconRight={true}
                 icon={
                     <Icon
                         name="save"
-                        size={15}
+                        size={wp('4%')}
                         color="white"
-                        style={{ marginHorizontal: 5 }}
+                        style={{ marginHorizontal: wp('2%') }}
                     />
                 }
             />

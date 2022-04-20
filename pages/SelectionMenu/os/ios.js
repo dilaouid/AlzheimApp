@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-native';
 
 import { lang as SelectionMenuLang } from '../../../language/selection';
 import CreatePerson from '../../../components/selection/PersonCreation/CreatePerson';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import Lottie from '../../../components/utils/Lottie';
 
@@ -43,44 +44,42 @@ export default function SelectionMenuIOS(props) {
         <View style={styles.container}>
             <FAB
                 color='white'
-                style={{
-                    position: 'absolute',
-                    marginLeft: 85 + '%',
-                    marginTop: 15,
-                    zIndex: 3
-                }}
+                style={ styles.fab }
                 size="small"
                 icon={
                     {
                         name: 'home-outline',
                         type: 'ionicon',
                         color:'#355c7d',
-                        size: 15,
-                        style: {marginTop: 4}
+                        size: wp('4%'),
+                        //style: {marginTop: 4}
                     }
                 }
+                buttonStyle={{width: wp('9%'), height:hp('6%')}}
+                iconContainerStyle={{width: wp('9%'), height:hp('5%')}}
                 onPress={() => navigate('/home', {
                     state: { username: props.username, setLang: props.setLang }
                 }) }
             />
             <View style={styles.topBanner}>
-            <View style={styles.wrapper}>
-                <Lottie
-                    LottieSource={props.LottieSource}
-                    ImageSource={props.LoadingBrain}
-                    LottieStyle={styles.topImage}
-                    ImageStyle={styles.topImage}
-                    loop={true}
-                    autoPlay={true}
-                />
-                <Text style={styles.heading}>
-                    {SelectionMenuLang[props.lang].Hello(props.username)}
-                </Text>
-            </View>
+                <View style={styles.wrapper}>
+                    <Lottie
+                        LottieSource={props.LottieSource}
+                        ImageSource={props.LoadingBrain}
+                        LottieStyle={styles.topImage}
+                        ImageStyle={styles.topImage}
+                        loop={true}
+                        autoPlay={true}
+                    />
+                    <Text style={styles.heading}>
+                        {SelectionMenuLang[props.lang].Hello(props.username)}
+                    </Text>
+                </View>
             <Text style={styles.subtitle}>{SelectionMenuLang[props.lang].WhatsUp}</Text>
             <View style={styles.viewList}>
                 <Button
-                    containerStyle={styles.button}
+                    containerStyle={styles.buttonContainer}
+                    buttonStyle={styles.button}
                     activeOpacity={0.4}
                     onPress={(e) => {
                         if (props.active === false)

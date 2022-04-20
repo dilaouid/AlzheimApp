@@ -1,10 +1,17 @@
 import { StyleSheet } from 'react-native';
 import { Platform } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         zIndex: 1,
+    },
+    fab: {
+        position: 'absolute',
+        marginLeft: wp('88%'),
+        marginTop: hp('2%'),
+        zIndex: 3 
     },
     wrapper: {
         marginTop: 20,
@@ -17,12 +24,15 @@ export default StyleSheet.create({
     },
     topImage: {
         // flex: 1,
-        height: Platform.OS === 'ios' ? 50 : 70,
-        marginTop: Platform.OS === 'ios' ? 5 : 0,
+        marginTop: hp('1%'),
+        width: wp('15%'),
+        height: undefined,
+        marginBottom: hp('2%'),
+        backgroundColor: '#355c7d'
     },
     heading: {
         marginTop: 10,
-        fontSize: 20,
+        fontSize: hp('3%'),
         zIndex: 2,
         color: 'white'
     },
@@ -32,6 +42,7 @@ export default StyleSheet.create({
     },
     subtitle: {
         textAlign: 'center',
+        fontSize: hp('2%'),
         color: 'white'
     },
     image: {
@@ -40,16 +51,18 @@ export default StyleSheet.create({
     },
     button: {
         backgroundColor: '#3B8EFF',
-        marginVertical: 25,
-        height: 40,
-        width: 500,
         borderRadius: 20,
+        height: hp('5%'),
         overflow: 'hidden',
+    },
+    buttonContainer: {
+        marginVertical: 25,
+        width: wp('120%'),
     },
     buttonText: {
         color: 'white',
         textAlign: 'center',
-        marginTop: Platform.OS === 'ios' ? 0 : 10
+        fontSize: hp('2%')
     },
     viewList: {
         textAlign: 'center',
@@ -73,6 +86,6 @@ export default StyleSheet.create({
     searchInputStyle: {
         textAlign: 'center',
         color: '#495058',
-        fontSize: 15,
+        fontSize: hp('2%')
     },
 });
