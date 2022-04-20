@@ -3,6 +3,7 @@ import {
     ScrollView,
     Linking
 } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { Button, Icon, Text } from 'react-native-elements';
 
@@ -21,15 +22,15 @@ export default function Menu(props) {
             <Button
                 title={HomeLang[props.lang].Select}
                 buttonStyle={styles.button}
-                titleStyle={{ color: '#355c7d', textAlign: 'center', fontSize: 16 }}
+                titleStyle={styles.titleStyle}
                 containerStyle={styles.buttonContainer}
                 icon={
                     <Icon
                         name={'person-outline'}
                         type={'ionicon'}
                         color={'#355c7d'}
-                        size={15}
-                        style={{ marginRight: 20, marginLeft: 10 }}
+                        size={wp('4%')}
+                        style={styles.iconStyle}
                     />
                 }
                 raised
@@ -43,7 +44,7 @@ export default function Menu(props) {
             <Button
                 title={HomeLang[props.lang].Import}
                 buttonStyle={styles.button}
-                titleStyle={{ color: '#355c7d', fontSize: 16 }}
+                titleStyle={styles.titleStyle}
                 containerStyle={styles.buttonContainer}
                 iconContainerStyle={{ marginRight: 50 }}
                 icon={
@@ -51,8 +52,8 @@ export default function Menu(props) {
                         name={'person-add-outline'}
                         type={'ionicon'}
                         color={'#355c7d'}
-                        size={15}
-                        style={{ marginRight: 20, marginLeft: 10 }}
+                        size={wp('4%')}
+                        style={styles.iconStyle}
                     />
                 }
                 raised
@@ -67,7 +68,7 @@ export default function Menu(props) {
             <Button
                 title={HomeLang[props.lang].Language}
                 buttonStyle={styles.button}
-                titleStyle={{ color: '#355c7d', fontSize: 16 }}
+                titleStyle={styles.titleStyle}
                 containerStyle={styles.buttonContainer}
                 iconContainerStyle={{ marginRight: 50 }}
                 icon={
@@ -75,8 +76,8 @@ export default function Menu(props) {
                         name={'world-o'}
                         type={'fontisto'}
                         color={'#355c7d'}
-                        size={15}
-                        style={{ marginRight: 20, marginLeft: 10 }}
+                        size={wp('4%')}
+                        style={styles.iconStyle}
                     />
                 }
                 onPress={() => props.setLang(prev => prev == 'fr' ? 'en' : 'fr')}
@@ -85,16 +86,16 @@ export default function Menu(props) {
             <Button
                 title={HomeLang[props.lang].Introduction}
                 buttonStyle={styles.button}
-                titleStyle={{ color: '#355c7d', fontSize: 16 }}
-                containerStyle={[styles.buttonContainer, {marginBottom: 20}]}
+                titleStyle={styles.titleStyle}
+                containerStyle={[styles.buttonContainer, {marginBottom: hp('3%')}]}
                 iconContainerStyle={{ marginRight: 50 }}
                 icon={
                     <Icon
                         name={'book-outline'}
                         type={'ionicon'}
                         color={'#355c7d'}
-                        size={15}
-                        style={{ marginRight: 20, marginLeft: 10 }}
+                        size={wp('4%')}
+                        style={styles.iconStyle}
                     />
                 }
                 raised
@@ -106,7 +107,7 @@ export default function Menu(props) {
             <Button
                 title={HomeLang[props.lang].Source}
                 buttonStyle={styles.button}
-                titleStyle={{ color: '#355c7d', fontSize: 16 }}
+                titleStyle={styles.titleStyle}
                 containerStyle={styles.buttonContainer}
                 iconContainerStyle={{ marginRight: 50 }}
                 icon={
@@ -114,8 +115,8 @@ export default function Menu(props) {
                         name={'logo-github'}
                         type={'ionicon'}
                         color={'#355c7d'}
-                        size={15}
-                        style={{ marginRight: 20, marginLeft: 10 }}
+                        size={wp('4%')}
+                        style={styles.iconStyle}
                     />
                 }
                 raised

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
     container: {
@@ -12,8 +13,9 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
     logo: {
-        width: 130,
-        height: 130
+        width: wp('35%'),
+        height: undefined,
+        aspectRatio: 1
     },
     menu: {
         marginTop: 2 + '%',
@@ -21,21 +23,30 @@ export default StyleSheet.create({
         marginBottom: 20
     },
     button: {
-        width: 250,
-        height: 50,
+        width: wp('70%'),
+        height: hp('6%'),
         backgroundColor: 'white',
         color: '#355c7d',
         justifyContent: 'flex-start',
         borderRadius: 25
     },
+    titleStyle: {
+        color: '#355c7d',
+        textAlign: 'center',
+        fontSize: hp('2.2%')
+    },
+    iconStyle: {
+        marginRight: wp('5%'),
+        marginLeft: wp('3%')
+    },
     buttonContainer: {
         borderRadius: 25,
         alignItems: 'center',
-        marginBottom: 20
+        marginBottom: hp('3%')
     },
     copyleft: {
         marginTop: 10 + '%',
-        fontSize: 11,
+        fontSize: wp('2%'),
         color: 'white',
         textAlign: 'center',
         fontStyle: 'italic'
@@ -45,6 +56,13 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         textAlign:'center',
         marginTop: 20,
-        marginHorizontal: 40
+        marginHorizontal: 40,
+        fontSize: wp('4%')
+    },
+    backButton: {
+        height: hp('5%')
+    },
+    backButtonTitle: {
+        fontSize: hp('2.2%')
     }
 });

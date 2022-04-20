@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { Platform } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
@@ -82,6 +81,7 @@ export default StyleSheet.create({
     },
     searchBar: {
         marginBottom: -25,
+        height: hp('6%')
     },
     searchInputStyle: {
         textAlign: 'center',

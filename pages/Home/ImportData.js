@@ -3,6 +3,7 @@ import {
     ActivityIndicator,
     ScrollView
 } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { Text, Button } from 'react-native-elements';
 
@@ -128,7 +129,7 @@ export default function ImportData(props) {
             display: step >= idx ? 'flex' : 'none',
             alignContent: 'center',
             textAlign: 'center',
-            fontSize: idx === step ? 14 : 9
+            fontSize: idx === step ? wp('4%') : wp('2%')
         }
     } 
 
@@ -144,7 +145,13 @@ export default function ImportData(props) {
                 return <Text key={i} style={ stepStyle(e) }> { HomeLang[props.lang]['Step' + e] } { printActivity(e) }</Text>
             }) }
             { error ? <Text style={styles.ErrorMessage}>{ error }</Text> :  <></> }
-            <Button disabled={!error && step < 14} containerStyle={{marginTop: 150, borderRadius: 15}} title={HomeLang[props.lang].GoBack} onPress={() => props.setImportFile(null)}/>
+            <Button disabled={!error && step < 14}
+                containerStyle={{marginTop: hp('3%'), borderRadius: 15}}
+                buttonStyle={styles.backButton}
+                titleStyle={styles.backButtonTitle}
+                title={HomeLang[props.lang].GoBack}
+                onPress={() => props.setImportFile(null)}
+            />
         </ScrollView>
     );
 }
