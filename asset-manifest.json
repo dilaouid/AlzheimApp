@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/AlzheimApp/static/js/app.1fc92504.chunk.js",
-    "app.js.map": "/AlzheimApp/static/js/app.1fc92504.chunk.js.map",
+    "app.js": "/AlzheimApp/static/js/app.caaee3b4.chunk.js",
+    "app.js.map": "/AlzheimApp/static/js/app.caaee3b4.chunk.js.map",
     "runtime~app.js": "/AlzheimApp/static/js/runtime~app.1747fd2b.js",
     "runtime~app.js.map": "/AlzheimApp/static/js/runtime~app.1747fd2b.js.map",
-    "static/js/2.4947b051.chunk.js": "/AlzheimApp/static/js/2.4947b051.chunk.js",
-    "static/js/2.4947b051.chunk.js.map": "/AlzheimApp/static/js/2.4947b051.chunk.js.map",
+    "static/js/2.7d9a1b3c.chunk.js": "/AlzheimApp/static/js/2.7d9a1b3c.chunk.js",
+    "static/js/2.7d9a1b3c.chunk.js.map": "/AlzheimApp/static/js/2.7d9a1b3c.chunk.js.map",
     "fonts/AntDesign.ttf": "/AlzheimApp/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/AlzheimApp/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/AlzheimApp/./fonts/Feather.ttf",
@@ -24,7 +24,7 @@
     "index.html": "/AlzheimApp/index.html",
     "manifest.json": "/AlzheimApp/manifest.json",
     "serve.json": "/AlzheimApp/serve.json",
-    "static/js/2.4947b051.chunk.js.LICENSE.txt": "/AlzheimApp/static/js/2.4947b051.chunk.js.LICENSE.txt",
+    "static/js/2.7d9a1b3c.chunk.js.LICENSE.txt": "/AlzheimApp/static/js/2.7d9a1b3c.chunk.js.LICENSE.txt",
     "static/media/1.png": "/AlzheimApp/static/media/1.c4ec63da.png",
     "static/media/2.png": "/AlzheimApp/static/media/2.c9afe178.png",
     "static/media/3.png": "/AlzheimApp/static/media/3.95e52180.png",
@@ -61,7 +61,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.1747fd2b.js",
-    "static/js/2.4947b051.chunk.js",
-    "static/js/app.1fc92504.chunk.js"
+    "static/js/2.7d9a1b3c.chunk.js",
+    "static/js/app.caaee3b4.chunk.js"
   ]
 }
