@@ -223,8 +223,8 @@ export default function Game(props) {
                     ImageSource={TrophyImage}
                     autoplay={true}
                     loop={false}
-                    LottieStyle={{ height: 60 }}
-                    ImageStyle={{ height: 60 }}
+                    LottieStyle={{ height: hp('7%') }}
+                    ImageStyle={{ height: hp('10%') }}
                 />
             </>
         );
@@ -276,7 +276,7 @@ export default function Game(props) {
                 ModalComponent={Modal}
             >
                 {scoreBeaten ? successOverlay() : failOverlay()}
-                <View style={{ flexDirection: 'row', marginTop: 30 }}>
+                <View style={{ flexDirection: 'row', marginVertical: 30 }}>
                     <Button
                         raised
                         onPress={() => {
@@ -287,6 +287,7 @@ export default function Game(props) {
                             borderRadius: 13,
                             marginRight: 10,
                         }}
+                        titleStyle={styles.btnTitle}
                     />
                     <Button
                         raised
@@ -296,6 +297,7 @@ export default function Game(props) {
                         title={SimonLang[props.lang].Exit}
                         containerStyle={{ borderRadius: 13 }}
                         buttonStyle={{ backgroundColor: 'red' }}
+                        titleStyle={styles.btnTitle}
                     />
                 </View>
             </Overlay>
@@ -320,6 +322,7 @@ export default function Game(props) {
                             props.setModal(false);
                         }}
                         title={SimonLang[props.lang].Cancel}
+                        titleStyle={styles.btnTitle}
                         containerStyle={{ borderRadius: 13, marginRight: 10 }}
                     />
                     <Button
@@ -329,6 +332,7 @@ export default function Game(props) {
                         }}
                         title={SimonLang[props.lang].TimeToStop}
                         containerStyle={{ borderRadius: 13 }}
+                        titleStyle={styles.btnTitle}
                         buttonStyle={{ backgroundColor: 'red' }}
                     />
                 </View>

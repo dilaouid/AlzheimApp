@@ -83,20 +83,22 @@ export default StyleSheet.create({
         borderWidth: 2,
     },
     overlayStyle: {
-        padding: 40,
+        padding: 10+'%',
         borderRadius: 25,
-        height: 300,
+        height: hp('40%'),
         alignContent: 'center',
         alignItems: 'center',
     },
     headerOverlay: {
-        fontSize: 20,
+        fontSize: wp('5%'),
         fontWeight: 'bold',
+        marginTop: -5+'%',
+        marginBottom: hp('2%')
     },
     textOverlay: {
-        width: 190,
-        fontSize: 18,
-        marginBottom: 20,
+        width: wp('60%'),
+        fontSize: wp('4%'),
+        marginBottom: hp('2%'),
         textAlign: 'center',
     },
 
