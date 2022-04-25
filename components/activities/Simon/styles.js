@@ -151,6 +151,11 @@ export default StyleSheet.create({
         opacity: .4,
         zIndex: -1
     },
+
+
+
+
+    // responsive additionnal
     bottomScore: {
         marginTop: hp('2%')
     },
