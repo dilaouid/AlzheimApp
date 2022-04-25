@@ -108,26 +108,31 @@ export default StyleSheet.create({
         marginTop: -20,
         backgroundColor: 'white',
         width: 100 + '%',
+        //height: hp('83%')
+    },
+    leaveButtonHelpPageContainer: {
+        alignSelf: 'center',
+        marginTop: 20,
+        borderRadius: 70,
+        marginHorizontal: 5,
     },
     leaveButtonHelpPage: {
-        width: 235,
+        width: wp('70%'),
         backgroundColor: 'red',
-        alignSelf: 'center',
-        borderRadius: 10,
-        marginTop: 20,
-        marginHorizontal: 5,
+        borderRadius: 70,
+        height: hp('5.4%')
     },
     helpHead: {
         marginVertical: 25,
         fontWeight: 'bold',
-        fontSize: 25,
+        fontSize: wp('7%'),
         textAlign: 'center',
         color: '#4954FF'
     },
     helpStepHead: {
-        marginBottom: 10,
+        marginBottom: hp('3%'),
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: wp('5.3%'),
         textAlign: 'left',
         alignSelf: 'flex-start',
         marginLeft: 20,
@@ -135,13 +140,14 @@ export default StyleSheet.create({
         textTransform: 'uppercase'
     },
     helpStep: {
-        marginHorizontal: 25,
-        marginBottom: 40,
-        width: 290,
+        marginHorizontal: wp('5%'),
+        marginBottom: hp('5%'),
+        width: wp('90%'),
+        fontSize: wp('4%')
     },
     helpQuestionMark: {
         position: 'absolute',
-        width: 450,
+        width: wp('140%'),
         opacity: .4,
         zIndex: -1
     },

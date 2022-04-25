@@ -107,8 +107,8 @@ export const lang = {
 
         // Help section
         Head: "Le Simon, comment ça\nmarche ?",
-        RulesHead: "Les règles",
-        TriesHead: "Les essais",
+        RulesHead: " Les règles",
+        TriesHead: " Les essais",
         Rules: () => {
             return applyBoldStyle({
                 sentence: `Le jeu Simon est un {0} de forme circulaire comportant quatre gros boutons de couleurs différentes: rouge, vert, jaune et bleu.\n\nLe jeu {1} une des quatres couleurs et {2} toujours associé à cette couleur. Le joueur doit alors {3}.\n\nLe jeu {4}, puis {5} une nouvelle couleur. Le jour doit reproduire cette nouvelle séquence. Chaque fois que le joueur reproduit correctement la séquence, le jeu ajoute une nouvelle couleur.`,
