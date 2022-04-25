@@ -5,6 +5,7 @@ import { Button, Icon } from 'react-native-elements';
 import { lang as SimonLang } from '../../../language/activities/simon';
 
 import SimonLogo from '../../../assets/img/activities/simon/logo.png';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import styles from './styles';
 
@@ -14,7 +15,9 @@ export default function Menu(props) {
             <Image source={SimonLogo} style={styles.logo} />
             <Button
                 title={SimonLang[props.lang].Play}
-                containerStyle={styles.button}
+                buttonStyle={styles.button}
+                titleStyle={styles.title}
+                containerStyle={styles.buttonContainer}
                 raised
                 onPress={(e) => props.setTab(1)}
                 icon={
@@ -22,14 +25,16 @@ export default function Menu(props) {
                         name={'play-outline'}
                         type={'ionicon'}
                         color={'white'}
-                        size={15}
-                        style={{ marginHorizontal: 5 }}
+                        size={wp('4%')}
+                        style={{ marginHorizontal: wp('1%') }}
                     />
                 }
             />
             <Button
                 title={SimonLang[props.lang].Help}
-                containerStyle={styles.button}
+                containerStyle={styles.buttonContainer}
+                buttonStyle={styles.button}
+                titleStyle={styles.title}
                 raised
                 onPress={(e) => props.setTab(2)}
                 icon={
@@ -37,15 +42,16 @@ export default function Menu(props) {
                         name={'information-circle-outline'}
                         type={'ionicon'}
                         color={'white'}
-                        size={15}
-                        style={{ marginHorizontal: 5 }}
+                        size={wp('4%')}
+                        style={{ marginHorizontal: wp('1%') }}
                     />
                 }
             />
             <Button
                 title={SimonLang[props.lang].Leave}
-                buttonStyle={{ backgroundColor: 'red' }}
-                containerStyle={styles.leaveButton}
+                buttonStyle={styles.leaveButton}
+                containerStyle={styles.leaveButtonContainer}
+                titleStyle={styles.title}
                 raised
                 onPress={() => props.setPage(null)}
                 icon={
@@ -53,8 +59,8 @@ export default function Menu(props) {
                         name={'caret-back-outline'}
                         type={'ionicon'}
                         color={'white'}
-                        size={15}
-                        style={{ marginHorizontal: 5 }}
+                        size={wp('4%')}
+                        style={{ marginHorizontal: wp('1%') }}
                     />
                 }
             />

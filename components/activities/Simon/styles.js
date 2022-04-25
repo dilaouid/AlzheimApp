@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
     view: {
@@ -7,24 +8,36 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     logo: {
-        width: 80,
-        height: 80,
+        width: wp('22%'),
+        height: undefined,
+        aspectRatio: 1,
         marginVertical: 20,
         opacity: 0.8,
-        marginBottom: 40,
+        marginBottom: hp('7%'),
     },
     button: {
-        width: 235,
-        marginBottom: 25,
+        width: wp('70%'),
+        height: hp('6%'),
+        borderRadius: 10,
+    },
+    buttonContainer: {
+        marginBottom: hp('4%'),
         borderRadius: 10,
         marginHorizontal: 5,
+        justifyContent: 'flex-start',
     },
     leaveButton: {
-        width: 235,
-        marginTop: 40,
+        width: wp('70%'),
+        height: hp('6%'),
         backgroundColor: 'red',
-        borderRadius: 10,
+    },
+    leaveButtonContainer: {
+        marginTop: hp('5%'),
         marginHorizontal: 5,
+        justifyContent: 'flex-start',
+    },
+    title: {
+        fontSize: wp('4%')
     },
     SimonButtonWeb: {
         // flex: 1,
@@ -35,14 +48,14 @@ export default StyleSheet.create({
     },
     SimonButton: {
         //flex: 1,
-        width: 125,
-        height: 125,
+        width: wp('35%'),
+        height: hp('20%'),
         borderRadius: 10,
         opacity: 0.5,
     },
     SimonLeftButton: {
         marginLeft: 70,
-        marginRight: 10,
+        marginRight: wp('4%'),
     },
     SimonGreen: {
         borderTopLeftRadius: 60,
@@ -55,7 +68,7 @@ export default StyleSheet.create({
     },
     SimonYellow: {
         marginLeft: 70,
-        marginRight: 10,
+        marginRight: wp('4%'),
         borderBottomLeftRadius: 60,
         backgroundColor: '#f8f400',
     },
@@ -130,4 +143,50 @@ export default StyleSheet.create({
         opacity: .4,
         zIndex: -1
     },
+    bottomScore: {
+        marginTop: hp('2%')
+    },
+    bestScore: {
+        textAlign: 'center',
+        fontSize: wp('3.8%')
+    },
+    remainingTries: {
+        textAlign: 'center',
+        fontSize: wp('3.8%'),
+        marginBottom: hp('2%')
+    },
+    btnGiveUp: {
+        backgroundColor: 'red',
+        width: wp('40%'),
+        height: hp('6%'),
+        borderRadius: 900,
+    },
+    btnGiveUpDisabled: {
+        width: wp('40%'),
+        height: hp('6%'),
+        borderRadius: 900,
+    },
+    btnContainerGiveUp: {
+        marginTop: hp('2.6%'),
+        borderRadius: 900,
+    },
+    btnStart: {
+        marginRight: 10,
+        borderRadius: 13,
+        height: hp('6%'),
+        width: wp('50%')
+    },
+    btnLeave: {
+        borderRadius: 13,
+        height: hp('6%'),
+        backgroundColor: 'red',
+        width: wp('20%')
+    },
+    btnTitle: {
+        fontSize: wp('4%')
+    },
+    indication: {
+        textAlign: 'center', 
+        fontSize: wp('5%')
+    }
 });

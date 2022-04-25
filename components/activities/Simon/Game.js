@@ -3,6 +3,7 @@ import { View, Modal, Platform } from 'react-native';
 import { Text, Button, Overlay } from 'react-native-elements';
 import { lang as SimonLang } from '../../../language/activities/simon';
 import { Audio } from 'expo-av';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import ConfettiCannon from 'react-native-confetti-cannon';
 
@@ -81,6 +82,7 @@ export default function Game(props) {
             case 3:
                 return require('../../../assets/sound/simon/green.mp3');
             default:
+                return require('../../../assets/sound/simon/red.mp3');
                 break;
         }
     };
@@ -88,9 +90,14 @@ export default function Game(props) {
     const playButtonDemo = async (idx) => {
         // Play a sound according to the idx and simulates a button pressure according to it
         return new Promise(async (resolve, reject) => {
+            if (sound) await sound?.unloadAsync();
             const { sound } = await Audio.Sound.createAsync(
                 pickCorrectSound(idx)
-            );
+            ).then(async s => {
+                return s;
+            }).catch(e => {
+                console.log(e);
+            });
             props.setSound(sound);
             setButtonClicked(idx);
             await sound.playAsync().then(async (playBackStatus) => {
@@ -99,6 +106,8 @@ export default function Game(props) {
                     await sound.unloadAsync();
                     resolve(true);
                 }, playBackStatus.playableDurationMillis - 320);
+            }).catch(err => {
+                console.log(err);
             });
         });
     };
@@ -191,7 +200,8 @@ export default function Game(props) {
         setCanPlay(false);
         setTimeout(async () => {
             await sound.unloadAsync();
-            setOrder([...order, randomNumber()]);
+            let rdm = randomNumber();
+            setOrder([...order, rdm]);
         }, time - 320);
         setGame([]);
     };
@@ -325,7 +335,7 @@ export default function Game(props) {
             </Overlay>
 
             {/* The first row of the Simon */}
-            <View style={{ flexDirection: 'row', marginBottom: 10 }}>
+            <View style={{ flexDirection: 'row', marginBottom: hp('2%') }}>
                 <View
                     style={[
                         SimonButtonStyle,
@@ -370,26 +380,26 @@ export default function Game(props) {
                 />
             </View>
 
-            <View style={{ marginTop: 15 }}>
-                <Text style={{ textAlign: 'center' }}>
+            <View style={styles.bottomScore}>
+                <Text style={styles.bestScore}>
                     {SimonLang[props.lang].BestScore(bestScore)}
                 </Text>
-                <Text style={{ textAlign: 'center' }}>
+                <Text style={styles.bestScore}>
                     {SimonLang[props.lang].DailyScore(dailyScore)}
                 </Text>
-                <Text style={{ textAlign: 'center', marginBottom: 15 }}>
+                <Text style={styles.remainingTries}>
                     {SimonLang[props.lang].Tries(tries)}
                 </Text>
                 {start ? (
                     <View
                         style={{ alignContent: 'center', alignItems: 'center' }}
                     >
-                        <Text style={{ textAlign: 'center', fontSize: 18 }}>
+                        <Text style={styles.indication}>
                             {canPlay || failed
                                 ? yourTurn()
                                 : SimonLang[props.lang].WaitNSee()}
                         </Text>
-                        <Text style={{ textAlign: 'center' }}>
+                        <Text style={styles.bestScore}>
                             {SimonLang[props.lang].Progress(
                                 order.length,
                                 game.length
@@ -397,13 +407,11 @@ export default function Game(props) {
                         </Text>
                         <Button
                             disabled={!canPlay}
+                            disabledStyle={styles.btnGiveUpDisabled}
                             onPress={() => props.setModal(true)}
-                            buttonStyle={{ backgroundColor: 'red' }}
-                            containerStyle={{
-                                marginTop: 20,
-                                width: 150,
-                                borderRadius: 15,
-                            }}
+                            titleStyle={styles.btnTitle}
+                            buttonStyle={styles.btnGiveUp}
+                            containerStyle={styles.btnContainerGiveUp}
                             raised
                             title={SimonLang[props.lang].GiveUp}
                         />
@@ -418,18 +426,14 @@ export default function Game(props) {
                             }}
                         >
                             <Button
-                                buttonStyle={{
-                                    marginRight: 10,
-                                    borderRadius: 13,
-                                }}
+                                buttonStyle={styles.btnStart}
                                 title={SimonLang[props.lang].Start}
+                                titleStyle={styles.btnTitle}
                                 onPress={() => setStart(true)}
                             />
                             <Button
-                                buttonStyle={{
-                                    borderRadius: 13,
-                                    backgroundColor: 'red',
-                                }}
+                                buttonStyle={styles.btnLeave}
+                                titleStyle={styles.btnTitle}
                                 title={SimonLang[props.lang].Leave}
                                 onPress={() => props.setTab(0)}
                             />
