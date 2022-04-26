@@ -128,24 +128,33 @@ export default function Play(props) {
     const printButton = () => {
         return (
             <View style={styles.buttonViewPlay}>
-                <Button title={show ? DoubleLang[props.lang].Start : DoubleLang[props.lang].Reinit} onPress={() => { if (show) setShow(false); else newModel(); }} buttonStyle={[styles.playButtons, {backgroundColor: show ? '#208bdc' : 'green'}]} icon={
-                    <Icon
-                    name={show ? "play" : ''}
-                    size={18}
-                    color="white"
-                    type="ionicon"
-                />
-                } iconRight={true} disabled={!show && props.score === 0 || tries <= 1} />
+                <Button
+                    title={show ? DoubleLang[props.lang].Start : DoubleLang[props.lang].Reinit}
+                    titleStyle={styles.btnTitle}
+                    onPress={() => {
+                        if (show) setShow(false); else newModel();
+                    }}
+                    buttonStyle={[styles.playButtons, {backgroundColor: show ? '#208bdc' : 'green'}]}
+                    icon={
+                        <Icon
+                        name={show ? "play" : ''}
+                        size={wp('3%')}
+                        color="white"
+                        type="ionicon"
+                    />
+                    }
+                    iconRight={true}
+                    disabled={!show && props.score === 0 || tries <= 1} />
                 <FAB
                     color='#2089dc'
-                    size="small"
+                    //size="small"
                     icon={
                         {
                             name: props.ambiantEnabled ? 'volume-high-outline' : 'volume-mute-outline',
                             type: 'ionicon',
                             color:'white',
-                            size: 15,
-                            style: {marginTop: 4}
+                            /* size: 15,
+                            style: {marginTop: 4} */
                         }
                     }
                     onPress={() => props.ambiantSoundPlay() }
@@ -153,14 +162,14 @@ export default function Play(props) {
                 />
                 <FAB
                     color='#2089dc'
-                    size="small"
+                    //size="small"
                     icon={
                         {
                             name: props.soundEnabled ? 'sound' : 'sound-mute',
                             type: 'entypo',
                             color:'white',
-                            size: 15,
-                            style: {marginTop: 4}
+                            /* size: 15,
+                            style: {marginTop: 4} */
                         }
                     }
                     onPress={() => props.setSoundEnabled(prev => !prev) }
@@ -168,14 +177,14 @@ export default function Play(props) {
                 />
                 <FAB
                     color='red'
-                    size="small"
+                    //size="small"
                     icon={
                         {
                             name: 'caret-back',
                             type: 'ionicon',
                             color:'white',
-                            size: 15,
-                            style: {marginTop: 4}
+                            /* size: 15,
+                            style: {marginTop: 4} */
                         }
                     }
                     onPress={() => props.giveUp() }
@@ -268,39 +277,50 @@ export default function Play(props) {
             >
                 { props.success && props.modal ? successOverlay() : failOverlay() }
                 <View style={{flexDirection: 'row', marginTop: 20}}>
-                    <Button title={DoubleLang[props.lang].Retry} onPress={() => newGame()} buttonStyle={{marginRight: 10}} icon={
-                        <Icon
-                            name={'play-outline'}
-                            type={'ionicon'}
-                            color={'white'}
-                            size={15}
-                            style={{ marginHorizontal: 5 }}
-                        />
-                    } />
+                    <Button
+                        title={DoubleLang[props.lang].Retry}
+                        onPress={() => newGame()}
+                        buttonStyle={styles.retryButton}
+                        titleStyle={styles.btnTitle}
+                        containerStyle={{marginRight: 10}}
+                        icon={
+                            <Icon
+                                name={'play-outline'}
+                                type={'ionicon'}
+                                color={'white'}
+                                size={wp('3%')}
+                                style={{ marginHorizontal: 5 }}
+                            />
+                        } />
 
-                    <Button title={DoubleLang[props.lang].Leave} onPress={() => { 
-                        if (confetti) setConfetti(false);
-                        props.setModal(false);
-                        props.setTab(0);
-                    }} buttonStyle={{backgroundColor: 'red'}} icon={
-                        <Icon
-                            name={'caret-back-outline'}
-                            type={'ionicon'}
-                            color={'white'}
-                            size={15}
-                            style={{ marginHorizontal: 5 }}
-                        />
-                    } />
+                    <Button
+                        title={DoubleLang[props.lang].Leave}
+                        onPress={() => { 
+                            if (confetti) setConfetti(false);
+                            props.setModal(false);
+                            props.setTab(0);
+                        }}
+                        buttonStyle={styles.overlayReturn}
+                        titleStyle={styles.btnTitle}
+                        icon={
+                            <Icon
+                                name={'caret-back-outline'}
+                                type={'ionicon'}
+                                color={'white'}
+                                size={wp('3%')}
+                                style={{ marginHorizontal: 5 }}
+                            />
+                        } />
                 </View>
             </Overlay>
             <View style={styles.viewGame}>
                 { printCards() }
             </View>
-            <View style={{alignItems: 'center', width: wp('100%'), marginTop: -10}}>
-                { show === true ? <Text>{DoubleLang[props.lang].Remember()}</Text> : <></> }
-                <Text>{DoubleLang[props.lang].Score(props.score)}</Text>
-                <Text>{DoubleLang[props.lang].BestDayScore(props.bestScoreDay)}</Text>
-                <Text>{DoubleLang[props.lang].RemaningTries(tries)}</Text>
+            <View style={{alignItems: 'center', width: wp('100%'), marginTop: -40}}>
+                { show === true ? <Text style={styles.text}>{DoubleLang[props.lang].Remember()}</Text> : <></> }
+                <Text style={styles.text}>{DoubleLang[props.lang].Score(props.score)}</Text>
+                <Text style={styles.text}>{DoubleLang[props.lang].BestDayScore(props.bestScoreDay)}</Text>
+                <Text style={[styles.text, {marginBottom: 20}]}>{DoubleLang[props.lang].RemaningTries(tries)}</Text>
                 { printButton() }
             </View>
         </>

@@ -98,6 +98,8 @@ export default StyleSheet.create({
         marginTop: 10
     },
     playButtons: {
+        width: wp('40%'),
+        height: hp('7%'),
         alignContent: 'center',
         textAlign: 'center',
         paddingHorizontal: 30,
@@ -105,20 +107,35 @@ export default StyleSheet.create({
         marginHorizontal: 5
     },
     overlay: {
+        padding: 10+'%',
         borderRadius: 20,
         paddingHorizontal: 45,
         paddingVertical: 30,
         alignItems: 'center',
+        height: hp('40%'),
     },
     headerOverlay: {
-        fontSize: 20,
+        fontSize: wp('5%'),
         fontWeight: 'bold',
+        marginTop: 5+'%',
+        marginBottom: hp('2%')
     },
     textOverlay: {
-        width: 190,
-        fontSize: 18,
-        marginBottom: 20,
+        width: wp('60%'),
+        fontSize: wp('4%'),
+        marginBottom: hp('2%'),
         textAlign: 'center',
+    },
+    overlayReturn: {
+        width: wp('25%'),
+        height: hp('6%'),
+        backgroundColor: 'red',
+        borderRadius: 15
+    },
+    retryButton: {
+        width: wp('50%'),
+        height: hp('6%'),
+        borderRadius: 10,
     },
 
 
@@ -174,4 +191,7 @@ export default StyleSheet.create({
     btnTitle: {
         fontSize: wp('4%')
     },
+    text: {
+        fontSize: wp('4%')
+    }
 });
