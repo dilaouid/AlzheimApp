@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, View } from 'react-native';
 import { Button, Icon, FAB } from 'react-native-elements';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { lang as DoubleLang } from '../../../language/activities/double';
 
@@ -15,14 +16,16 @@ export default function Menu(props) {
 
             <Button
                 title={DoubleLang[props.lang].Play}
-                containerStyle={styles.button}
+                containerStyle={styles.buttonContainer}
+                buttonStyle={styles.button}
+                titleStyle={styles.btnTitle}
                 onPress={() => props.setTab(1)}
                 icon={
                     <Icon
                         name={'play-outline'}
                         type={'ionicon'}
                         color={'white'}
-                        size={15}
+                        size={wp('4%')}
                         style={{ marginHorizontal: 5 }}
                     />
                 }
@@ -30,36 +33,37 @@ export default function Menu(props) {
 
             <Button
                 title={DoubleLang[props.lang].Help}
-                containerStyle={styles.button}
+                containerStyle={styles.buttonContainer}
+                buttonStyle={styles.button}
+                titleStyle={styles.btnTitle}
                 onPress={() => props.setTab(2)}
                 icon={
                     <Icon
                         name={'information-circle-outline'}
                         type={'ionicon'}
                         color={'white'}
-                        size={15}
+                        size={wp('4%')}
                         style={{ marginHorizontal: 5 }}
                     />
                 }
             />
 
-            <View>
+            <View style={{
+                flex: 1, alignItems: 'center',
+                flexDirection: 'row'
+            }}>
 
             <FAB
                 color='#2089dc'
                 style={{
-                    position: 'absolute',
-                    marginLeft: -50,
-                    marginTop: -12
+                    marginRight: wp('10%'),
+                    marginTop: hp('1%')
                 }}
-                size="small"
                 icon={
                     {
                         name: props.ambiantEnabled ? 'volume-high-outline' : 'volume-mute-outline',
                         type: 'ionicon',
-                        color:'white',
-                        size: 15,
-                        style: {marginTop: 4}
+                        color:'white'
                     }
                 }
                 onPress={() => props.ambiantSoundPlay() }
@@ -67,18 +71,15 @@ export default function Menu(props) {
             <FAB
                 color='#2089dc'
                 style={{
-                    position: 'absolute',
-                    marginLeft: 20,
-                    marginTop: -12
+                    marginLeft: wp('2%'),
+                    marginTop: hp('1%')
                 }}
-                size="small"
+                
                 icon={
                     {
                         name: props.soundEnabled ? 'sound' : 'sound-mute',
                         type: 'entypo',
-                        color:'white',
-                        size: 15,
-                        style: {marginTop: 4}
+                        color:'white'
                     }
                 }
                 onPress={() => props.setSoundEnabled(prev => !prev) }
@@ -87,8 +88,9 @@ export default function Menu(props) {
 
             <Button
                 title={DoubleLang[props.lang].Leave}
-                buttonStyle={{ backgroundColor: 'red' }}
-                containerStyle={styles.leaveButton}
+                buttonStyle={styles.leaveButton}
+                titleStyle={styles.btnTitle}
+                containerStyle={styles.leaveButtonContainer}
                 onPress={() => {
                     props.ambiant.unloadAsync();
                     props.setPage(null);
@@ -98,7 +100,7 @@ export default function Menu(props) {
                         name={'caret-back-outline'}
                         type={'ionicon'}
                         color={'white'}
-                        size={15}
+                        size={wp('4%')}
                         style={{ marginHorizontal: 5 }}
                     />
                 }

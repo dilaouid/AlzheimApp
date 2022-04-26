@@ -15,22 +15,34 @@ export default StyleSheet.create({
         flex: 1,
     },
     logo: {
-        width: 90,
-        height: 80,
-        marginVertical: 20,
+        width: wp('25%'),
+        height: undefined,
+        aspectRatio: 1,
+        marginVertical: 20, 
         opacity: 0.8,
         marginBottom: 40
     },
+    btnTitle: {
+        fontSize: wp('4%')
+    },
     button: {
-        width: 235,
+        width: wp('70%'),
+        height: hp('6%'),
+        borderRadius: 10,
+    },
+    buttonContainer: {
         marginBottom: 25,
         borderRadius: 10,
         marginHorizontal: 5,
     },
     leaveButton: {
-        width: 235,
-        marginTop: 40,
+        width: wp('70%'),
+        height: hp('6%'),
         backgroundColor: 'red',
+        borderRadius: 10
+    },
+    leaveButtonContainer: {
+        marginTop: 40,
         borderRadius: 10,
         marginHorizontal: 5,
         marginBottom: 20
