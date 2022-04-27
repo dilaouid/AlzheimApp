@@ -3,7 +3,7 @@
     "name": "AlzheimApp",
     "description": "",
     "slug": "AlzheimApp",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "icon": "./assets/img/AppIcon.png",
     "assetBundlePatterns": [
       "**/*"
@@ -18,7 +18,7 @@
     ],
     "android": {
       "package": "org.alzheimApp",
-      "versionCode": 8,
+      "versionCode": 9,
       "adaptiveIcon": {
         "backgroundImage": "./assets/adaptativeIcon/background.png",
         "foregroundImage": "./assets/adaptativeIcon/foreground.png"
@@ -33,7 +33,7 @@
         "UIBackgroundModes": "audio"
       },
       "usesIcloudStorage": true,
-      "buildNumber": "2"
+      "buildNumber": "3"
     },
     "splash": { 
       "image": "./assets/img/alzheimapp_logo.png",
