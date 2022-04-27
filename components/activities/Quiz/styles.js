@@ -39,19 +39,22 @@ export default StyleSheet.create({
         marginHorizontal: 5,
         justifyContent: 'flex-start',
     },
+    leaveButtonPlayContainer: {
+        marginTop: hp('2%'),
+        marginHorizontal: 5,
+    },
     leaveButtonPlay: {
-        width: 235,
-        marginTop: 20,
+        width: wp('60%'),
         backgroundColor: 'red',
         borderRadius: 10,
+    },
+    playButtonContainer: {
+        marginTop: hp('2%'),
         marginHorizontal: 5,
     },
     playButton: {
-        width: 235,
-        marginTop: 10,
-        backgroundColor: 'blue',
+        width: wp('60%'),
         borderRadius: 10,
-        marginHorizontal: 5,
     },
     createButton: {
         width: wp('70%'),
@@ -80,9 +83,24 @@ export default StyleSheet.create({
     },  
     overlay: {
         borderRadius: 20,
-        paddingHorizontal: 45,
-        paddingVertical: 30,
+        paddingHorizontal: wp('15%'),
+        paddingVertical: hp('4%'),
         alignItems: 'center',
+    },
+    textOverlayDelete: {
+        marginBottom: 30,
+        width: wp('50%'),
+        textAlign: 'center',
+        fontSize: wp('3.5%')
+    },
+    backButtonOverlay: {
+        backgroundColor: 'red',
+        width: wp('18%'),
+        height: hp('5.35%')
+    },
+    OKButtonOverlay: {
+        width: wp('18%'),
+        height: hp('5.35%')
     },
     overlayDescriptionReference: {
         width: wp('68%'),
@@ -131,7 +149,8 @@ export default StyleSheet.create({
         height: hp('5.4%')
     },
     listItemContent: {
-        height: hp('9.5%')
+        height: hp('11%'),
+        padding: wp('4%')
     },
     listItemTitle: {
         fontSize: wp('4%')
@@ -141,29 +160,49 @@ export default StyleSheet.create({
     },
     modal: {
         borderRadius: 20,
-        paddingHorizontal: 30,
-        paddingVertical: 30,
+        paddingHorizontal: wp('12%'),
+        paddingVertical: hp('7%'),
         alignItems: 'center',
+    },
+    lottie: {
+        marginTop: -25,
+        height: hp('35%'),
+        marginBottom: -30
+    },
+    randomPicker: {
+        marginTop: hp('21%'),
+        position: 'absolute',
+        zIndex: 10,
+        marginLeft: wp('10%')
     },
     modalTitle: {
         marginBottom: 30,
         width: 250,
         textAlign: 'center',
         fontWeight: 'bold',
-        fontSize: 18
+        fontSize: wp('5%')
     },
     modalDescription: {
-        width: 250,
+        width: wp('70%'),
         textAlign: 'center',
         color: '#495058',
+        fontSize: wp('3.5%')
         // marginVertical: 15
     },
     quizTitleInputContainer: {
-        width: 290,
-        marginTop: 10
+        width: wp('60%'),
+        marginTop: hp('4%')
+    },
+    completeQuizCreationContainer: {
+        marginLeft: wp('2%')
+    },
+    completeQuizCreationButton: {
+        width: wp('10%'),
+        height: undefined,
+        aspectRatio: 1
     },
     quizTitleInput: {
-        fontSize: 15
+        fontSize: wp('4%')
     },
     input: {
         fontSize: wp('4%'),

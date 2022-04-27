@@ -10,16 +10,18 @@ export const printFile = (fileType, uri, clearFile, isPlaying, pauseSound, setIs
     if (fileType === 'image') {
         return (
             <View>
-                <FAB
-                    color='red'
-                    style={{marginLeft: 20, position:'absolute', zIndex: 9}}
-                    size="small"
-                    icon={{name: 'close-circle-outline', type: 'ionicon', color:'white' }}
+                <Icon
+                    reverse
+                    color={'red'}
+                    containerStyle={{marginLeft: wp('5%'), position:'absolute', zIndex: 9}}
+                    size={wp('5%')}
+                    name={'close-circle-outline'}
+                    type={'ionicon'}
                     onPress={() => {
                         clearFile();
                     }}
                 />
-                <Image source={{uri: uri}} style={{width: 200, height: 200, borderRadius: 100, marginBottom: 30}} />
+                <Image source={{uri: uri}} style={{width: wp('45%'), height: undefined, aspectRatio: 1, borderRadius: 500, marginBottom: 30}} />
             </View>
         );
     } else if (fileType === 'audio') {

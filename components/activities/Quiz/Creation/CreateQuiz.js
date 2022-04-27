@@ -229,18 +229,21 @@ export default function CreateQuiz(props) {
             >
                 <Text style={styles.modalTitle}>{QuizLang[props.lang].CompleteQuizTitleHeader}</Text>
                 <Text style={styles.modalDescription}>{QuizLang[props.lang].CompleteQuizTitle}</Text>
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row', alignItems:'center' }}>
                     <Input placeholder={QuizLang[props.lang].QuizTitle}
                         containerStyle={styles.quizTitleInputContainer}
                         inputStyle={styles.quizTitleInput}
                         onChangeText={(e) => setName(e?.trim())}
                     />
-                    <Button containerStyle={{ marginTop: 10, width: 40 }} title={{}} icon={
+                    <Button
+                        containerStyle={styles.completeQuizCreationContainer}
+                        buttonStyle={styles.completeQuizCreationButton} title={{}}
+                        icon={
                         <Icon
                             name={'checkmark-circle-outline'}
                             type={'ionicon'}
                             color={'white'}
-                            size={15}
+                            size={wp('4%')}
                         />
                     } disabled={name?.length < 3 || name.length > 23 ? true : false} onPress={createQuiz} />
                 </View>

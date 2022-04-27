@@ -64,17 +64,19 @@ export default function QuestionList(props) {
             onBackdropPress={() => setModal(false)}
             ModalComponent={Modal}
         >
-            <Text style={{marginBottom: 30, width: 250, textAlign: 'center'}}>{QuizLang[props.lang].SureDeleteQuestion}</Text>
+            <Text style={styles.textOverlayDelete}>{QuizLang[props.lang].SureDeleteQuestion}</Text>
             <View style={{ flexDirection: 'row' }}>
                 <Button
                     title={QuizLang[props.lang].Leave}
-                    buttonStyle={{ backgroundColor: 'red' }}
-                    containerStyle={{ marginRight: 10 }}
+                    buttonStyle={styles.backButtonOverlay}
+                    titleStyle={styles.title}
+                    containerStyle={{ marginRight: wp('4%') }}
                     onPress={() => setModal(false)}
                 />
                 <Button
                     title={QuizLang[props.lang].OK}
-                    buttonStyle={{ fontWeight: 'bold' }}
+                    buttonStyle={styles.OKButtonOverlay}
+                    titleStyle={styles.title}
                     onPress={() => pickOutQuestion() }
                 />
             </View>

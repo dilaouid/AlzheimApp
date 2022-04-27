@@ -2,8 +2,10 @@ import React from 'react';
 import { ListItem, Icon } from 'react-native-elements';
 import { Platform, Alert } from 'react-native';
 import { lang as QuizLang } from '../../../language/activities/quiz';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { ScoreRatio } from './utils/scoreFunc';
+import styles from './styles';
 
 export default function QuizList(props) {
     var TouchableScale =
@@ -29,20 +31,20 @@ export default function QuizList(props) {
                 props.setEdit(true);
                 props.setQuizEdit(props.quiz);
             }}>
-            <ListItem.Content>
-                <ListItem.Title>{props.quiz.name}</ListItem.Title>
-                <ListItem.Subtitle>
+            <ListItem.Content style={styles.listItemContent}>
+                <ListItem.Title style={styles.listItemTitle}>{props.quiz.name}</ListItem.Title>
+                <ListItem.Subtitle style={styles.listItemSubtitle}>
                     { ScoreRatio(props.quiz.content, props.personId) }{'% '}
                     {QuizLang[props.lang].SuccessfulRatio}
                 </ListItem.Subtitle>
-                <ListItem.Subtitle>
+                <ListItem.Subtitle style={styles.listItemSubtitle}>
                     {props.quiz?.content?.length || 1}{' '}
                     {QuizLang[props.lang].Questions}
                 </ListItem.Subtitle>
             </ListItem.Content>
             <Icon
                 reverse
-                size={15}
+                size={wp('4%')}
                 style={{ backgroundColor: 'red' }}
                 name={'trash-outline'}
                 type={'ionicon'}
