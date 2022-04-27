@@ -28,7 +28,7 @@ export default function Help(props) {
                             type={'ionicon'}
                             color={'white'}
                             size={wp('4%')}
-                            style={{ marginHorizontal: 5 }}
+                            style={{ marginHorizontal: wp('2%') }}
                         />
                     }
                 />
