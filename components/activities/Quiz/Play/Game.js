@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Alert, View, Modal } from 'react-native';
 import { Text, Image, Input, Button, Icon, Overlay } from 'react-native-elements';
 import ConfettiCannon from 'react-native-confetti-cannon';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import TrophyImage from '../../../../assets/img/activities/trophy.gif';
 import SadImage from '../../../../assets/img/activities/sad.gif';
@@ -145,38 +146,50 @@ export default function Game(props) {
                 )}
                 <Overlay
                     visible={modal}
-                    overlayStyle={styles.overlay}
+                    overlayStyle={[styles.overlay, {width: 120+'%'}]}
                     onBackdropPress={() => props.setTab(0)}
                     ModalComponent={Modal}
                 >
                     {success >= fail ? 
                         <>
-                            <Lottie LottieSource={TrophyLottie} ImageSource={TrophyImage} LottieStyle={{marginTop: -50, height: 120, marginBottom: -30}} loop={false} />
-                            <Text style={{color:'blue', textAlign: 'center', fontSize: 23, fontWeight: 'bold'}}>{QuizLang[props.lang].SuccessQuizTitle}</Text>
-                            <Text style={{textAlign: 'center', marginTop: 30, fontSize: 18}}>{QuizLang[props.lang].SuccessQuiz(fail, success)}</Text>
+                            <Lottie LottieSource={TrophyLottie} ImageSource={TrophyImage} LottieStyle={styles.lottieOverlay} loop={false} />
+                            <Text style={[styles.headOverlayComplete, {color:'blue'}]}>{QuizLang[props.lang].SuccessQuizTitle}</Text>
+                            <Text style={styles.overlayDesc}>{QuizLang[props.lang].SuccessQuiz(fail, success)}</Text>
                         </>
                     :
                         <>
-                            <Lottie LottieSource={SadLottie} ImageSource={SadImage} LottieStyle={{marginTop: -50, height: 120, marginBottom: -30}} />
-                            <Text style={{color:'red', textAlign: 'center', fontSize: 23, fontWeight: 'bold'}}>{QuizLang[props.lang].FailQuizTitle}</Text>
-                            <Text style={{textAlign: 'center', marginTop: 30, fontSize: 18}}>{QuizLang[props.lang].FailQuiz(fail, success)}</Text>
+                            <Lottie LottieSource={SadLottie} ImageSource={SadImage} LottieStyle={styles.lottieOverlay} />
+                            <Text style={[styles.headOverlayComplete, {color:'red'}]}>{QuizLang[props.lang].FailQuizTitle}</Text>
+                            <Text style={styles.overlayDesc}>{QuizLang[props.lang].FailQuiz(fail, success)}</Text>
                         </>
                     }
-                    <Button title={QuizLang[props.lang].Leave} onPress={() => props.setTab(0)} containerStyle={styles.leaveButton} icon={
-                        <Icon
-                            name={'caret-back-outline'}
-                            type={'ionicon'}
-                            color={'white'}
-                            size={15}
-                            style={{ marginHorizontal: 5 }}
-                        />
-                    } />
+                    <Button
+                        title={QuizLang[props.lang].Leave}
+                        titleStyle={styles.title}
+                        onPress={() => props.setTab(0)}
+                        buttonStyle={styles.leaveButton}
+                        containerStyle={{marginTop: hp('4%')}}
+                        icon={
+                            <Icon
+                                name={'caret-back-outline'}
+                                type={'ionicon'}
+                                color={'white'}
+                                size={wp('4%')}
+                                style={{ marginHorizontal: wp('2%') }}
+                            />
+                        }
+                    />
                 </Overlay>
                 { setMediaType() }
                 <Text style={styles.gameQuestion}>{game[current].question}</Text>
                 <View style={styles.flexQuizGame}>
                     <Input style={styles.inputQuizGame} onChangeText={(e) => { setAnswer(e); }} value={answer} />
-                    <Button buttonStyle={styles.buttonQuizGameOK} title={QuizLang[props.lang].OK} onPress={() => { answerQuestion() }} />
+                    <Button
+                        buttonStyle={styles.buttonQuizGameOK}
+                        title={QuizLang[props.lang].OK}
+                        onPress={() => { answerQuestion() }}
+                        titleStyle={styles.title}
+                    />
                 </View>
             </>
         }

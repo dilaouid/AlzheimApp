@@ -230,12 +230,13 @@ export default StyleSheet.create({
     },
     topMediaQuestion: {
         borderRadius: 80,
-        width: 250,
-        height: 250
+        width: wp('50%'),
+        height: undefined,
+        aspectRatio: 1
     },
     gameQuestion: {
-        fontSize: 25,
-        marginTop: 10,
+        fontSize: wp('5%'),
+        marginTop: hp('3%'),
         fontWeight: 'bold',
         color: '#788bff'
     },
@@ -255,11 +256,31 @@ export default StyleSheet.create({
         borderWidth: 1,
         paddingHorizontal: 20,
         borderBottomWidth: 0,
-        color: 'grey'
+        color: 'grey',
+        height: hp('6%'),
+        fontSize: wp('4.5%')
     },
     buttonQuizGameOK: {
         paddingHorizontal: 15,
-        borderRadius: 15
+        borderRadius: 15,
+        height: hp('6%'),
+        width: hp('12%')
+    },
+    lottieOverlay: {
+        marginTop: hp('-6%'),
+        height: hp('17%'),
+        marginBottom: hp('-5%')
+    },
+    headOverlayComplete: {
+        textAlign: 'center',
+        marginTop: 30,
+        fontSize: wp('6%'),
+        fontWeight: 'bold'
+    },
+    overlayDesc: {
+        textAlign: 'center',
+        marginTop: 30,
+        fontSize: wp('4%')
     },
 
 
