@@ -8,6 +8,7 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "orientation": "portrait",
     "plugins": [
       [
         "expo-image-picker",
