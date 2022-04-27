@@ -17,8 +17,7 @@ import * as API from '../../../data/quizApi';
 
 import { lang as QuizLang } from '../../../language/activities/quiz';
 
-import FormQuizContentAndroid from './Creation/FormQuizContentAndroid';
-import FormQuizContentIOS from './Creation/FormQuizContentIOS';
+import FormQuizContent from './Creation/FormQuizContent';
 
 import { Audio } from 'expo-av';
 
@@ -190,11 +189,7 @@ export default function ViewQuiz(props) {
                 setIsPlaying: setIsPlaying,
                 pauseSound: pauseSound
             };
-            if (Platform.OS === 'ios') {
-                return <FormQuizContentIOS {...propsFormQuizContent} />
-            } else {
-                return <FormQuizContentAndroid {...propsFormQuizContent} />
-            }
+            return <FormQuizContent {...propsFormQuizContent} />
         } else if (edit && !newQuestion) {
              // if the user want to see all the question for the quiz edition
             return (quizEdit.content)?.concat(newContent)?.map((el, i) => {

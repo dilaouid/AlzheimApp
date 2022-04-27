@@ -5,9 +5,13 @@ import {
     ScrollView,
     SafeAreaView,
     KeyboardAvoidingView,
+    Platform,
 } from 'react-native';
 import { Button, Icon, Input, Badge } from 'react-native-elements';
+
 import * as DocumentPicker from 'expo-document-picker';
+import * as ImagePicker from 'expo-image-picker';
+
 import { printFile } from '../utils/quizFunc';
 
 import { lang as QuizLang } from '../../../../language/activities/quiz';
@@ -15,7 +19,7 @@ import SuccessContent from '../SuccessContent';
 
 import styles from '../styles';
 
-export default function FormQuizContentAndroid(props) {
+export default function FormQuizContent(props) {
     const [answer, setAnswer] = useState();
     
     const addAnswer = () => {
@@ -54,6 +58,55 @@ export default function FormQuizContentAndroid(props) {
         props.setFileType(result.mimeType.split('/')[0]);
         props.setFilename(result.name);
     };
+
+    const pickAudioFile = async () => {
+        let result = await DocumentPicker.getDocumentAsync({type: 'audio/*', copyToCacheDirectory: true, multiple:false});
+        if (result.type === 'cancel') {
+            return;
+        }
+        props.setUri(result.uri);
+        props.setFileType(result.mimeType.split('/')[0]);
+        props.setFilename(result.name);
+    };
+
+    const pickImageFile = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [1, 1],
+            quality: 1,
+        });
+        if (result.type === 'cancel') {
+            return;
+        }
+        props.setUri(result.uri);
+        props.setFileType(result.type);
+        props.setFilename(result.name);
+    };
+
+
+    const printImportButtons = () => {
+        if (Platform.OS === 'ios') {
+            return (<View style={{flexDirection: 'row', alignItems: 'center', flexShrink: 1, flexWrap:'wrap'}}>
+                <Button
+                    title={QuizLang[props.lang].ImportImage}
+                    buttonStyle={{ borderRadius: 15, marginRight: 15 }}
+                    onPress={pickImageFile}
+                />
+                <Button
+                    title={QuizLang[props.lang].ImportSound}
+                    buttonStyle={{ borderRadius: 15 }}
+                    onPress={pickAudioFile}
+                />
+            </View>);
+        } else {
+            return (<Button
+                title={QuizLang[props.lang].ImportFile}
+                buttonStyle={{ borderRadius: 15 }}
+                onPress={pickFile}
+            />)
+        }
+    }
 
     const close = () => {
         props.setSuccess(false);

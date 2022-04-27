@@ -10,11 +10,11 @@ import {
     Platform
 } from 'react-native';
 import { Button, Icon, Divider, FAB, Overlay, Input } from 'react-native-elements';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import QuestionList from './QuestionList';
 
-import FormQuizContentAndroid from './FormQuizContentAndroid';
-import FormQuizContentIOS from './FormQuizContentIOS';
+import FormQuizContent from './FormQuizContent';
 
 import { lang as QuizLang } from '../../../../language/activities/quiz';
 import * as API from '../../../../data/quizApi';
@@ -188,21 +188,19 @@ export default function CreateQuiz(props) {
             };
 
             /* Form to create a quiz */
-            if (Platform.OS === 'ios') {
-                return <FormQuizContentIOS {...propsFormQuizContent} />
-            } else
-                return <FormQuizContentAndroid {...propsFormQuizContent} />
+            return <FormQuizContent {...propsFormQuizContent} />
         } else {
             return <SafeAreaView style={styles.safeArea}>
                 <Button
                     title={QuizLang[props.lang].AddQuestion}
+                    titleStyle={styles.title}
                     icon={
                         <Icon
                             name={'add-circle-outline'}
                             type={'ionicon'}
                             color={'white'}
-                            size={15}
-                            style={{ marginHorizontal: 5 }}
+                            size={wp('4%')}
+                            style={{ marginHorizontal: wp('2%') }}
                         />
                     }
                     onPress={() => setCreateQuestion(true)}
