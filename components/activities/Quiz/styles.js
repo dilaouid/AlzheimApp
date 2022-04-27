@@ -224,9 +224,9 @@ export default StyleSheet.create({
     },
     quizzTitle: {
         fontWeight: 'bold',
-        fontSize: 25,
+        fontSize: wp('6%'),
         textAlign: 'center',
-        width: 250
+        width: wp('58%')
     },
     topMediaQuestion: {
         borderRadius: 80,
