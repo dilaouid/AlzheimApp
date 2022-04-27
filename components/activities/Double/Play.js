@@ -316,7 +316,7 @@ export default function Play(props) {
             <View style={styles.viewGame}>
                 { printCards() }
             </View>
-            <View style={{alignItems: 'center', width: wp('100%'), marginTop: -40}}>
+            <View style={{alignItems: 'center', width: wp('100%'), marginTop: -50}}>
                 { show === true ? <Text style={styles.text}>{DoubleLang[props.lang].Remember()}</Text> : <></> }
                 <Text style={styles.text}>{DoubleLang[props.lang].Score(props.score)}</Text>
                 <Text style={styles.text}>{DoubleLang[props.lang].BestDayScore(props.bestScoreDay)}</Text>

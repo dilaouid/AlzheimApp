@@ -90,12 +90,14 @@ export default function FormQuizContent(props) {
             return (<View style={{flexDirection: 'row', alignItems: 'center', flexShrink: 1, flexWrap:'wrap'}}>
                 <Button
                     title={QuizLang[props.lang].ImportImage}
-                    buttonStyle={{ borderRadius: 15, marginRight: 15 }}
+                    buttonStyle={{marginRight: 15, borderRadius: 15, width: wp('40%') }}
+                    titleStyle={styles.title}
                     onPress={pickImageFile}
                 />
                 <Button
                     title={QuizLang[props.lang].ImportSound}
-                    buttonStyle={styles.importButton}
+                    buttonStyle={{ borderRadius: 15, width: wp('40%') }}
+                    titleStyle={styles.title}
                     onPress={pickAudioFile}
                 />
             </View>);
