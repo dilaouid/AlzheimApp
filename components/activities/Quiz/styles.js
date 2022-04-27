@@ -92,34 +92,52 @@ export default StyleSheet.create({
         fontSize: wp('3.5%')
     },
     overlayDescriptionAnswers: {
-        width: 250,
+        width: wp('68%'),
         textAlign: 'center',
         color: '#495058',
-        marginVertical: 15,
-        marginBottom: 150
+        marginVertical: hp('2.5%'),
+        fontSize: wp('2.5%')
     },
     ScrollView: {
         alignItems: 'center',
         marginVertical: 30,
-        paddingBottom: 40
+        paddingBottom: 150
     },
     ScrollViewSuccess: {
         alignItems: 'center',
         marginVertical: -10,
         paddingBottom: 40
     },
+    badge: {
+        paddingHorizontal: wp('3.5%'),
+        height: hp('4%'),
+        marginHorizontal: 10,
+        marginVertical: 4,
+    },
     imageSuccess: {
-        width: 300,
-        height: 300,
+        width: wp('80%'),
+        height: undefined,
     },
     successPageTitle: {
         alignSelf: 'center',
-        width: 250,
+        width: wp('75%'),
         textAlign: 'center',
         fontWeight: 'bold',
-        fontSize: 24,
+        fontSize: wp('6%'),
         color: '#788bff',
-        marginBottom: 10,
+        marginBottom: hp('2%'),
+    },
+    successButton: {
+        height: hp('5.4%')
+    },
+    listItemContent: {
+        height: hp('9.5%')
+    },
+    listItemTitle: {
+        fontSize: wp('4%')
+    },
+    listItemSubtitle: {
+        fontSize: wp('3.5%')
     },
     modal: {
         borderRadius: 20,
@@ -146,6 +164,16 @@ export default StyleSheet.create({
     },
     quizTitleInput: {
         fontSize: 15
+    },
+    input: {
+        fontSize: wp('4%'),
+        marginBottom: hp('.7%')
+    },
+    addAnswer: {
+        width: wp('13%'),
+        height: hp('7%'),
+        borderRadius: 250,
+        marginLeft: 5
     },
     badgesView: {
         flexDirection: 'row',

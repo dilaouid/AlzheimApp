@@ -8,6 +8,7 @@ import {
     Platform,
 } from 'react-native';
 import { Button, Icon, Input, Badge } from 'react-native-elements';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import * as DocumentPicker from 'expo-document-picker';
 import * as ImagePicker from 'expo-image-picker';
@@ -131,29 +132,30 @@ export default function FormQuizContent(props) {
                     <Text style={styles.overlayDescriptionReference}>
                         {QuizLang[props.lang].ReferenceFile}
                     </Text>
-                    <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 45, flexShrink: 1, flexWrap:'wrap'}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: wp('10%'), flexShrink: 1, flexWrap:'wrap'}}>
                         <Input
                             value={props.question}
-                            inputStyle={{fontSize: 14}}
-                            containerStyle={{marginBottom: 50}}
+                            inputStyle={styles.input}
+                            containerStyle={{marginBottom: hp('5%')}}
                             placeholder={QuizLang[props.lang].WhatIsTheQuestion}
                             onChangeText={(e) => props.setQuestion(e)}
                         />
                         <View style={{flexDirection: 'row', alignItems: 'center', flexShrink: 1, flexWrap:'nowrap', width: 90 + '%'}}>
                         <Input
                             placeholder={QuizLang[props.lang].AddAnswer}
-                            inputStyle={{fontSize: 14}}
+                            inputStyle={styles.input}
                             value={answer}
                             onChangeText={(e) => setAnswer(e)}
                         />
                         <Button
+                            buttonStyle={styles.addAnswer}
                             icon={
                                 <Icon
                                     name={'add-circle'}
                                     type={'ionicon'}
                                     color={'white'}
-                                    size={18}
-                                    style={{ marginHorizontal: 5 }}
+                                    size={wp('4%')}
+                                    //style={{ marginHorizontal: 5 }}
                                 />
                             }
                             onPress={() => addAnswer()}
@@ -167,7 +169,8 @@ export default function FormQuizContent(props) {
                                 <Badge
                                     key={i}
                                     value={el}
-                                    badgeStyle={{paddingHorizontal: 15, height: 30, marginHorizontal: 10, marginVertical: 4}}
+                                    badgeStyle={styles.badge}
+                                    textStyle={{ fontSize: wp('3%')}}
                                     onPress={() => pickOutAnswer(i)}
                                 />
                             )

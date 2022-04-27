@@ -29,7 +29,8 @@ export default function SuccessContent(props) {
             </Text>
             <Button
                 title={QuizLang[props.lang].ReturnToForm}
-                style={{ backgroundColor: 'grey' }}
+                buttonStyle={styles.successButton}
+                titleStyle={styles.title}
                 onPress={(e) => {
                     props.close();
                 }}

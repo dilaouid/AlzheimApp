@@ -7,6 +7,7 @@ import {
 } from 'react-native-elements';
 import { Platform, Modal, View, Text } from 'react-native';
 import { lang as QuizLang } from '../../../../language/activities/quiz';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { pickCorrectIcon } from '../utils/quizFunc';
 
@@ -80,11 +81,11 @@ export default function QuestionList(props) {
         </Overlay>
             <ListItem {...componentProps} onPress={() => { props.setEditContent(props.questionId) }} >
                 { pickCorrectIcon(props.content.fileType, props.content.uri) }
-                <ListItem.Content>
-                    <ListItem.Title>{props.content.question}</ListItem.Title>
-                    <ListItem.Subtitle>{props.content?.answers?.length || 1} {QuizLang[props.lang].PossibleAnswers}</ListItem.Subtitle>
+                <ListItem.Content style={styles.listItemContent}>
+                    <ListItem.Title style={styles.listItemTitle}>{props.content.question}</ListItem.Title>
+                    <ListItem.Subtitle style={styles.listItemSubtitle}>{props.content?.answers?.length || 1} {QuizLang[props.lang].PossibleAnswers}</ListItem.Subtitle>
                 </ListItem.Content>
-                <Icon disabled={props.quizEdition == true && length <= 2} reverse size={15} style={{backgroundColor:'red'}} name={'trash-outline'} type={'ionicon'} color={'red'} onPress={(e) => { setModal(true) }} />
+                <Icon disabled={props.quizEdition == true && length <= 2} reverse size={wp('4%')} style={{backgroundColor:'red'}} name={'trash-outline'} type={'ionicon'} color={'red'} onPress={(e) => { setModal(true) }} />
             </ListItem>
         </>
     )

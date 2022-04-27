@@ -3,6 +3,7 @@ import {
     Image
 } from 'react-native';
 import { Icon, FAB, Avatar } from 'react-native-elements';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Audio } from 'expo-av';
 
 export const printFile = (fileType, uri, clearFile, isPlaying, pauseSound, setIsPlaying, sound, setSound) => {
@@ -64,15 +65,15 @@ export const pickCorrectIcon = (fileType, uri) => {
         return (
             <Avatar
                 source={{ uri: uri }}
-                rounded
-                size={'medium'}
-                containerStyle={{marginHorizontal: 8}}
+                avatarStyle={{borderRadius: 100}}
+                containerStyle={{marginHorizontal: 8, width: wp('12%'), height: undefined, aspectRatio: 1, borderRadius: 100}}
             />
         );
     } else if (fileType === 'audio') {
         return (
             <Icon
                 raised
+                size={wp('5.8%')}
                 name={'musical-notes-outline'}
                 type={'ionicon'}
                 color={'#8F9EB0'}
@@ -82,6 +83,7 @@ export const pickCorrectIcon = (fileType, uri) => {
         return (
             <Icon
                 raised
+                size={wp('5.8%')}
                 name={'text-outline'}
                 type={'ionicon'}
                 color={'#8F9EB0'}
