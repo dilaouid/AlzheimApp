@@ -9,6 +9,7 @@ import {
     Platform
 } from 'react-native';
 import { Button, Icon, Divider, FAB, Overlay } from 'react-native-elements';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import QuestionList from './Creation/QuestionList';
 import ViewQuizList from './ViewQuizList';
@@ -285,12 +286,14 @@ export default function ViewQuiz(props) {
                     <View style={{ flexDirection: 'row' }}>
                         <Button
                             title={QuizLang[props.lang].Cancel}
+                            titleStyle={styles.title}
                             buttonStyle={{ backgroundColor: 'red' }}
                             containerStyle={{ marginRight: 10 }}
                             onPress={() => setModal(false)}
                         />
                         <Button
                             title={QuizLang[props.lang].GoBack}
+                            titleStyle={styles.title}
                             buttonStyle={{ fontWeight: 'bold' }}
                             onPress={() => {
                                 setEditedQuiz(false);
@@ -306,14 +309,15 @@ export default function ViewQuiz(props) {
 
                 <Button
                     title={ buttonTop('title') }
-                    containerStyle={styles.createButton}
+                    titleStyle={styles.title}
+                    buttonStyle={styles.createButton}
                     icon={
                         <Icon
                             name={edit ? 'save-outline' : 'construct-outline'}
                             type={'ionicon'}
                             color={'white'}
-                            size={15}
-                            style={{ marginHorizontal: 5 }}
+                            size={wp('4%')}
+                            style={{ marginHorizontal: wp('2%') }}
                         />
                     }
                     onPress={() => {
@@ -323,7 +327,7 @@ export default function ViewQuiz(props) {
                 />
                 <FAB
                     color='red'
-                    style={{marginLeft: 20}}
+                    style={{marginLeft: wp('4%')}}
                     size="small"
                     icon={{name: 'caret-back-outline', type: 'ionicon', color:'white' }}
                     onPress={() => goBack() }
@@ -332,20 +336,21 @@ export default function ViewQuiz(props) {
             <Divider
                 color={'grey'}
                 width={1}
-                style={{ width: 100 + '%', marginTop: 20 }}
+                style={{ width: 100 + '%', marginTop: hp('2.5%') }}
             />
             <SafeAreaView style={styles.safeArea}>
                 {
                     edit && !newQuestion && !editContent ?
                     <Button
                         title={QuizLang[props.lang].AddQuestion}
+                        titleStyle={styles.title}
                         icon={
                             <Icon
                                 name={'add-circle-outline'}
                                 type={'ionicon'}
                                 color={'white'}
-                                size={15}
-                                style={{ marginHorizontal: 5 }}
+                                size={wp('4%')}
+                                style={{ marginHorizontal: wp('2%') }}
                             />
                         }
                         onPress={() => setNewQuestion(true) }

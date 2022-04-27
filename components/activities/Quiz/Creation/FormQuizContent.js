@@ -84,7 +84,6 @@ export default function FormQuizContent(props) {
         props.setFilename(result.name);
     };
 
-
     const printImportButtons = () => {
         if (Platform.OS === 'ios') {
             return (<View style={{flexDirection: 'row', alignItems: 'center', flexShrink: 1, flexWrap:'wrap'}}>
@@ -95,14 +94,15 @@ export default function FormQuizContent(props) {
                 />
                 <Button
                     title={QuizLang[props.lang].ImportSound}
-                    buttonStyle={{ borderRadius: 15 }}
+                    buttonStyle={styles.importButton}
                     onPress={pickAudioFile}
                 />
             </View>);
         } else {
             return (<Button
                 title={QuizLang[props.lang].ImportFile}
-                buttonStyle={{ borderRadius: 15 }}
+                buttonStyle={styles.importButton}
+                titleStyle={styles.title}
                 onPress={pickFile}
             />)
         }
@@ -127,11 +127,7 @@ export default function FormQuizContent(props) {
             <KeyboardAvoidingView behavior='padding' style={{flex:1}}>
                 <ScrollView contentContainerStyle={styles.ScrollView}>
                     { printFile(props.fileType, props.uri, clearFile, props.isPlaying, props.pauseSound, props.setIsPlaying, props.sound, props.setSound) }
-                    <Button
-                        title={QuizLang[props.lang].ImportFile}
-                        buttonStyle={{ borderRadius: 15 }}
-                        onPress={pickFile}
-                    />
+                    { printImportButtons() }
                     <Text style={styles.overlayDescriptionReference}>
                         {QuizLang[props.lang].ReferenceFile}
                     </Text>

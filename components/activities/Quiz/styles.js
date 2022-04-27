@@ -54,7 +54,7 @@ export default StyleSheet.create({
         marginHorizontal: 5,
     },
     createButton: {
-        width: 260,
+        width: wp('70%'),
         borderRadius: 15,
     },
     safeArea: {
@@ -68,10 +68,16 @@ export default StyleSheet.create({
         textAlign: 'center',
         color: 'gray',
         marginTop: 30,
+        fontSize: wp('3.5%')
     },
     loading: {
         marginTop: 30,
     },
+    importButton: {
+        borderRadius: 15,
+        width: wp('65%'),
+        height: hp('5.5%')
+    },  
     overlay: {
         borderRadius: 20,
         paddingHorizontal: 45,
@@ -79,10 +85,11 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     overlayDescriptionReference: {
-        width: 250,
+        width: wp('68%'),
         textAlign: 'center',
         color: '#495058',
-        marginVertical: 15
+        marginVertical: hp('2.5%'),
+        fontSize: wp('3.5%')
     },
     overlayDescriptionAnswers: {
         width: 250,

@@ -276,14 +276,15 @@ export default function CreateQuiz(props) {
                 <Button
                     /* Complete the quiz or question creation / edition */
                     title={ buttonTop('title') }
-                    containerStyle={styles.createButton}
+                    titleStyle={styles.title}
+                    buttonStyle={styles.createButton}
                     icon={
                         <Icon
                             name={createQuestion ? 'save-outline' : 'checkmark-done-circle-outline'}
                             type={'ionicon'}
                             color={'white'}
-                            size={15}
-                            style={{ marginHorizontal: 5 }}
+                            size={wp('4%')}
+                            style={{ marginHorizontal: wp('2%') }}
                         />
                     }
                     disabled={ buttonTop('disabled') }
@@ -291,7 +292,7 @@ export default function CreateQuiz(props) {
                 />
                 <FAB
                     color='red'
-                    style={{marginLeft: 20}}
+                    style={{marginLeft: wp('5%')}}
                     size="small"
                     icon={{name: 'caret-back-outline', type: 'ionicon', color:'white' }}
                     onPress={() => {
