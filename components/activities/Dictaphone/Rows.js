@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ListItem, Icon, LinearProgress } from 'react-native-elements';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Platform } from 'react-native';
 import { Audio } from 'expo-av';
+import styles from './styles';
 
 export default function Rows(props) {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -82,10 +84,11 @@ export default function Rows(props) {
                 name={isPlaying ? 'pause-circle' : 'play-circle-outline'}
                 type={'ionicon'}
                 color={'blue'}
+                size={wp('6%')}
             />
-            <ListItem.Content>
-                <ListItem.Title>{props.title}</ListItem.Title>
-                <ListItem.Subtitle>{props.date}</ListItem.Subtitle>
+            <ListItem.Content style={styles.listItemContent}>
+                <ListItem.Title style={styles.listItemTitle}>{props.title}</ListItem.Title>
+                <ListItem.Subtitle style={styles.listItemSubtitle}>{props.date}</ListItem.Subtitle>
                 <LinearProgress
                     style={{ marginVertical: 10 }}
                     value={progress}
@@ -95,7 +98,7 @@ export default function Rows(props) {
             </ListItem.Content>
             <Icon
                 reverse
-                size={15}
+                size={wp('4%')}
                 style={{ backgroundColor: 'red' }}
                 name={'trash-outline'}
                 type={'ionicon'}

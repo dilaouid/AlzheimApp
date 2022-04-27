@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
     view: {
@@ -10,10 +11,21 @@ export default StyleSheet.create({
         width: 40 + '%',
     },
     recordButton: {
-        backgroundColor: 'red',
+        backgroundColor: 'red'
+    },
+    listItemContent: {
+        height: hp('11%'),
+        padding: wp('4%')
+    },
+    listItemTitle: {
+        fontSize: wp('4%')
+    },
+    listItemSubtitle: {
+        fontSize: wp('3.5%')
     },
     titleButton: {
         fontWeight: 'bold',
+        fontSize: wp('4%')
     },
     actionButtonsView: {
         flexDirection: 'row',
@@ -41,24 +53,38 @@ export default StyleSheet.create({
         marginTop: 20,
     },
     overlay: {
-        borderRadius: 20,
+        //borderRadius: 20,
         paddingHorizontal: 45,
         paddingVertical: 30,
         alignItems: 'center',
+        width: 100+'%'
     },
     overlayTitle: {
         fontWeight: 'bold',
         textAlign: 'center',
-        fontSize: 18,
-        marginVertical: 10,
+        fontSize: wp('5%'),
+        marginTop: hp('1%')
     },
     overlayDescription: {
         textAlign: 'center',
-        marginVertical: 10,
-        width: 160,
+        marginVertical: hp('4%'),
+        width: wp('80%'),
+        fontSize: wp('4%')
     },
     overlayInput: {
-        fontSize: 14,
-        marginHorizontal: 10,
+        fontSize: wp('4%'),
+        //marginHorizontal: 10
     },
+    overlayInputContainer: {
+        width: wp('80%')
+    },
+    save: {
+        width: wp('30%'),
+        height: hp('5.35%')
+    },
+    cancel: {
+        width: wp('30%'),
+        height: hp('5.35%'),
+        backgroundColor: 'red'
+    }
 });

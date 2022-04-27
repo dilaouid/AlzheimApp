@@ -19,6 +19,7 @@ import {
 } from 'react-native-elements';
 import { Audio } from 'expo-av';
 import { lang as DictaphoneLang } from '../../../language/activities/dictaphone';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import * as FileSystem from 'expo-file-system';
 import { v4 as uuidv4 } from 'uuid';
@@ -183,9 +184,6 @@ export default function Dictaphone(props) {
                 <Text style={styles.overlayTitle}>
                     {DictaphoneLang[props.lang].ChooseTitle}
                 </Text>
-                <Text style={styles.overlayTitle}>
-                    {DictaphoneLang[props.lang].PleaseChooseATitle}
-                </Text>
                 <Input
                     placeholder={DictaphoneLang[props.lang].Placeholder}
                     leftIcon={
@@ -197,23 +195,27 @@ export default function Dictaphone(props) {
                         />
                     }
                     label={DictaphoneLang[props.lang].Title}
+                    labelStyle={{fontSize: wp('3%'), marginBottom: hp('2%')}}
                     maxLength={25}
                     inputStyle={styles.overlayInput}
+                    containerStyle={styles.overlayInputContainer}
                     value={title}
                     onChangeText={(e) => {
                         setTitle(e);
                     }}
                 />
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row', marginTop: hp('2%') }}>
                     <Button
                         title={DictaphoneLang[props.lang].Cancel}
-                        buttonStyle={{ backgroundColor: 'red' }}
+                        titleStyle={styles.listItemTitle}
+                        buttonStyle={styles.cancel}
                         containerStyle={{ marginRight: 10 }}
                         onPress={saveRecord}
                     />
                     <Button
                         title={DictaphoneLang[props.lang].Save}
-                        buttonStyle={{ fontWeight: 'bold' }}
+                        titleStyle={styles.listItemTitle}
+                        buttonStyle={styles.save}
                         onPress={saveRecord}
                     />
                 </View>
@@ -234,7 +236,8 @@ export default function Dictaphone(props) {
                 <View style={{ flexDirection: 'row' }}>
                     <Button
                         title={DictaphoneLang[props.lang].Cancel}
-                        buttonStyle={{ fontWeight: 'bold' }}
+                        titleStyle={styles.listItemTitle}
+                        buttonStyle={styles.cancel}
                         containerStyle={{ marginRight: 10 }}
                         onPress={(e) => {
                             setDeleteId(0);
@@ -242,7 +245,8 @@ export default function Dictaphone(props) {
                     />
                     <Button
                         title={DictaphoneLang[props.lang].Delete}
-                        buttonStyle={{ backgroundColor: 'red' }}
+                        titleStyle={styles.listItemTitle}
+                        buttonStyle={styles.save}
                         onPress={(e) => {
                             deleteRecord();
                         }}
@@ -259,13 +263,14 @@ export default function Dictaphone(props) {
                                 ? DictaphoneLang[props.lang].Continue
                                 : DictaphoneLang[props.lang].Pause
                         }
+                        titleStyle={styles.titleButton}
                         containerStyle={styles.actionButtons}
                         icon={{
                             name: pause
                                 ? 'play-circle-outline'
                                 : 'pause-circle-outline',
                             type: 'ionicon',
-                            size: 15,
+                            size: wp('4%'),
                             color: 'white',
                         }}
                         onPress={pause ? continueRecording : pauseRecording}
@@ -273,11 +278,12 @@ export default function Dictaphone(props) {
 
                     <Button
                         title={DictaphoneLang[props.lang].Stop}
+                        titleStyle={styles.titleButton}
                         containerStyle={styles.actionButtons}
                         icon={{
                             name: 'stop-circle-outline',
                             type: 'ionicon',
-                            size: 15,
+                            size: wp('4%'),
                             color: 'white',
                         }}
                         onPress={stopRecording}
@@ -287,7 +293,7 @@ export default function Dictaphone(props) {
                         icon={{
                             name: 'caret-back-outline',
                             type: 'ionicon',
-                            size: 15,
+                            size: wp('4%'),
                             color: 'white',
                         }}
                         buttonStyle={styles.recordButton}
@@ -304,7 +310,7 @@ export default function Dictaphone(props) {
                     icon={{
                         name: 'mic-circle',
                         type: 'ionicon',
-                        size: 15,
+                        size: wp('4%'),
                         color: 'white',
                     }}
                     buttonStyle={styles.recordButton}
@@ -317,7 +323,7 @@ export default function Dictaphone(props) {
                     icon={{
                         name: 'caret-back-outline',
                         type: 'ionicon',
-                        size: 15,
+                        size: wp('4%'),
                         color: 'white',
                     }}
                     buttonStyle={styles.recordButton}
