@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
     view: {
@@ -7,24 +8,36 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     logo: {
-        width: 80,
-        height: 80,
+        width: wp('20%'),
+        height: undefined,
+        aspectRatio: 1,
         marginVertical: 20,
         opacity: 0.8,
-        marginBottom: 40,
+        marginBottom: hp('7%'),
     },
     button: {
-        width: 235,
-        marginBottom: 25,
+        width: wp('70%'),
+        height: hp('6%'),
+        borderRadius: 10,
+    },
+    title: {
+        fontSize: wp('4%')
+    },
+    buttonContainer: {
+        marginBottom: hp('4%'),
         borderRadius: 10,
         marginHorizontal: 5,
+        justifyContent: 'flex-start',
     },
     leaveButton: {
-        width: 235,
-        marginTop: 40,
+        width: wp('70%'),
+        height: hp('6%'),
         backgroundColor: 'red',
-        borderRadius: 10,
+    },
+    leaveButtonContainer: {
+        marginTop: hp('5%'),
         marginHorizontal: 5,
+        justifyContent: 'flex-start',
     },
     leaveButtonPlay: {
         width: 235,

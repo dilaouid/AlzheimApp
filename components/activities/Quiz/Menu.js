@@ -3,6 +3,7 @@ import { Image, ActivityIndicator } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 
 import { lang as QuizLang } from '../../../language/activities/quiz';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import QuizLogo from '../../../assets/img/activities/quiz/logo.png';
 
@@ -15,15 +16,17 @@ export default function Menu(props) {
 
             <Button
                 title={props.isLoading ? <ActivityIndicator color={'blue'} size={'small'} /> : QuizLang[props.lang].Play}
-                containerStyle={styles.button}
+                buttonStyle={styles.button}
+                titleStyle={styles.title}
+                containerStyle={styles.buttonContainer}
                 onPress={() => props.setTab(1)}
                 icon={
                     <Icon
                         name={'play-outline'}
                         type={'ionicon'}
                         color={'white'}
-                        size={15}
-                        style={{ marginHorizontal: 5 }}
+                        size={wp('4%')}
+                        style={{ marginHorizontal: wp('1%') }}
                     />
                 }
                 disabled={props.quiz.length === 0}
@@ -31,46 +34,51 @@ export default function Menu(props) {
 
             <Button
                 title={QuizLang[props.lang].View}
-                containerStyle={styles.button}
+                buttonStyle={styles.button}
+                titleStyle={styles.title}
+                containerStyle={styles.buttonContainer}
                 onPress={() => props.setTab(2)}
                 icon={
                     <Icon
                         name={'book-outline'}
                         type={'ionicon'}
                         color={'white'}
-                        size={15}
-                        style={{ marginHorizontal: 5 }}
+                        size={wp('4%')}
+                        style={{ marginHorizontal: wp('1%') }}
                     />
                 }
             />
 
             <Button
                 title={QuizLang[props.lang].Help}
-                containerStyle={styles.button}
+                buttonStyle={styles.button}
+                titleStyle={styles.title}
+                containerStyle={styles.buttonContainer}
                 onPress={() => props.setTab(3)}
                 icon={
                     <Icon
                         name={'information-circle-outline'}
                         type={'ionicon'}
                         color={'white'}
-                        size={15}
-                        style={{ marginHorizontal: 5 }}
+                        size={wp('4%')}
+                        style={{ marginHorizontal: wp('1%') }}
                     />
                 }
             />
 
             <Button
                 title={QuizLang[props.lang].Leave}
-                buttonStyle={{ backgroundColor: 'red' }}
-                containerStyle={styles.leaveButton}
+                buttonStyle={styles.leaveButton}
+                containerStyle={styles.leaveButtonContainer}
+                titleStyle={styles.title}
                 onPress={() => props.setPage(null)}
                 icon={
                     <Icon
                         name={'caret-back-outline'}
                         type={'ionicon'}
                         color={'white'}
-                        size={15}
-                        style={{ marginHorizontal: 5 }}
+                        size={wp('4%')}
+                        style={{ marginHorizontal: wp('1%') }}
                     />
                 }
             />
