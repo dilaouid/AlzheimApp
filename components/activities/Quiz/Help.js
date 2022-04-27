@@ -5,6 +5,7 @@ import { Button, Icon, Text } from 'react-native-elements';
 import { lang as QuizLang } from '../../../language/activities/quiz';
 
 import QuestionMark from '../../../assets/img/activities/help/question_mark.gif';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import Lottie from '../../utils/Lottie';
 import styles from './styles';
@@ -13,11 +14,13 @@ export default function Help(props) {
     const LottieSource = require('../../../assets/lottie/question_mark.json');
     return (
         <SafeAreaView style={styles.viewHelpPage}>
-            <ScrollView style={{width: 100+'%'}}>
+            <ScrollView>
                 <Button
                     title={QuizLang[props.lang].Leave}
-                    buttonStyle={{ backgroundColor: 'red' }}
-                    containerStyle={styles.leaveButtonHelpPage}
+                    
+                    titleStyle={styles.title}
+                    buttonStyle={styles.leaveButtonHelpPage}
+                    containerStyle={styles.leaveButtonHelpPageContainer}
                     raised
                     onPress={() => props.setTab(0)}
                     icon={
@@ -25,8 +28,8 @@ export default function Help(props) {
                             name={'caret-back-outline'}
                             type={'ionicon'}
                             color={'white'}
-                            size={15}
-                            style={{ marginHorizontal: 5 }}
+                            size={wp('4%')}
+                            style={{ marginHorizontal: wp('2%') }}
                         />
                     }
                 />
@@ -45,8 +48,8 @@ export default function Help(props) {
                         name={'school-outline'}
                         type={'ionicon'}
                         color={'black'}
-                        size={15}
-                        style={{ marginHorizontal: 5 }}
+                        size={wp('4%')}
+                        style={{ marginHorizontal: wp('2%') }}
                     />
                     {QuizLang[props.lang].RulesHead}
                 </Text>
@@ -58,8 +61,8 @@ export default function Help(props) {
                         name={'school-outline'}
                         type={'ionicon'}
                         color={'black'}
-                        size={15}
-                        style={{ marginHorizontal: 5 }}
+                        size={wp('4%')}
+                        style={{ marginHorizontal: wp('2%') }}
                     />
                     {QuizLang[props.lang].CustomHead}
                 </Text>
