@@ -65,6 +65,9 @@ const uploadQuizFile = async (el) => {
     const path = `${FileSystem.documentDirectory}quiz/${el.fileType}/`;
     await FileSystem.getInfoAsync(el.uri).then(e => {
         console.log(e);
+    }).catch(er => {
+        console.log('-------------');
+        console.log(er);
     })
     await FileSystem.copyAsync({
         from: el.uri,

@@ -65,9 +65,10 @@ export default function FormQuizContent(props) {
         if (result.type === 'cancel') {
             return;
         }
+        const filename = result.uri.split('/')[result.uri.split('/').length - 1];
         props.setUri(result.uri);
         props.setFileType(result.mimeType.split('/')[0]);
-        props.setFilename(result.name);
+        props.setFilename(filename);
     };
 
     const pickImageFile = async () => {
@@ -80,9 +81,10 @@ export default function FormQuizContent(props) {
         if (result.type === 'cancel') {
             return;
         }
+        const filename = result.uri.split('/')[result.uri.split('/').length - 1];
         props.setUri(result.uri);
         props.setFileType(result.type);
-        props.setFilename(result.name);
+        props.setFilename(filename);
     };
 
     const printImportButtons = () => {

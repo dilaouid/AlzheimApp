@@ -116,9 +116,9 @@ export const checkQuiz = async (quiz, personId) => {
         for (let d = 0; d < el.content.length; d++) {
             const content = el.content[d];
             if (content.hasOwnProperty('uri') || content.hasOwnProperty('filename') || content.hasOwnProperty('fileType')) {
-                if (!content.hasOwnProperty('uri')) return false;
-                else if (!content.hasOwnProperty('filename')) return false;
-                else if (!content.hasOwnProperty('fileType')) return false;
+                if (!content.hasOwnProperty('uri')) { return false; }
+                else if (!content.hasOwnProperty('filename')) { return false; }
+                else if (!content.hasOwnProperty('fileType')) { return false; }
             }
             for (let j = 0; j < contentKeys.length; j++) {
                 const l = contentKeys[j];
