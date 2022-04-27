@@ -140,12 +140,12 @@ export default function CreateQuiz(props) {
         if (editContent !== undefined) {
             // edit a question button
             if (mode == 'title') return QuizLang[props.lang].SaveContent;
-            else if (mode == 'disabled') return !(answers?.length > 0 && question.length > 2);
+            else if (mode == 'disabled') return !(answers?.length > 0 && question && question?.length > 2);
             else if (mode == 'onpress') { pauseSound(); return saveContent(); }
         } else if (createQuestion) {
             // add a question button
             if (mode == 'title') return QuizLang[props.lang].OK;
-            else if (mode == 'disabled') return !(answers?.length > 0 && question.length > 2);
+            else if (mode == 'disabled') return !(answers?.length > 0 && question && question?.length > 2);
             else if (mode == 'onpress') { pauseSound(); setModal(false); return pushContent(); }
         } else {
             if (mode == 'title') return QuizLang[props.lang].Complete;
@@ -298,9 +298,10 @@ export default function CreateQuiz(props) {
                     onPress={() => {
                         clearState();
                         pauseSound();
-                        if (createQuestion)
+                        if (createQuestion) {
+                            setEditContent(undefined)
                             setCreateQuestion(!createQuestion);
-                        else if (content.length == 0) props.setTab(2);
+                        } else if (content.length == 0) props.setTab(2);
                         else setModalConfirmation(true)
                     }}
                 />
