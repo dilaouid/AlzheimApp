@@ -30,11 +30,10 @@
       "bundleIdentifier": "org.alzheimApp",
       "infoPlist": {
         "NSMicrophoneUsageDescription": "AlzheimApp a besoin d'utiliser votre microphone pour enregistrer des éléments dans votre journal vocal.",
-        "NSPhotoLibraryUsageDescription": "AlzheimApp a besoin de récupérer des fichiers pour la création de quiz et l'édition de profil.",
-        "UIBackgroundModes": "audio"
+        "NSPhotoLibraryUsageDescription": "AlzheimApp a besoin de récupérer des fichiers pour la création de quiz et l'édition de profil."
       },
       "usesIcloudStorage": true,
-      "buildNumber": "3"
+      "buildNumber": "4"
     },
     "splash": { 
       "image": "./assets/img/alzheimapp_logo.png",
